@@ -28,8 +28,6 @@ class CreateTableVendor extends Migration
      */
     public function down()
     {
-        Schema::table('vendors', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('users');
     }
 }
