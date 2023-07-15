@@ -35,7 +35,7 @@
                 <!-- small box -->
                 <div class="small-box bg-warning">
                   <div class="inner">
-                    <h3>{{$outs}}</h3>
+                    <h3></h3>
     
                     <p>Outstanding</p>
                   </div>
@@ -49,7 +49,7 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                   <div class="inner">
-                    <h3>{{$draft}}</h3>
+                    <h3></h3>
     
                     <p>Draft</p>
                   </div>
@@ -63,7 +63,7 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                   <div class="inner">
-                    <h3>{{$final}}</h3>
+                    <h3></h3>
     
                     <p>Final</p>
                   </div>
@@ -77,7 +77,7 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                   <div class="inner">
-                    <h3>{{$overd}}</h3>
+                    <h3></h3>
     
                     <p>OverDueDate</p>
                   </div>
