@@ -36,17 +36,14 @@ height: 100%;
   <div class="container-fluid h-custom">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-md-9 col-lg-6 col-xl-5">        
-        <img src="https://mma.prnewswire.com/media/1632530/AISIN_Logo.jpg?p=facebook"
-          class="img-fluid" alt="Sample image">
+        <img src="https://asset.kompas.com/crops/zmyPX1lqPWG55HKx6nYIfTJ6Ak8=/109x76:795x532/750x500/data/photo/2021/09/08/6138400587c9f.jpg" 
+        width=500 class="img-fluid" alt="Sample image">
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
         <form method="POST" action="{{ url('/login') }}">
         {{ csrf_field() }}
-        <center>
-        <img src="img/aiia.png" width="100px" alt=""> 
-        </center> 
         <div class="divider d-flex align-items-center my-4">          
-            <p class="text-center fw-bold mx-3 mb-0">Account App</p>
+            <p class="text-center fw-bold mx-3 mb-0">Account SAP App</p>
           </div>
 
           <!-- Email input -->
@@ -78,7 +75,7 @@ height: 100%;
     class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
     <!-- Copyright -->
     <div class="text-white mb-3 mb-md-0">
-      Copyright TTMI © 2023. All rights reserved.
+      Copyright SAP © 2023. All rights reserved.
     </div>
     <!-- Copyright -->
   </div>
