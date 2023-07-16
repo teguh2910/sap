@@ -37,7 +37,7 @@
                   <div class="inner">
                     <h3></h3>
     
-                    <p>Outstanding</p>
+                    <p>PO</p>
                   </div>
                   <div class="icon">
                     <i class="fas fa-file"></i>
@@ -51,12 +51,12 @@
                   <div class="inner">
                     <h3></h3>
     
-                    <p>Draft</p>
+                    <p>Stok</p>
                   </div>
                   <div class="icon">
                     <i class="fas fa-file"></i>
                   </div>
-                  <a href="{{asset('/draft')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                  <a href="{{asset('/')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
               </div>
               <div class="col-lg-3 col-6">
@@ -65,12 +65,12 @@
                   <div class="inner">
                     <h3></h3>
     
-                    <p>Final</p>
+                    <p>Cash</p>
                   </div>
                   <div class="icon">
                     <i class="fas fa-file"></i>
                   </div>
-                  <a href="{{asset('/final')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                  <a href="{{asset('/')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
               </div>
               <div class="col-lg-3 col-6">
@@ -79,12 +79,12 @@
                   <div class="inner">
                     <h3></h3>
     
-                    <p>OverDueDate</p>
+                    <p>Others</p>
                   </div>
                   <div class="icon">
                     <i class="fas fa-file"></i>
                   </div>
-                  <a href="{{asset('/overdue')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                  <a href="{{asset('/')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
               </div>
         </div>

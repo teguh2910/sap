@@ -23,7 +23,7 @@
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
-        <a href="" class="btn btn-sm btn-success">Create</a>
+        <a href="{{ asset('bank/create') }}" class="btn btn-sm btn-success">Create</a>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -48,6 +48,16 @@
                   </tr>
                   </thead>
                   <tbody>
+                  @foreach($bank as $b)
+                  <td>{{ $b->id_bank }}</td>
+                  <td>{{ $b->nama_bank }}</td>
+                  <td>{{ $b->cabang_bank }}</td>
+                  <td>{{ $b->currency_bank }}</td>
+                  <td>
+                    <a href="{{ asset('bank/edit/'.$b->id_bank) }}" class="btn btn-sm btn-primary">Edit</a>
+                    <a href="{{ asset('bank/delete/'.$b->id_bank) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-sm btn-danger">Delete</a>
+                  </td>
+                  @endforeach
                   </tbody>                  
                 </table>
               </div>

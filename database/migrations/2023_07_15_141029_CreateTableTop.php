@@ -15,7 +15,7 @@ class CreateTableTop extends Migration
     {
         Schema::create('tops', function (Blueprint $table) {
             $table->increments('id_top');
-            $table->integer('name_top');
+            $table->string('name_top');
             $table->timestamps();
         });
     }
