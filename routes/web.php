@@ -64,3 +64,11 @@ Route::post('/user/create', 'userController@store');
 Route::get('/user/edit/{id}', 'userController@edit');
 Route::post('/user/edit/{id}', 'userController@update');
 Route::get('/user/delete/{id}', 'userController@delete');
+
+//crud stok
+Route::get('/stok', 'stokController@index');
+Route::get('/stok/create', 'stokController@create');
+Route::post('/stok/create', 'stokController@store');
+Route::get('/stok/edit/{id}', 'stokController@edit');
+Route::post('/stok/edit/{id}', 'stokController@update');
+Route::get('/stok/delete/{id}', 'stokController@delete');

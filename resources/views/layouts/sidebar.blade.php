@@ -18,54 +18,60 @@
               </p>
             </a>
           </li> 
-          <li class="nav-item">
-            <a href="{{asset('/bank')}}" class="nav-link">
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Master Bank                
+                Master Data
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-          </li> 
-          <li class="nav-item">
-            <a href="{{asset('/customer')}}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Master Customer                
-              </p>
-            </a>
-          </li>                    
-          <li class="nav-item">
-            <a href="{{asset('/vendor')}}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Master Vendor                
-              </p>
-            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{asset('/stok')}}" class="nav-link">
+                  <i class="nav-icon"></i>
+                  <p>Master Stok</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{asset('/bank')}}" class="nav-link">
+                  <i class="nav-icon"></i>
+                  <p>Master Bank</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{asset('/customer')}}" class="nav-link">
+                  <i class="nav-icon"></i>
+                  <p>Master Customer</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{asset('/vendor')}}" class="nav-link">
+                  <i class="nav-icon"></i>
+                  <p>Master Vendor</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{asset('/part')}}" class="nav-link">
+                  <i class="nav-icon"></i>
+                  <p>Master Part</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{asset('/top')}}" class="nav-link">
+                  <i class="nav-icon"></i>
+                  <p>Master Term Of Payment</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{asset('/truk')}}" class="nav-link">
+                  <i class="nav-icon"></i>
+                  <p>Master Truk</p>
+                </a>
+              </li>
+            </ul>
           </li>
-          <li class="nav-item">
-            <a href="{{asset('/part')}}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Master Part                
-              </p>
-            </a>
-          </li>                  
-          <li class="nav-item">
-            <a href="{{asset('/top')}}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Master Term Of Payment                
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{asset('/truk')}}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Master Truk                
-              </p>
-            </a>
-          </li>
+          
           <li class="nav-item">
             <a href="{{asset('/po')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
