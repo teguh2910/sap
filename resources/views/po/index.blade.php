@@ -42,10 +42,6 @@
                   <tr>
                     <th>no_po</th>
                     <th>vendor</th>
-                    <th>part_no</th>
-                    <th>part_name</th>
-                    <th>price_po</th>
-                    <th>qty_po</th>
                     <th>nama_bank</th>
                     <th>top</th>
                     <th>action</th>                    
@@ -56,11 +52,6 @@
                   <td>{{ $po->id_po }}</td>
                   @foreach($po->vendors as $v)
                   <td>{{ $v->nama_vendor }}</td>
-                  @endforeach
-                  @foreach($po->parts as $p)
-                  <td>{{ $p->part_no }}</td>
-                  <td>{{ $p->part_name }}</td>
-                  <td>{{ $p->price }}</td>
                   @endforeach
                   <td>{{ $po->qty }}</td>
                   @foreach($po->banks as $b)

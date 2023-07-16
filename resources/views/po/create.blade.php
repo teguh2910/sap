@@ -51,18 +51,6 @@
                     </select>
                   </div>
                   <div class="form-group">
-                    <label>Part Number</label>
-                    <select name="id_part" class="form-control">
-                        @foreach($part as $p)
-                        <option value="{{ $p->id_part }}">{{ $p->part_no }}</option>
-                        @endforeach
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label>Qty</label>
-                    <input type="text" name="qty" class="form-control">
-                  </div>
-                  <div class="form-group">
                     <label>Nama Bank</label>
                     <select name="id_bank" class="form-control">
                         @foreach($bank as $b)
@@ -77,6 +65,26 @@
                         <option value="{{ $t->id_top }}">{{ $t->name_top }}</option>
                         @endforeach
                     </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Delivery By</label>
+                    <input type="text" name="delivery_by" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>Delivery Date</label>
+                    <input type="date" name="delivery_date" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>Quot No</label>
+                    <input type="text" name="quot_no" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>Requestion No</label>
+                    <input type="text" name="pr_no" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>Vat (%)</label>
+                    <input type="number" name="vat" value="11" class="form-control">
                   </div>                  
                 </div>
                 <!-- /.card-body -->

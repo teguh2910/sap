@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class poController extends Controller
 {
     public function index() {
-        $pos=po::with(['detail_pos','note_pos','vendors','tops','banks'])->get();
+        $pos=po::with(['vendors','tops','banks'])->get();
         return view('po/index', compact('pos'));
     }
     public function create() {

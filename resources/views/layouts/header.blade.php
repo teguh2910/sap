@@ -21,7 +21,7 @@
         <marquee class="warna">
         Welcome <b>  {{auth::user()->name}} // 
         </b> Email <b>  {{auth::user()->email}} </b> //
-        Postion <b> {{auth::user()->position}} </b>
+        Position <b> {{auth::user()->position}} </b>
       </marquee>
       </li>      
     </ul>
