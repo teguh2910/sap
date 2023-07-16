@@ -14,16 +14,16 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">List Bank</h1>
+            <h1 class="m-0">List PO</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">List Bank</li>
+              <li class="breadcrumb-item active">List PO</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
-        <a href="{{ asset('bank/create') }}" class="btn btn-sm btn-success">Create</a>
+        <a href="{{ asset('po/create') }}" class="btn btn-sm btn-success">Create</a>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -40,22 +40,39 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>id_bank</th>
+                    <th>no_po</th>
+                    <th>vendor</th>
+                    <th>part_no</th>
+                    <th>part_name</th>
+                    <th>price_po</th>
+                    <th>qty_po</th>
                     <th>nama_bank</th>
-                    <th>cabang_bank</th>
-                    <th>currency_bank</th>
+                    <th>top</th>
                     <th>action</th>                    
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach($bank as $b)
-                  <td>{{ $b->id_bank }}</td>
+                  @foreach($pos as $po)
+                  <td>{{ $po->id_po }}</td>
+                  @foreach($po->vendors as $v)
+                  <td>{{ $v->nama_vendor }}</td>
+                  @endforeach
+                  @foreach($po->parts as $p)
+                  <td>{{ $p->part_no }}</td>
+                  <td>{{ $p->part_name }}</td>
+                  <td>{{ $p->price }}</td>
+                  @endforeach
+                  <td>{{ $po->qty }}</td>
+                  @foreach($po->banks as $b)
                   <td>{{ $b->nama_bank }}</td>
-                  <td>{{ $b->cabang_bank }}</td>
-                  <td>{{ $b->currency_bank }}</td>
+                  @endforeach
+                  @foreach($po->tops as $t)
+                  <td>{{ $t->name_top }}</td>
+                  @endforeach
                   <td>
-                    <a href="{{ asset('bank/edit/'.$b->id_bank) }}" class="btn btn-sm btn-primary">Edit</a>
-                    <a href="{{ asset('bank/delete/'.$b->id_bank) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-sm btn-danger">Delete</a>
+                    <a href="{{ asset('po/cetak/'.$po->id_po) }}" class="btn btn-xs btn-success">Cetak</a>
+                    <a href="{{ asset('po/edit/'.$po->id_po) }}" class="btn btn-xs btn-primary">Edit</a>
+                    <a href="{{ asset('po/delete/'.$po->id_po) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-xs btn-danger">Delete</a>
                   </td>
                   @endforeach
                   </tbody>                  

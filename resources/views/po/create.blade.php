@@ -14,12 +14,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Create Data Bank</h1>            
+            <h1 class="m-0">Create Data PO</h1>            
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Create Data Bank</li>
+              <li class="breadcrumb-item active">Create Data PO</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -35,28 +35,47 @@
           <div class="col-md-12">
           <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Form Create Data Bank</h3>
+                <h3 class="card-title">Form Create Data PO</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{asset('bank/create')}}" method="POST">
+              <form action="{{asset('po/create')}}" method="POST">
               {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
+                    <label>Vendor</label>
+                    <select name="id_vendor" class="form-control">
+                        @foreach($vendor as $v)
+                        <option value="{{ $v->id_vendor }}">{{ $v->nama_vendor }}</option>
+                        @endforeach
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Part Number</label>
+                    <select name="id_part" class="form-control">
+                        @foreach($part as $p)
+                        <option value="{{ $p->id_part }}">{{ $p->part_no }}</option>
+                        @endforeach
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Qty</label>
+                    <input type="text" name="qty" class="form-control">
+                  </div>
+                  <div class="form-group">
                     <label>Nama Bank</label>
-                    <input type="text" name="nama_bank" class="form-control">
+                    <select name="id_bank" class="form-control">
+                        @foreach($bank as $b)
+                        <option value="{{ $b->id_bank }}">{{ $b->nama_bank }}</option>
+                        @endforeach
+                    </select>
                   </div>
                   <div class="form-group">
-                    <label>Cabang Bank</label>
-                    <input type="text" name="cabang_bank" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <label>Currency</label>
-                    <select name="currency_bank" class="form-control">
-                        <option value="IDR">IDR</option>
-                        <option value="USD">USD</option>
-                        <option value="JPY">JPY</option>
-                        <option value="THB">THB</option>
+                    <label>TOP</label>
+                    <select name="id_top" class="form-control">
+                        @foreach($top as $t)
+                        <option value="{{ $t->id_top }}">{{ $t->name_top }}</option>
+                        @endforeach
                     </select>
                   </div>                  
                 </div>
