@@ -47,12 +47,14 @@
                   </thead>
                   <tbody>
                   @foreach($top as $t)
+                  <tr>
                   <td>{{ $t->id_top }}</td>
                   <td>{{ $t->name_top }}</td>
                   <td>
                     <a href="{{ asset('top/edit/'.$t->id_top) }}" class="btn btn-sm btn-primary">Edit</a>
                     <a href="{{ asset('top/delete/'.$t->id_top) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-sm btn-danger">Delete</a>
                   </td>
+                  </tr>
                   @endforeach
                   </tbody>                  
                 </table>

@@ -49,6 +49,7 @@
                   </thead>
                   <tbody>
                   @foreach($pos as $po)
+                  <tr>
                   <td>{{ $po->id_po }}</td>
                   @foreach($po->vendors as $v)
                   <td>{{ $v->nama_vendor }}</td>
@@ -65,6 +66,7 @@
                     <a href="{{ asset('po/edit/'.$po->id_po) }}" class="btn btn-xs btn-primary">Edit</a>
                     <a href="{{ asset('po/delete/'.$po->id_po) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-xs btn-danger">Delete</a>
                   </td>
+                  </tr>
                   @endforeach
                   </tbody>                  
                 </table>

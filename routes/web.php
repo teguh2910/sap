@@ -72,3 +72,19 @@ Route::post('/stok/create', 'stokController@store');
 Route::get('/stok/edit/{id}', 'stokController@edit');
 Route::post('/stok/edit/{id}', 'stokController@update');
 Route::get('/stok/delete/{id}', 'stokController@delete');
+
+//crud prod
+Route::get('/prod', 'prodController@index');
+Route::get('/prod/create', 'prodController@create');
+Route::post('/prod/create', 'prodController@store');
+Route::get('/prod/edit/{id}', 'prodController@edit');
+Route::post('/prod/edit/{id}', 'prodController@update');
+Route::get('/prod/delete/{id}', 'prodController@delete');
+
+//crud sj
+Route::get('/sj', 'sjController@index');
+Route::get('/sj/create', 'sjController@create');
+Route::post('/sj/create', 'sjController@store');
+Route::get('/sj/edit/{id}', 'sjController@edit');
+Route::post('/sj/edit/{id}', 'sjController@update');
+Route::get('/sj/delete/{id}', 'sjController@delete');

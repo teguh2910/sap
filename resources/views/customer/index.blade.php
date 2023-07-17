@@ -49,6 +49,7 @@
                   </thead>
                   <tbody>
                   @foreach($customer as $c)
+                  <tr>
                   <td>{{ $c->id_customer }}</td>
                   <td>{{ $c->nama_customer }}</td>
                   <td>{{ $c->alamat_customer }}</td>
@@ -57,6 +58,7 @@
                     <a href="{{ asset('customer/edit/'.$c->id_customer) }}" class="btn btn-sm btn-primary">Edit</a>
                     <a href="{{ asset('customer/delete/'.$c->id_customer) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-sm btn-danger">Delete</a>
                   </td>
+                  </tr>
                   @endforeach
                   </tbody>                  
                 </table>

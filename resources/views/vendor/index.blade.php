@@ -49,6 +49,7 @@
                   </thead>
                   <tbody>
                   @foreach($vendor as $v)
+                  <tr>
                   <td>{{ $v->id_vendor }}</td>
                   <td>{{ $v->nama_vendor }}</td>
                   <td>{{ $v->alamat_vendor }}</td>
@@ -58,7 +59,8 @@
                     <a href="{{ asset('vendor/delete/'.$v->id_vendor) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-sm btn-danger">Delete</a>
                   </td>
                   @endforeach
-                  </tbody>                  
+                  </tbody>     
+                  </tr>             
                 </table>
               </div>
               <!-- /.card-body -->

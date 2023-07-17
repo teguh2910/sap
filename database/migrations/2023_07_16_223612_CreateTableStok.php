@@ -19,9 +19,9 @@ class CreateTableStok extends Migration
             $table->string('part_name');
             $table->string('category_part');
             $table->integer('beginning_balance');
-            $table->integer('incoming_balance');
-            $table->integer('usage_balance');
-            $table->integer('ending_balance');
+            $table->integer('incoming_balance')->nullable();
+            $table->integer('usage_balance')->nullable();
+            $table->integer('ending_balance')->nullable();
             $table->timestamps();
         });
     }
