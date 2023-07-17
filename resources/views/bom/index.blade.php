@@ -27,7 +27,6 @@
         <a href="{{ asset('prod/create') }}" class="btn btn-sm btn-primary">Create Qty Production</a>
         <a href="{{ asset('sj/create') }}" class="btn btn-sm btn-info">Create Qty Surat Jalan</a>
         <a href="{{ asset('gr/create') }}" class="btn btn-sm btn-warning">Create Qty Good Receipt</a>
-        <a href="{{ asset('bom/create') }}" class="btn btn-sm btn-danger">Upload BOM</a>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->

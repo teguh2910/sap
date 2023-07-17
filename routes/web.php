@@ -88,3 +88,11 @@ Route::post('/sj/create', 'sjController@store');
 Route::get('/sj/edit/{id}', 'sjController@edit');
 Route::post('/sj/edit/{id}', 'sjController@update');
 Route::get('/sj/delete/{id}', 'sjController@delete');
+
+//crud bom
+Route::get('/bom', 'bomController@index');
+Route::get('/bom/create', 'bomController@create');
+Route::post('/bom/create', 'bomController@store');
+Route::get('/bom/edit/{id}', 'bomController@edit');
+Route::post('/bom/edit/{id}', 'bomController@update');
+Route::get('/bom/delete/{id}', 'bomController@delete');
