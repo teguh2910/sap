@@ -43,12 +43,16 @@
               {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
+                    <label>Kode Bank</label>
+                    <input type="text" name="kode_bank" value="{{ $bank->kode_bank }}" class="form-control">
+                  </div>
+                  <div class="form-group">
                     <label>Nama Bank</label>
                     <input type="text" name="nama_bank" value="{{ $bank->nama_bank }}" class="form-control">
                   </div>
-                  <div class="form-group">
-                    <label>Cabang Bank</label>
-                    <input type="text" name="cabang_bank" value="{{ $bank->cabang_bank }}" class="form-control">
+                  <div class="form-group">`
+                    <label>No Rek Bank</label>
+                    <input type="text" name="no_rek_bank" value="{{ $bank->no_rek_bank }}" class="form-control">
                   </div>
                   <div class="form-group">
                     <label>Currency</label>

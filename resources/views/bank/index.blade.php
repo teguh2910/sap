@@ -40,9 +40,9 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>id_bank</th>
+                    <th>kode_bank</th>
                     <th>nama_bank</th>
-                    <th>cabang_bank</th>
+                    <th>no_rek_bank</th>
                     <th>currency_bank</th>
                     <th>action</th>                    
                   </tr>
@@ -50,9 +50,9 @@
                   <tbody>
                   @foreach($bank as $b)
                   <tr>
-                  <td>{{ $b->id_bank }}</td>
+                  <td>{{ $b->kode_bank }}</td>
                   <td>{{ $b->nama_bank }}</td>
-                  <td>{{ $b->cabang_bank }}</td>
+                  <td>{{ $b->no_rek_bank }}</td>
                   <td>{{ $b->currency_bank }}</td>
                   <td>
                     <a href="{{ asset('bank/edit/'.$b->id_bank) }}" class="btn btn-sm btn-primary">Edit</a>

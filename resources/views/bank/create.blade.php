@@ -43,12 +43,16 @@
               {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
+                    <label>Kode Bank</label>
+                    <input type="text" name="kode_bank" class="form-control">
+                  </div>
+                  <div class="form-group">
                     <label>Nama Bank</label>
                     <input type="text" name="nama_bank" class="form-control">
                   </div>
                   <div class="form-group">
-                    <label>Cabang Bank</label>
-                    <input type="text" name="cabang_bank" class="form-control">
+                    <label>No Rek Bank</label>
+                    <input type="text" name="no_rek_bank" class="form-control">
                   </div>
                   <div class="form-group">
                     <label>Currency</label>

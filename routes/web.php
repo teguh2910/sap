@@ -33,14 +33,6 @@ Route::get('/po/edit/{id}', 'poController@edit');
 Route::post('/po/edit/{id}', 'poController@update');
 Route::get('/po/delete/{id}', 'poController@delete');
 
-//crud top
-Route::get('/top', 'topController@index');
-Route::get('/top/create', 'topController@create');
-Route::post('/top/create', 'topController@store');
-Route::get('/top/edit/{id}', 'topController@edit');
-Route::post('/top/edit/{id}', 'topController@update');
-Route::get('/top/delete/{id}', 'topController@delete');
-
 //crud truk
 Route::get('/truk', 'trukController@index');
 Route::get('/truk/create', 'trukController@create');
@@ -89,10 +81,10 @@ Route::get('/sj/edit/{id}', 'sjController@edit');
 Route::post('/sj/edit/{id}', 'sjController@update');
 Route::get('/sj/delete/{id}', 'sjController@delete');
 
-//crud bom
-Route::get('/bom', 'bomController@index');
-Route::get('/bom/create', 'bomController@create');
-Route::post('/bom/create', 'bomController@store');
-Route::get('/bom/edit/{id}', 'bomController@edit');
-Route::post('/bom/edit/{id}', 'bomController@update');
-Route::get('/bom/delete/{id}', 'bomController@delete');
+//crud produk
+Route::get('/produk', 'produkController@index');
+Route::get('/produk/create', 'produkController@create');
+Route::post('/produk/create', 'produkController@store');
+Route::get('/produk/edit/{id}', 'produkController@edit');
+Route::post('/produk/edit/{id}', 'produkController@update');
+Route::get('/produk/delete/{id}', 'produkController@delete');

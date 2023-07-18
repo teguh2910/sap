@@ -15,8 +15,9 @@ class bankController extends Controller
     }
     public function store(Request $request) {
         $bank = new bank;
+        $bank->kode_bank = $request->kode_bank;
         $bank->nama_bank = $request->nama_bank;
-        $bank->cabang_bank = $request->cabang_bank;
+        $bank->no_rek_bank = $request->no_rek_bank;
         $bank->currency_bank = $request->currency_bank;
         $bank->save();
         return redirect('bank');
@@ -27,8 +28,9 @@ class bankController extends Controller
     }
     public function update(Request $request, $id) {
         $bank = bank::find($id);
+        $bank->kode_bank = $request->kode_bank;
         $bank->nama_bank = $request->nama_bank;
-        $bank->cabang_bank = $request->cabang_bank;
+        $bank->no_rek_bank = $request->no_rek_bank;
         $bank->currency_bank = $request->currency_bank;
         $bank->save();
         return redirect('bank');

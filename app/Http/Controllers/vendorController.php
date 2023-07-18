@@ -15,9 +15,9 @@ class vendorController extends Controller
     }
     public function store(Request $request) {
         $vendor = new vendor;
+        $vendor->kode_vendor = $request->kode_vendor;
         $vendor->nama_vendor = $request->nama_vendor;
         $vendor->alamat_vendor = $request->alamat_vendor;
-        $vendor->no_telp_vendor = $request->no_telp_vendor;
         $vendor->save();
         return redirect('vendor');
     }
@@ -27,9 +27,9 @@ class vendorController extends Controller
     }
     public function update(Request $request, $id) {
         $vendor = vendor::find($id);
+        $vendor->kode_vendor = $request->kode_vendor;
         $vendor->nama_vendor = $request->nama_vendor;
         $vendor->alamat_vendor = $request->alamat_vendor;
-        $vendor->no_telp_vendor = $request->no_telp_vendor;
         $vendor->save();
         return redirect('vendor');
     }

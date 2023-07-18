@@ -40,20 +40,18 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>id_vendor</th>
+                    <th>kode_vendor</th>
                     <th>nama_vendor</th>
                     <th>alamat_vendor</th>
-                    <th>no_telp_vendor</th>
                     <th>action</th>                    
                   </tr>
                   </thead>
                   <tbody>
                   @foreach($vendor as $v)
                   <tr>
-                  <td>{{ $v->id_vendor }}</td>
+                  <td>{{ $v->kode_vendor }}</td>
                   <td>{{ $v->nama_vendor }}</td>
                   <td>{{ $v->alamat_vendor }}</td>
-                  <td>{{ $v->no_telp_vendor }}</td>
                   <td>
                     <a href="{{ asset('vendor/edit/'.$v->id_vendor) }}" class="btn btn-sm btn-primary">Edit</a>
                     <a href="{{ asset('vendor/delete/'.$v->id_vendor) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-sm btn-danger">Delete</a>

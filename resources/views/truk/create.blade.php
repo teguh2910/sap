@@ -43,12 +43,16 @@
               {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
-                    <label>Jenis Truk</label>
-                    <input type="text" name="jenis_truk" class="form-control">
+                    <label>Kode Truk</label>
+                    <input type="text" name="kode_truk" class="form-control">
                   </div>
                   <div class="form-group">
                     <label>Nopol Truk</label>
-                    <input type="text" name="nopol_truk" class="form-control">
+                    <input type="text" name="plat_no" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>Driver</label>
+                    <input type="text" name="driver" class="form-control">
                   </div>                                    
                 </div>
                 <!-- /.card-body -->

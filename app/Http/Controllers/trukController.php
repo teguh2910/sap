@@ -18,8 +18,9 @@ class trukController extends Controller
     public function store(Request $request)
     {
         $truk = new truk;
-        $truk->jenis_truk = $request->jenis_truk;
-        $truk->nopol_truk = $request->nopol_truk;
+        $truk->kode_truk = $request->kode_truk;
+        $truk->plat_no = $request->plat_no;
+        $truk->driver = $request->driver;
         $truk->save();
         return redirect('/truk');
     }
@@ -31,8 +32,9 @@ class trukController extends Controller
     public function update(Request $request, $id)
     {
         $truk = truk::find($id);
-        $truk->jenis_truk = $request->jenis_truk;
-        $truk->nopol_truk = $request->nopol_truk;
+        $truk->kode_truk = $request->kode_truk;
+        $truk->plat_no = $request->plat_no;
+        $truk->driver = $request->driver;
         $truk->save();
         return redirect('/truk');
     }

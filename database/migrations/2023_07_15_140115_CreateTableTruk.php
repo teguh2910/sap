@@ -15,8 +15,9 @@ class CreateTableTruk extends Migration
     {
         Schema::create('truks', function (Blueprint $table) {
             $table->increments('id_truk');
-            $table->string('jenis_truk');
-            $table->string('nopol_truk');
+            $table->string('kode_truk');
+            $table->string('plat_no');
+            $table->string('driver');
             $table->timestamps();
         });
     }

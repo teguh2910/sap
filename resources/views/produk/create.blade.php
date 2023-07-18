@@ -14,12 +14,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Create Data Bill Of Material</h1>            
+            <h1 class="m-0">Create Data Produk</h1>            
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Create Data Bill Of Material</li>
+              <li class="breadcrumb-item active">Create Data Produk</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -35,20 +35,29 @@
           <div class="col-md-12">
           <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Form Create Data Bill Of Material</h3>
+                <h3 class="card-title">Form Create Data Produk</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{asset('bom/create')}}" enctype="multipart/form-data" method="POST">
+              <form action="{{asset('produk/create')}}" method="POST">
               {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
-                    <label>Upload File Excel BOM</label>
-                    <input type="file" name="file_excel_bom" class="fomr-control">                                    
+                    <label>Kode Produk</label>
+                    <input type="text" name="kode_produk" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>Nama Produk</label>
+                    <input type="text" name="nama_produk" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>Harga Produk</label>
+                    <input type="integer" name="harga_produk" class="form-control">
+                  </div>                  
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Upload</button>
+                  <button type="submit" class="btn btn-primary">Create</button>
                 </div>
               </form>
             </div>

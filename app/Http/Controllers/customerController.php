@@ -15,9 +15,9 @@ class customerController extends Controller
     }
     public function store(Request $request) {
         $customer = new customer;
+        $customer->kode_customer = $request->kode_customer;
         $customer->nama_customer = $request->nama_customer;
         $customer->alamat_customer = $request->alamat_customer;
-        $customer->no_telp_customer = $request->no_telp_customer;
         $customer->save();
         return redirect('customer');
     }
@@ -27,9 +27,9 @@ class customerController extends Controller
     }
     public function update(Request $request, $id) {
         $customer = customer::find($id);
+        $customer->kode_customer = $request->kode_customer;
         $customer->nama_customer = $request->nama_customer;
         $customer->alamat_customer = $request->alamat_customer;
-        $customer->no_telp_customer = $request->no_telp_customer;
         $customer->save();
         return redirect('customer');
     }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBomsTable extends Migration
+class CreateBasemetalsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateBomsTable extends Migration
      */
     public function up()
     {
-        Schema::create('boms', function (Blueprint $table) {
-            $table->increments('id_bom');
-            $table->string('fg_name');
-            $table->string('rm_name');
-            $table->integer('qty_bom');
-            $table->string('uom');
+        Schema::create('basemetals', function (Blueprint $table) {
+            $table->increments('id_base_metal');
+            $table->string('kode_base_metal');
+            $table->string('nama_base_metal');
+            $table->integer('price_base_metal');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateBomsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('boms');
+        Schema::dropIfExists('basemetals');
     }
 }

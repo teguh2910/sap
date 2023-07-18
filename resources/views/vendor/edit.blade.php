@@ -43,18 +43,17 @@
               {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
+                    <label>Kode Vendor</label>
+                    <input type="text" name="kode_vendor" value="{{ $vendor->kode_vendor }}" class="form-control">
+                  </div>
+                  <div class="form-group">
                     <label>Nama Vendor</label>
                     <input type="text" name="nama_vendor" value="{{ $vendor->nama_vendor }}" class="form-control">
                   </div>
                   <div class="form-group">
                     <label>Alamat Vendor</label>
                     <input type="text" name="alamat_vendor" value="{{ $vendor->alamat_vendor }}" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <label>No Telp Vendor</label>
-                    <input type="text" name="no_telp_vendor" value="{{ $vendor->no_telp_vendor }}" class="form-control">
-                  </div>
-                                    
+                  </div>                                    
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">

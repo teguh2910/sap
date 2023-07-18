@@ -14,12 +14,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">edit Data Part</h1>            
+            <h1 class="m-0">edit Data produk</h1>            
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">edit Data Part</li>
+              <li class="breadcrumb-item active">edit Data produk</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -35,31 +35,24 @@
           <div class="col-md-12">
           <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Form edit Data Part</h3>
+                <h3 class="card-title">Form edit Data produk</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{asset('part/edit/'.$part->id_part)}}" method="POST">
+              <form action="{{asset('produk/edit/'.$produk->id_produk)}}" method="POST">
               {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
-                    <label>Part Number</label>
-                    <input type="text" name="part_no" value="{{ $part->part_no }}" class="form-control">
+                    <label>kode produk</label>
+                    <input type="text" name="kode_produk" value="{{ $produk->kode_produk }}" class="form-control">
                   </div>
                   <div class="form-group">
-                    <label>Part Name</label>
-                    <input type="text" name="part_name" value="{{ $part->part_name }}" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <label>UoM</label>
-                    <select name="uom" class="form-control">
-                        <option value="KG" @if($part->uom == 'KG') selected @endif>KG</option>
-                        <option value="Pcs" @if($part->uom == 'Pcs') selected @endif>Pcs</option>                        
-                    </select>
+                    <label>Nama Produk</label>
+                    <input type="text" name="nama_produk" value="{{ $produk->type }}" class="form-control">
                   </div>
                   <div class="form-group">
                     <label>Price</label>
-                    <input type="text" name="price" value="{{ $part->price }}" class="form-control">
+                    <input type="text" name="price" value="{{ $produk->price }}" class="form-control">
                   </div>                  
                 </div>
                 <!-- /.card-body -->

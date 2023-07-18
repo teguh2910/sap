@@ -14,19 +14,16 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">List Stok</h1>
+            <h1 class="m-0">List Produk</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">List Stok</li>
+              <li class="breadcrumb-item active">List Produk</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
-        <a href="{{ asset('stok/create') }}" class="btn btn-sm btn-success">Upload Beginning Stok</a>
-        <a href="{{ asset('prod/create') }}" class="btn btn-sm btn-primary">Create Qty Production</a>
-        <a href="{{ asset('sj/create') }}" class="btn btn-sm btn-info">Create Qty Surat Jalan</a>
-        <a href="{{ asset('gr/create') }}" class="btn btn-sm btn-warning">Create Qty Good Receipt</a>
+        <a href="{{ asset('produk/create') }}" class="btn btn-sm btn-success">Create</a>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -43,31 +40,21 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>id_stok</th>
-                    <th>Category</th>
-                    <th>Part No</th>
-                    <th>Part Name</th>
-                    <th>beginning_balance</th>
-                    <th>incoming_balance</th>
-                    <th>usage_balance</th>
-                    <th>ending_balance</th>
+                    <th>kode_produk</th>
+                    <th>nama_produk</th>
+                    <th>price</th>
                     <th>action</th>                    
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach($stoks as $stok)
+                  @foreach($produk as $p)
                   <tr>
-                  <td>{{ $stok->id_stok }}</td>
-                  <td>{{ $stok->category_part }}</td>                  
-                  <td>{{ $stok->part_no }}</td>
-                  <td>{{ $stok->part_name }}</td>
-                  <td>{{ $stok->beginning_balance }}</td>
-                  <td>{{ $stok->incoming_balance }}</td>
-                  <td>{{ $stok->usage_balance }}</td>
-                  <td>{{ $stok->ending_balance }}</td>
+                  <td>{{ $p->kode_produk }}</td>
+                  <td>{{ $p->type }}</td>
+                  <td>{{ $p->price }}</td>
                   <td>
-                    <a href="{{ asset('stok/edit/'.$stok->id_stok) }}" class="btn btn-xs btn-primary">Edit</a>
-                    <a href="{{ asset('stok/delete/'.$stok->id_stok) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-xs btn-danger">Delete</a>
+                    <a href="{{ asset('produk/edit/'.$p->id_produk) }}" class="btn btn-sm btn-primary">Edit</a>
+                    <a href="{{ asset('produk/delete/'.$p->id_produk) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-sm btn-danger">Delete</a>
                   </td>
                   </tr>
                   @endforeach
