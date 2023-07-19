@@ -47,7 +47,7 @@
                     <select name="id_stok" class="form-control">
                       <option value="">--Pilih Part No--</option>
                       @foreach($stoks as $stok)
-                      <option value="{{ $stok->id_stok }}">{{ $stok->part_no }}</option>
+                      <option value="{{ $stok->id_stok }}">{{ $stok->part_name }}</option>
                       @endforeach
                     </select>
                   </div>
@@ -58,6 +58,15 @@
                   <div class="form-group">
                     <label>Tanggal Surat Jalan Finish Goods</label>
                     <input type="date" name="tgl_sj" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>Plat No Truk</label>
+                    <select name="id_truk" class="form-control">
+                      <option value="">--Pilih NOPOL--</option>
+                      @foreach($truks as $truk)
+                      <option value="{{ $truk->id_truk }}">{{ $truk->plat_no }}</option>
+                      @endforeach
+                    </select>
                   </div>                                    
                 </div>
                 <!-- /.card-body -->

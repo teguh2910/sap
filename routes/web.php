@@ -88,3 +88,27 @@ Route::post('/produk/create', 'produkController@store');
 Route::get('/produk/edit/{id}', 'produkController@edit');
 Route::post('/produk/edit/{id}', 'produkController@update');
 Route::get('/produk/delete/{id}', 'produkController@delete');
+
+//crud material
+Route::get('/material', 'materialController@index');
+Route::get('/material/create', 'materialController@create');
+Route::post('/material/create', 'materialController@store');
+Route::get('/material/edit/{id}', 'materialController@edit');
+Route::post('/material/edit/{id}', 'materialController@update');
+Route::get('/material/delete/{id}', 'materialController@delete');
+
+//crud basemetal
+Route::get('/basemetal', 'basemetalController@index');
+Route::get('/basemetal/create', 'basemetalController@create');
+Route::post('/basemetal/create', 'basemetalController@store');
+Route::get('/basemetal/edit/{id}', 'basemetalController@edit');
+Route::post('/basemetal/edit/{id}', 'basemetalController@update');
+Route::get('/basemetal/delete/{id}', 'basemetalController@delete');
+
+//crud additive
+Route::get('/additive', 'additiveController@index');
+Route::get('/additive/create', 'additiveController@create');
+Route::post('/additive/create', 'additiveController@store');
+Route::get('/additive/edit/{id}', 'additiveController@edit');
+Route::post('/additive/edit/{id}', 'additiveController@update');
+Route::get('/additive/delete/{id}', 'additiveController@delete');

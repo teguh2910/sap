@@ -18,6 +18,7 @@ class CreateSjsTable extends Migration
             $table->integer('id_stok');
             $table->integer('qty_sj');
             $table->date('tgl_sj');
+            $table->integer('id_truk');
             $table->timestamps();
         });
     }

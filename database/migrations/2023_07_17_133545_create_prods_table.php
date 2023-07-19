@@ -18,6 +18,7 @@ class CreateProdsTable extends Migration
             $table->integer('id_stok');
             $table->integer('qty_prod');
             $table->date('tgl_prod');
+            $table->string('lot');
             $table->timestamps();
         });
     }

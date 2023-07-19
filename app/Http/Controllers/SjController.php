@@ -1,14 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\stok, App\sj, App\prod;
+use App\stok, App\sj, App\prod, App\truk;
 use Illuminate\Http\Request;
 
 class SjController extends Controller
 {
     public function create() {
         $stoks=stok::where('category_part','fg')->get();
-        return view('sj/create',compact('stoks'));
+        $truks=truk::all();
+        return view('sj/create',compact(['stoks','truks']));
     }
     public function store(Request $request) {
         //create new data sj
@@ -16,6 +17,7 @@ class SjController extends Controller
         $sj->id_stok = $request->id_stok;
         $sj->qty_sj = $request->qty_sj;
         $sj->tgl_sj = $request->tgl_sj;
+        $sj->id_truk = $request->id_truk;
         $sj->save();
         //update stok
         $qty_beginning_balance = stok::where('id_stok',$request->id_stok)->value('beginning_balance');

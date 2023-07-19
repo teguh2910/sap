@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="{{asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
+  {{-- Select2 --}}
+  <link href="{{asset('plugins\select2\css\select2.min.css')}}" rel="stylesheet" />  
+  <link href="{{asset('plugins\select2-bootstrap4-theme\select2-bootstrap4.min.css')}}" rel="stylesheet" />
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -59,6 +62,7 @@
 <script src="{{asset('plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
 <script src="{{asset('plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
 <script src="{{asset('plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+<script src="{{asset('plugins\select2\js\select2.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.min.js')}}"></script>
 <!-- Page specific script -->
@@ -68,6 +72,14 @@
       "responsive": true, "lengthChange": false, "autoWidth": false,
       "buttons": ["copy", "csv", "excel", "pdf", "print"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+  });
+</script>
+<script>
+  $(document).ready(function() {
+    $('#select2').select2({
+      width: 'resolve',
+      theme: 'bootstrap4'
+    });
   });
 </script>
 @section('js')
