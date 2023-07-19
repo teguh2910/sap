@@ -23,7 +23,7 @@
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
-        <a href="{{ asset('po/create') }}" class="btn btn-sm btn-success">Create</a>
+        <a href="{{ asset('po/create/' }}" class="btn btn-sm btn-success">Create</a>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -57,7 +57,7 @@
                   @foreach($pos as $po)
                   <tr>
                   <td>{{ $po->id_po }}</td>
-                  <td><a href="{{ asset('/detailpo') }}" class="btn btn-xs btn-primary">view</a></td>
+                  <td><a href="{{ asset('/detailpo/'.$po->id_po) }}" class="btn btn-xs btn-primary">view</a></td>
                   @foreach($po->vendors as $v)
                   <td>{{ $v->nama_vendor }}</td>
                   @endforeach

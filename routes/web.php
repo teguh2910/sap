@@ -115,8 +115,8 @@ Route::post('/additive/edit/{id}', 'AdditiveController@update');
 Route::get('/additive/delete/{id}', 'AdditiveController@delete');
 
 //crud detailPO
-Route::get('/detailpo', 'detailpoController@index');
-Route::get('/detailpo/create', 'detailpoController@create');
+Route::get('/detailpo/{id}', 'detailpoController@index');
+Route::get('/detailpo/create/{id}', 'detailpoController@create');
 Route::post('/detailpo/create', 'detailpoController@store');
 Route::get('/detailpo/edit/{id}', 'detailpoController@edit');
 Route::post('/detailpo/edit/{id}', 'detailpoController@update');

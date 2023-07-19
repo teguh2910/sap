@@ -23,7 +23,7 @@
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
-        <a href="{{ asset('detailpo/create') }}" class="btn btn-sm btn-success">Create</a>
+        <a href="{{ asset('detailpo/create/'.$id) }}" class="btn btn-sm btn-success">Create</a>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
