@@ -24,6 +24,7 @@ class poController extends Controller
         $po->quot_no = $request->quot_no;
         $po->pr_no = $request->pr_no;
         $po->vat = $request->vat;
+        $po->note_po = $request->note_po;
         $po->save();
         return redirect('/po');
     }    
@@ -42,6 +43,7 @@ class poController extends Controller
         $po->quot_no = $request->quot_no;
         $po->pr_no = $request->pr_no;
         $po->vat = $request->vat;
+        $po->note_po = $request->note_po;
         $po->save();
         return redirect('/po');
     }
@@ -51,13 +53,19 @@ class poController extends Controller
         return redirect('/po');
     }
     public function cetak($id) {        
-        Excel::load('template_po.xls', function($excel) use ($id) {            
-            $excel->sheet('DRAFT', function($sheet) use ($id) {
-                $po=po::with('vendors')->find($id);
-                $nama_vendor=$po->vendors->first()->nama_vendor;
+        $po=po::with('vendors')->find($id);
+        Excel::load('template_po.xls', function($excel) use ($po) {            
+            $excel->sheet('DRAFT', function($sheet) use ($po) {                
                 // Sheet manipulation
-                $sheet->setCellValue('B8', $nama_vendor);
-        
+                $sheet->setCellValue('B8', $po->vendors->first()->nama_vendor);
+                $sheet->setCellValue('E7', $po->tgl_po);
+                $sheet->setCellValue('E8', $po->id_po);
+                $sheet->setCellValue('B11', $po->top);
+                $sheet->setCellValue('I11', $po->delivery_by);
+                $sheet->setCellValue('B16', $po->delivery_date);
+                $sheet->setCellValue('E16', $po->quot_no);
+                $sheet->setCellValue('I16', $po->pr_no);
+                $sheet->setCellValue('B46', $po->note_po);
             });
         })->export('xls');
     }

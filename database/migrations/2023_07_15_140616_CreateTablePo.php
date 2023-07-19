@@ -25,7 +25,7 @@ class CreateTablePo extends Migration
             $table->string('quot_no');
             $table->string('pr_no');
             $table->integer('vat');
-            $table->integer('id_note_po')->nullable();
+            $table->string('note_po')->nullable();
             $table->timestamps();
         });
     }

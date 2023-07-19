@@ -86,6 +86,12 @@
                       <option value="11" @if($po->vat == 11) selected @endif>11%</option>
                       <option value="2" @if($po->vat == 2) selected @endif>2%</option>                      
                     </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Note PO</label>
+                    <textarea name="note_po" class="form-control" cols="30" rows="10">
+                      {{ $po->note_po }}
+                    </textarea>
                   </div>                  
                 </div>
                 <!-- /.card-body -->

@@ -84,6 +84,10 @@
                       <option value="11">11%</option>
                       <option value="2">2%</option>
                     </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Note PO</label>
+                    <textarea name="note_po" class="form-control" cols="30" rows="10"></textarea>
                   </div>                  
                 </div>
                 <!-- /.card-body -->
