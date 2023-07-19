@@ -14,12 +14,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Edit Data Bank</h1>            
+            <h1 class="m-0">edit Data PO</h1>            
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Edit Data Bank</li>
+              <li class="breadcrumb-item active">edit Data PO</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -35,35 +35,62 @@
           <div class="col-md-12">
           <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Form Edit Data Bank</h3>
+                <h3 class="card-title">Form edit Data PO</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{asset('bank/edit/'.$bank->id_bank)}}" method="POST">
+              <form action="{{asset('po/edit/'.$po->id_po)}}" method="POST">
               {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
-                    <label>Nama Bank</label>
-                    <input type="text" name="nama_bank" value="{{ $bank->nama_bank }}" class="form-control">
+                    <label>Vendor</label>
+                    <select name="id_vendor" class="form-control">
+                        @foreach($vendors as $v)
+                        <option value="{{ $v->id_vendor }}" {{ $v->id_vendor == $po->id_vendor ? 'selected' : '' }}>
+                            {{ $v->nama_vendor }}
+                        </option>
+                        @endforeach
+                    </select>
                   </div>
                   <div class="form-group">
-                    <label>Cabang Bank</label>
-                    <input type="text" name="cabang_bank" value="{{ $bank->cabang_bank }}" class="form-control">
+                    <label>Tanggal PO</label>
+                    <input type="date" name="tgl_po" value="{{ $po->tgl_po }}" class="form-control">
                   </div>
                   <div class="form-group">
-                    <label>Currency</label>
-                    <select name="currency_bank" class="form-control">
-                        <option value="{{ $bank->currency_bank }}">{{ $bank->currency_bank }}</option>
-                        <option value="IDR">IDR</option>
-                        <option value="USD">USD</option>
-                        <option value="JPY">JPY</option>
-                        <option value="THB">THB</option>
+                    <label>TOP</label>
+                    <select name="top" class="form-control">
+                        <option value="cash" @if($po->top == 'cash') selected @endif>CASH</option>
+                        <option value="hutang" @if($po->top == 'hutang') selected @endif>Hutang</option>
+                        <option value="deposit" @if($po->top == 'deposit') selected @endif>Deposit</option>                                                
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Delivery By</label>
+                    <input type="text" name="delivery_by" value="{{ $po->delivery_by }}" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>Delivery Date</label>
+                    <input type="date" name="delivery_date" value="{{ $po->delivery_date }}" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>Quot No</label>
+                    <input type="text" name="quot_no" value="{{ $po->quot_no }}" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>Requestion No</label>
+                    <input type="text" name="pr_no" value="{{ $po->pr_no }}" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>Vat (%)</label>
+                    <select name="vat" class="form-control">
+                      <option value="11" @if($po->vat == 11) selected @endif>11%</option>
+                      <option value="2" @if($po->vat == 2) selected @endif>2%</option>                      
                     </select>
                   </div>                  
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Edit</button>
+                  <button type="submit" class="btn btn-primary">edit</button>
                 </div>
               </form>
             </div>

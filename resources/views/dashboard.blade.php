@@ -42,7 +42,7 @@
                   <div class="icon">
                     <i class="fas fa-file"></i>
                   </div>
-                  <a href="{{asset('/')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                  <a href="{{asset('/po')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
               </div>
               <div class="col-lg-3 col-6">
@@ -56,7 +56,7 @@
                   <div class="icon">
                     <i class="fas fa-file"></i>
                   </div>
-                  <a href="{{asset('/')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                  <a href="{{asset('/stok')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
               </div>
               <div class="col-lg-3 col-6">
@@ -70,7 +70,7 @@
                   <div class="icon">
                     <i class="fas fa-file"></i>
                   </div>
-                  <a href="{{asset('/')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                  <a href="{{asset('/cash')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
               </div>
               <div class="col-lg-3 col-6">

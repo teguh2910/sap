@@ -32,6 +32,7 @@ Route::post('/po/create', 'poController@store');
 Route::get('/po/edit/{id}', 'poController@edit');
 Route::post('/po/edit/{id}', 'poController@update');
 Route::get('/po/delete/{id}', 'poController@delete');
+Route::get('/po/cetak/{id}', 'poController@cetak');
 
 //crud truk
 Route::get('/truk', 'trukController@index');
@@ -82,33 +83,33 @@ Route::post('/sj/edit/{id}', 'sjController@update');
 Route::get('/sj/delete/{id}', 'sjController@delete');
 
 //crud produk
-Route::get('/produk', 'produkController@index');
-Route::get('/produk/create', 'produkController@create');
-Route::post('/produk/create', 'produkController@store');
-Route::get('/produk/edit/{id}', 'produkController@edit');
-Route::post('/produk/edit/{id}', 'produkController@update');
-Route::get('/produk/delete/{id}', 'produkController@delete');
+Route::get('/produk', 'ProdukController@index');
+Route::get('/produk/create', 'ProdukController@create');
+Route::post('/produk/create', 'ProdukController@store');
+Route::get('/produk/edit/{id}', 'ProdukController@edit');
+Route::post('/produk/edit/{id}', 'ProdukController@update');
+Route::get('/produk/delete/{id}', 'ProdukController@delete');
 
 //crud material
-Route::get('/material', 'materialController@index');
-Route::get('/material/create', 'materialController@create');
-Route::post('/material/create', 'materialController@store');
-Route::get('/material/edit/{id}', 'materialController@edit');
-Route::post('/material/edit/{id}', 'materialController@update');
-Route::get('/material/delete/{id}', 'materialController@delete');
+Route::get('/material', 'MaterialController@index');
+Route::get('/material/create', 'MaterialController@create');
+Route::post('/material/create', 'MaterialController@store');
+Route::get('/material/edit/{id}', 'MaterialController@edit');
+Route::post('/material/edit/{id}', 'MaterialController@update');
+Route::get('/material/delete/{id}', 'MaterialController@delete');
 
 //crud basemetal
-Route::get('/basemetal', 'basemetalController@index');
-Route::get('/basemetal/create', 'basemetalController@create');
-Route::post('/basemetal/create', 'basemetalController@store');
-Route::get('/basemetal/edit/{id}', 'basemetalController@edit');
-Route::post('/basemetal/edit/{id}', 'basemetalController@update');
-Route::get('/basemetal/delete/{id}', 'basemetalController@delete');
+Route::get('/basemetal', 'BasemetalController@index');
+Route::get('/basemetal/create', 'BasemetalController@create');
+Route::post('/basemetal/create', 'BasemetalController@store');
+Route::get('/basemetal/edit/{id}', 'BasemetalController@edit');
+Route::post('/basemetal/edit/{id}', 'BasemetalController@update');
+Route::get('/basemetal/delete/{id}', 'BasemetalController@delete');
 
 //crud additive
-Route::get('/additive', 'additiveController@index');
-Route::get('/additive/create', 'additiveController@create');
-Route::post('/additive/create', 'additiveController@store');
-Route::get('/additive/edit/{id}', 'additiveController@edit');
-Route::post('/additive/edit/{id}', 'additiveController@update');
-Route::get('/additive/delete/{id}', 'additiveController@delete');
+Route::get('/additive', 'AdditiveController@index');
+Route::get('/additive/create', 'AdditiveController@create');
+Route::post('/additive/create', 'AdditiveController@store');
+Route::get('/additive/edit/{id}', 'AdditiveController@edit');
+Route::post('/additive/edit/{id}', 'AdditiveController@update');
+Route::get('/additive/delete/{id}', 'AdditiveController@delete');

@@ -1,45 +1,47 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\po, App\vendor, App\bank, App\top, App\part;
+use App\po, App\vendor, App\bank, Excel;
 use Illuminate\Http\Request;
 
 class poController extends Controller
 {
     public function index() {
-        $pos=po::with(['vendors','tops','banks'])->get();
+        $pos=po::with(['vendors'])->get();
         return view('po/index', compact('pos'));
     }
     public function create() {
         $vendor=vendor::all();
-        $bank=bank::all();
-        $top=top::all();
-        $part=part::all();
-        return view('po/create',compact(['vendor','bank','top','part']));
+        return view('po/create',compact('vendor'));
     }
     public function store(Request $request) {
         $po = new po;
-        $po->id_po = $request->id_po;
         $po->id_vendor = $request->id_vendor;
-        $po->id_top = $request->id_top;
-        $po->id_bank = $request->id_bank;
-        $po->id_part = $request->id_part;
-        $po->qty = $request->qty;
+        $po->tgl_po = $request->tgl_po;
+        $po->top = $request->top;
+        $po->delivery_by = $request->delivery_by;
+        $po->delivery_date = $request->delivery_date;
+        $po->quot_no = $request->quot_no;
+        $po->pr_no = $request->pr_no;
+        $po->vat = $request->vat;
         $po->save();
         return redirect('/po');
     }    
     public function edit($id) {
-        $po = po::find($id);
-        return view('po/edit', compact('po'));
+        $po = po::with('vendors')->find($id);
+        $vendors=vendor::all();
+        return view('po/edit', compact(['po','vendors']));
     }
     public function update(Request $request, $id) {
         $po = po::find($id);
-        $po->id_po = $request->id_po;
         $po->id_vendor = $request->id_vendor;
-        $po->id_top = $request->id_top;
-        $po->id_bank = $request->id_bank;
-        $po->id_part = $request->id_part;
-        $po->qty = $request->qty;
+        $po->tgl_po = $request->tgl_po;
+        $po->top = $request->top;
+        $po->delivery_by = $request->delivery_by;
+        $po->delivery_date = $request->delivery_date;
+        $po->quot_no = $request->quot_no;
+        $po->pr_no = $request->pr_no;
+        $po->vat = $request->vat;
         $po->save();
         return redirect('/po');
     }
@@ -47,5 +49,16 @@ class poController extends Controller
         $po = po::find($id);
         $po->delete();
         return redirect('/po');
+    }
+    public function cetak($id) {        
+        Excel::load('template_po.xls', function($excel) use ($id) {            
+            $excel->sheet('DRAFT', function($sheet) use ($id) {
+                $po=po::with('vendors')->find($id);
+                $nama_vendor=$po->vendors->first()->nama_vendor;
+                // Sheet manipulation
+                $sheet->setCellValue('B8', $nama_vendor);
+        
+            });
+        })->export('xls');
     }
 }

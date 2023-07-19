@@ -42,8 +42,13 @@
                   <tr>
                     <th>no_po</th>
                     <th>vendor</th>
-                    <th>nama_bank</th>
+                    <th>tgl_po</th>
                     <th>top</th>
+                    <th>delivery_by</th>
+                    <th>delivery_date</th>
+                    <th>quot_no</th>
+                    <th>requestion_no</th>
+                    <th>vat%</th>
                     <th>action</th>                    
                   </tr>
                   </thead>
@@ -54,13 +59,13 @@
                   @foreach($po->vendors as $v)
                   <td>{{ $v->nama_vendor }}</td>
                   @endforeach
-                  <td>{{ $po->qty }}</td>
-                  @foreach($po->banks as $b)
-                  <td>{{ $b->nama_bank }}</td>
-                  @endforeach
-                  @foreach($po->tops as $t)
-                  <td>{{ $t->name_top }}</td>
-                  @endforeach
+                  <td>{{ $po->tgl_po }}</td>
+                  <td>{{ $po->top }}</td>
+                  <td>{{ $po->delivery_by }}</td>
+                  <td>{{ $po->delivery_date }}</td>
+                  <td>{{ $po->quot_no }}</td>
+                  <td>{{ $po->pr_no }}</td>
+                  <td>{{ $po->vat }}</td>
                   <td>
                     <a href="{{ asset('po/cetak/'.$po->id_po) }}" class="btn btn-xs btn-success">Cetak</a>
                     <a href="{{ asset('po/edit/'.$po->id_po) }}" class="btn btn-xs btn-primary">Edit</a>

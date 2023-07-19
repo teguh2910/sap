@@ -2,7 +2,7 @@
 
 <!-- Font Awesome -->
 <link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  href="/plugins/fontawesome-free/css/all.min.css"
   rel="stylesheet"
 />
 <!-- Google Fonts -->
@@ -12,7 +12,7 @@
 />
 <!-- MDB -->
 <link
-  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css"
+  href="/css/mdb.min.css"
   rel="stylesheet"
 />
 <style>
@@ -86,5 +86,5 @@ height: 100%;
 <!-- MDB -->
 <script
   type="text/javascript"
-  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"
+  src="/js/mdb.min.js"
 ></script>

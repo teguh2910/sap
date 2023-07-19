@@ -51,19 +51,15 @@
                     </select>
                   </div>
                   <div class="form-group">
-                    <label>Nama Bank</label>
-                    <select name="id_bank" class="form-control">
-                        @foreach($bank as $b)
-                        <option value="{{ $b->id_bank }}">{{ $b->nama_bank }}</option>
-                        @endforeach
-                    </select>
+                    <label>Tanggal PO</label>
+                    <input type="date" name="tgl_po" value="{{ date('Y-m-d') }}" class="form-control">
                   </div>
                   <div class="form-group">
                     <label>TOP</label>
-                    <select name="id_top" class="form-control">
-                        @foreach($top as $t)
-                        <option value="{{ $t->id_top }}">{{ $t->name_top }}</option>
-                        @endforeach
+                    <select name="top" class="form-control">                        
+                        <option value="cash">Cash</option>
+                        <option value="hutanag">Hutang</option>
+                        <option value="deposit">Deposit</option>                        
                     </select>
                   </div>
                   <div class="form-group">
@@ -84,7 +80,10 @@
                   </div>
                   <div class="form-group">
                     <label>Vat (%)</label>
-                    <input type="number" name="vat" value="11" class="form-control">
+                    <select name="vat" class="form-control">
+                      <option value="11">11%</option>
+                      <option value="2">2%</option>
+                    </select>
                   </div>                  
                 </div>
                 <!-- /.card-body -->
