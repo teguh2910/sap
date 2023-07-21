@@ -51,7 +51,7 @@
                   @foreach($detailpos as $d)
                   <tr>
                   <td>{{ $d->id_po }}</td>
-                  @foreach($d as $p)
+                  @foreach($d->stoks as $p)
                   <td>{{ $p->part_name }}</td>
                   @endforeach                  
                   <td>{{ $d->uom }}</td>
