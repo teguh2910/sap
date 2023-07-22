@@ -67,20 +67,20 @@ Route::post('/stok/edit/{id}', 'stokController@update');
 Route::get('/stok/delete/{id}', 'stokController@delete');
 
 //crud prod
-Route::get('/prod', 'prodController@index');
-Route::get('/prod/create', 'prodController@create');
-Route::post('/prod/create', 'prodController@store');
-Route::get('/prod/edit/{id}', 'prodController@edit');
-Route::post('/prod/edit/{id}', 'prodController@update');
-Route::get('/prod/delete/{id}', 'prodController@delete');
+Route::get('/prod', 'ProdController@index');
+Route::get('/prod/create', 'ProdController@create');
+Route::post('/prod/create', 'ProdController@store');
+Route::get('/prod/edit/{id}', 'ProdController@edit');
+Route::post('/prod/edit/{id}', 'ProdController@update');
+Route::get('/prod/delete/{id}', 'ProdController@delete');
 
 //crud sj
-Route::get('/sj', 'sjController@index');
-Route::get('/sj/create', 'sjController@create');
-Route::post('/sj/create', 'sjController@store');
-Route::get('/sj/edit/{id}', 'sjController@edit');
-Route::post('/sj/edit/{id}', 'sjController@update');
-Route::get('/sj/delete/{id}', 'sjController@delete');
+Route::get('/sj', 'SjController@index');
+Route::get('/sj/create', 'SjController@create');
+Route::post('/sj/create', 'SjController@store');
+Route::get('/sj/edit/{id}', 'SjController@edit');
+Route::post('/sj/edit/{id}', 'SjController@update');
+Route::get('/sj/delete/{id}', 'SjController@delete');
 
 //crud produk
 Route::get('/produk', 'ProdukController@index');
@@ -121,3 +121,45 @@ Route::post('/detailpo/create/{id}', 'detailpoController@store');
 Route::get('/detailpo/edit/{id}', 'detailpoController@edit');
 Route::post('/detailpo/edit/{id}', 'detailpoController@update');
 Route::get('/detailpo/delete/{id}', 'detailpoController@delete');
+
+//crud gudang_satu
+Route::get('/gudangsatu', 'GudangSatuController@index');
+Route::get('/gudangsatu/create', 'GudangSatuController@create');
+Route::post('/gudangsatu/create', 'GudangSatuController@store');
+Route::get('/gudangsatu/edit/{id}', 'GudangSatuController@edit');
+Route::post('/gudangsatu/edit/{id}', 'GudangSatuController@update');
+Route::get('/gudangsatu/delete/{id}', 'GudangSatuController@delete');
+
+//crud gudang_dua
+Route::get('/gudangdua', 'GudangDuaController@index');
+Route::get('/gudangdua/create', 'GudangDuaController@create');
+Route::post('/gudangdua/create', 'GudangDuaController@store');
+Route::get('/gudangdua/edit/{id}', 'GudangDuaController@edit');
+Route::post('/gudangdua/edit/{id}', 'GudangDuaController@update');
+Route::get('/gudangdua/delete/{id}', 'GudangDuaController@delete');
+
+
+//crud gr
+Route::get('/gr', 'GrController@index');
+Route::get('/gr/create', 'GrController@create');
+Route::post('/gr/create', 'GrController@store');
+Route::get('/gr/edit/{id}', 'GrController@edit');
+Route::post('/gr/edit/{id}', 'GrController@update');
+Route::get('/gr/delete/{id}', 'GrController@delete');
+
+
+//crud prod_g2
+Route::get('/prodg2', 'ProdG2Controller@index');
+Route::get('/prodg2/create', 'ProdG2Controller@create');
+Route::post('/prodg2/create', 'ProdG2Controller@store');
+Route::get('/prodg2/edit/{id}', 'ProdG2Controller@edit');
+Route::post('/prodg2/edit/{id}', 'ProdG2Controller@update');
+Route::get('/prodg2/delete/{id}', 'ProdG2Controller@delete');
+
+//crud usage_g2
+Route::get('/usageg2', 'UsageG2Controller@index');
+Route::get('/usageg2/create', 'UsageG2Controller@create');
+Route::post('/usageg2/create', 'UsageG2Controller@store');
+Route::get('/usageg2/edit/{id}', 'UsageG2Controller@edit');
+Route::post('/usageg2/edit/{id}', 'UsageG2Controller@update');
+Route::get('/usageg2/delete/{id}', 'UsageG2Controller@delete');

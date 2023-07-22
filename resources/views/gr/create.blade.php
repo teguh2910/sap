@@ -14,12 +14,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Create Data detail Nomor {{ $po->id_po }}</h1>            
+            <h1 class="m-0">Create Data GR PO</h1>            
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Create Data detail PO </li>
+              <li class="breadcrumb-item active">Create Data GR PO </li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -35,13 +35,21 @@
           <div class="col-md-12">
           <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Form Create Data detail Nomor {{ $po->id_po }}</h3>
+                <h3 class="card-title">Form Create GR PO</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{asset('detailpo/create/'.$po->id_po)}}" method="POST">
+              <form action="{{asset('gr/create')}}" method="POST">
               {{ csrf_field() }}
                 <div class="card-body">
+                  <div class="form-group">
+                    <label>No PO</label>
+                    <select name="id_po" id="select2" class="form-control">
+                      @foreach($po as $p)
+                      <option value="{{ $p->id_po }}">{{ $p->id_po }}</option>
+                      @endforeach
+                    </select>
+                  </div>
                   <div class="form-group">
                     <label>Material</label>
                     <select name="id_material" id="select2" class="form-control">
@@ -51,20 +59,20 @@
                     </select>
                   </div>
                   <div class="form-group">
-                    <label>Qty PO</label>
-                    <input type="number" name="qty_po" class="form-control">
+                    <label>Qty GR</label>
+                    <input type="number" name="qty_gr" class="form-control">
                   </div>
                   <div class="form-group">
-                    <label>Harga</label>
-                    <input type="integer" name="harga_po" class="form-control">
+                    <label>Tgl GR</label>
+                    <input type="date" name="tgl_gr" class="form-control">
                   </div>
                   <div class="form-group">
-                    <label>Uom</label>
-                    <select name="uom" class="form-control">
-                      <option value="kg">Kg</option>
-                      <option value="pcs">Pcs</option>
+                    <label>Gudang</label>
+                    <select name="gudang" class="form-control">
+                      <option value="gudang_dua">Gudang Dua</option>
+                      <option value="gudang_satu">Gudang Satu</option>
                     </select>
-                  </div>                  
+                  </div>            
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">

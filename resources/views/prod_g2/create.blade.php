@@ -14,12 +14,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Create Data Beginning Stok</h1>            
+            <h1 class="m-0">Create Data Qty Production</h1>            
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Create Data Beginning Stok</li>
+              <li class="breadcrumb-item active">Create Data Qty Production Finish Goods</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -35,21 +35,38 @@
           <div class="col-md-12">
           <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Form Create Data Beginning Stok</h3>
+                <h3 class="card-title">Form Create Data Qty Production Finish Goods</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{asset('stok/create')}}" enctype="multipart/form-data" method="POST">
+              <form action="{{asset('prodg2/create')}}" enctype="multipart/form-data" method="POST">
               {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
-                    <label>Upload Data Excel</label>
-                    <input type="file" name="data_excel" class="form-control">
+                    <label>Base Metal</label>
+                    <select name="id_base_metal" style="width:100%" id="select2">
+                      <option value="">--Pilih Part No--</option>
+                      @foreach($base_metal as $mb)
+                      <option value="{{ $mb->id_base_metal }}">{{ $mb->nama_base_metal }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Qty_prod</label>
+                    <input type="number" name="qty_prod_g2" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>Tanggal Production</label>
+                    <input type="date" name="tgl_prod_g2" class="form-control">
+                  </div>  
+                  <div class="form-group">
+                    <label>Lot Production</label>
+                    <input type="text" name="lot_prod_g2" class="form-control">
                   </div>                                    
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Upload</button>
+                  <button type="submit" class="btn btn-primary">Create</button>
                 </div>
               </form>
             </div>

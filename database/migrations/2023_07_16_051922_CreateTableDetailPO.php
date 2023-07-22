@@ -15,7 +15,7 @@ class CreateTableDetailPO extends Migration
     {
         Schema::create('detail_pos', function (Blueprint $table) {
             $table->increments('id_detail_po');
-            $table->integer('id_stok');
+            $table->integer('id_material');
             $table->integer('id_po');
             $table->integer('qty_po');
             $table->string('uom');

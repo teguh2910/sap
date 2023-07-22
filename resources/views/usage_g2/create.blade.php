@@ -14,12 +14,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Create Data detail Nomor {{ $po->id_po }}</h1>            
+            <h1 class="m-0">Create Data Qty Usage</h1>            
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Create Data detail PO </li>
+              <li class="breadcrumb-item active">Create Data Qty Usage Material</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -35,36 +35,34 @@
           <div class="col-md-12">
           <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Form Create Data detail Nomor {{ $po->id_po }}</h3>
+                <h3 class="card-title">Form Create Data Qty Usage Material</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{asset('detailpo/create/'.$po->id_po)}}" method="POST">
+              <form action="{{asset('usageg2/create')}}" enctype="multipart/form-data" method="POST">
               {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
                     <label>Material</label>
-                    <select name="id_material" id="select2" class="form-control">
+                    <select name="id_material" style="width:100%" id="select2">
+                      <option value="">--Pilih Part No--</option>
                       @foreach($material as $m)
                       <option value="{{ $m->id_material }}">{{ $m->nama_material }}</option>
                       @endforeach
                     </select>
                   </div>
                   <div class="form-group">
-                    <label>Qty PO</label>
-                    <input type="number" name="qty_po" class="form-control">
+                    <label>Qty_usage</label>
+                    <input type="number" name="qty_usage_g2" class="form-control">
                   </div>
                   <div class="form-group">
-                    <label>Harga</label>
-                    <input type="integer" name="harga_po" class="form-control">
-                  </div>
+                    <label>Tanggal Usage</label>
+                    <input type="date" name="tgl_usage_g2" class="form-control">
+                  </div>  
                   <div class="form-group">
-                    <label>Uom</label>
-                    <select name="uom" class="form-control">
-                      <option value="kg">Kg</option>
-                      <option value="pcs">Pcs</option>
-                    </select>
-                  </div>                  
+                    <label>Lot Usage</label>
+                    <input type="text" name="lot_usage_g2" class="form-control">
+                  </div>                                    
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">

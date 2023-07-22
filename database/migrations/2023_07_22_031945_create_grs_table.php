@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSjsTable extends Migration
+class CreateGrsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateSjsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sjs', function (Blueprint $table) {
-            $table->increments('id_sj');
-            $table->integer('id_gudang_dua');
-            $table->integer('qty_sj');
-            $table->date('tgl_sj');
-            $table->integer('id_truk');
+        Schema::create('grs', function (Blueprint $table) {
+            $table->increments('id_gr');
+            $table->integer('id_po');
+            $table->integer('id_material');
+            $table->integer('qty_gr');
+            $table->date('tgl_gr');
+            $table->string('gudang');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateSjsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sjs');
+        Schema::dropIfExists('grs');
     }
 }

@@ -80,6 +80,10 @@
       width: 'resolve',
       theme: 'bootstrap4'
     });
+    $('#select3').select2({
+      width: 'resolve',
+      theme: 'bootstrap4'
+    });
   });
 </script>
 @section('js')

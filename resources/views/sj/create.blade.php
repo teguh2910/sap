@@ -44,10 +44,10 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label>Part No Finish Goods</label>
-                    <select name="id_stok" class="form-control">
+                    <select name="id_gudang_dua" class="form-control">
                       <option value="">--Pilih Part No--</option>
                       @foreach($stoks as $stok)
-                      <option value="{{ $stok->id_stok }}">{{ $stok->part_name }}</option>
+                      <option value="{{ $stok->id_gudang_dua }}">{{ $stok->part_name }}</option>
                       @endforeach
                     </select>
                   </div>
