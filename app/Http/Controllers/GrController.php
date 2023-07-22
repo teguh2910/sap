@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\gr, App\po, App\material, App\gudang_dua;
+use App\gr, App\po, App\material, App\gudang_dua, App\gudang_satu;
 use Illuminate\Http\Request;
 
 class GrController extends Controller
@@ -25,6 +25,10 @@ class GrController extends Controller
             $gudangdua = gudang_dua::where('part_no',$part_no)->first();
             $gudangdua->incoming_balance = $total_gr;
             $gudangdua->save();
+        }else{
+            $gudangsatu = gudang_satu::where('part_no',$part_no)->first();
+            $gudangsatu->incoming_balance = $total_gr;
+            $gudangsatu->save();
         }
         return redirect('/gudangdua');
     }

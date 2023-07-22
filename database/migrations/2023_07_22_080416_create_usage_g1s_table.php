@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableTop extends Migration
+class CreateUsageG1sTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateTableTop extends Migration
      */
     public function up()
     {
-        Schema::create('tops', function (Blueprint $table) {
-            $table->increments('id_top');
-            $table->string('name_top');
+        Schema::create('usage_g1s', function (Blueprint $table) {
+            $table->increments('id_usage_g1');
+            $table->integer('id_base_metal');
+            $table->integer('qty_usage_g1');
+            $table->date('tgl_usage_g1');
+            $table->string('lot_usage_g1');
             $table->timestamps();
         });
     }
@@ -27,8 +30,6 @@ class CreateTableTop extends Migration
      */
     public function down()
     {
-        
-            Schema::dropIfExists('tops');
-        
+        Schema::dropIfExists('usage_g1s');
     }
 }

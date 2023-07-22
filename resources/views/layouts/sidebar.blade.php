@@ -19,6 +19,13 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{asset('stok_all')}}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>Stock                 
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{asset('gudangsatu')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>Gudang 1                 

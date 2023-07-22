@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\stok, App\sj, App\prod, App\truk, App\gudang_dua;
+use App\stok, App\sj, App\truk, App\gudang_dua,App\gudang_satu;
 use Illuminate\Http\Request;
 
 class SjController extends Controller
@@ -24,7 +24,11 @@ class SjController extends Controller
         $total_sj = sj::where('id_gudang_dua',$request->id_gudang_dua)->sum('qty_sj');
         $gudangdua = gudang_dua::where('part_no',$part_no)->first();
         $gudangdua->usage_balance = $total_sj;
-        $gudangdua->save();        
-        return redirect('stok');
+        $gudangdua->save();  
+        //update gudang satu
+        $gudangsatu = gudang_satu::where('part_no',$part_no)->first();
+        $gudangsatu->incoming_balance = $total_sj;
+        $gudangsatu->save();              
+        return redirect('gudangdua');
     }
 }

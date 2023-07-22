@@ -14,12 +14,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Create Data Qty Production</h1>            
+            <h1 class="m-0">Create Data Qty Usage</h1>            
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Create Data Qty Production</li>
+              <li class="breadcrumb-item active">Create Data Qty Usage Material</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -35,33 +35,33 @@
           <div class="col-md-12">
           <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Form Create Data Qty Production</h3>
+                <h3 class="card-title">Form Create Data Qty Usage Material</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{asset('prod/create')}}" enctype="multipart/form-data" method="POST">
+              <form action="{{asset('usageg1/create')}}" enctype="multipart/form-data" method="POST">
               {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
-                    <label>Part No</label>
-                    <select name="id_stok" style="width:100%" id="select2">
+                    <label>Material</label>
+                    <select name="id_base_metal" style="width:100%" id="select2">
                       <option value="">--Pilih Part No--</option>
-                      @foreach($stoks as $stok)
-                      <option value="{{ $stok->id_stok }}">{{ $stok->part_name }}</option>
+                      @foreach($base_metal as $m)
+                      <option value="{{ $m->id_base_metal }}">{{ $m->nama_base_metal }}</option>
                       @endforeach
                     </select>
                   </div>
                   <div class="form-group">
-                    <label>Qty</label>
-                    <input type="number" name="qty_prod" class="form-control">
+                    <label>Qty_usage</label>
+                    <input type="number" name="qty_usage_g1" class="form-control">
                   </div>
                   <div class="form-group">
-                    <label>Tanggal Production</label>
-                    <input type="date" name="tgl_prod" class="form-control">
+                    <label>Tanggal Usage</label>
+                    <input type="date" name="tgl_usage_g1" class="form-control">
                   </div>  
                   <div class="form-group">
-                    <label>Lot Production</label>
-                    <input type="text" name="lot" class="form-control">
+                    <label>Lot Usage</label>
+                    <input type="text" name="lot_usage_g1" class="form-control">
                   </div>                                    
                 </div>
                 <!-- /.card-body -->

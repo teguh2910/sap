@@ -14,20 +14,20 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">List Stok Gudang Dua</h1>
+            <h1 class="m-0">List Stok Gudang Satu</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">List Stok Gudang Dua</li>
+              <li class="breadcrumb-item active">List Stok Gudang Satu</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
-        <a href="{{ asset('gudangdua/create') }}" class="btn btn-sm btn-success">Upload Beginning Stok</a>
-        <a href="{{ asset('gr/create') }}" class="btn btn-sm btn-warning">Create Qty Good Receipt Gudang Dua</a>
-        <a href="{{ asset('usageg2/create') }}" class="btn btn-sm btn-primary">Create Qty Usage Production Gudang Dua</a>
-        <a href="{{ asset('prodg2/create') }}" class="btn btn-sm btn-primary">Create Qty Production Gudang Dua</a>
-        <a href="{{ asset('sjg2/create') }}" class="btn btn-sm btn-info">Create Qty Surat Jalan Gudang Dua</a>        
+        <a href="{{ asset('gudangsatu/create') }}" class="btn btn-sm btn-success">Upload Beginning Stok</a>
+        <a href="{{ asset('gr/create') }}" class="btn btn-sm btn-warning">Create Qty Good Receipt Gudang Satu</a>
+        <a href="{{ asset('usageg1/create') }}" class="btn btn-sm btn-primary">Create Qty Usage Production Gudang Satu</a>
+        <a href="{{ asset('prodg1/create') }}" class="btn btn-sm btn-primary">Create Qty Production Gudang Satu</a>
+        <a href="{{ asset('sjg1/create') }}" class="btn btn-sm btn-info">Create Qty Surat Jalan Gudang Satu</a>        
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -52,13 +52,13 @@
                     <th>incoming_balance</th>
                     <th>usage_balance</th>
                     <th>ending_balance</th>
-                    {{-- <th>action</th>                     --}}
+                    {{-- <th>action</th> --}}
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach($gudang_duas as $g)
+                  @foreach($gudang_satus as $g)
                   <tr>
-                  <td>{{ $g->id_gudang_dua }}</td>
+                  <td>{{ $g->id_gudang_satu }}</td>
                   <td>{{ $g->category_part }}</td>                  
                   <td>{{ $g->part_no }}</td>
                   <td>{{ $g->part_name }}</td>
