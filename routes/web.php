@@ -165,3 +165,5 @@ Route::get('/sjg1/edit/{id}', 'SjG1Controller@edit');
 Route::post('/sjg1/edit/{id}', 'SjG1Controller@update');
 Route::get('/sjg1/delete/{id}', 'SjG1Controller@delete');
 
+//dashboard stok
+Route::get('/stok_all', 'DashboardStokController@index');

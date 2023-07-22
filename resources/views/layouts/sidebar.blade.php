@@ -9,44 +9,86 @@
     <div class="sidebar">  
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <li class="nav-item">
-            <a href="{{asset('/')}}" class="nav-link">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">         
+          
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Dashboard                
+                Cash
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{asset('stok_all')}}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>Stock                 
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{asset('gudangsatu')}}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>Gudang 1                 
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{asset('gudangdua')}}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>Gudang 2                 
-              </p>
-            </a>
-          </li>                     
-          <li class="nav-item">
-            <a href="{{asset('/po')}}" class="nav-link">
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{asset('/')}}" class="nav-link">
+                  <i class="nav-icon"></i>
+                  <p>Dashboard</p>
+                </a>
+              </li> 
+              <li class="nav-item">
+                <a href="{{asset('/')}}" class="nav-link">
+                  <i class="nav-icon"></i>
+                  <p>Jurnal Invoice Supplier</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{asset('/')}}" class="nav-link">
+                  <i class="nav-icon"></i>
+                  <p>Jurnal Invoice Customer</p>
+                </a>
+              </li>                            
+            </ul>
+          </li> 
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Modul PO                
+                Purchase Order
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-          </li>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{asset('/po')}}" class="nav-link">
+                  <i class="nav-icon"></i>
+                  <p>Data</p>
+                </a>
+              </li>                            
+            </ul>
+          </li>  
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Stock
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{asset('/stok_all')}}" class="nav-link">
+                  <i class="nav-icon"></i>
+                  <p>Dashboard</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{asset('/gudangsatu')}}" class="nav-link">
+                  <i class="nav-icon"></i>
+                  <p>Gudang 1</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{asset('/gudangdua')}}" class="nav-link">
+                  <i class="nav-icon"></i>
+                  <p>Gudang 2</p>
+                </a>
+              </li>              
+            </ul>
+          </li>         
+          
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
