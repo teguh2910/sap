@@ -21,9 +21,21 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{asset('/')}}" class="nav-link">
+                <a href="{{asset('/cashflow')}}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>Dashboard</p>
+                </a>
+              </li> 
+              <li class="nav-item">
+                <a href="{{asset('/')}}" class="nav-link">
+                  <i class="nav-icon"></i>
+                  <p>Payment</p>
+                </a>
+              </li> 
+              <li class="nav-item">
+                <a href="{{asset('/')}}" class="nav-link">
+                  <i class="nav-icon"></i>
+                  <p>Incoming</p>
                 </a>
               </li> 
               <li class="nav-item">
@@ -54,6 +66,12 @@
                 <a href="{{asset('/po')}}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>Data</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{asset('/')}}" class="nav-link">
+                  <i class="nav-icon"></i>
+                  <p>Summary</p>
                 </a>
               </li>                            
             </ul>

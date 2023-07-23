@@ -167,3 +167,27 @@ Route::get('/sjg1/delete/{id}', 'SjG1Controller@delete');
 
 //dashboard stok
 Route::get('/stok_all', 'DashboardStokController@index');
+
+//crud cash
+Route::get('/cashflow', 'CashflowController@index');
+Route::get('/cashflow/create', 'CashflowController@create');
+Route::post('/cashflow/create', 'CashflowController@store');
+Route::get('/cashflow/edit/{id}', 'CashflowController@edit');
+Route::post('/cashflow/edit/{id}', 'CashflowController@update');
+Route::get('/cashflow/delete/{id}', 'CashflowController@delete');
+
+//crud incoming_cash
+Route::get('incoming_cash', 'IncomingCashController@index');
+Route::get('incoming_cash/create', 'IncomingCashController@create');
+Route::post('incoming_cash/create', 'IncomingCashController@store');
+Route::get('incoming_cash/edit/{id}', 'IncomingCashController@edit');
+Route::post('incoming_cash/edit/{id}', 'IncomingCashController@update');
+Route::get('incoming_cash/delete/{id}', 'IncomingCashController@delete');
+
+//crud out_cash
+Route::get('out_cash', 'OutCashController@index');
+Route::get('out_cash/create', 'OutCashController@create');
+Route::post('out_cash/create', 'OutCashController@store');
+Route::get('out_cash/edit/{id}', 'OutCashController@edit');
+Route::post('out_cash/edit/{id}', 'OutCashController@update');
+Route::get('out_cash/delete/{id}', 'OutCashController@delete');
