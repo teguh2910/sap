@@ -14,4 +14,7 @@ class detail_po extends Model
     public function pos() {
         return $this->hasMany('App\po','id_po','id_po');
     }
+    public function grs() {
+        return $this->hasMany('App\gr','id_detail_po','id_detail_po');
+    }
 }

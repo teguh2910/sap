@@ -11,7 +11,7 @@ class gr extends Model
     public function materials() {
         return $this->hasMany('App\material','id_material','id_material');
     }
-    public function pos() {
-        return $this->hasMany('App\po','id_po','id_po');
+    public function detail_pos() {
+        return $this->hasMany('App\detail_po','id_detail_po','id_detail_po');
     }
 }

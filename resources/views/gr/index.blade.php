@@ -41,6 +41,7 @@
                   <thead>
                   <tr>
                     <th>no_po</th>
+                    <th>Kode_barang</th>
                     <th>nama_barang</th>
                     <th>qty_gr</th>
                     <th>harga_gr</th>
@@ -53,8 +54,11 @@
                   <tbody>
                   @foreach($gr as $g)
                   <tr>
-                  <td>{{ $g->id_po }}</td>
+                  @foreach($g->detail_pos as $p)
+                  <td>{{ $p->id_po }}</td>
+                  @endforeach
                   @foreach($g->materials as $m)
+                  <td>{{ $m->kode_material }}</td>
                   <td>{{ $m->nama_material }}</td>
                   @endforeach                  
                   <td>

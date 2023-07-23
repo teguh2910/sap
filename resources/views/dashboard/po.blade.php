@@ -86,14 +86,27 @@
                         <td>{{ $d->uom }}</td>
                         <td>{{ $d->harga_po }}</td>
                         <td>{{ $d->qty_po*$d->harga_po }}</td>
-                        <td>{{ $d->id_detail_po }}</td>
-                        <td>{{ $d->id_detail_po }}</td>
-                        <td>{{ $d->id_detail_po }}</td>
-                        <td>{{ $d->id_detail_po }}</td>
-                        <td>{{ $d->id_detail_po }}</td>
-                        <td>{{ $d->id_detail_po }}</td>
-                        <td>{{ $d->id_detail_po }}</td>
-                        <td>{{ $d->id_detail_po }}</td>
+                        @if($d->grs->count() > 0)
+                        @foreach($d->grs as $g)
+                        <td>{{ $g->qty_gr }}</td>
+                        <td>{{ $g->uom }}</td>
+                        <td>{{ $g->harga_gr }}</td>
+                        <td>{{ $g->harga_gr*$g->qty_gr }}</td>
+                        @endforeach
+                        <td>{{ $d->qty_po - $g->qty_gr }}</td>
+                        <td>{{ $d->uom }}</td>
+                        <td>{{ $d->harga_po - $g->harga_gr }}</td>
+                        <td>{{ ($d->qty_po*$d->harga_po) - ($g->harga_gr*$g->qty_gr) }}</td>
+                        @else
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>{{ $d->qty_po - 0 }}</td>
+                        <td>{{ $d->uom }}</td>
+                        <td>{{ $d->harga_po - 0 }}</td>
+                        <td>{{ ($d->qty_po*$d->harga_po) - (0) }}</td>
+                        @endif
                     </tr>
                     @endforeach
                   </tbody>                  

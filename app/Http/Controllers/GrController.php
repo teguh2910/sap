@@ -17,7 +17,7 @@ class GrController extends Controller
         $gr = new gr;
         $gr->tgl_gr = $request->tgl_gr;
         $gr->gudang = $request->gudang;        
-        $gr->id_po = $p->id_po;
+        $gr->id_detail_po = $p->id_detail_po;
         $gr->id_material = $p->id_material;
         $gr->uom = $p->uom;
         $gr->harga_gr = $p->harga_po;
