@@ -18,10 +18,8 @@ class CreateTableDetailPO extends Migration
             $table->integer('id_material');
             $table->integer('id_po');
             $table->integer('qty_po');
-            $table->integer('qty_gr');
             $table->string('uom');
             $table->integer('harga_po');
-            $table->integer('harga_gr');
             $table->timestamps();
         });
     }

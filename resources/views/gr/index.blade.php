@@ -37,30 +37,45 @@
           <div class="card">
               <!-- /.card-header -->
               <div class="card-body">                
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example1" class="table table-bordered table-striped" style="width: 100%">
                   <thead>
                   <tr>
                     <th>no_po</th>
                     <th>nama_barang</th>
                     <th>qty_gr</th>
-                    <th>tgL-gr</th>
+                    <th>harga_gr</th>
+                    <th>tgl_gr</th>
                     <th>Uom</th>
-                    <th>action</th>                    
+                    <th>gudang</th>
+                    {{-- <th>action</th>                     --}}
                   </tr>
                   </thead>
                   <tbody>
                   @foreach($gr as $g)
                   <tr>
                   <td>{{ $g->id_po }}</td>
-                  @foreach($d->materials as $m)
+                  @foreach($g->materials as $m)
                   <td>{{ $m->nama_material }}</td>
                   @endforeach                  
-                  <td>{{ $d->uom }}</td>
-                  <td>{{ $d->harga_po }}</td>
                   <td>
-                    <a href="{{ asset('gr/edit/'.$d->id_gr) }}" class="btn btn-sm btn-primary">Edit</a>
-                    <a href="{{ asset('gr/delete/'.$d->id_gr) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-sm btn-danger">Delete</a>
+                    <a href="#" class="xedit" 
+                       data-pk="{{$g->id_gr}}"
+                       data-name="qty_gr">
+                       {{$g->qty_gr}}</a>
                   </td>
+                  <td>
+                    <a href="#" class="xedit" 
+                       data-pk="{{$g->id_gr}}"
+                       data-name="harga_gr">
+                       {{$g->harga_gr}}</a>
+                  </td>
+                  <td>{{ $g->tgl_gr }}</td>
+                  <td>{{ $g->uom }}</td>
+                  <td>{{ $g->gudang }}</td>
+                  {{-- <td>
+                    <a href="{{ asset('gr/edit/'.$g->id_gr) }}" class="btn btn-sm btn-primary">Edit</a>
+                    <a href="{{ asset('gr/delete/'.$g->id_gr) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-sm btn-danger">Delete</a>
+                  </td> --}}
                   </tr>
                   @endforeach
                   </tbody>                  

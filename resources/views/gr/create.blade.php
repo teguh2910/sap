@@ -52,7 +52,7 @@
                   </div>                  
                   <div class="form-group">
                     <label>Tgl GR</label>
-                    <input type="date" name="tgl_gr" class="form-control">
+                    <input type="date" name="tgl_gr" required class="form-control">
                   </div>
                   <div class="form-group">
                     <label>Gudang</label>

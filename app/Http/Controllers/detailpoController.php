@@ -26,10 +26,5 @@ class detailpoController extends Controller
         $detailpo->save();
         return redirect('/detailpo/'.$id);
     }
-    function update_gr(Request $request) {
-        if($request->ajax()){
-            detail_po::find($request->input('pk'))->update([$request->input('name') => $request->input('value')]);
-         return response()->json(['success' => true]);
-     }
-    }
+    
 }

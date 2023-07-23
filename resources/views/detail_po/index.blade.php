@@ -43,10 +43,8 @@
                     <th>no_po</th>
                     <th>nama_barangg</th>
                     <th>Qty_Po</th>
-                    <th>Qty_Gr</th>
                     <th>Uom</th>
                     <th>Harga_po</th>
-                    <th>Harga_Gr</th>
                     <th>action</th>                    
                   </tr>
                   </thead>
@@ -57,22 +55,10 @@
                   @foreach($d->materials as $m)
                   <td>{{ $m->nama_material }}</td>
                   @endforeach                  
-                  <td>{{ $d->qty_po }}</td>
-                  <td>
-                    <a href="#" class="xedit" 
-                       data-pk="{{$d->id_detail_po}}"
-                       data-name="qty_gr">
-                       {{$d->qty_gr}}</a>
-                  </td>
+                  <td>{{ $d->qty_po }}</td>                  
                   
                   <td>{{ $d->uom }}</td>
                   <td>{{ $d->harga_po }}</td>
-                  <td>
-                    <a href="#" class="xedit" 
-                       data-pk="{{$d->id_detail_po}}"
-                       data-name="harga_gr">
-                       {{$d->harga_gr}}</a>
-                  </td>
                   <td>
                     <a href="{{ asset('detailpo/edit/'.$d->id_detailpo) }}" class="btn btn-sm btn-primary">Edit</a>
                     <a href="{{ asset('detailpo/delete/'.$d->id_detailpo) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-sm btn-danger">Delete</a>

@@ -21,7 +21,7 @@
   <link href="{{asset('plugins\select2\css\select2.min.css')}}" rel="stylesheet" />  
   <link href="{{asset('plugins\select2-bootstrap4-theme\select2-bootstrap4.min.css')}}" rel="stylesheet" />
   {{-- x-editable --}}
-  <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+  <link href="{{asset('css/bootstrap-editable.css')}}" rel="stylesheet"/>
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -51,7 +51,9 @@
 <!-- jQuery -->
 <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
 <!-- Bootstrap 4 -->
-<script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.js')}}"></script>
+<!-- X-editable -->
+<script src="{{asset('js/bootstrap-editable.min.js')}}"></script>
 <!-- DataTables  & Plugins -->
 <script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
@@ -66,11 +68,29 @@
 <script src="{{asset('plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
 <script src="{{asset('plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
 <script src="{{asset('plugins\select2\js\select2.min.js')}}"></script>
-<!-- X-editable -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.min.js')}}"></script>
+
+
 <!-- Page specific script -->
+<script>
+  $(document).ready(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': '{{csrf_token()}}'
+                }
+            });
+            $.fn.editable.defaults.mode = 'popup';
+            $('.xedit').editable({
+                url: '{{url("detail_po_gr/update")}}',
+                title: 'Update',
+                success: function (response, newValue) {
+                    console.log('Updated', response)
+                }
+            });
+
+    })
+</script>
 <script>
   $(function () {
     $("#example1").DataTable({
@@ -91,24 +111,7 @@
     });
   });
 </script>
-<script>
-  $(document).ready(function () {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': '{{csrf_token()}}'
-                }
-            });
 
-            $('.xedit').editable({
-                url: '{{url("detail_po_gr/update")}}',
-                title: 'Update',
-                success: function (response, newValue) {
-                    console.log('Updated', response)
-                }
-            });
-
-    })
-</script>
 @section('js')
 @show
 </body>

@@ -12,11 +12,17 @@ class GrController extends Controller
         return view('gr/create',compact('detail_po','po'));        
     }
     public function store(Request $request) {
+        $po=detail_po::where('id_po',$request->id_po)->get();
+        foreach($po as $p){
         $gr = new gr;
-        $gr->id_po = $request->id_po;
         $gr->tgl_gr = $request->tgl_gr;
-        $gr->gudang = $request->gudang;
+        $gr->gudang = $request->gudang;        
+        $gr->id_po = $p->id_po;
+        $gr->id_material = $p->id_material;
+        $gr->uom = $p->uom;
+        $gr->harga_gr = $p->harga_po;
         $gr->save();
+        }
         // $part_no=material::find($request->id_material)->kode_material;
         // $total_gr = gr::where('id_material',$request->id_material)->sum('qty_gr');
         // if($request->gudang=='gudang_dua'){
@@ -28,10 +34,17 @@ class GrController extends Controller
         //     $gudangsatu->incoming_balance = $total_gr;
         //     $gudangsatu->save();
         // }
-        return redirect('/gr_detail_po/'.$request->id_po);
+        return redirect('/gr');
     }
     public function index() {
-        $gr = gr::with(['po','material'])->get();
+        $gr = gr::all();
         return view('gr/index',compact('gr'));
+    }
+    function update_gr(Request $request) {
+        if($request->ajax()){
+            gr::find($request->input('pk'))->update([$request->input('name') => $request->input('value')]);
+         return response()->json(['success' => true]);
+        
+     }
     }
 }

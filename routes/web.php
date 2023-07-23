@@ -194,4 +194,4 @@ Route::post('out_cash/edit/{id}', 'OutCashController@update');
 Route::get('out_cash/delete/{id}', 'OutCashController@delete');
 
 //gr update by detail po
-Route::post('detail_po_gr/update','detailpoController@update_gr');
+Route::post('detail_po_gr/update','GrController@update_gr');
