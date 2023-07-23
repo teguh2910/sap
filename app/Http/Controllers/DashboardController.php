@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\gudang_satu, App\gudang_dua, App\po, App\detail_po;
+use App\gudang_satu, App\gudang_dua, App\po, App\detail_po, App\gr;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller

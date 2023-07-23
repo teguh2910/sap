@@ -22,18 +22,7 @@ class GrController extends Controller
         $gr->uom = $p->uom;
         $gr->harga_gr = $p->harga_po;
         $gr->save();
-        }
-        // $part_no=material::find($request->id_material)->kode_material;
-        // $total_gr = gr::where('id_material',$request->id_material)->sum('qty_gr');
-        // if($request->gudang=='gudang_dua'){
-        //     $gudangdua = gudang_dua::where('part_no',$part_no)->first();
-        //     $gudangdua->incoming_balance = $total_gr;
-        //     $gudangdua->save();
-        // }else{
-        //     $gudangsatu = gudang_satu::where('part_no',$part_no)->first();
-        //     $gudangsatu->incoming_balance = $total_gr;
-        //     $gudangsatu->save();
-        // }
+        }        
         return redirect('/gr');
     }
     public function index() {
@@ -42,7 +31,20 @@ class GrController extends Controller
     }
     function update_gr(Request $request) {
         if($request->ajax()){
-            gr::find($request->input('pk'))->update([$request->input('name') => $request->input('value')]);
+        gr::find($request->input('pk'))->update([$request->input('name') => $request->input('value')]);
+        $part_no=gr::find($request->input('pk'))->materials[0]->kode_material;
+        $id_material = gr::find($request->input('pk'))->materials[0]->id_material;
+        $gudang=gr::find($request->input('pk'))->gudang;
+        $total_gr = gr::where('id_material',$id_material)->sum('qty_gr');
+        if($gudang=='gudang_dua'){
+            $gudangdua = gudang_dua::where('part_no',$part_no)->first();
+            $gudangdua->incoming_balance = $total_gr;
+            $gudangdua->save();
+        }else{
+            $gudangsatu = gudang_satu::where('part_no',$part_no)->first();
+            $gudangsatu->incoming_balance = $total_gr;
+            $gudangsatu->save();
+        }
          return response()->json(['success' => true]);
         
      }
