@@ -27,13 +27,13 @@
                 </a>
               </li> 
               <li class="nav-item">
-                <a href="{{asset('/')}}" class="nav-link">
+                <a href="{{asset('/out_cash')}}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>Payment</p>
                 </a>
               </li> 
               <li class="nav-item">
-                <a href="{{asset('/')}}" class="nav-link">
+                <a href="{{asset('/incoming_cash')}}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>Incoming</p>
                 </a>
@@ -69,7 +69,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{asset('/')}}" class="nav-link">
+                <a href="{{asset('/po_all')}}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>Summary</p>
                 </a>

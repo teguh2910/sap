@@ -45,23 +45,11 @@
                   <div class="form-group">
                     <label>No PO</label>
                     <select name="id_po" id="select2" class="form-control">
-                      @foreach($po as $p)
-                      <option value="{{ $p->id_po }}">{{ $p->id_po }}</option>
+                      @foreach($po as $d)
+                      <option value="{{ $d->id_po }}">{{ $d->id_po }}</option>
                       @endforeach
                     </select>
-                  </div>
-                  <div class="form-group">
-                    <label>Material</label>
-                    <select name="id_material" id="select2" class="form-control">
-                      @foreach($material as $m)
-                      <option value="{{ $m->id_material }}">{{ $m->nama_material }}</option>
-                      @endforeach
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label>Qty GR</label>
-                    <input type="number" name="qty_gr" class="form-control">
-                  </div>
+                  </div>                  
                   <div class="form-group">
                     <label>Tgl GR</label>
                     <input type="date" name="tgl_gr" class="form-control">

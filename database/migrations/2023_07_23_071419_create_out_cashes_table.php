@@ -15,7 +15,6 @@ class CreateOutCashesTable extends Migration
     {
         Schema::create('out_cashes', function (Blueprint $table) {
             $table->increments('id_out_cashes');
-            $table->integer('id_vendor');
             $table->integer('id_bank');
             $table->string('id_po');
             $table->string('category');

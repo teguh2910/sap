@@ -16,8 +16,6 @@ class CreateGrsTable extends Migration
         Schema::create('grs', function (Blueprint $table) {
             $table->increments('id_gr');
             $table->integer('id_po');
-            $table->integer('id_material');
-            $table->integer('qty_gr');
             $table->date('tgl_gr');
             $table->string('gudang');
             $table->timestamps();

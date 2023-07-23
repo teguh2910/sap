@@ -20,6 +20,9 @@
   {{-- Select2 --}}
   <link href="{{asset('plugins\select2\css\select2.min.css')}}" rel="stylesheet" />  
   <link href="{{asset('plugins\select2-bootstrap4-theme\select2-bootstrap4.min.css')}}" rel="stylesheet" />
+  {{-- x-editable --}}
+  <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -63,13 +66,15 @@
 <script src="{{asset('plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
 <script src="{{asset('plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
 <script src="{{asset('plugins\select2\js\select2.min.js')}}"></script>
+<!-- X-editable -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.min.js')}}"></script>
 <!-- Page specific script -->
 <script>
   $(function () {
     $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
+      scrollX: true,
       "buttons": ["copy", "csv", "excel", "pdf", "print"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
   });
@@ -85,6 +90,24 @@
       theme: 'bootstrap4'
     });
   });
+</script>
+<script>
+  $(document).ready(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': '{{csrf_token()}}'
+                }
+            });
+
+            $('.xedit').editable({
+                url: '{{url("detail_po_gr/update")}}',
+                title: 'Update',
+                success: function (response, newValue) {
+                    console.log('Updated', response)
+                }
+            });
+
+    })
 </script>
 @section('js')
 @show

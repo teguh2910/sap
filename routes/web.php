@@ -165,8 +165,9 @@ Route::get('/sjg1/edit/{id}', 'SjG1Controller@edit');
 Route::post('/sjg1/edit/{id}', 'SjG1Controller@update');
 Route::get('/sjg1/delete/{id}', 'SjG1Controller@delete');
 
-//dashboard stok
-Route::get('/stok_all', 'DashboardStokController@index');
+//dashboard
+Route::get('/stok_all', 'DashboardController@stok');
+Route::get('/po_all', 'DashboardController@po');
 
 //crud cash
 Route::get('/cashflow', 'CashflowController@index');
@@ -191,3 +192,6 @@ Route::post('out_cash/create', 'OutCashController@store');
 Route::get('out_cash/edit/{id}', 'OutCashController@edit');
 Route::post('out_cash/edit/{id}', 'OutCashController@update');
 Route::get('out_cash/delete/{id}', 'OutCashController@delete');
+
+//gr update by detail po
+Route::post('detail_po_gr/update','detailpoController@update_gr');

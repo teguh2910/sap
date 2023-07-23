@@ -28,4 +28,7 @@ class IncomingCashController extends Controller
         $incoming_cash->save();
         return redirect('cashflow');
     }
+    function index() {
+        return view('incoming_cash/index', ['incoming_cash' => incoming_cash::with(['banks','customers'])->get()]);
+    }
 }

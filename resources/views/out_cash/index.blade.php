@@ -14,16 +14,16 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">List gr</h1>
+            <h1 class="m-0">List out_cash</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">List gr</li>
+              <li class="breadcrumb-item active">List out_cash</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
-        <a href="{{ asset('gr/create') }}" class="btn btn-sm btn-success">Create</a>
+        <a href="{{ asset('out_cash/create') }}" class="btn btn-sm btn-success">Create</a>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -41,25 +41,26 @@
                   <thead>
                   <tr>
                     <th>no_po</th>
-                    <th>nama_barang</th>
-                    <th>qty_gr</th>
-                    <th>tgL-gr</th>
-                    <th>Uom</th>
+                    <th>category</th>
+                    <th>amount_out</th>
+                    <th>tgl_out_cash</th>
+                    <th>bank</th>
                     <th>action</th>                    
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach($gr as $g)
+                  @foreach($out_cash as $o)
                   <tr>
-                  <td>{{ $g->id_po }}</td>
-                  @foreach($d->materials as $m)
-                  <td>{{ $m->nama_material }}</td>
-                  @endforeach                  
-                  <td>{{ $d->uom }}</td>
-                  <td>{{ $d->harga_po }}</td>
+                  <td>@if($o->id_po==0) Non PO @else {{$o->id_po}} @endif</td>
+                  <td>{{ $o->category }}</td>
+                  <td>{{ $o->amount_out }}</td>
+                  <td>{{ $o->tgl_out_cash }}</td>
+                  @foreach($o->banks as $b)
+                  <td>{{ $b->nama_bank }}</td>
+                  @endforeach
                   <td>
-                    <a href="{{ asset('gr/edit/'.$d->id_gr) }}" class="btn btn-sm btn-primary">Edit</a>
-                    <a href="{{ asset('gr/delete/'.$d->id_gr) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-sm btn-danger">Delete</a>
+                    <a href="{{ asset('out_cash/edit/'.$o->id_out_cash) }}" class="btn btn-sm btn-primary">Edit</a>
+                    <a href="{{ asset('out_cash/delete/'.$o->id_out_cash) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-sm btn-danger">Delete</a>
                   </td>
                   </tr>
                   @endforeach

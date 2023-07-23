@@ -16,7 +16,6 @@ class CreateTablePo extends Migration
         Schema::create('pos', function (Blueprint $table) {
             $table->increments('id_po');
             $table->integer('id_vendor');
-            $table->integer('id_detail_po')->nullable();
             $table->string('top');
             $table->integer('qty_po');
             $table->string('delivery_by');

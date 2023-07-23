@@ -14,16 +14,16 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">List gr</h1>
+            <h1 class="m-0">List incoming_cash</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">List gr</li>
+              <li class="breadcrumb-item active">List incoming_cash</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
-        <a href="{{ asset('gr/create') }}" class="btn btn-sm btn-success">Create</a>
+        <a href="{{ asset('incoming_cash/create') }}" class="btn btn-sm btn-success">Create</a>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -41,25 +41,30 @@
                   <thead>
                   <tr>
                     <th>no_po</th>
-                    <th>nama_barang</th>
-                    <th>qty_gr</th>
-                    <th>tgL-gr</th>
-                    <th>Uom</th>
+                    <th>customer</th>
+                    <th>amount</th>
+                    <th>bank</th>
+                    <th>tgl</th>
+                    <th>top</th>                    
                     <th>action</th>                    
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach($gr as $g)
+                  @foreach($incoming_cash as $i)
                   <tr>
-                  <td>{{ $g->id_po }}</td>
-                  @foreach($d->materials as $m)
-                  <td>{{ $m->nama_material }}</td>
-                  @endforeach                  
-                  <td>{{ $d->uom }}</td>
-                  <td>{{ $d->harga_po }}</td>
+                  <td>{{ $i->po_customer }}</td>
+                  @foreach($i->customers as $c)
+                  <td>{{ $c->nama_customer }}</td>
+                  @endforeach
+                  <td>{{ $i->amount_incoming }}</td>
+                  @foreach($i->banks as $b)
+                  <td>{{ $b->nama_bank }}</td>
+                  @endforeach
+                  <td>{{ $i->tgl_incoming_cash }}</td>
+                  <td>{{ $i->top }}</td>
                   <td>
-                    <a href="{{ asset('gr/edit/'.$d->id_gr) }}" class="btn btn-sm btn-primary">Edit</a>
-                    <a href="{{ asset('gr/delete/'.$d->id_gr) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-sm btn-danger">Delete</a>
+                    <a href="{{ asset('incoming_cash/edit/'.$i->id_incoming_cash) }}" class="btn btn-sm btn-primary">Edit</a>
+                    <a href="{{ asset('incoming_cash/delete/'.$i->id_incoming_cash) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-sm btn-danger">Delete</a>
                   </td>
                   </tr>
                   @endforeach
