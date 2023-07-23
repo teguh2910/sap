@@ -41,6 +41,7 @@
                   <thead>
                   <tr>
                     <th>no_po</th>
+                    <th>kode_barang</th>
                     <th>nama_barangg</th>
                     <th>Qty_Po</th>
                     <th>Uom</th>
@@ -53,6 +54,7 @@
                   <tr>
                   <td>{{ $d->id_po }}</td>
                   @foreach($d->materials as $m)
+                  <td>{{ $m->kode_material }}</td>
                   <td>{{ $m->nama_material }}</td>
                   @endforeach                  
                   <td>{{ $d->qty_po }}</td>                  

@@ -16,7 +16,7 @@ class DashboardController extends Controller
         return view('dashboard/stok',compact(['gudang_satu','gudang_dua']));
     }
     function po() {
-        $detail_po=detail_po::all();
-        return view('dashboard/po',compact(['detail_po']));
+        $grs=gr::all();
+        return view('dashboard/po',compact(['grs']));
     }
 }
