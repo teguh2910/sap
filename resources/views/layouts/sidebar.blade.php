@@ -38,7 +38,7 @@
                   <p>Incoming</p>
                 </a>
               </li> 
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 <a href="{{asset('/')}}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>Jurnal Invoice Supplier</p>
@@ -49,7 +49,7 @@
                   <i class="nav-icon"></i>
                   <p>Jurnal Invoice Customer</p>
                 </a>
-              </li>                            
+              </li>                             --}}
             </ul>
           </li> 
 
