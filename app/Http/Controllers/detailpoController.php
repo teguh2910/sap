@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class detailpoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index($id) {
         $detailpos=detail_po::with('materials')->where('id_po',$id)->get();        
         return view('detail_po/index',compact(['detailpos','id']));

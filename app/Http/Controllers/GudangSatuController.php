@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class GudangSatuController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index() {
         $gudang_satus = gudang_satu::all();
         return view('gudang_satu/index',compact('gudang_satus'));

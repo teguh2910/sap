@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class UsageG1Controller extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     function create() {
         $base_metal = basemetal::all();
         return view('usage_g1/create',compact('base_metal'));

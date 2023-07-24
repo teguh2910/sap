@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class ProdG1Controller extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     function create() {
         $produk = produk::all();
         return view('prod_g1/create',compact(['produk']));

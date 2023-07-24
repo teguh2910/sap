@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class CashflowController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     function index() {
         $cash = cashflow::all();
         return view('cash_flow/index', compact('cash'));

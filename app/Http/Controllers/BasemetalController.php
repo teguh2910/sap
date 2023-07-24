@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class BasemetalController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index() {
         $basemetals = basemetal::all();
         return view('basemetal/index',compact('basemetals'));

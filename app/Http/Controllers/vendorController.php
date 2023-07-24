@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class vendorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index() {
         $vendor = vendor::all();
         return view('vendor/index', compact('vendor'));

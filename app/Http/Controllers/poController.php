@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class poController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index() {
         $pos=po::with(['vendors'])->get();
         return view('po/index', compact('pos'));

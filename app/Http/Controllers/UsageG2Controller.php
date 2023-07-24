@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class UsageG2Controller extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     function create() {
         $material = material::all();
         return view('usage_g2/create',compact('material'));

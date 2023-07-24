@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class ProdG2Controller extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     function create() {
         $material = material::all();
         $base_metal = basemetal::all();

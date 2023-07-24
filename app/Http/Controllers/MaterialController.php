@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class MaterialController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index() {
         $materials = material::all();
         return view('material/index',compact('materials'));

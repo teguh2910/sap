@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class trukController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $truk = truk::all();

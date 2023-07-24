@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class bankController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index() {
         $bank = bank::all();
         return view('bank/index', compact('bank'));

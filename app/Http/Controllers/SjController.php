@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class SjController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function create() {
         $stoks=gudang_dua::where('category_part','fg')->get();
         $truks=truk::all();

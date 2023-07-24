@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class AdditiveController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index() {
         $additives = additive::all();
         return view('additive/index',compact('additives'));

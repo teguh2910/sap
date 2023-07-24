@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class GrController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function create() {
         $po=po::all();
         $detail_po=detail_po::all();        
