@@ -184,6 +184,8 @@ Route::post('incoming_cash/create', 'IncomingCashController@store');
 Route::get('incoming_cash/edit/{id}', 'IncomingCashController@edit');
 Route::post('incoming_cash/edit/{id}', 'IncomingCashController@update');
 Route::get('incoming_cash/delete/{id}', 'IncomingCashController@delete');
+Route::get('incoming_cash/report', 'IncomingCashController@report');
+Route::post('incoming_cash/report', 'IncomingCashController@report_show');
 
 //crud out_cash
 Route::get('out_cash', 'OutCashController@index');
@@ -192,6 +194,8 @@ Route::post('out_cash/create', 'OutCashController@store');
 Route::get('out_cash/edit/{id}', 'OutCashController@edit');
 Route::post('out_cash/edit/{id}', 'OutCashController@update');
 Route::get('out_cash/delete/{id}', 'OutCashController@delete');
+Route::get('out_cash/report', 'OutCashController@report');
+Route::post('out_cash/report', 'OutCashController@report_show');
 
 //gr update by detail po
 Route::post('detail_po_gr/update','GrController@update_gr');

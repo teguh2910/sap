@@ -31,4 +31,13 @@ class IncomingCashController extends Controller
     function index() {
         return view('incoming_cash/index', ['incoming_cash' => incoming_cash::with(['banks','customers'])->get()]);
     }
+    public function report() {
+        return view('incoming_cash/report');
+    }
+    public function report_show(Request $request) {
+        $start_date=$request->start_date;
+        $end_date=$request->end_date;
+        $incoming_cash = incoming_cash::whereBetween('tgl_incoming_cash', [$start_date, $end_date])->get();
+        return view('incoming_cash/report_show',compact('incoming_cash','start_date','end_date'));
+    }
 }
