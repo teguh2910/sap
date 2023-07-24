@@ -199,3 +199,11 @@ Route::post('out_cash/report', 'OutCashController@report_show');
 
 //gr update by detail po
 Route::post('detail_po_gr/update','GrController@update_gr');
+
+//crud sop
+Route::get('/sop', 'SopController@index');
+Route::get('/sop/create', 'SopController@create');
+Route::post('/sop/create', 'SopController@store');
+Route::get('/sop/edit/{id}', 'SopController@edit');
+Route::post('/sop/edit/{id}', 'SopController@update');
+Route::get('/sop/delete/{id}', 'SopController@delete');
