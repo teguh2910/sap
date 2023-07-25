@@ -168,6 +168,9 @@ Route::get('/sjg1/delete/{id}', 'SjG1Controller@delete');
 //dashboard
 Route::get('/stok_all', 'DashboardController@stok');
 Route::get('/po_all', 'DashboardController@po');
+Route::get('/hutang', 'DashboardController@hutang');
+Route::get('/piutang', 'DashboardController@piutang');
+Route::get('/pnl', 'DashboardController@pnl');
 
 //crud cash
 Route::get('/cashflow', 'CashflowController@index');

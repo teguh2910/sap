@@ -19,8 +19,27 @@ class DashboardController extends Controller
                           ->get();
         return view('dashboard/stok',compact(['gudang_satu','gudang_dua']));
     }
-    function po() {
+    public function po() {
         $grs=gr::all();
         return view('dashboard/po',compact(['grs']));
+    }
+    public function hutang() {
+        $pos=detail_po::all();
+        // Group the purchase orders by 'id_po' and calculate the sum of the amount (qty_po * harga_po) for each group
+        $po_by_id = $pos->groupBy('id_po')->map(function ($group) {
+            return $group->sum(function ($item) {
+                return $item->qty_po * $item->harga_po;
+            });           
+        });
+        // Load the 'outCashes' relationship for the collection of DetailPo
+        $pos->load('out_cashs');
+        //dd($po_by_id);
+        return view('dashboard/hutang',compact(['po_by_id','pos']));
+    }
+    public function piutang() {
+        return view('dashboard/piutang');
+    }
+    public function pnl() {
+        return view('dashboard/pnl');
     }
 }

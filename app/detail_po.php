@@ -17,4 +17,7 @@ class detail_po extends Model
     public function grs() {
         return $this->hasMany('App\gr','id_detail_po','id_detail_po');
     }
+    public function out_cashs() {
+        return $this->hasMany('App\out_cash', 'id_po', 'id_po');
+    }
 }

@@ -13,4 +13,5 @@ class po extends Model
     public function vendors() {
         return $this->hasMany('App\vendor', 'id_vendor', 'id_vendor');
     }
+    
 }

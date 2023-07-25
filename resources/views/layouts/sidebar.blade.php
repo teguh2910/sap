@@ -27,6 +27,24 @@
                 </a>
               </li> 
               <li class="nav-item">
+                <a href="{{asset('/pnl')}}" class="nav-link">
+                  <i class="nav-icon"></i>
+                  <p>PnL</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{asset('/hutang')}}" class="nav-link">
+                  <i class="nav-icon"></i>
+                  <p>Hutang</p>
+                </a>
+              </li> 
+              <li class="nav-item">
+                <a href="{{asset('/piutang')}}" class="nav-link">
+                  <i class="nav-icon"></i>
+                  <p>Piutang</p>
+                </a>
+              </li> 
+              <li class="nav-item">
                 <a href="{{asset('/out_cash')}}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>Payment</p>
