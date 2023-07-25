@@ -207,3 +207,19 @@ Route::post('/sop/create', 'SopController@store');
 Route::get('/sop/edit/{id}', 'SopController@edit');
 Route::post('/sop/edit/{id}', 'SopController@update');
 Route::get('/sop/delete/{id}', 'SopController@delete');
+
+//crud sto g2
+Route::get('/stog2', 'StoController@index');
+Route::get('/stog2/create', 'StoController@create');
+Route::post('/stog2/create', 'StoController@store');
+Route::get('/stog2/edit/{id}', 'StoController@edit');
+Route::post('/stog2/edit/{id}', 'StoController@update');
+Route::get('/stog2/delete/{id}', 'StoController@delete');
+
+//crud sto g1
+Route::get('/stog1', 'Stog1Controller@index');
+Route::get('/stog1/create', 'Stog1Controller@create');
+Route::post('/stog1/create', 'Stog1Controller@store');
+Route::get('/stog1/edit/{id}', 'Stog1Controller@edit');
+Route::post('/stog1/edit/{id}', 'Stog1Controller@update');
+Route::get('/stog1/delete/{id}', 'Stog1Controller@delete');

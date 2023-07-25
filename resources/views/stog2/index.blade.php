@@ -14,21 +14,20 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">List Stok Gudang Satu</h1>
+            <h1 class="m-0">List Stok Gudang Dua</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">List Stok Gudang Satu</li>
+              <li class="breadcrumb-item active">List Stok Gudang Dua</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
-        <a href="{{ asset('gudangsatu/create') }}" class="btn btn-sm btn-success">Upload Beginning Stok</a>
-        <a href="{{ asset('gr/create') }}" class="btn btn-sm btn-warning">Create Qty Good Receipt Gudang Satu</a>
-        <a href="{{ asset('usageg1/create') }}" class="btn btn-sm btn-primary">input penggunaan RM Gudang Satu</a>
-        <a href="{{ asset('prodg1/create') }}" class="btn btn-sm btn-primary">Input hasil FG Gudang Satu</a>
-        <a href="{{ asset('sjg1/create') }}" class="btn btn-sm btn-info">Create Qty Surat Jalan Gudang Satu</a>     
-        <a href="{{ asset('stog1/create') }}" class="btn btn-sm btn-danger">Create Qty STO</a>      
+        <a href="{{ asset('gudangdua/create') }}" class="btn btn-sm btn-success">Upload Beginning Stok</a>
+        <a href="{{ asset('gr/create') }}" class="btn btn-sm btn-warning">Create Qty Good Receipt Gudang Dua</a>
+        <a href="{{ asset('usageg2/create') }}" class="btn btn-sm btn-primary">input penggunaan RM Gudang Dua</a>
+        <a href="{{ asset('prodg2/create') }}" class="btn btn-sm btn-primary">Input hasil FG Gudang Dua</a>
+        <a href="{{ asset('sjg2/create') }}" class="btn btn-sm btn-info">Create Qty Surat Jalan Gudang Dua</a>        
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -55,13 +54,13 @@
                     <th>ending_balance</th>
                     <th>STO</th>
                     <th>ending_after_sto</th>
-                    {{-- <th>action</th> --}}
+                    {{-- <th>action</th>                     --}}
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach($gudang_satus as $g)
+                  @foreach($gudang_duas as $g)
                   <tr>
-                  <td>{{ $g->id_gudang_satu }}</td>
+                  <td>{{ $g->id_gudang_dua }}</td>
                   <td>{{ $g->category_part }}</td>                  
                   <td>{{ $g->part_no }}</td>
                   <td>{{ $g->part_name }}</td>
@@ -69,18 +68,8 @@
                   <td>{{ $g->incoming_balance }}</td>
                   <td>{{ $g->usage_balance }}</td>
                   <td>{{ $g->beginning_balance+$g->incoming_balance-$g->usage_balance }}</td>
-                  <!-- Check if there are associated STOs (stock transfer orders) -->
-                  @if($g->stos->count() > 0)
-                  @php
-                    $s = $g->stos->last();
-                  @endphp                      
-                  <td>{{ $s->qty_sto }}</td>
-                  <td>{{ $g->beginning_balance + $g->incoming_balance - $g->usage_balance - $s->qty_sto }}</td>                              
-                  @else
-                      <!-- If there are no STOs, display 0 in the corresponding columns -->
-                      <td>0</td>
-                      <td>{{ $g->beginning_balance + $g->incoming_balance - $g->usage_balance }}</td>
-                  @endif
+                  <td>STO Qty</td>
+                  <td>{{ $g->beginning_balance+$g->incoming_balance-$g->usage_balance }}</td>
                   {{-- <td>
                     <a href="{{ asset('stok/edit/'.$g->id_stok) }}" class="btn btn-xs btn-primary">Edit</a>
                     <a href="{{ asset('stok/delete/'.$g->id_stok) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-xs btn-danger">Delete</a>

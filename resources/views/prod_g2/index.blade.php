@@ -50,7 +50,7 @@
                     <th>beginning_balance</th>
                     <th>incoming_balance</th>
                     <th>usage_balance</th>
-                    <th>ending_balance</th>
+                    <th>ending_balance</th>                    
                     <th>action</th>                    
                   </tr>
                   </thead>
@@ -64,7 +64,7 @@
                   <td>{{ $stok->beginning_balance }}</td>
                   <td>{{ $stok->incoming_balance }}</td>
                   <td>{{ $stok->usage_balance }}</td>
-                  <td>{{ $stok->ending_balance }}</td>
+                  <td>{{ $stok->ending_balance }}</td>                  
                   <td>
                     <a href="{{ asset('stok/edit/'.$stok->id_stok) }}" class="btn btn-xs btn-primary">Edit</a>
                     <a href="{{ asset('stok/delete/'.$stok->id_stok) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-xs btn-danger">Delete</a>
