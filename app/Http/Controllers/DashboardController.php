@@ -10,10 +10,11 @@ class DashboardController extends Controller
     {
         $this->middleware('auth');
     }
-    public function stok() {
+    public function stok(Request $request) {
         $gudang_satu = gudang_satu::select('category_part', \DB::raw('sum(beginning_balance) as total_beginning_balance,sum(usage_balance) as total_usage_balance,sum(incoming_balance) as total_incoming_balance'))
-                          ->groupBy('category_part')
-                          ->get();
+                            
+                            ->groupBy('category_part')
+                            ->get();
         $gudang_dua = gudang_dua::select('category_part', \DB::raw('sum(beginning_balance) as total_beginning_balance,sum(usage_balance) as total_usage_balance,sum(incoming_balance) as total_incoming_balance'))
                           ->groupBy('category_part')
                           ->get();
@@ -41,5 +42,8 @@ class DashboardController extends Controller
     }
     public function pnl() {
         return view('dashboard/pnl');
+    }
+    public function filter_stok() {
+        return view('dashboard/filter_stok');
     }
 }
