@@ -111,7 +111,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{asset('/filter_stok_all')}}" class="nav-link">
+                <a href="{{asset('/stok_all')}}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>Dashboard</p>
                 </a>
