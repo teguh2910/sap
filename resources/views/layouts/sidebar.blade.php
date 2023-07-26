@@ -81,6 +81,12 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
+                <a href="{{asset('/po_customer')}}" class="nav-link">
+                  <i class="nav-icon"></i>
+                  <p>PO Customer</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="{{asset('/po')}}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>Data</p>

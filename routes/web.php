@@ -226,3 +226,11 @@ Route::post('/stog1/create', 'Stog1Controller@store');
 Route::get('/stog1/edit/{id}', 'Stog1Controller@edit');
 Route::post('/stog1/edit/{id}', 'Stog1Controller@update');
 Route::get('/stog1/delete/{id}', 'Stog1Controller@delete');
+
+//crud po customer
+Route::get('/po_customer', 'PoCustomerController@index');
+Route::get('/po_customer/create', 'PoCustomerController@create');
+Route::post('/po_customer/create', 'PoCustomerController@store');
+Route::get('/po_customer/edit/{id}', 'PoCustomerController@edit');
+Route::post('/po_customer/edit/{id}', 'PoCustomerController@update');
+Route::get('/po_customer/delete/{id}', 'PoCustomerController@delete');
