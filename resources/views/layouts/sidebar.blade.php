@@ -89,13 +89,13 @@
               <li class="nav-item">
                 <a href="{{asset('/po')}}" class="nav-link">
                   <i class="nav-icon"></i>
-                  <p>Data</p>
+                  <p>PO Supplier</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{asset('/po_all')}}" class="nav-link">
                   <i class="nav-icon"></i>
-                  <p>Summary</p>
+                  <p>Report PO Supplier</p>
                 </a>
               </li>                            
             </ul>
