@@ -167,6 +167,7 @@ Route::get('/sjg1/delete/{id}', 'SjG1Controller@delete');
 
 //dashboard
 Route::get('/filter_stok_all', 'DashboardController@filter_stok');
+Route::post('/filter_stok_all', 'DashboardController@show_filter_stok');
 Route::get('/stok_all', 'DashboardController@stok');
 Route::get('/po_all', 'DashboardController@po');
 Route::get('/hutang', 'DashboardController@hutang');

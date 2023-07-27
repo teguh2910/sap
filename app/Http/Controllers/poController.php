@@ -58,7 +58,7 @@ class poController extends Controller
     }
     public function cetak($id) {        
         $po=po::with('vendors')->find($id);
-        $detail_pos=detail_po::with('stoks')->where('id_po',$id)->get();
+        $detail_pos=detail_po::where('id_po',$id)->get();
         Excel::load('template_po.xls', function($excel) use ($po,$detail_pos) {            
             $excel->sheet('DRAFT', function($sheet) use ($po,$detail_pos) {                
                 // Sheet manipulation
@@ -76,8 +76,8 @@ class poController extends Controller
                     $sheet->setCellValue('B'.$i, $d->id_detail_po);
                     $sheet->setCellValue('C'.$i, $d->uom);
                     $sheet->setCellValue('D'.$i, $d->qty_po);
-                    foreach($d->stoks as $s){
-                    $sheet->setCellValue('E'.$i, $s->part_name);
+                    foreach($d->materials as $m){
+                    $sheet->setCellValue('E'.$i, $m->nama_material);
                     }
                     $sheet->setCellValue('I'.$i, $d->harga_po);
                     $i++;

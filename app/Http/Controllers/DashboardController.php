@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\gudang_satu, App\gudang_dua, App\po, App\detail_po, App\gr;
+use App\gudang_satu, App\gudang_dua, App\po, App\detail_po, App\gr, App\prod_g2, App\usage_g2, App\sj;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -46,4 +46,15 @@ class DashboardController extends Controller
     public function filter_stok() {
         return view('dashboard/filter_stok');
     }
+    public function show_filter_stok(Request $request) {
+        //filter table gr by nonth and year group by id_po and sum qty_gr
+        $gr=gr::whereMonth('tgl_gr',$request->bulan)->whereYear('tgl_gr',$request->tahun)->get();
+        $prod_g2=prod_g2::whereMonth('tgl_prod_g2',$request->bulan)->whereYear('tgl_prod_g2',$request->tahun)->get();
+        $usage_g2=usage_g2::whereMonth('tgl_usage_g2',$request->bulan)->whereYear('tgl_usage_g2',$request->tahun)->get();
+        $sj=sj::whereMonth('tgl_sj',$request->bulan)->whereYear('tgl_sj',$request->tahun)->get();        
+
+        dd($gr);
+        
+    }
+
 }

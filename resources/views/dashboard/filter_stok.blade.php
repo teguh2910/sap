@@ -39,7 +39,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{asset('stok_all')}}" enctype="multipart/form-data" method="POST">
+              <form action="{{asset('filter_stok_all')}}" enctype="multipart/form-data" method="POST">
               {{ csrf_field() }}
               <div class="card-body">
                 <div class="form-group">
