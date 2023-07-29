@@ -22,10 +22,10 @@ class DetailProdG2Controller extends Controller
         }
         return view('detail_prod_g2/index',compact('detail_prod_g2'));
     }
-    public function update_detail_prod_g2()
+    public function update_detail_prod_g2(Request $request)
     {
         if($request->ajax()){
-            gr::find($request->input('pk'))->update([$request->input('name') => $request->input('value')]);
+            detail_prod_g2::find($request->input('pk'))->update([$request->input('name') => $request->input('value')]);
             return response()->json(['success' => true]);
         }
     }

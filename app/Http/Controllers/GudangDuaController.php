@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\gudang_dua, Excel;
+use App\gudang_dua, Excel, App\detail_prod_g2;
 use Illuminate\Http\Request;
 
 class GudangDuaController extends Controller
@@ -11,7 +11,7 @@ class GudangDuaController extends Controller
         $this->middleware('auth');
     }
     public function index() {
-        $gudang_duas = gudang_dua::all();
+        $gudang_duas = gudang_dua::all();                
         return view('gudang_dua/index',compact('gudang_duas'));
     }
     public function create() {

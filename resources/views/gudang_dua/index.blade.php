@@ -26,7 +26,7 @@
         <a href="{{ asset('gudangdua/create') }}" class="btn btn-sm btn-success">Upload Beginning Stok</a>
         <a href="{{ asset('gr/create') }}" class="btn btn-sm btn-warning">Create Qty Good Receipt Gudang Dua</a>
         {{-- <a href="{{ asset('usageg2/create') }}" class="btn btn-sm btn-primary">input penggunaan RM Gudang Dua</a> --}}
-        <a href="{{ asset('prodg2/create') }}" class="btn btn-sm btn-primary">Input hasil Produksi Gudang Dua</a>
+        <a href="{{ asset('prodg2/') }}" class="btn btn-sm btn-primary">Input hasil Produksi Gudang Dua</a>
         <a href="{{ asset('sjg2/create') }}" class="btn btn-sm btn-info">Create Qty Surat Jalan Gudang Dua</a>
         <a href="{{ asset('stog2/create') }}" class="btn btn-sm btn-danger">Create Qty STO</a>        
       </div><!-- /.container-fluid -->
@@ -66,8 +66,20 @@
                           <td>{{ $g->part_no }}</td>
                           <td>{{ $g->part_name }}</td>
                           <td>{{ $g->beginning_balance }}</td>
+                          @if($g->category_part=="FG")
+                          @foreach($g->incoming as $i)
+                          <td>{{ $i->total_qty_prod_g2 }}</td>
+                          @endforeach
+                          @else
                           <td>{{ $g->incoming_balance }}</td>
-                          <td>{{ $g->usage_balance }}</td>
+                          @endif
+                          @if($g->category_part=="RM")
+                          @foreach($g->incoming as $i)
+                          <td>{{ $i->total_qty_prod_g2 }}</td>
+                          @endforeach
+                          @else
+                          <td><td>{{ $g->usage_balance }}</td></td>
+                          @endif
                           <td>{{ $g->beginning_balance + $g->incoming_balance - $g->usage_balance }}</td>              
                           <!-- Check if there are associated STOs (stock transfer orders) -->
                           @if($g->stos->count() > 0)

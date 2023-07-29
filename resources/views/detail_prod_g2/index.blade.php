@@ -24,6 +24,7 @@
           </div><!-- /.col -->
         </div><!-- /.row --> 
         <a href="" class="btn btn-sm btn-primary">Input hasil Produksi Gudang Dua</a>
+        <a href="" class="btn btn-sm btn-success">Cetak</a>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -61,14 +62,14 @@
                           <td>
                             <a href="#" class="detail_prod_g2" 
                                data-pk="{{$d->id_detail_prod_g2}}"
-                               data-name="harga_gr">
+                               data-name="qty_prod_g2">
                                {{$d->qty_prod_g2}}</a>
                           </td>
                           <td>
                             <a href="#" class="detail_prod_g2" 
                                data-pk="{{$d->id_detail_prod_g2}}"
-                               data-name="harga_gr">
-                               {{$d->harga_prod_g2}}</a>
+                               data-name="price_g2">
+                               {{$d->price_g2}}</a>
                           </td>      
                           <td>
                               <a href="{{ asset('detailprodg2/edit/'.$d->id_stok) }}" class="btn btn-xs btn-primary">Edit</a>

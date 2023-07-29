@@ -14,7 +14,7 @@ class CreateDetailProdG2sTable extends Migration
     public function up()
     {
         Schema::create('detail_prod_g2s', function (Blueprint $table) {
-            $table->increments('id_detail_prod_g2s');
+            $table->increments('id_detail_prod_g2');
             $table->integer('id_prod_g2');
             $table->integer('id_gudang_dua');
             $table->integer('price_g2')->nullable();
