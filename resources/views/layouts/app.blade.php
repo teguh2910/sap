@@ -88,6 +88,13 @@
                     console.log('Updated', response)
                 }
             });
+            $('.detail_prod_g2').editable({
+                url: '{{url("detailprodg2/update")}}',
+                title: 'Update',
+                success: function (response, newValue) {
+                    console.log('Updated', response)
+                }
+            });
 
     })
 </script>

@@ -19,20 +19,11 @@ class PoCustomerController extends Controller
         $customers= customer::all();
         return view('po_customer/create',compact('produks','customers'));
     }
-    public function store(Request $request){
-        $this->validate($request,[
-            'no_po_customer' => 'required',
-            'id_customer' => 'required',
-            'id_produk' => 'required',
-            'qty_po_customer' => 'required',
-            'harga_po_customer' => 'required',
-        ]);
+    public function store(Request $request){        
         $po_customer = new po_customer;
         $po_customer->no_po_customer = $request->no_po_customer;
         $po_customer->id_customer = $request->id_customer;
-        $po_customer->id_produk = $request->id_produk;
-        $po_customer->qty_po_customer = $request->qty_po_customer;
-        $po_customer->harga_po_customer = $request->harga_po_customer;
+        $po_customer->tgl_po_customer = $request->tgl_po_customer;
         $po_customer->save();
         return redirect('/po_customer');
     }

@@ -23,7 +23,7 @@
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row --> 
-        <a href="{{ asset('prodg2/create') }}" class="btn btn-sm btn-primary">Input hasil Produksi Gudang Dua</a>
+        <a href="" class="btn btn-sm btn-primary">Input hasil Produksi Gudang Dua</a>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -40,29 +40,39 @@
                 <table id="example1" class="table table-bordered table-striped" style="width:100%">
                   <thead>
                       <tr>
-                          <th>no_po_customer</th>
-                          <th>Type</th>
-                          <th>Detail</th>
-                          <th>Lot Produksi</th>
-                          <th>Tgl_produksi</th>
+                          <th>id_prod_g2</th>
+                          <th>Kategori</th>
+                          <th>part number</th>
+                          <th>part name</th>
+                          <th>qty</th>
+                          <th>price</th>
                           <th>action</th>
                       </tr>
                   </thead>
                   <tbody>
-                      @foreach($prod_g2 as $p)
+                      @foreach($detail_prod_g2 as $d)
                       <tr>
-                          @foreach($p->po_customers as $po)
-                          <td>{{ $po->no_po_customer }}</td>
+                          <td>{{ $d->id_prod_g2 }}</td>
+                          @foreach($d->gudang_duas as $g)
+                          <td>{{ $g->category_part }}</td>
+                          <td>{{ $g->part_no }}</td>
+                          <td>{{ $g->part_name }}</td>
                           @endforeach
-                          @foreach($p->part_customers as $pc)
-                          <td>{{ $pc->part_name }}</td>
-                          @endforeach
-                          <td><a href="{{ asset('detailprodg2/'.$p->id_prod_g2) }}" class="btn btn-xs btn-primary">View</a></td>
-                          <td>{{ $p->lot_prod_g2 }}</td>
-                          <td>{{ $p->tgl_prod_g2 }}</td>      
                           <td>
-                              <a href="{{ asset('stok/edit/'.$p->id_stok) }}" class="btn btn-xs btn-primary">Edit</a>
-                              <a href="{{ asset('stok/delete/'.$p->id_stok) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-xs btn-danger">Delete</a>
+                            <a href="#" class="detail_prod_g2" 
+                               data-pk="{{$d->id_detail_prod_g2}}"
+                               data-name="harga_gr">
+                               {{$d->qty_prod_g2}}</a>
+                          </td>
+                          <td>
+                            <a href="#" class="detail_prod_g2" 
+                               data-pk="{{$d->id_detail_prod_g2}}"
+                               data-name="harga_gr">
+                               {{$d->harga_prod_g2}}</a>
+                          </td>      
+                          <td>
+                              <a href="{{ asset('detailprodg2/edit/'.$d->id_stok) }}" class="btn btn-xs btn-primary">Edit</a>
+                              <a href="{{ asset('detailprodg2/delete/'.$d->id_stok) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-xs btn-danger">Delete</a>
                           </td>
                       </tr>
                       @endforeach

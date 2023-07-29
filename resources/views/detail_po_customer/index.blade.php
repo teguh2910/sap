@@ -14,16 +14,16 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">List PO Customer</h1>
+            <h1 class="m-0">List detailpo</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">List PO Customer</li>
+              <li class="breadcrumb-item active">List detailpo</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
-        <a href="{{ asset('po_customer/create')}}" class="btn btn-sm btn-success">Create</a>
+        <a href="{{ asset('detailpocustomer/create/'.$id) }}" class="btn btn-sm btn-success">Create</a>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -37,34 +37,41 @@
           <div class="card">
               <!-- /.card-header -->
               <div class="card-body">                
-                <table id="example1" class="table table-bordered table-striped" style="width:100%">
+                <table id="example1" class="table table-bordered table-striped" style="width: 100%">
                   <thead>
                   <tr>
                     <th>no_po</th>
-                    <th>customer</th>
-                    <th>Detail</th>
-                    <th>tgl_po</th>
+                    <th>kode_barang</th>
+                    <th>nama_barangg</th>
+                    <th>Qty_Po</th>
+                    <th>Uom</th>
+                    <th>Harga_po</th>
                     <th>action</th>                    
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach($po_customer as $po)
+                  @foreach($detailpos as $d)
                   <tr>
-                  <td>{{ $po->no_po_customer }}</td>
-                  @foreach($po->customers as $c)
-                  <td>{{ $c->nama_customer }}</td>
-                  @endforeach
-                  <td><a href="{{ asset('detailpocustomer/'.$po->id_po_customer) }}" class="btn btn-xs btn-primary">View</a></td>
-                  <td>{{ $po->tgl_po_customer }}</td>
+                    @foreach($d->po_customers as $p)
+                  <td>{{ $p->no_po_customer }}</td>
+                    @endforeach
+                    @foreach($d->part_customers as $p)
+                  <td>{{ $p->part_number }}</td>
+                  <td>{{ $p->part_name }}</td>
+                    @endforeach
+                  <td>{{ $d->qty_po_customer }}</td>                                    
+                  <td>{{ $d->uom }}</td>
+                  <td>{{ $d->harga_po_customer }}</td>
                   <td>
-                    <a href="{{ asset('po_customer/edit/'.$po->id_po_customer) }}" class="btn btn-xs btn-primary">Edit</a>
-                    <a href="{{ asset('po_customer/delete/'.$po->id_po_customer) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-xs btn-danger">Delete</a>
+                    <a href="{{ asset('detailpocustomer/edit/'.$d->id_detailpo) }}" class="btn btn-sm btn-primary">Edit</a>
+                    <a href="{{ asset('detailpocustomer/delete/'.$d->id_detailpo) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-sm btn-danger">Delete</a>
                   </td>
                   </tr>
                   @endforeach
                   </tbody>                  
                 </table>
               </div>
+              
               <!-- /.card-body -->
             </div>
             </div>

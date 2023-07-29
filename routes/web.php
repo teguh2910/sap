@@ -17,14 +17,14 @@ Route::get('/customer/edit/{id}', 'customerController@edit');
 Route::post('/customer/edit/{id}', 'customerController@update');
 Route::get('/customer/delete/{id}', 'customerController@delete');
 
-//crud po
-Route::get('/po', 'poController@index');
-Route::get('/po/create', 'poController@create');
-Route::post('/po/create', 'poController@store');
-Route::get('/po/edit/{id}', 'poController@edit');
-Route::post('/po/edit/{id}', 'poController@update');
-Route::get('/po/delete/{id}', 'poController@delete');
-Route::get('/po/cetak/{id}', 'poController@cetak');
+//crud po supplier
+Route::get('/po', 'PoSupplierController@index');
+Route::get('/po/create', 'PoSupplierController@create');
+Route::post('/po/create', 'PoSupplierController@store');
+Route::get('/po/edit/{id}', 'PoSupplierController@edit');
+Route::post('/po/edit/{id}', 'PoSupplierController@update');
+Route::get('/po/delete/{id}', 'PoSupplierController@delete');
+Route::get('/po/cetak/{id}', 'PoSupplierController@cetak');
 
 //crud truk
 Route::get('/truk', 'trukController@index');
@@ -90,13 +90,21 @@ Route::get('/additive/edit/{id}', 'AdditiveController@edit');
 Route::post('/additive/edit/{id}', 'AdditiveController@update');
 Route::get('/additive/delete/{id}', 'AdditiveController@delete');
 
-//crud detailPO
-Route::get('/detailpo/{id}', 'detailpoController@index');
-Route::get('/detailpo/create/{id}', 'detailpoController@create');
-Route::post('/detailpo/create/{id}', 'detailpoController@store');
-Route::get('/detailpo/edit/{id}', 'detailpoController@edit');
-Route::post('/detailpo/edit/{id}', 'detailpoController@update');
-Route::get('/detailpo/delete/{id}', 'detailpoController@delete');
+//crud detailPO Supplier
+Route::get('/detailpo/{id}', 'DetailPoSupplierController@index');
+Route::get('/detailpo/create/{id}', 'DetailPoSupplierController@create');
+Route::post('/detailpo/create/{id}', 'DetailPoSupplierController@store');
+Route::get('/detailpo/edit/{id}', 'DetailPoSupplierController@edit');
+Route::post('/detailpo/edit/{id}', 'DetailPoSupplierController@update');
+Route::get('/detailpo/delete/{id}', 'DetailPoSupplierController@delete');
+
+//crud detailPO customer
+Route::get('/detailpocustomer/{id}', 'DetailPoCustomerController@index');
+Route::get('/detailpocustomer/create/{id}', 'DetailPoCustomerController@create');
+Route::post('/detailpocustomer/create/{id}', 'DetailPoCustomerController@store');
+Route::get('/detailpocustomer/edit/{id}', 'DetailPoCustomerController@edit');
+Route::post('/detailpocustomer/edit/{id}', 'DetailPoCustomerController@update');
+Route::get('/detailpocustomer/delete/{id}', 'DetailPoCustomerController@delete');
 
 //crud gudang_satu
 Route::get('/gudangsatu', 'GudangSatuController@index');
@@ -202,8 +210,9 @@ Route::get('out_cash/delete/{id}', 'OutCashController@delete');
 Route::get('out_cash/report', 'OutCashController@report');
 Route::post('out_cash/report', 'OutCashController@report_show');
 
-//gr update by detail po
+//update by x-editable
 Route::post('detail_po_gr/update','GrController@update_gr');
+Route::post('detailprodg2/update','DetailProdG2Controller@update_detail_prod_g2');
 
 //crud sop
 Route::get('/sop', 'SopController@index');
@@ -236,3 +245,11 @@ Route::post('/po_customer/create', 'PoCustomerController@store');
 Route::get('/po_customer/edit/{id}', 'PoCustomerController@edit');
 Route::post('/po_customer/edit/{id}', 'PoCustomerController@update');
 Route::get('/po_customer/delete/{id}', 'PoCustomerController@delete');
+
+//crud detail prod gudang dua
+Route::get('/detailprodg2/{id}', 'DetailProdG2Controller@index');
+Route::get('/detailprodg2/create/{id}', 'DetailProdG2Controller@create');
+Route::post('/detailprodg2/create/{id}', 'DetailProdG2Controller@store');
+Route::get('/detailprodg2/edit/{id}', 'DetailProdG2Controller@edit');
+Route::post('/detailprodg2/edit/{id}', 'DetailProdG2Controller@update');
+Route::get('/detailprodg2/delete/{id}', 'DetailProdG2Controller@delete');

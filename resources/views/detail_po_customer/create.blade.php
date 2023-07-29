@@ -14,12 +14,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Create Data PO Customer</h1>            
+            <h1 class="m-0">Create Data detail Nomor {{ $no_po_customer }}</h1>            
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Create Data PO Customer</li>
+              <li class="breadcrumb-item active">Create Data detail PO </li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -35,29 +35,40 @@
           <div class="col-md-12">
           <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Form Create Data PO Customer</h3>
+                <h3 class="card-title">Form Create Data detail Nomor {{ $no_po_customer }}</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{asset('po_customer/create')}}" method="POST">
+              <form action="{{asset('detailpocustomer/create/'.$id)}}" method="POST">
               {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
-                    <label>Customer</label>
-                    <select name="id_customer" class="form-control">
-                        @foreach($customers as $c)
-                        <option value="{{ $c->id_customer }}">{{ $c->nama_customer }}</option>
-                        @endforeach
+                    <label>No PO</label>
+                    <input type="text" name="no_po_customer" value="{{ $no_po_customer }}" readonly class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>Material</label>
+                    <select name="id_part_customer" id="select2" class="form-control">
+                      @foreach($part_customer as $p)
+                      <option value="{{ $p->id_part_customer }}">{{ $p->part_name }}</option>
+                      @endforeach
                     </select>
                   </div>
                   <div class="form-group">
-                    <label>No PO</label>
-                    <input type="text" name="no_po_customer" class="form-control">
+                    <label>Qty PO</label>
+                    <input type="number" name="qty_po_customer" class="form-control">
                   </div>
                   <div class="form-group">
-                    <label>Tgl PO</label>
-                    <input type="date" name="tgl_po_customer" class="form-control">
-                  </div>                                    
+                    <label>Harga</label>
+                    <input type="integer" name="harga_po_customer" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>Uom</label>
+                    <select name="uom" class="form-control">
+                      <option value="kg">Kg</option>
+                      <option value="pcs">Pcs</option>
+                    </select>
+                  </div>                  
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">

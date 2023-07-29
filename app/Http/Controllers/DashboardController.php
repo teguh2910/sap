@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\gudang_satu, App\gudang_dua, App\po, App\detail_po, App\gr, App\prod_g2, App\usage_g2, App\sj, App\prod_g1, App\usage_g1, App\sj_g1;
+use App\gudang_satu, App\gudang_dua, App\po_supplier, App\detail_po_supplier, App\gr, App\prod_g2, App\usage_g2, App\sj, App\prod_g1, App\usage_g1, App\sj_g1;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -25,7 +25,7 @@ class DashboardController extends Controller
         return view('dashboard/po',compact(['grs']));
     }
     public function hutang() {
-        $pos=detail_po::all();
+        $pos=detail_po_supplier::all();
         // Group the purchase orders by 'id_po' and calculate the sum of the amount (qty_po * harga_po) for each group
         $po_by_id = $pos->groupBy('id_po')->map(function ($group) {
             return $group->sum(function ($item) {

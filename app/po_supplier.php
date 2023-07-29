@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class po extends Model
+class po_supplier extends Model
 {
     protected $primaryKey = 'id_po';
     public function detail_pos() {

@@ -1,22 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\po, App\vendor, App\bank, Excel, App\detail_po;
+use App\po_supplier, App\vendor, App\bank, Excel, App\detail_po;
 use Illuminate\Http\Request;
 
-class poController extends Controller
+class PoSupplierController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
     }
     public function index() {
-        $pos=po::with(['vendors'])->get();
-        return view('po/index', compact('pos'));
+        $pos=po_supplier::with(['vendors'])->get();
+        return view('po_supplier/index', compact('pos'));
     }
     public function create() {
         $vendor=vendor::all();
-        return view('po/create',compact('vendor'));
+        return view('po_supplier/create',compact('vendor'));
     }
     public function store(Request $request) {
         $po = new po;
@@ -33,12 +33,12 @@ class poController extends Controller
         return redirect('/po');
     }    
     public function edit($id) {
-        $po = po::with('vendors')->find($id);
+        $po = po_supplier::with('vendors')->find($id);
         $vendors=vendor::all();
-        return view('po/edit', compact(['po','vendors']));
+        return view('po_supplier/edit', compact(['po','vendors']));
     }
     public function update(Request $request, $id) {
-        $po = po::find($id);
+        $po = po_supplier::find($id);
         $po->id_vendor = $request->id_vendor;
         $po->tgl_po = $request->tgl_po;
         $po->top = $request->top;
@@ -52,13 +52,13 @@ class poController extends Controller
         return redirect('/po');
     }
     public function delete($id) {
-        $po = po::find($id);
+        $po = po_supplier::find($id);
         $po->delete();
         return redirect('/po');
     }
     public function cetak($id) {        
-        $po=po::with('vendors')->find($id);
-        $detail_pos=detail_po::where('id_po',$id)->get();
+        $po=po_supplier::with('vendors')->find($id);
+        $detail_pos=detail_po_supplier::where('id_po',$id)->get();
         Excel::load('template_po.xls', function($excel) use ($po,$detail_pos) {            
             $excel->sheet('DRAFT', function($sheet) use ($po,$detail_pos) {                
                 // Sheet manipulation
