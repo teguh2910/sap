@@ -157,6 +157,7 @@ Route::post('/prodg1/create', 'ProdG1Controller@store');
 Route::get('/prodg1/edit/{id}', 'ProdG1Controller@edit');
 Route::post('/prodg1/edit/{id}', 'ProdG1Controller@update');
 Route::get('/prodg1/delete/{id}', 'ProdG1Controller@delete');
+Route::get('/prodg1/cetak/{id}', 'ProdG1Controller@cetak');
 
 //crud usage_g1
 Route::get('/usageg1', 'UsageG1Controller@index');
@@ -214,6 +215,7 @@ Route::post('out_cash/report', 'OutCashController@report_show');
 //update by x-editable
 Route::post('detail_po_gr/update','GrController@update_gr');
 Route::post('detailprodg2/update','DetailProdG2Controller@update_detail_prod_g2');
+Route::post('detailprodg1/update','DetailProdG1Controller@update_detail_prod_g1');
 
 //crud sop
 Route::get('/sop', 'SopController@index');
@@ -254,3 +256,11 @@ Route::post('/detailprodg2/create/{id}', 'DetailProdG2Controller@store');
 Route::get('/detailprodg2/edit/{id}', 'DetailProdG2Controller@edit');
 Route::post('/detailprodg2/edit/{id}', 'DetailProdG2Controller@update');
 Route::get('/detailprodg2/delete/{id}', 'DetailProdG2Controller@delete');
+
+//crud detail prod gudang satu
+Route::get('/detailprodg1/{id}', 'DetailProdG1Controller@index');
+Route::get('/detailprodg1/create/{id}', 'DetailProdG1Controller@create');
+Route::post('/detailprodg1/create/{id}', 'DetailProdG1Controller@store');
+Route::get('/detailprodg1/edit/{id}', 'DetailProdG1Controller@edit');
+Route::post('/detailprodg1/edit/{id}', 'DetailProdG1Controller@update');
+Route::get('/detailprodg1/delete/{id}', 'DetailProdG1Controller@delete');

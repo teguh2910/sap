@@ -25,8 +25,8 @@
         </div><!-- /.row -->
         <a href="{{ asset('gudangsatu/create') }}" class="btn btn-sm btn-success">Upload Beginning Stok</a>
         <a href="{{ asset('gr/create') }}" class="btn btn-sm btn-warning">Create Qty Good Receipt Gudang Satu</a>
-        <a href="{{ asset('usageg1/create') }}" class="btn btn-sm btn-primary">input penggunaan RM Gudang Satu</a>
-        <a href="{{ asset('prodg1/create') }}" class="btn btn-sm btn-primary">Input hasil FG Gudang Satu</a>
+        {{-- <a href="{{ asset('usageg1/create') }}" class="btn btn-sm btn-primary">input penggunaan RM Gudang Satu</a> --}}
+        <a href="{{ asset('prodg1/') }}" class="btn btn-sm btn-primary">Input hasil Produksi Gudang Satu</a>
         <a href="{{ asset('sjg1/create') }}" class="btn btn-sm btn-info">Create Qty Surat Jalan Gudang Satu</a>     
         <a href="{{ asset('stog1/create') }}" class="btn btn-sm btn-danger">Create Qty STO</a>      
       </div><!-- /.container-fluid -->
