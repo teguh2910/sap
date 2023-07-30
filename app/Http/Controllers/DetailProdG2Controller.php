@@ -16,11 +16,12 @@ class DetailProdG2Controller extends Controller
                 $insert_data = new detail_prod_g2;
                 $insert_data->id_prod_g2 = $id;
                 $insert_data->id_gudang_dua = $gudang_dua->id_gudang_dua;
+                $insert_data->category_part = $gudang_dua->category_part;
                 $insert_data->save();
             }            
 
         }
-        return view('detail_prod_g2/index',compact('detail_prod_g2'));
+        return view('detail_prod_g2/index',compact('detail_prod_g2','id'));
     }
     public function update_detail_prod_g2(Request $request)
     {

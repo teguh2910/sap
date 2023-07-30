@@ -61,8 +61,9 @@
                           <td>{{ $p->lot_prod_g2 }}</td>
                           <td>{{ $p->tgl_prod_g2 }}</td>      
                           <td>
-                              <a href="{{ asset('stok/edit/'.$p->id_stok) }}" class="btn btn-xs btn-primary">Edit</a>
-                              <a href="{{ asset('stok/delete/'.$p->id_stok) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-xs btn-danger">Delete</a>
+                            <a href="{{ asset('prodg2/cetak/'.$p->id_prod_g2) }}" class="btn btn-xs btn-success">Cetak</a>
+                              <a href="{{ asset('prodg2/edit/'.$p->id_prod_g2) }}" class="btn btn-xs btn-primary">Edit</a>
+                              <a href="{{ asset('prodg2/delete/'.$p->id_prod_g2) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-xs btn-danger">Delete</a>
                           </td>
                       </tr>
                       @endforeach

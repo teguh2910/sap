@@ -24,7 +24,7 @@
           </div><!-- /.col -->
         </div><!-- /.row --> 
         <a href="" class="btn btn-sm btn-primary">Input hasil Produksi Gudang Dua</a>
-        <a href="" class="btn btn-sm btn-success">Cetak</a>
+        <a href="{{ asset('prodg2/cetak/'.$id) }}" class="btn btn-sm btn-success">Cetak</a>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->

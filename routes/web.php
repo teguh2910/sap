@@ -139,6 +139,7 @@ Route::post('/prodg2/create', 'ProdG2Controller@store');
 Route::get('/prodg2/edit/{id}', 'ProdG2Controller@edit');
 Route::post('/prodg2/edit/{id}', 'ProdG2Controller@update');
 Route::get('/prodg2/delete/{id}', 'ProdG2Controller@delete');
+Route::get('/prodg2/cetak/{id}', 'ProdG2Controller@cetak');
 
 //crud usage_g2
 Route::get('/usageg2', 'UsageG2Controller@index');
