@@ -11,6 +11,6 @@ class out_cash extends Model
         return $this->hasMany('App\bank','id_bank');
     }
     public function pos() {
-        return $this->hasMany('App\po','id_po');
+        return $this->hasMany('App\po_supplier','id_po');
     }
 }

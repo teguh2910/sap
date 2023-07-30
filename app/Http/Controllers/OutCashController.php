@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\out_cash, App\bank, App\vendor, App\cashflow, App\po;
+use App\out_cash, App\bank, App\vendor, App\cashflow, App\po_supplier;
 use Illuminate\Http\Request;
 
 class OutCashController extends Controller
@@ -13,7 +13,7 @@ class OutCashController extends Controller
     function create() {
         $banks = bank::all();
         $vendors = vendor::all();
-        $pos= po::all();
+        $pos= po_supplier::all();
         return view('out_cash/create',compact('banks','vendors','pos'));
     }
     function store(Request $request) {
