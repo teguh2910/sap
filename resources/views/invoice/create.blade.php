@@ -62,14 +62,7 @@
                       @endforeach
                     </select>
                   </div>
-                  <div class="form-group">
-                    <label>Customer</label>
-                    <select name="id_customer" class="form-control">
-                      @foreach($customer as $c)
-                      <option value="{{ $c->id_customer }}">{{ $c->nama_customer }}</option>
-                      @endforeach
-                    </select>
-                  </div>                                    
+                                                     
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">

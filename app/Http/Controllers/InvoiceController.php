@@ -21,7 +21,6 @@ class InvoiceController extends Controller
         $invoice->no_invoice = $request->no_invoice;
         $invoice->tgl_invoice = $request->tgl_invoice;
         $invoice->no_fp = $request->no_fp;
-        $invoice->id_customer = $request->id_customer;
         $invoice->id_po_customer = $request->id_po_customer;
         $invoice->save();
         return redirect('invoice');

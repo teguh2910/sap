@@ -18,7 +18,6 @@ class CreateInvoicesTable extends Migration
             $table->string('no_invoice');
             $table->date('tgl_invoice');
             $table->string('no_fp');
-            $table->integer('id_customer');
             $table->integer('id_po_customer');
             $table->timestamps();
         });
