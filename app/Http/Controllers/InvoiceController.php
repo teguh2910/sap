@@ -70,7 +70,7 @@ class InvoiceController extends Controller
                 $drawing->setWidthAndHeight(100, 100);
                 $drawing->setWorksheet($sheet);
             });
-        })->export('xls');
+        })->export('xlsx');
 
         // After exporting the Excel file, you can optionally delete the temporary QR code image file.
         unlink($qrCodeImagePath);
