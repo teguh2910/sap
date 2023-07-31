@@ -174,6 +174,7 @@ Route::post('/sjg1/create', 'SjG1Controller@store');
 Route::get('/sjg1/edit/{id}', 'SjG1Controller@edit');
 Route::post('/sjg1/edit/{id}', 'SjG1Controller@update');
 Route::get('/sjg1/delete/{id}', 'SjG1Controller@delete');
+Route::get('/sjg1/{id}', 'SjG1Controller@view');
 
 //dashboard
 Route::get('/filter_stok_all', 'DashboardController@filter_stok');

@@ -33,4 +33,8 @@ class SjG1Controller extends Controller
         $gudangdua->save();  
         return redirect('gudangsatu');
     }
+    public function view($id){
+        $sjg1=sj_g1::where('id_po_customer',$id)->get();        
+        return view('sj_g1/index',compact(['id','sjg1']));
+    }
 }

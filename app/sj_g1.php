@@ -13,4 +13,8 @@ class sj_g1 extends Model
     public function po_customers(){
         return $this->hasMany('App\detail_po_customer','id_po_customer','id_po_customer');
     }
+    public function truks(){
+        return $this->hasMany('App\truk','id_truk','id_truk');
+    }
+    
 }

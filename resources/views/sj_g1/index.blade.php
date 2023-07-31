@@ -23,10 +23,7 @@
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
-        <a href="{{ asset('stok/create') }}" class="btn btn-sm btn-success">Upload Beginning Stok</a>
-        <a href="{{ asset('prod/create') }}" class="btn btn-sm btn-primary">Create Qty Production</a>
-        <a href="{{ asset('sj/create') }}" class="btn btn-sm btn-info">Create Qty Surat Jalan</a>
-        <a href="{{ asset('gr/create') }}" class="btn btn-sm btn-warning">Create Qty Good Receipt</a>
+        <a href="{{ asset('sjg1/create') }}" class="btn btn-sm btn-info">Create Qty Surat Jalan Gudang Satu</a>    
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -40,34 +37,32 @@
           <div class="card">
               <!-- /.card-header -->
               <div class="card-body">                
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example1" class="table table-bordered table-striped" style="width:100%">
                   <thead>
                   <tr>
-                    <th>id_stok</th>
+                    <th>id_sj_g1</th>
                     <th>Category</th>
                     <th>Part No</th>
                     <th>Part Name</th>
-                    <th>beginning_balance</th>
-                    <th>incoming_balance</th>
-                    <th>usage_balance</th>
-                    <th>ending_balance</th>
+                    <th>qty_sj</th>
+                    <th>po customer</th>
+                    <th>truk</th>
                     <th>action</th>                    
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach($stoks as $stok)
+                  @foreach($sjg1 as $s)
                   <tr>
-                  <td>{{ $stok->id_stok }}</td>
-                  <td>{{ $stok->category_part }}</td>                  
-                  <td>{{ $stok->part_no }}</td>
-                  <td>{{ $stok->part_name }}</td>
-                  <td>{{ $stok->beginning_balance }}</td>
-                  <td>{{ $stok->incoming_balance }}</td>
-                  <td>{{ $stok->usage_balance }}</td>
-                  <td>{{ $stok->ending_balance }}</td>
+                  <td>{{ $s->id_sj_g1 }}</td>
+                  <td>{{ $s->gudang_satus->first()->category_part }}</td>                  
+                  <td>{{ $s->gudang_satus->first()->part_no }}</td>
+                  <td>{{ $s->gudang_satus->first()->part_number }}</td>
+                  <td>{{ $s->qty_sj_g1 }}</td>
+                  <td>{{ $s->po_customers->first()->id_po_customer }}</td>
+                  <td>{{ $s->truks->first()->plat_no }}</td>
                   <td>
-                    <a href="{{ asset('stok/edit/'.$stok->id_stok) }}" class="btn btn-xs btn-primary">Edit</a>
-                    <a href="{{ asset('stok/delete/'.$stok->id_stok) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-xs btn-danger">Delete</a>
+                    <a href="{{ asset('stok/edit/'.$s->id_sj_g1) }}" class="btn btn-xs btn-primary">Edit</a>
+                    <a href="{{ asset('stok/delete/'.$s->id_sj_g1) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-xs btn-danger">Delete</a>
                   </td>
                   </tr>
                   @endforeach
