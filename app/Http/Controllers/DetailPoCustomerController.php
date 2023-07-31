@@ -11,7 +11,7 @@ class DetailPoCustomerController extends Controller
         $this->middleware('auth');
     }
     public function index($id) {
-        $detailpos= detail_po_customer::all();
+        $detailpos= detail_po_customer::where('id_po_customer',$id)->get();
         return view('detail_po_customer/index',compact('id','detailpos'));
     }
     public function create($id) {

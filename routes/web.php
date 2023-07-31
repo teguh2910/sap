@@ -264,3 +264,13 @@ Route::post('/detailprodg1/create/{id}', 'DetailProdG1Controller@store');
 Route::get('/detailprodg1/edit/{id}', 'DetailProdG1Controller@edit');
 Route::post('/detailprodg1/edit/{id}', 'DetailProdG1Controller@update');
 Route::get('/detailprodg1/delete/{id}', 'DetailProdG1Controller@delete');
+
+
+//crud invoice
+Route::get('/invoice', 'InvoiceController@index');
+Route::get('/invoice/create', 'InvoiceController@create');
+Route::post('/invoice/create', 'InvoiceController@store');
+Route::get('/invoice/edit/{id}', 'InvoiceController@edit');
+Route::post('/invoice/edit/{id}', 'InvoiceController@update');
+Route::get('/invoice/delete/{id}', 'InvoiceController@delete');
+Route::get('/invoice/cetak/{id}', 'InvoiceController@cetak');

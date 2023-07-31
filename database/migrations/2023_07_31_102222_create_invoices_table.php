@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSjG1sTable extends Migration
+class CreateInvoicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateSjG1sTable extends Migration
      */
     public function up()
     {
-        Schema::create('sj_g1s', function (Blueprint $table) {
-            $table->increments('id_sj_g1');
-            $table->integer('id_gudang_satu');
-            $table->integer('qty_sj_g1');
-            $table->date('tgl_sj_g1');
-            $table->integer('id_truk');
+        Schema::create('invoices', function (Blueprint $table) {
+            $table->increments('id_invoice');
+            $table->string('no_invoice');
+            $table->date('tgl_invoice');
+            $table->string('no_fp');
+            $table->integer('id_customer');
             $table->integer('id_po_customer');
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ class CreateSjG1sTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sj_g1s');
+        Schema::dropIfExists('invoices');
     }
 }
