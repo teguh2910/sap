@@ -20,7 +20,7 @@ class ProdG2Controller extends Controller
         $prod_g2->lot_prod_g2 = $request->lot_prod_g2;
         $prod_g2->tgl_prod_g2 = $request->tgl_prod_g2;
         $prod_g2->id_po_customer = $request->id_po_customer;
-        $prod_g2->type = $request->type;
+        // $prod_g2->type = $request->type;
         $prod_g2->save();
         //update stok basemetal
         // $part_no_basemetal=basemetal::find($request->id_base_metal)->kode_base_metal;
@@ -28,7 +28,8 @@ class ProdG2Controller extends Controller
         // $gudangdua = gudang_dua::where('part_no',$part_no_basemetal)->first();
         // $gudangdua->incoming_balance = $total_basemetal;
         // $gudangdua->save();
-        return redirect('/prodg2');
+        $gudangdua= gudang_dua::where('category_part','RM')->get();
+        return view('/detail_prod_g2/create',compact(['prod_g2','gudangdua']));
     }
     public function index(){
         $prod_g2 = prod_g2::all();

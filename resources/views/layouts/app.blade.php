@@ -123,8 +123,13 @@
       width: 'resolve',
       theme: 'bootstrap4'
     });
+    $('.select2').select2({
+      width: 'resolve',
+      theme: 'bootstrap4'
+    });
   });
 </script>
+
 
 @section('js')
 @show

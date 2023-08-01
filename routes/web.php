@@ -253,7 +253,7 @@ Route::get('/po_customer/delete/{id}', 'PoCustomerController@delete');
 //crud detail prod gudang dua
 Route::get('/detailprodg2/{id}', 'DetailProdG2Controller@index');
 Route::get('/detailprodg2/create/{id}', 'DetailProdG2Controller@create');
-Route::post('/detailprodg2/create/{id}', 'DetailProdG2Controller@store');
+Route::post('/detailprodg2/create', 'DetailProdG2Controller@store');
 Route::get('/detailprodg2/edit/{id}', 'DetailProdG2Controller@edit');
 Route::post('/detailprodg2/edit/{id}', 'DetailProdG2Controller@update');
 Route::get('/detailprodg2/delete/{id}', 'DetailProdG2Controller@delete');
