@@ -13,4 +13,5 @@ class prod_g2 extends Model
     public function po_customers(){
         return $this->hasMany('App\po_customer','id_po_customer','id_po_customer');
     }
+    
 }

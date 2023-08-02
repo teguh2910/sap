@@ -261,7 +261,7 @@ Route::get('/detailprodg2/delete/{id}', 'DetailProdG2Controller@delete');
 //crud detail prod gudang satu
 Route::get('/detailprodg1/{id}', 'DetailProdG1Controller@index');
 Route::get('/detailprodg1/create/{id}', 'DetailProdG1Controller@create');
-Route::post('/detailprodg1/create/{id}', 'DetailProdG1Controller@store');
+Route::post('/detailprodg1/create', 'DetailProdG1Controller@store');
 Route::get('/detailprodg1/edit/{id}', 'DetailProdG1Controller@edit');
 Route::post('/detailprodg1/edit/{id}', 'DetailProdG1Controller@update');
 Route::get('/detailprodg1/delete/{id}', 'DetailProdG1Controller@delete');

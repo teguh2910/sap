@@ -44,11 +44,11 @@ class ProdG2Controller extends Controller
                 $sheet->setCellValue('B3', $prod_g2->lot_prod_g2);
                 $sheet->setCellValue('D3', $prod_g2->tgl_prod_g2);
                 $sheet->setCellValue('F3', $prod_g2->po_customers->first()->no_po_customer);
-                $sheet->setCellValue('H3', $prod_g2->part_customers->first()->part_name);
+                //$sheet->setCellValue('H3', $prod_g2->gudang_duas->first()->part_name);
                 $i=7;
                 $j=29;
                 foreach($detail_prod_g2 as $d){
-                    if($d->category_part=="RM" && $d->qty_prod_g2 != null){                    
+                    if($d->gudang_duas->first()->category_part=="RM" && $d->qty_prod_g2 != null){                    
                     foreach($d->gudang_duas as $g){
                         $sheet->setCellValue('B'.$i, $g->part_no);
                         $sheet->setCellValue('C'.$i, $g->part_name);
@@ -56,16 +56,17 @@ class ProdG2Controller extends Controller
                     $sheet->setCellValue('D'.$i, $d->price_g2);
                     $sheet->setCellValue('E'.$i, $d->qty_prod_g2);
                     $i++;
-                }elseif($d->category_part=="FG" && $d->qty_prod_g2 != null){
+                }elseif($d->gudang_duas->first()->category_part=="FG" && $d->qty_prod_g2 != null){
                     foreach($d->gudang_duas as $g){
                         $sheet->setCellValue('B'.$j, $g->part_no);
                         $sheet->setCellValue('C'.$j, $g->part_name);
                     }
                     $sheet->setCellValue('D'.$j, $d->price_g2);
                     $sheet->setCellValue('E'.$j, $d->qty_prod_g2);
+                    $j++;
                 }
                 }
             });
-        })->export('xls');
+        })->export('xlsx');
     }    
 }

@@ -50,6 +50,12 @@ class DetailProdG2Controller extends Controller
                 ]);
             }
         }
+        
+        $part_fg=gudang_dua::where('category_part','=','FG')->get();
+        if($request->submit_fg=='submit_fg'){
+            return redirect('/prodg2');
+        }
+        return view('detail_prod_g2/create_fg',compact('part_fg','id_prod_g2'));
     }
     
 }

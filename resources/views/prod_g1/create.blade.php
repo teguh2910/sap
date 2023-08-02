@@ -52,24 +52,17 @@
                   </div>
                   <div class="form-group">
                     <label>PO Customer</label>
-                    <select name="id_po_customer" id="select2" class="form-control">
+                    <select name="id_po_customer" class="form-control select2">
                       @foreach($po_customer as $p)
                       <option value="{{ $p->id_po_customer }}">{{ $p->no_po_customer }}</option>
                       @endforeach
                     </select>
                   </div>
-                  <div class="form-group">
-                    <label>Type</label>
-                    <select name="type" class="form-control">
-                      @foreach($part_customer as $p)
-                      <option value="{{ $p->id_part_customer }}">{{ $p->part_name }}</option>
-                      @endforeach
-                    </select>
-                  </div>                                    
+                                                      
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Create</button>
+                  <button type="submit" class="btn btn-primary">Next</button>
                 </div>
               </form>
             </div>

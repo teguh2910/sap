@@ -20,7 +20,7 @@ class ProdG1Controller extends Controller
         $prod_g1->lot_prod_g1 = $request->lot_prod_g1;
         $prod_g1->tgl_prod_g1 = $request->tgl_prod_g1;
         $prod_g1->id_po_customer = $request->id_po_customer;
-        $prod_g1->type = $request->type;
+        //$prod_g1->type = $request->type;
         $prod_g1->save();
         //update stok produk
         // $part_no_produk=produk::find($request->id_produk)->kode_produk;        
@@ -28,7 +28,8 @@ class ProdG1Controller extends Controller
         // $gudangsatu = gudang_satu::where('part_no',$part_no_produk)->first();
         // $gudangsatu->incoming_balance = $total_produk;
         // $gudangsatu->save();
-        return redirect('/prodg1');
+        $gudangsatu= gudang_satu::where('category_part','RM')->get();
+        return view('/detail_prod_g1/create',compact(['prod_g1','gudangsatu']));
     }
     public function index(){
         $prod_g1 = prod_g1::all();

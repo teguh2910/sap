@@ -41,7 +41,6 @@
                   <thead>
                       <tr>
                           <th>no_po_customer</th>
-                          <th>Type</th>
                           <th>Detail</th>
                           <th>Lot Produksi</th>
                           <th>Tgl_produksi</th>
@@ -51,12 +50,7 @@
                   <tbody>
                       @foreach($prod_g2 as $p)
                       <tr>
-                          @foreach($p->po_customers as $po)
-                          <td>{{ $po->no_po_customer }}</td>
-                          @endforeach
-                          @foreach($p->part_customers as $pc)
-                          <td>{{ $pc->part_name }}</td>
-                          @endforeach
+                          <td>{{ $p->po_customers->first()->no_po_customer }}</td>  
                           <td><a href="{{ asset('detailprodg2/'.$p->id_prod_g2) }}" class="btn btn-xs btn-primary">View</a></td>
                           <td>{{ $p->lot_prod_g2 }}</td>
                           <td>{{ $p->tgl_prod_g2 }}</td>      
