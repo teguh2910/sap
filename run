@@ -1,0 +1,20 @@
+#!/bin/bash
+
+docker network create sap_network
+
+docker run -d --name mariadb \
+-e MYSQL_ROOT_PASSWORD=root \
+-e MYSQL_DATABASE=sap \
+-e MYSQL_USER=admin \
+-e MYSQL_PASSWORD=password \
+-v $(pwd)/db:/var/lib/mysql \
+--network sap_network  \
+mariadb:latest
+
+docker run -d -p 8080:80 --name sap \
+--volume $(pwd):/var/www/html \
+--network sap_network \
+sap
+
+docker exec sap chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+docker exec sap php artisan migrate --seed
