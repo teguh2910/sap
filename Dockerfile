@@ -1,15 +1,19 @@
-# Use an official PHP 5.6 image with Alpine Linux
+# Use an official PHP 7.3 image with Alpine Linux
 FROM php:7.3-fpm-alpine
 
 # Set the working directory inside the container
 WORKDIR /var/www/html
 
 # Install system dependencies
+ADD https://raw.githubusercontent.com/mlocati/docker-php-extension-installer/master/install-php-extensions /usr/local/bin/
 RUN apk add --update --no-cache libpng-dev libjpeg-turbo-dev freetype-dev zip unzip nginx
 
 # Install PHP extensions
 RUN docker-php-ext-install -j$(nproc) gd
 RUN docker-php-ext-install pdo pdo_mysql
+RUN chmod uga+x /usr/local/bin/install-php-extensions && sync
+RUN install-php-extensions imagick
+RUN install-php-extensions zip
 
 # Copy application code into the container
 COPY . .

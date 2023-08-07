@@ -4,6 +4,7 @@
 /vendor
 /.idea
 /db
+/docker-compose
 Homestead.json
 Homestead.yaml
 .env

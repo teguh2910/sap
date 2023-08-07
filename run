@@ -16,5 +16,5 @@ docker run -d -p 8080:80 --name sap \
 --network sap_network \
 sap
 
-docker exec sap chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
-docker exec sap php artisan migrate --seed
+#docker exec sap chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+#docker exec sap php artisan migrate --seed
