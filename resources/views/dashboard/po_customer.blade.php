@@ -86,7 +86,7 @@
                       <td>{{ $d->qty_po }}</td>
                       <td>{{ $d->uom }}</td>
                       <td>Rp {{ $d->harga_po }}</td>
-                      <td>{{ $d->qty_po*$d->harga_po }}</td>
+                      <td>Rp {{ $d->qty_po*$d->harga_po }}</td>
                       <td>{{ $g->qty_gr }}</td>
                       <td>{{ $g->uom }}</td>
                       <td>Rp {{ $g->harga_gr }}</td>
