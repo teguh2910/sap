@@ -64,8 +64,8 @@
                           <td><a href="{{ asset('sjg1/'.$i->id_invoice) }}" class="btn btn-xs btn-primary">View</a></td>      
                           <td>
                             <a href="{{ asset('invoice/cetak/'.$i->id_invoice) }}" class="btn btn-xs btn-success">Cetak</a>
-                              <a href="{{ asset('invoice/edit/'.$i->id_invoice) }}" class="btn btn-xs btn-primary">Edit</a>
-                              <a href="{{ asset('invoice/delete/'.$i->id_invoice) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-xs btn-danger">Delete</a>
+                              {{-- <a href="{{ asset('invoice/edit/'.$i->id_invoice) }}" class="btn btn-xs btn-primary">Edit</a>
+                              <a href="{{ asset('invoice/delete/'.$i->id_invoice) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-xs btn-danger">Delete</a> --}}
                           </td>
                       </tr>
                       @endforeach
