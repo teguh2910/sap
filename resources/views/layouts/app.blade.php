@@ -70,7 +70,8 @@
 <script src="{{asset('plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
 <script src="{{asset('plugins\select2\js\select2.min.js')}}"></script>
 <script src="https://cdn.datatables.net/fixedheader/3.4.0/js/dataTables.fixedHeader.min.js"></script>
-
+<script src={{(asset('plugins/chart.js/Chart.min.js'))}}></script>
+@yield('scripts')
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.min.js')}}"></script>
 
