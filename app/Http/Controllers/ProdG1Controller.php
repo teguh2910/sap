@@ -44,12 +44,12 @@ class ProdG1Controller extends Controller
                 $sheet->setCellValue('B3', $prod_g1->lot_prod_g1);
                 $sheet->setCellValue('D3', $prod_g1->tgl_prod_g1);
                 $sheet->setCellValue('F3', $prod_g1->po_customers->first()->no_po_customer);
-                $sheet->setCellValue('H3', $prod_g1->part_customers->first()->part_name);
+                //$sheet->setCellValue('H3', $prod_g1->part_customers->first()->part_name);
                 $i=7;
                 $j=37;
                 $k=29;
                 foreach($detail_prod_g1 as $d){
-                    if($d->category_part=="RM" && $d->qty_prod_g1 != null){                    
+                    if($d->gudang_satus->first()->category_part=="RM" && $d->qty_prod_g1 != null){                    
                     foreach($d->gudang_satus as $g){
                         $sheet->setCellValue('B'.$i, $g->part_no);
                         $sheet->setCellValue('C'.$i, $g->part_name);
@@ -57,23 +57,25 @@ class ProdG1Controller extends Controller
                     $sheet->setCellValue('D'.$i, $d->price_g1);
                     $sheet->setCellValue('E'.$i, $d->qty_prod_g1);
                     $i++;
-                }elseif($d->category_part=="FG" && $d->qty_prod_g1 != null){
+                }elseif($d->gudang_satus->first()->category_part=="FG" && $d->qty_prod_g1 != null){
                     foreach($d->gudang_satus as $g){
                         $sheet->setCellValue('B'.$j, $g->part_no);
                         $sheet->setCellValue('C'.$j, $g->part_name);
                     }
                     $sheet->setCellValue('D'.$j, $d->price_g1);
                     $sheet->setCellValue('E'.$j, $d->qty_prod_g1);
-                }elseif($d->category_part=="NON_RM" && $d->qty_prod_g1 != null){
+                    $j++;
+                }elseif($d->gudang_satus->first()->category_part=="NON_RM" && $d->qty_prod_g1 != null){
                     foreach($d->gudang_satus as $g){
                         $sheet->setCellValue('B'.$k, $g->part_no);
                         $sheet->setCellValue('C'.$k, $g->part_name);
                     }
                     $sheet->setCellValue('D'.$k, $d->price_g1);
                     $sheet->setCellValue('E'.$k, $d->qty_prod_g1);
+                    $k++;
                 }
                 }
             });
-        })->export('xls');
+        })->export('xlsx');
     }
 }

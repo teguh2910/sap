@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\gr, App\po, App\material, App\gudang_dua, App\gudang_satu, App\detail_po;
+use App\gr, App\po_supplier, App\material, App\gudang_dua, App\gudang_satu, App\detail_po_supplier;
 use Illuminate\Http\Request;
 
 class GrController extends Controller
@@ -11,12 +11,12 @@ class GrController extends Controller
         $this->middleware('auth');
     }
     public function create() {
-        $po=po::all();
-        $detail_po=detail_po::all();        
+        $po=po_supplier::all();
+        $detail_po=detail_po_supplier::all();        
         return view('gr/create',compact('detail_po','po'));        
     }
     public function store(Request $request) {
-        $po=detail_po::where('id_po',$request->id_po)->get();
+        $po=detail_po_supplier::where('id_po',$request->id_po)->get();
         foreach($po as $p){
         $gr = new gr;
         $gr->tgl_gr = $request->tgl_gr;

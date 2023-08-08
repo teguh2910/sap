@@ -23,7 +23,7 @@
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row --> 
-        <a href="" class="btn btn-sm btn-primary">Input hasil Produksi Gudang Dua</a>
+        <a href="{{asset('prodg2/create')}}" class="btn btn-sm btn-primary">Input hasil Produksi Gudang Dua</a>
         <a href="{{ asset('prodg2/cetak/'.$id) }}" class="btn btn-sm btn-success">Cetak</a>
       </div><!-- /.container-fluid -->
     </div>
@@ -47,7 +47,6 @@
                           <th>part name</th>
                           <th>qty</th>
                           <th>price</th>
-                          <th>action</th>
                       </tr>
                   </thead>
                   <tbody>
@@ -71,10 +70,7 @@
                                data-name="price_g2">
                                {{$d->price_g2}}</a>
                           </td>      
-                          <td>
-                              <a href="{{ asset('detailprodg2/edit/'.$d->id_stok) }}" class="btn btn-xs btn-primary">Edit</a>
-                              <a href="{{ asset('detailprodg2/delete/'.$d->id_stok) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-xs btn-danger">Delete</a>
-                          </td>
+                          
                       </tr>
                       @endforeach
                   </tbody>

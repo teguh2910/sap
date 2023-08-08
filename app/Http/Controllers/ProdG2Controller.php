@@ -68,5 +68,31 @@ class ProdG2Controller extends Controller
                 }
             });
         })->export('xlsx');
-    }    
+    }  
+    public function edit(Request $request,$id) {
+        $po_customer = po_customer::all();
+        $part_customer = part_customer::all();
+        $prod_g2=prod_g2::find($id);
+        return view('prod_g2/edit',compact(['po_customer','part_customer','prod_g2','id']));
+    }
+    public function update(Request $request,$id) {
+        $prod_g2 = prod_g2::find($id);
+        $prod_g2->lot_prod_g2 = $request->lot_prod_g2;
+        $prod_g2->tgl_prod_g2 = $request->tgl_prod_g2;
+        $prod_g2->id_po_customer = $request->id_po_customer;
+        // $prod_g2->type = $request->type;
+        $prod_g2->save();
+        //update stok basemetal
+        // $part_no_basemetal=basemetal::find($request->id_base_metal)->kode_base_metal;
+        // $total_basemetal=prod_g2::where('id_base_metal',$request->id_base_metal)->sum('qty_prod_g2');
+        // $gudangdua = gudang_dua::where('part_no',$part_no_basemetal)->first();
+        // $gudangdua->incoming_balance = $total_basemetal;
+        // $gudangdua->save();
+        $gudangdua= gudang_dua::where('category_part','RM')->get();
+        return redirect('prodg2');
+    }
+    public function delete($id){
+        prod_g2::find($id)->delete();
+        return redirect('prodg2');
+    }
 }

@@ -52,7 +52,7 @@
                   </div>
                   <div class="form-group">
                     <label>Tanggal PO</label>
-                    <input type="date" name="tgl_po" value="{{ date('Y-m-d') }}" class="form-control">
+                    <input type="date" required name="tgl_po" value="{{ date('Y-m-d') }}" class="form-control">
                   </div>
                   <div class="form-group">
                     <label>TOP</label>
@@ -64,19 +64,19 @@
                   </div>
                   <div class="form-group">
                     <label>Delivery By</label>
-                    <input type="text" name="delivery_by" class="form-control">
+                    <input type="text" required name="delivery_by" class="form-control">
                   </div>
                   <div class="form-group">
                     <label>Delivery Date</label>
-                    <input type="date" name="delivery_date" class="form-control">
+                    <input type="date" required name="delivery_date" class="form-control">
                   </div>
                   <div class="form-group">
                     <label>Quot No</label>
-                    <input type="text" name="quot_no" class="form-control">
+                    <input type="text" required name="quot_no" class="form-control">
                   </div>
                   <div class="form-group">
                     <label>Requestion No</label>
-                    <input type="text" name="pr_no" class="form-control">
+                    <input type="text" required name="pr_no" class="form-control">
                   </div>
                   <div class="form-group">
                     <label>Vat (%)</label>

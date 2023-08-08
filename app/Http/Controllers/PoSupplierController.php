@@ -19,7 +19,7 @@ class PoSupplierController extends Controller
         return view('po_supplier/create',compact('vendor'));
     }
     public function store(Request $request) {
-        $po = new po;
+        $po = new po_supplier;
         $po->id_vendor = $request->id_vendor;
         $po->tgl_po = $request->tgl_po;
         $po->top = $request->top;

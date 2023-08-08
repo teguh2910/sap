@@ -45,8 +45,7 @@
                     <th>nama_barangg</th>
                     <th>Qty_Po</th>
                     <th>Uom</th>
-                    <th>Harga_po</th>
-                    <th>action</th>                    
+                    <th>Harga_po</th>                    
                   </tr>
                   </thead>
                   <tbody>
@@ -61,11 +60,7 @@
                     @endforeach
                   <td>{{ $d->qty_po_customer }}</td>                                    
                   <td>{{ $d->uom }}</td>
-                  <td>{{ $d->harga_po_customer }}</td>
-                  <td>
-                    <a href="{{ asset('detailpocustomer/edit/'.$d->id_detailpo) }}" class="btn btn-sm btn-primary">Edit</a>
-                    <a href="{{ asset('detailpocustomer/delete/'.$d->id_detailpo) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-sm btn-danger">Delete</a>
-                  </td>
+                  <td>{{ $d->harga_po_customer }}</td>                  
                   </tr>
                   @endforeach
                   </tbody>                  

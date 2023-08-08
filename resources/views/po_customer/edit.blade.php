@@ -53,23 +53,7 @@
                   <div class="form-group">
                     <label>No PO</label>
                     <input type="text" name="no_po_customer" value="{{ $po_customer->no_po_customer }}" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <label>Part Number</label>
-                    <select name="id_produk" class="form-control">
-                      @foreach($produks as $p)
-                      <option value="{{ $p->id_produk }}" {{ $po_customer->id_produk == $p->id_produk ? 'selected' : '' }}>{{ $p->type }}</option>                      
-                      @endforeach
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label>Qty PO</label>
-                    <input type="text" name="qty_po_customer" class="form-control" value="{{ $po_customer->qty_po_customer }}">
-                  </div>  
-                  <div class="form-group">
-                    <label>Harga PO</label>
-                    <input type="text" name="harga_po_customer" value="{{ $po_customer->harga_po_customer }}" class="form-control">
-                  </div>                  
+                  </div>                                    
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">

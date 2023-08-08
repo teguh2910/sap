@@ -44,9 +44,6 @@ class PoCustomerController extends Controller
         $po_customer = po_customer::find($id_po_customer);
         $po_customer->no_po_customer = $request->no_po_customer;
         $po_customer->id_customer = $request->id_customer;
-        $po_customer->id_produk = $request->id_produk;
-        $po_customer->qty_po_customer = $request->qty_po_customer;
-        $po_customer->harga_po_customer = $request->harga_po_customer;
         $po_customer->save();
         return redirect('/po_customer');
     }
