@@ -60,7 +60,7 @@
                     @endforeach
                   <td>{{ $d->qty_po_customer }}</td>                                    
                   <td>{{ $d->uom }}</td>
-                  <td>{{ $d->harga_po_customer }}</td>                  
+                  <td>Rp {{ $d->harga_po_customer }}</td>                  
                   </tr>
                   @endforeach
                   </tbody>                  

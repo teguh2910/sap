@@ -23,7 +23,7 @@
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
-        <a href="{{ asset('cashflow/create') }}" class="btn btn-sm btn-success">Upload Beginning Stok</a>
+        <a href="{{ asset('cashflow/create') }}" class="btn btn-sm btn-success">Upload Beginning Cash</a>
         <a href="{{ asset('incoming_cash/create') }}" class="btn btn-sm btn-warning">Create Incoming Balance Cash Flow</a>
         <a href="{{ asset('out_cash/create') }}" class="btn btn-sm btn-primary">Create Out Balance Cash Flow</a>                
       </div><!-- /.container-fluid -->
@@ -56,10 +56,10 @@
                   <tr>
                   <td>{{ $c->id_cash_flow }}</td>                  
                   <td>{{ $c->bank }}</td>                                   
-                  <td>{{ $c->beginning_balance }}</td>
-                  <td>{{ $c->incoming_balance }}</td>
-                  <td>{{ $c->out_balance }}</td>
-                  <td>{{ $c->beginning_balance+$c->incoming_balance-$c->out_balance }}</td>
+                  <td>Rp {{ $c->beginning_balance }}</td>
+                  <td>Rp {{ $c->incoming_balance }}</td>
+                  <td>Rp {{ $c->out_balance }}</td>
+                  <td>Rp {{ $c->beginning_balance+$c->incoming_balance-$c->out_balance }}</td>
                   {{-- <td>
                     <a href="{{ asset('stok/edit/'.$c->id_stok) }}" class="btn btn-xs btn-primary">Edit</a>
                     <a href="{{ asset('stok/delete/'.$c->id_stok) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-xs btn-danger">Delete</a>

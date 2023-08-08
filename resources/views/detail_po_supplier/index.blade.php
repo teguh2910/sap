@@ -60,7 +60,7 @@
                   <td>{{ $d->qty_po }}</td>                  
                   
                   <td>{{ $d->uom }}</td>
-                  <td>{{ $d->harga_po }}</td>
+                  <td>Rp {{ $d->harga_po }}</td>
                   <td>
                     <a href="{{ asset('detailpo/edit/'.$d->id_detailpo) }}" class="btn btn-sm btn-primary">Edit</a>
                     <a href="{{ asset('detailpo/delete/'.$d->id_detailpo) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-sm btn-danger">Delete</a>
