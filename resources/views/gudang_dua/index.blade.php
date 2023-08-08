@@ -27,7 +27,7 @@
         <a href="{{ asset('gr/create') }}" class="btn btn-sm btn-warning">Create Qty Good Receipt Gudang Dua</a>
         {{-- <a href="{{ asset('usageg2/create') }}" class="btn btn-sm btn-primary">input penggunaan RM Gudang Dua</a> --}}
         <a href="{{ asset('prodg2/') }}" class="btn btn-sm btn-primary">Input hasil Produksi Gudang Dua</a>
-        <a href="{{ asset('sjg2/create') }}" class="btn btn-sm btn-info">Create Qty Surat Jalan Gudang Dua</a>
+        <a href="{{ asset('sjg2') }}" class="btn btn-sm btn-info">Create Qty Surat Jalan Gudang Dua</a>
         <a href="{{ asset('stog2/create') }}" class="btn btn-sm btn-danger">Create Qty STO</a>        
       </div><!-- /.container-fluid -->
     </div>
@@ -66,16 +66,8 @@
                           <td>{{ $g->part_no }}</td>
                           <td>{{ $g->part_name }}</td>
                           <td>{{ $g->beginning_balance }}</td>
-                          @if($g->category_part=="FG")
-                          @foreach($g->incoming as $i)
-                          <td>{{ $i->total_qty_prod_g2 }}</td>
-                          @endforeach
-                          @elseif($g->category_part=="RM")
-                          @foreach($g->incoming as $i)
-                          <td>{{ $i->total_qty_prod_g2 }}</td>
-                          @endforeach                          
-                          @endif
-                          <td><td>{{ $g->usage_balance }}</td></td>
+                          <td>{{ $g->incoming->first()['total_qty_prod_g2'] }}</td>
+                          <td>{{ $g->usage_balance }}</td>
                           <td>{{ $g->beginning_balance + $g->incoming_balance - $g->usage_balance }}</td>              
                           <!-- Check if there are associated STOs (stock transfer orders) -->
                           @if($g->stos->count() > 0)

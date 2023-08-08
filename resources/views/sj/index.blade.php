@@ -14,19 +14,16 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">List Stok</h1>
+            <h1 class="m-0">List Sj Gudang Dua</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">List Stok</li>
+              <li class="breadcrumb-item active">List Sj Gudang Dua</li>
             </ol>
           </div><!-- /.col -->
-        </div><!-- /.row -->
-        <a href="{{ asset('stok/create') }}" class="btn btn-sm btn-success">Upload Beginning Stok</a>
-        <a href="{{ asset('prod/create') }}" class="btn btn-sm btn-primary">Create Qty Production</a>
-        <a href="{{ asset('sj/create') }}" class="btn btn-sm btn-info">Create Qty Surat Jalan</a>
-        <a href="{{ asset('gr/create') }}" class="btn btn-sm btn-warning">Create Qty Good Receipt</a>
+        </div><!-- /.row -->      
+        <a href="{{ asset('sjg2/create') }}" class="btn btn-sm btn-info">Create Qty Surat Jalan Gudang Dua</a>    
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -40,34 +37,32 @@
           <div class="card">
               <!-- /.card-header -->
               <div class="card-body">                
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example1" class="table table-bordered table-striped" style="width:100%">
                   <thead>
                   <tr>
-                    <th>id_stok</th>
+                    <th>id_sj</th>
                     <th>Category</th>
                     <th>Part No</th>
                     <th>Part Name</th>
-                    <th>beginning_balance</th>
-                    <th>incoming_balance</th>
-                    <th>usage_balance</th>
-                    <th>ending_balance</th>
+                    <th>Qty</th>
+                    <th>Tgl</th>
+                    <th>Truk</th>
                     <th>action</th>                    
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach($stoks as $stok)
+                  @foreach($data as $d)
                   <tr>
-                  <td>{{ $stok->id_stok }}</td>
-                  <td>{{ $stok->category_part }}</td>                  
-                  <td>{{ $stok->part_no }}</td>
-                  <td>{{ $stok->part_name }}</td>
-                  <td>{{ $stok->beginning_balance }}</td>
-                  <td>{{ $stok->incoming_balance }}</td>
-                  <td>{{ $stok->usage_balance }}</td>
-                  <td>{{ $stok->ending_balance }}</td>
+                  <td>{{ $d->id_sj }}</td>
+                  <td>{{ $d->gudang_duas()->first()->category_part }}</td>                  
+                  <td>{{ $d->gudang_duas()->first()->part_no }}</td>
+                  <td>{{ $d->gudang_duas()->first()->part_name }}</td>
+                  <td>{{ $d->qty_sj }}</td>
+                  <td>{{ $d->tgl_sj }}</td>
+                  <td>{{ $d->truks->first()->plat_no }}</td>
                   <td>
-                    <a href="{{ asset('stok/edit/'.$stok->id_stok) }}" class="btn btn-xs btn-primary">Edit</a>
-                    <a href="{{ asset('stok/delete/'.$stok->id_stok) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-xs btn-danger">Delete</a>
+                    <a href="{{ asset('sjg2/edit/'.$d->id_sj) }}" class="btn btn-xs btn-primary">Edit</a>
+                    <a href="{{ asset('sjg2/delete/'.$d->id_sj) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-xs btn-danger">Delete</a>
                   </td>
                   </tr>
                   @endforeach

@@ -39,7 +39,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{asset('sj/create')}}" enctype="multipart/form-data" method="POST">
+              <form action="{{asset('sjg2/create')}}" enctype="multipart/form-data" method="POST">
               {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">

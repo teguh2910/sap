@@ -33,6 +33,30 @@ class SjController extends Controller
         $gudangsatu = gudang_satu::where('part_no',$part_no)->first();
         $gudangsatu->incoming_balance = $total_sj;
         $gudangsatu->save();              
-        return redirect('gudangdua');
+        return redirect('sjg2');
+    }
+    public function index(){
+        $data=sj::all();
+        return view('sj/index',compact('data'));
+    }
+    public function edit($id){
+        $data=sj::find($id);
+        $stoks=gudang_dua::where('category_part','fg')->get();
+        $truks=truk::all();
+        return view('sj/edit',compact('data','id','stoks','truks'));
+    }
+    public function update(Request $request,$id) {
+        //create new data sj
+        $sj = sj::find($id);
+        $sj->id_gudang_dua = $request->id_gudang_dua;
+        $sj->qty_sj = $request->qty_sj;
+        $sj->tgl_sj = $request->tgl_sj;
+        $sj->id_truk = $request->id_truk;
+        $sj->save();                    
+        return redirect('sjg2');
+    }
+    public function delete($id){
+        sj::find($id)->delete();
+        return redirect('sjg2');
     }
 }
