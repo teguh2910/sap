@@ -59,7 +59,8 @@
                     <th>Qty Oustanding</th>
                     <th>Uom</th>
                     <th>Price Oustanding</th>
-                    <th>Amount Oustanding</th>                                        
+                    <th>Amount Oustanding</th>  
+                    <th></th>                                      
                   </tr>
                   </thead>
                   <tbody>
@@ -94,7 +95,7 @@
                       <td>{{ $g->uom }}</td>
                       <td>Rp {{ $d->harga_po - $g->harga_gr }}</td>
                       <td>Rp {{ ($d->qty_po*$d->harga_po) - ($g->harga_gr*$g->qty_gr) }}</td>
-                        
+                      <td><a href="" class="btn btn-xs btn-success">Closed</a><a href="" class="btn btn-xs btn-danger">Cance</a></td>
                     </tr>
                     @endforeach
                   </tbody>                  
