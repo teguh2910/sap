@@ -5,6 +5,8 @@
 /.idea
 /db
 /docker-compose
+public/plugins
 Homestead.json
 Homestead.yaml
 .env
+public/css/app.css

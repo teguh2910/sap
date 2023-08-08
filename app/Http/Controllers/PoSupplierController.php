@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\po_supplier, App\vendor, App\bank, Excel, App\detail_po;
+use App\po_supplier, App\vendor, App\bank, Excel, App\detail_po_supplier;
 use Illuminate\Http\Request;
 
 class PoSupplierController extends Controller
@@ -59,7 +59,7 @@ class PoSupplierController extends Controller
     public function cetak($id) {        
         $po=po_supplier::with('vendors')->find($id);
         $detail_pos=detail_po_supplier::where('id_po',$id)->get();
-        Excel::load('template_po.xls', function($excel) use ($po,$detail_pos) {            
+        Excel::load('template_po.xlsx', function($excel) use ($po,$detail_pos) {            
             $excel->sheet('DRAFT', function($sheet) use ($po,$detail_pos) {                
                 // Sheet manipulation
                 $sheet->setCellValue('B8', $po->vendors->first()->nama_vendor);
@@ -83,6 +83,6 @@ class PoSupplierController extends Controller
                     $i++;
                 }
             });
-        })->export('xls');
+        })->export('xlsx');
     }
 }
