@@ -52,8 +52,8 @@
                           <option value="{{ $g->id_gudang_satu }}">{{ $g->part_name }}</option>
                           @endforeach
                         </select>
-                        <input type="number" class="form-control col-md-3" name="price_g1_0" placeholder="Harga">
-                        <input type="number" class="form-control col-md-3" name="qty_prod_g1_0" placeholder="Qty">                        
+                        <input type="number" required class="form-control col-md-3" name="price_g1_0" placeholder="Harga">
+                        <input type="number" required class="form-control col-md-3" name="qty_prod_g1_0" placeholder="Qty">                        
                         <input type="text" readonly class="form-control col-md-2" name="satuan_0" value="Kg">
                       </div>
                       <!-- The dynamic input fields will be added here -->

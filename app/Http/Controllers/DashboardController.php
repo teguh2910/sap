@@ -51,14 +51,27 @@ class DashboardController extends Controller
         $fg_g2=gudang_dua::where('category_part','FG')->sum('beginning_balance');
         $rm_g2=gudang_dua::where('category_part','RM')->sum('beginning_balance');
         $gr_g2=gr::whereMonth('tgl_gr',$request->bulan)->whereYear('tgl_gr',$request->tahun)->where('gudang','gudang_dua')->sum('qty_gr');
-        $prod_g2=prod_g2::whereMonth('tgl_prod_g2',$request->bulan)->whereYear('tgl_prod_g2',$request->tahun)->sum('qty_prod_g2');
+        $prod_g2=prod_g2::whereMonth('tgl_prod_g2',$request->bulan)
+                ->whereYear('tgl_prod_g2',$request->tahun)                
+                ->with('detail_prod_g2')
+                ->get()
+                ->pluck('detail_prod_g2')
+                ->flatten()
+                ->sum('qty_prod_g2');
+                        
         $usage_g2=usage_g2::whereMonth('tgl_usage_g2',$request->bulan)->whereYear('tgl_usage_g2',$request->tahun)->sum('qty_usage_g2');
         $sj_g2=sj::whereMonth('tgl_sj',$request->bulan)->whereYear('tgl_sj',$request->tahun)->sum('qty_sj');
         //gudang1
         $fg_g1=gudang_satu::where('category_part','FG')->sum('beginning_balance');
         $rm_g1=gudang_satu::where('category_part','RM')->sum('beginning_balance');
         $gr_g1=gr::whereMonth('tgl_gr',$request->bulan)->whereYear('tgl_gr',$request->tahun)->where('gudang','gudang_satu')->sum('qty_gr');
-        $prod_g1=prod_g1::whereMonth('tgl_prod_g1',$request->bulan)->whereYear('tgl_prod_g1',$request->tahun)->sum('qty_prod_g1');
+        $prod_g1=prod_g1::whereMonth('tgl_prod_g1',$request->bulan)
+                ->whereYear('tgl_prod_g1',$request->tahun)
+                ->with('detail_prod_g1')
+                ->get()
+                ->pluck('detail_prod_g1')
+                ->flatten()
+                ->sum('qty_prod_g1');
         $usage_g1=usage_g1::whereMonth('tgl_usage_g1',$request->bulan)->whereYear('tgl_usage_g1',$request->tahun)->sum('qty_usage_g1');
         $sj_g1=sj_g1::whereMonth('tgl_sj_g1',$request->bulan)->whereYear('tgl_sj_g1',$request->tahun)->sum('qty_sj_g1');        
         return view('dashboard/show_filter_stok',compact(['gr_g2','prod_g2','usage_g2','sj_g2','fg_g2','rm_g2','gr_g1','prod_g1','usage_g1','sj_g1','fg_g1','rm_g1']));
