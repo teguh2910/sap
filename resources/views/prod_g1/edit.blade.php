@@ -14,12 +14,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Edit Data Bank</h1>            
+            <h1 class="m-0">Edit Data Qty Production Gudang Satu</h1>            
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Edit Data Bank</li>
+              <li class="breadcrumb-item active">Edit Data Qty Production Gudanag Satu</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -35,35 +35,33 @@
           <div class="col-md-12">
           <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Form Edit Data Bank</h3>
+                <h3 class="card-title">Form Edit Data Qty Production Gudanag Satu</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{asset('bank/edit/'.$bank->id_bank)}}" method="POST">
+              <form action="{{asset('prodg1/edit/'.$id)}}" enctype="multipart/form-data" method="POST">
               {{ csrf_field() }}
-                <div class="card-body">
+                <div class="card-body">                    
                   <div class="form-group">
-                    <label>Nama Bank</label>
-                    <input type="text" name="nama_bank" value="{{ $bank->nama_bank }}" class="form-control">
+                    <label>Lot Production</label>
+                    <input type="text" value="{{ $prod_g1->lot_prod_g1 }}" name="lot_prod_g1" class="form-control">
                   </div>
                   <div class="form-group">
-                    <label>Cabang Bank</label>
-                    <input type="text" name="cabang_bank" value="{{ $bank->cabang_bank }}" class="form-control">
+                    <label>Tanggal Production</label>
+                    <input type="date" value="{{ $prod_g1->tgl_prod_g1 }}" name="tgl_prod_g1" class="form-control">
                   </div>
                   <div class="form-group">
-                    <label>Currency</label>
-                    <select name="currency_bank" class="form-control">
-                        <option value="{{ $bank->currency_bank }}">{{ $bank->currency_bank }}</option>
-                        <option value="IDR">IDR</option>
-                        <option value="USD">USD</option>
-                        <option value="JPY">JPY</option>
-                        <option value="THB">THB</option>
+                    <label>PO Customer</label>
+                    <select name="id_po_customer" class="form-control select2">
+                      @foreach($po_customer as $p)
+                      <option value="{{ $p->id_po_customer }}">{{ $p->no_po_customer }}</option>
+                      @endforeach
                     </select>
-                  </div>                  
+                  </div>                                                      
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Edit</button>
+                  <button type="submit" class="btn btn-primary">Next</button>
                 </div>
               </form>
             </div>

@@ -70,16 +70,12 @@
                           @foreach($g->incoming as $i)
                           <td>{{ $i->total_qty_prod_g2 }}</td>
                           @endforeach
-                          @else
-                          <td>{{ $g->incoming_balance }}</td>
-                          @endif
-                          @if($g->category_part=="RM")
+                          @elseif($g->category_part=="RM")
                           @foreach($g->incoming as $i)
                           <td>{{ $i->total_qty_prod_g2 }}</td>
-                          @endforeach
-                          @else
-                          <td><td>{{ $g->usage_balance }}</td></td>
+                          @endforeach                          
                           @endif
+                          <td><td>{{ $g->usage_balance }}</td></td>
                           <td>{{ $g->beginning_balance + $g->incoming_balance - $g->usage_balance }}</td>              
                           <!-- Check if there are associated STOs (stock transfer orders) -->
                           @if($g->stos->count() > 0)

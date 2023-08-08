@@ -167,7 +167,7 @@ Route::get('/usageg1/edit/{id}', 'UsageG1Controller@edit');
 Route::post('/usageg1/edit/{id}', 'UsageG1Controller@update');
 Route::get('/usageg1/delete/{id}', 'UsageG1Controller@delete');
 
-//crud sje_g1
+//crud sj_g1
 Route::get('/sjg1', 'SjG1Controller@index');
 Route::get('/sjg1/create', 'SjG1Controller@create');
 Route::post('/sjg1/create', 'SjG1Controller@store');
@@ -181,6 +181,7 @@ Route::get('/filter_stok_all', 'DashboardController@filter_stok');
 Route::post('/filter_stok_all', 'DashboardController@show_filter_stok');
 Route::get('/stok_all', 'DashboardController@stok');
 Route::get('/po_all', 'DashboardController@po');
+Route::get('/po_customer_all', 'DashboardController@po_customer');
 Route::get('/hutang', 'DashboardController@hutang');
 Route::get('/piutang', 'DashboardController@piutang');
 Route::get('/pnl', 'DashboardController@pnl');

@@ -24,6 +24,10 @@ class DashboardController extends Controller
         $grs=gr::all();
         return view('dashboard/po',compact(['grs']));
     }
+    public function po_customer() {
+        $grs=gr::all();
+        return view('dashboard/po_customer',compact(['grs']));
+    }
     public function hutang() {
         $pos=detail_po_supplier::all();
         // Group the purchase orders by 'id_po' and calculate the sum of the amount (qty_po * harga_po) for each group

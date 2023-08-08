@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\prod_g1, App\produk, App\gudang_satu, Excel, App\detail_prod_g2, App\po_customer, App\part_customer, App\detail_prod_g1;
+use App\prod_g1, App\produk, App\gudang_satu, Excel, App\detail_prod_g1, App\po_customer, App\part_customer, App\detail_prod_g2;
 use Illuminate\Http\Request;
 
 class ProdG1Controller extends Controller
@@ -77,5 +77,31 @@ class ProdG1Controller extends Controller
                 }
             });
         })->export('xlsx');
+    }
+    public function edit(Request $request,$id) {
+        $po_customer = po_customer::all();
+        $part_customer = part_customer::all();
+        $prod_g1=prod_g1::find($id);
+        return view('prod_g1/edit',compact(['po_customer','part_customer','prod_g1','id']));
+    }
+    public function update(Request $request,$id) {
+        $prod_g1 = prod_g1::find($id);
+        $prod_g1->lot_prod_g1 = $request->lot_prod_g1;
+        $prod_g1->tgl_prod_g1 = $request->tgl_prod_g1;
+        $prod_g1->id_po_customer = $request->id_po_customer;
+        // $prod_g1->type = $request->type;
+        $prod_g1->save();
+        //update stok basemetal
+        // $part_no_basemetal=basemetal::find($request->id_base_metal)->kode_base_metal;
+        // $total_basemetal=prod_g1::where('id_base_metal',$request->id_base_metal)->sum('qty_prod_g1');
+        // $gudangsatu = gudang_dua::where('part_no',$part_no_basemetal)->first();
+        // $gudangsatu->incoming_balance = $total_basemetal;
+        // $gudangsatu->save();
+        $gudangsatu= gudang_satu::where('category_part','RM')->get();
+        return redirect('prodg1');
+    }
+    public function delete($id){
+        prod_g1::find($id)->delete();
+        return redirect('prodg1');
     }
 }

@@ -36,6 +36,12 @@
                   <i class="nav-icon"></i>
                   <p>Report PO Supplier</p>
                 </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{asset('/po_customer_all')}}" class="nav-link">
+                  <i class="nav-icon"></i>
+                  <p>Report PO Customer</p>
+                </a>
               </li>                            
             </ul>
           </li> 

@@ -113,10 +113,41 @@
     $("#example1").DataTable({
       scrollX: true,
       fixedHeader: true,
-      "buttons": ["copy", "csv", "excel", "pdf", "print"]
+      buttons: [
+        "copy",
+        "csv",
+        {
+          extend: "excelHtml5",
+          title: "Report PO Supplier", // Add your desired title here
+        },
+        {
+          extend: "pdfHtml5",
+          orientation: "landscape",
+          pageSize: "A3",
+          title: "Report PO Supplier"
+        },
+        {
+          extend: "print",
+          autoPrint: true,
+          title: "Print PO Supplier",
+          customize: function(win) {
+            // Set a specific page size for the print preview
+            $(win.document.body).css({
+              'width': '297mm', // A4 paper width
+              'height': '210mm' // A4 paper height
+            });
+            $(win.document.body).find('table').css({
+              'width': '100%',
+              'max-width': '100%',
+              'font-size': '10pt' // Adjust font size if needed
+            });
+          }
+        }
+      ]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
   });
 </script>
+
 <script>
   $(document).ready(function() {
     $('#select2').select2({
