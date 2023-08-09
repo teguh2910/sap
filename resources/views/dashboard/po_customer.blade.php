@@ -67,35 +67,35 @@
                     @foreach($grs as $g)
                     <tr>
                       @foreach($g->detail_pos as $d)
-                      <td>{{ $d->id_po }}</td>
-                      @foreach($d->pos as $p)
-                      @foreach($p->vendors as $v)
-                      <td>{{ $v->kode_vendor }}</td>
-                      <td>{{ $v->nama_vendor }}</td>
-                      @endforeach
-                      @endforeach
-                      @endforeach
-                      @foreach($g->materials as $m)
-                      <td>{{ $m->kode_material }}</td>
-                      <td>{{ $m->nama_material }}</td>
-                      @endforeach                        
-                      <td>{{ $p->tgl_po }}</td>
-                      <td>{{ $p->delivery_date }}</td>
-                      <td>{{ $p->top }}</td>
-                      <td>IDR</td>                        
-                      <td>{{ $d->qty_po }}</td>
-                      <td>{{ $d->uom }}</td>
-                      <td>Rp {{ $d->harga_po }}</td>
-                      <td>Rp {{ $d->qty_po*$d->harga_po }}</td>
-                      <td>{{ $g->qty_gr }}</td>
-                      <td>{{ $g->uom }}</td>
-                      <td>Rp {{ $g->harga_gr }}</td>
-                      <td>Rp {{ $g->harga_gr*$g->qty_gr }}</td>
-                      <td>{{ $d->qty_po - $g->qty_gr }}</td>
-                      <td>{{ $g->uom }}</td>
-                      <td>Rp {{ $d->harga_po - $g->harga_gr }}</td>
-                      <td>Rp {{ ($d->qty_po*$d->harga_po) - ($g->harga_gr*$g->qty_gr) }}</td>
-                      <td><a href="" class="btn btn-xs btn-success">Closed</a><a href="" class="btn btn-xs btn-danger">Cance</a></td>
+                        <td>{{ $d->id_po }}</td>
+                        @foreach($d->pos as $p)
+                        @foreach($p->vendors as $v)
+                        <td>{{ $v->kode_vendor }}</td>
+                        <td>{{ $v->nama_vendor }}</td>
+                        @endforeach
+                        @endforeach
+                        @endforeach
+                        @foreach($g->materials as $m)
+                        <td>{{ $m->kode_material }}</td>
+                        <td>{{ $m->nama_material }}</td>
+                        @endforeach                        
+                        <td>{{ $p->tgl_po }}</td>
+                        <td>{{ $p->delivery_date }}</td>
+                        <td>{{ $p->top }}</td>
+                        <td>IDR</td>                        
+                        <td>{{ number_format($d->qty_po) }}</td>
+                        <td>{{ $d->uom }}</td>
+                        <td>Rp {{ number_format($d->harga_po) }}</td>
+                        <td>Rp {{ number_format($d->qty_po*$d->harga_po) }}</td>
+                        <td>{{ number_format($g->qty_gr) }}</td>
+                        <td>{{ $g->uom }}</td>
+                        <td>Rp {{ number_format($g->harga_gr) }}</td>
+                        <td>Rp {{ number_format($g->harga_gr*$g->qty_gr) }}</td>
+                        <td>{{ number_format($d->qty_po - $g->qty_gr) }}</td>
+                        <td>{{ $g->uom }}</td>
+                        <td>Rp {{ number_format($d->harga_po - $g->harga_gr) }}</td>
+                        <td>Rp {{ number_format(($d->qty_po*$d->harga_po) - ($g->harga_gr*$g->qty_gr)) }}</td>
+                        <td><a href="" class="btn btn-xs btn-success">Closed</a><a href="" class="btn btn-xs btn-danger">Cancel</a></td>
                     </tr>
                     @endforeach
                   </tbody>                  

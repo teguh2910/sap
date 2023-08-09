@@ -14,16 +14,15 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">List detailpo</h1>
+            <h1 class="m-0">Dashboard Qty Produksi vs Order Customer</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">List detailpo</li>
+              <li class="breadcrumb-item active">Dashboard Qty Produksi vs Order Customer</li>
             </ol>
           </div><!-- /.col -->
-        </div><!-- /.row -->
-        <a href="{{ asset('detailpocustomer/create/'.$id) }}" class="btn btn-sm btn-success">Create</a>
+        </div><!-- /.row -->        
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -37,36 +36,21 @@
           <div class="card">
               <!-- /.card-header -->
               <div class="card-body">                
-                <table id="example1" class="table table-bordered table-striped" style="width: 100%">
+                <table id="example1" class="table table-bordered table-striped" style="width:100%">
                   <thead>
                   <tr>
-                    <th>no_po</th>
-                    <th>kode_barang</th>
-                    <th>nama_barangg</th>
-                    <th>Qty_Po</th>
-                    <th>Uom</th>
-                    <th>Harga_po</th>                    
+                    <th>Customer</th>
+                    <th>Part Number</th>                    
+                    <th>Part Name</th>
+                    <th>Qty Produksi</th>
+                    <th>Qty Order Customer</th>                                       
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach($detailpos as $d)
-                  <tr>
-                    @foreach($d->po_customers as $p)
-                  <td>{{ $p->no_po_customer }}</td>
-                    @endforeach
-                    @foreach($d->part_customers as $p)
-                  <td>{{ $p->part_number }}</td>
-                  <td>{{ $p->part_name }}</td>
-                    @endforeach
-                  <td>{{ number_format($d->qty_po_customer) }}</td>                                    
-                  <td>{{ $d->uom }}</td>
-                  <td>Rp {{ number_format($d->harga_po_customer) }}</td>                  
-                  </tr>
-                  @endforeach
+                  
                   </tbody>                  
                 </table>
               </div>
-              
               <!-- /.card-body -->
             </div>
             </div>

@@ -80,6 +80,18 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="{{asset('/stock_customer')}}" class="nav-link">
+                  <i class="nav-icon"></i>
+                  <p>Stock Actual per Customer</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{asset('/qty_prod_customer')}}" class="nav-link">
+                  <i class="nav-icon"></i>
+                  <p>Qty Produksi VS Order Customer</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="{{asset('/gudangsatu')}}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>Gudang 1</p>

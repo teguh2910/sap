@@ -84,6 +84,17 @@
                 </div>
             </div>
         </div>
+    <!-- Bar Chart -->
+      <div class="col-md-6">
+          <div class="box box-primary">
+              <div class="box-header with-border">
+                  <h3 class="box-title">Stock per Customer VS PO Customer</h3>
+              </div>
+              <div class="box-body">
+                  <canvas id="stockPoBarChart" style="height: 300px;"></canvas>
+              </div>
+          </div>
+      </div>
     </div>
 
   </div><!-- /.container-fluid -->
@@ -93,22 +104,53 @@
 @endsection
 
 @section('scripts')
-
 <script>
   // JavaScript code to create the pie chart using Chart.js
-  var ctx = document.getElementById("pieChart").getContext("2d");
-  var pieChart = new Chart(ctx, {
+  var pieChartCtx = document.getElementById("pieChart").getContext("2d");
+  var pieChart = new Chart(pieChartCtx, {
     type: "pie",
     data: {
-      labels: ["ADC12", "ADT4", "AC2C" , "AC2B" , "AC4B"],
+      labels: ["ADC12", "ADT4", "AC2C", "AC2B", "AC4B"],
       datasets: [{
         data: [80, 40, 30, 70, 60], // Example data values
-        backgroundColor: ["#f56954", "#00a65a", "#f39c12"], // Example colors
+        backgroundColor: ["#f56954", "#00a65a", "#f39c12", "#3c8dbc", "#d2d6de"], // Example colors
       }],
     },
     options: {
       // Additional options for customization
     }
   });
+
+ // JavaScript code to create the Stock per Customer VS PO Customer bar chart using Chart.js
+ var stockPoBarChartCtx = document.getElementById("stockPoBarChart").getContext("2d");
+  var stockPoBarChart = new Chart(stockPoBarChartCtx, {
+    type: "bar",
+    data: {
+      labels: ["ADC12", "ADT4", "AC2C", "AC2B", "AC4B"],
+      datasets: [
+        {
+          label: "Stock Quantity",
+          data: [50, 30, 60, 45, 70], // Example stock quantity values per customer
+          backgroundColor: "#00a65a", // Example color for stock
+        },
+        {
+          label: "PO Quantity",
+          data: [50, 40, 35, 25, 50], // Example PO quantity values per customer
+          backgroundColor: "#3c8dbc", // Example color for PO quantities
+        },
+      ],
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true,
+                    max:100,
+                }
+            }]
+        }
+    }
+  });
 </script>
 @endsection
+

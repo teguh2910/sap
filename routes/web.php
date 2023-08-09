@@ -180,6 +180,8 @@ Route::get('/sjg1/{id}', 'SjG1Controller@view');
 Route::get('/filter_stok_all', 'DashboardController@filter_stok');
 Route::post('/filter_stok_all', 'DashboardController@show_filter_stok');
 Route::get('/stok_all', 'DashboardController@stok');
+Route::get('/stock_customer', 'DashboardController@stock_customer');
+Route::get('/qty_prod_customer', 'DashboardController@qty_prod_customer');
 Route::get('/po_all', 'DashboardController@po');
 Route::get('/po_customer_all', 'DashboardController@po_customer');
 Route::get('/hutang', 'DashboardController@hutang');

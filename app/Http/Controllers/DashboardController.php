@@ -81,5 +81,11 @@ class DashboardController extends Controller
         return view('dashboard/show_filter_stok',compact(['gr_g2','prod_g2','usage_g2','sj_g2','fg_g2','rm_g2','gr_g1','prod_g1','usage_g1','sj_g1','fg_g1','rm_g1']));
         
     }
+    public function stock_customer(){
+        return view('dashboard/stock_customer');
+    }
+    public function qty_prod_customer() {
+        return view('dashboard/qty_prod_customer');
+    }
 
 }

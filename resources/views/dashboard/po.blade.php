@@ -83,19 +83,19 @@
                         <td>{{ $p->delivery_date }}</td>
                         <td>{{ $p->top }}</td>
                         <td>IDR</td>                        
-                        <td>{{ $d->qty_po }}</td>
+                        <td>{{ number_format($d->qty_po) }}</td>
                         <td>{{ $d->uom }}</td>
-                        <td>Rp {{ $d->harga_po }}</td>
-                        <td>Rp {{ $d->qty_po*$d->harga_po }}</td>
-                        <td>{{ $g->qty_gr }}</td>
+                        <td>Rp {{ number_format($d->harga_po) }}</td>
+                        <td>Rp {{ number_format($d->qty_po*$d->harga_po) }}</td>
+                        <td>{{ number_format($g->qty_gr) }}</td>
                         <td>{{ $g->uom }}</td>
-                        <td>Rp {{ $g->harga_gr }}</td>
-                        <td>Rp {{ $g->harga_gr*$g->qty_gr }}</td>
-                        <td>{{ $d->qty_po - $g->qty_gr }}</td>
+                        <td>Rp {{ number_format($g->harga_gr) }}</td>
+                        <td>Rp {{ number_format($g->harga_gr*$g->qty_gr) }}</td>
+                        <td>{{ number_format($d->qty_po - $g->qty_gr) }}</td>
                         <td>{{ $g->uom }}</td>
-                        <td>Rp {{ $d->harga_po - $g->harga_gr }}</td>
-                        <td>Rp {{ ($d->qty_po*$d->harga_po) - ($g->harga_gr*$g->qty_gr) }}</td>
-                        <td><a href="" class="btn btn-xs btn-success">Closed</a><a href="" class="btn btn-xs btn-danger">Cance</a></td>
+                        <td>Rp {{ number_format($d->harga_po - $g->harga_gr) }}</td>
+                        <td>Rp {{ number_format(($d->qty_po*$d->harga_po) - ($g->harga_gr*$g->qty_gr)) }}</td>
+                        <td><a href="" class="btn btn-xs btn-success">Closed</a><a href="" class="btn btn-xs btn-danger">Cancel</a></td>
                     </tr>
                     @endforeach
                   </tbody>                  
