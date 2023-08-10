@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\bank, App\customer, App\incoming_cash, App\cashflow;
+use App\bank, App\customer,App\po_customer, App\incoming_cash, App\cashflow;
 use Illuminate\Http\Request;
 
 class IncomingCashController extends Controller
@@ -13,7 +13,8 @@ class IncomingCashController extends Controller
     function create() {
         $banks = bank::all();
         $customers = customer::all();
-        return view('incoming_cash/create',compact('banks','customers'));
+        $po_customer = po_customer::all();
+        return view('incoming_cash/create',compact('banks','customers','po_customer'));
     }
     function store(Request $request) {
         $incoming_cash = new incoming_cash;

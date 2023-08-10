@@ -44,7 +44,7 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label>No PO Supplier</label>
-                  <select name="id_po" id="" class="form-control">
+                  <select name="id_po" id="" class="form-control select2">
                     <option value="0">Non PO</option>
                     @foreach($pos as $p)                    
                     <option value="{{ $p->id_po }}">{{ $p->id_po }}</option>

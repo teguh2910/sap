@@ -15,7 +15,7 @@ class DetailPoCustomerController extends Controller
         return view('detail_po_customer/index',compact('id','detailpos'));
     }
     public function create($id) {
-        $no_po_customer= po_customer::find($id)->value('no_po_customer');
+        $no_po_customer= po_customer::find($id)->no_po_customer;
         $part_customer=part_customer::all();
         return view('detail_po_customer/create',compact('id','no_po_customer','part_customer'));
     }

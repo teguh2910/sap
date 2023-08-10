@@ -54,7 +54,7 @@
                   <tr>
                   <td>@if($o->id_po==0) Non PO @else {{$o->id_po}} @endif</td>
                   <td>{{ $o->category }}</td>
-                  <td>{{ $o->amount_out }}</td>
+                  <td>Rp {{ number_format($o->amount_out) }}</td>
                   <td>{{ $o->tgl_out_cash }}</td>
                   @foreach($o->banks as $b)
                   <td>{{ $b->nama_bank }}</td>

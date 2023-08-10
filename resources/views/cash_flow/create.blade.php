@@ -45,6 +45,7 @@
                   <div class="form-group">
                     <label>Upload Data Excel</label>
                     <input type="file" name="data_excel" class="form-control">
+                    <a href="{{ asset('template_upload_cash_beginning_balance.xls') }}">Template Upload</a>
                   </div>                                    
                 </div>
                 <!-- /.card-body -->

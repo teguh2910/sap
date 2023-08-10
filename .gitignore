@@ -9,4 +9,4 @@ public/plugins
 Homestead.json
 Homestead.yaml
 .env
-public/qrcode.png
+/public/qrcode.png

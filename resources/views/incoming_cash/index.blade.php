@@ -57,7 +57,7 @@
                   @foreach($i->customers as $c)
                   <td>{{ $c->nama_customer }}</td>
                   @endforeach
-                  <td>{{ $i->amount_incoming }}</td>
+                  <td>Rp {{ number_format($i->amount_incoming) }}</td>
                   @foreach($i->banks as $b)
                   <td>{{ $b->nama_bank }}</td>
                   @endforeach

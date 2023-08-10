@@ -56,7 +56,7 @@
                   </div>
                   <div class="form-group">
                     <label>PO Customer</label>
-                    <select name="id_po_customer" id="select2" class="form-control">
+                    <select name="id_po_customer" id="" class="form-control select2">
                       @foreach($po_customer as $p)
                       <option value="{{ $p->id_po_customer }}">{{ $p->no_po_customer }}</option>
                       @endforeach

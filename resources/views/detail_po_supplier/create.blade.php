@@ -44,7 +44,7 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label>Material</label>
-                    <select name="id_material" id="select2" class="form-control">
+                    <select name="id_material" id="" class="form-control select2">
                       @foreach($material as $m)
                       <option value="{{ $m->id_material }}">{{ $m->nama_material }}</option>
                       @endforeach

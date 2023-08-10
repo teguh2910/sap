@@ -43,8 +43,12 @@
               {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
-                    <label>No PO Customer</label>
-                  <input type="text" name="po_customer" class="form-control">
+                    <label>No PO Customer</label>                  
+                  <select name="po_customer" id="" class="form-control select2">
+                    @foreach($po_customer as $po)
+                    <option value="{{ $po->id_po_customer }}">{{ $po->no_po_customer }}</option>
+                    @endforeach
+                  </select>
                   </div>                  
                   <div class="form-group">
                     <label>Amount</label>
