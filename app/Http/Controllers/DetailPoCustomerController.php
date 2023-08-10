@@ -27,7 +27,25 @@ class DetailPoCustomerController extends Controller
         $detail_po_customer->harga_po_customer = $request->harga_po_customer;
         $detail_po_customer->uom = $request->uom;
         $detail_po_customer->save();
-        return redirect('/detailpocustomer/'.$id);
-        
+        return redirect('/detailpocustomer/'.$id);        
+    }
+    public function edit($id) {
+        $po=detail_po_customer::find($id);
+        $part_customer = part_customer::all();
+        return view('detail_po_customer/edit',compact(['part_customer','po','id']));
+    }
+    public function update(Request $request,$id){
+        $detailpo=detail_po_customer::find($id);
+        $detailpo->id_part_customer=$request->id_part_customer;
+        $detailpo->qty_po_customer=$request->qty_po_customer;
+        $detailpo->harga_po_customer=$request->harga_po_customer;
+        $detailpo->uom=$request->uom;
+        $detailpo->save();
+        return redirect('/detailpocustomer/'.$detailpo->id_po_customer);
+    }
+    public function delete($id){
+        $detailpo=detail_po_customer::find($id);
+        $detailpo->delete();
+        return redirect('/detailpocustomer/'.$detailpo->id_po_customer);
     }
 }

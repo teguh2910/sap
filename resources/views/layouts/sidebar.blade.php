@@ -150,18 +150,6 @@
                   <p>Incoming</p>
                 </a>
               </li> 
-              {{-- <li class="nav-item">
-                <a href="{{asset('/')}}" class="nav-link">
-                  <i class="nav-icon"></i>
-                  <p>Jurnal Invoice Supplier</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{asset('/')}}" class="nav-link">
-                  <i class="nav-icon"></i>
-                  <p>Jurnal Invoice Customer</p>
-                </a>
-              </li>                             --}}
             </ul>
           </li>                             
           
@@ -173,31 +161,19 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview">            
               <li class="nav-item">
-                <a href="{{asset('/produk')}}" class="nav-link">
+                <a href="{{asset('/part_customer')}}" class="nav-link">
                   <i class="nav-icon"></i>
-                  <p>Master Produk</p>
+                  <p>Master Part Customer</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{asset('/material')}}" class="nav-link">
+                <a href="{{asset('/part_supplier')}}" class="nav-link">
                   <i class="nav-icon"></i>
-                  <p>Master Material</p>
+                  <p>Master Part Supplier</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="{{asset('/basemetal')}}" class="nav-link">
-                  <i class="nav-icon"></i>
-                  <p>Master BaseMetal</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{asset('/additive')}}" class="nav-link">
-                  <i class="nav-icon"></i>
-                  <p>Master Additive</p>
-                </a>
-              </li>              
               <li class="nav-item">
                 <a href="{{asset('/bank')}}" class="nav-link">
                   <i class="nav-icon"></i>

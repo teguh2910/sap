@@ -14,12 +14,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">edit Data</h1>            
+            <h1 class="m-0">edit Data detail Nomor {{ $po->po_customers->first()->no_po_customer }}</h1>            
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">edit Data material</li>
+              <li class="breadcrumb-item active">edit Data detail PO </li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -35,29 +35,44 @@
           <div class="col-md-12">
           <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Form edit Data material</h3>
+                <h3 class="card-title">Form edit Data detail Nomor {{ $po->po_customers->first()->no_po_customer }}</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{asset('material/edit/'.$material->id_material)}}" method="POST">
+              <form action="{{asset('detailpocustomer/edit/'.$id)}}" method="POST">
               {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
-                    <label>kode material</label>
-                    <input type="text" name="kode_material" value="{{ $material->kode_material }}" class="form-control">
+                    <label>No PO</label>
+                    <input type="text" name="no_po_customer" value="{{ $po->po_customers->first()->no_po_customer }}" readonly class="form-control">
                   </div>
                   <div class="form-group">
-                    <label>Nama material</label>
-                    <input type="text" name="nama_material" value="{{ $material->nama_material }}" class="form-control">
+                    <label>Material</label>
+                    <select name="id_part_customer" id="" class="form-control select2">
+                      @foreach($part_customer as $p)
+                      <option value="{{ $p->id_part_customer }}" {{ $po->id_part_customer == $p->id_part_customer ? 'selected' : '' }}>{{ $p->part_name }}</option>
+                      @endforeach
+                    </select>
                   </div>
                   <div class="form-group">
-                    <label>Price</label>
-                    <input type="text" name="price_material" value="{{ $material->price_material }}" class="form-control">
+                    <label>Qty PO</label>
+                    <input type="number" value="{{$po->qty_po_customer}}" name="qty_po_customer" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>Harga</label>
+                    <input type="integer" value="{{$po->harga_po_customer}}" name="harga_po_customer" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>Uom</label>
+                    <select name="uom" class="form-control">
+                      <option value="kg">Kg</option>
+                      <option value="pcs">Pcs</option>
+                    </select>
                   </div>                  
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Edit</button>
+                  <button type="submit" class="btn btn-primary">Create</button>
                 </div>
               </form>
             </div>

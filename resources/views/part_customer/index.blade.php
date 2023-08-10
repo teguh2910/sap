@@ -5,25 +5,26 @@
 
     <!-- Content Header (Page header) -->
     <div class="content-header">
-      @if ($bessage = Session::get('success'))
+      @if ($message = Session::get('success'))
         <div class="alert alert-success alert-block">
           <button type="button" class="close" data-dismiss="alert">×</button>	
-            <strong>{{ $bessage }}</strong>
+            <strong>{{ $message }}</strong>
         </div>
       @endif
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">List basemetal</h1>
+            <h1 class="m-0">List part_customer</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">List basemetal</li>
+              <li class="breadcrumb-item active">List part_customer</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
-        <a href="{{ asset('basemetal/create') }}" class="btn btn-sm btn-success">Create</a>
+        <a href="{{ asset('part_customer/create') }}" class="btn btn-sm btn-success">Create</a>
+        <a href="{{ asset('part_customer/upload') }}" class="btn btn-sm btn-success">Upload</a>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -40,21 +41,19 @@
                 <table id="example1" class="table table-bordered table-striped" style="width: 100%">
                   <thead>
                   <tr>
-                    <th>kode_basemetal</th>
-                    <th>nama_basemetal</th>
-                    <th>price</th>
+                    <th>part_number</th>
+                    <th>part_name</th>
                     <th>action</th>                    
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach($basemetals as $b)
+                  @foreach($part_customer as $p)
                   <tr>
-                  <td>{{ $b->kode_base_metal }}</td>
-                  <td>{{ $b->nama_base_metal }}</td>
-                  <td>{{ $b->price_base_metal }}</td>
+                  <td>{{ $p->part_number }}</td>
+                  <td>{{ $p->part_name }}</td>
                   <td>
-                    <a href="{{ asset('basemetal/edit/'.$b->id_base_metal) }}" class="btn btn-sm btn-primary">Edit</a>
-                    <a href="{{ asset('basemetal/delete/'.$b->id_base_metal) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-sm btn-danger">Delete</a>
+                    <a href="{{ asset('part_customer/edit/'.$p->id_part_customer) }}" class="btn btn-sm btn-primary">Edit</a>
+                    <a href="{{ asset('part_customer/delete/'.$p->id_part_customer) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-sm btn-danger">Delete</a>
                   </td>
                   </tr>
                   @endforeach

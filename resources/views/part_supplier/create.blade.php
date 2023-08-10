@@ -14,12 +14,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">edit Data additive</h1>            
+            <h1 class="m-0">Create Data part_supplier</h1>            
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">edit Data additive</li>
+              <li class="breadcrumb-item active">Create Data part_supplier</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -35,29 +35,25 @@
           <div class="col-md-12">
           <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Form edit Data additive</h3>
+                <h3 class="card-title">Form Create Data part_supplier</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{asset('additive/edit/'.$additive->id_additive)}}" method="POST">
+              <form action="{{asset('part_supplier/create')}}" method="POST">
               {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
-                    <label>kode additive</label>
-                    <input type="text" name="kode_additive" value="{{ $additive->kode_additive }}" class="form-control">
+                    <label>Part Number</label>
+                    <input type="text" name="part_number" class="form-control">
                   </div>
                   <div class="form-group">
-                    <label>Nama additive</label>
-                    <input type="text" name="nama_additive" value="{{ $additive->nama_additive }}" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <label>Price</label>
-                    <input type="text" name="price_additive" value="{{ $additive->price_additive }}" class="form-control">
-                  </div>                  
+                    <label>Part Name</label>
+                    <input type="text" name="part_name" class="form-control">
+                  </div>                                 
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Edit</button>
+                  <button type="submit" class="btn btn-primary">Create</button>
                 </div>
               </form>
             </div>

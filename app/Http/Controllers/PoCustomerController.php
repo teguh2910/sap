@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\po_customer, App\produk, App\customer;
+use App\po_customer, App\part_customer, App\customer;
 use Illuminate\Http\Request;
 
 class PoCustomerController extends Controller
@@ -15,7 +15,7 @@ class PoCustomerController extends Controller
         return view('po_customer/index',compact('po_customer'));
     }
     public function create() {
-        $produks = produk::all();
+        $produks = part_customer::all();
         $customers= customer::all();
         return view('po_customer/create',compact('produks','customers'));
     }
@@ -29,18 +29,11 @@ class PoCustomerController extends Controller
     }
     public function edit($id_po_customer) {
         $po_customer = po_customer::find($id_po_customer);
-        $produks = produk::all();
+        $produks = part_customer::all();
         $customers= customer::all();
         return view('po_customer/edit',compact('po_customer','produks','customers'));
     }
-    public function update($id_po_customer, Request $request) {
-        // $this->validate($request,[
-        //     'no_po_customer' => 'required',
-        //     'id_customer' => 'required',
-        //     'id_produk' => 'required',
-        //     'qty_po_customer' => 'required',
-        //     'harga_po_customer' => 'required',
-        // ]);
+    public function update($id_po_customer, Request $request) {        
         $po_customer = po_customer::find($id_po_customer);
         $po_customer->no_po_customer = $request->no_po_customer;
         $po_customer->id_customer = $request->id_customer;

@@ -14,12 +14,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">edit Data basemetal</h1>            
+            <h1 class="m-0">edit Data part_customer</h1>            
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">edit Data basemetal</li>
+              <li class="breadcrumb-item active">edit Data part_customer</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -35,25 +35,21 @@
           <div class="col-md-12">
           <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Form edit Data basemetal</h3>
+                <h3 class="card-title">Form edit Data part_customer</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{asset('basemetal/edit/'.$basemetal->id_base_metal)}}" method="POST">
+              <form action="{{asset('part_customer/edit/'.$part_customer->id_part_customer)}}" method="POST">
               {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
-                    <label>kode basemetal</label>
-                    <input type="text" name="kode_base_metal" value="{{ $basemetal->kode_base_metal }}" class="form-control">
+                    <label>Part Number</label>
+                    <input type="text" name="part_number" value="{{ $part_customer->part_number }}" class="form-control">
                   </div>
                   <div class="form-group">
-                    <label>Nama basemetal</label>
-                    <input type="text" name="nama_base_metal" value="{{ $basemetal->nama_base_metal }}" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <label>Price</label>
-                    <input type="text" name="price_base_metal" value="{{ $basemetal->price_base_metal }}" class="form-control">
-                  </div>                  
+                    <label>Part Name</label>
+                    <input type="text" name="part_name" value="{{ $part_customer->part_name }}" class="form-control">
+                  </div>                                 
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">

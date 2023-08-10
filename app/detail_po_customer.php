@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class detail_po_customer extends Model
 {
-    protected $primaryKey = 'id_detail_po_customer';
+    protected $primaryKey = 'id_detail_po_customers';
     public function po_customers()
     {
         return $this->hasMany('App\po_customer','id_po_customer','id_po_customer');

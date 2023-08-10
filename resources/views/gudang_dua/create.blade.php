@@ -45,7 +45,7 @@
                   <div class="form-group">
                     <label>Upload Data Excel</label>
                     <input type="file" name="data_excel" class="form-control">
-                    <a href="{{ asset('template_upload_gudang_dua.xlsx') }}">Template Upload</a>
+                    <a href="{{ asset('template_upload_gudang_dua.csv') }}">Template Upload</a>
                   </div>                                    
                 </div>
                 <!-- /.card-body -->

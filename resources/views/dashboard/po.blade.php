@@ -65,38 +65,36 @@
                   </tr>
                   </thead>
                   <tbody>
-                    @foreach($grs as $g)
+                    @foreach($pos as $po)
                     <tr>
-                        @foreach($g->detail_pos as $d)
-                        <td>{{ $d->id_po }}</td>
-                        @foreach($d->pos as $p)
-                        @foreach($p->vendors as $v)
-                        <td>{{ $v->kode_vendor }}</td>
-                        <td>{{ $v->nama_vendor }}</td>
-                        @endforeach
-                        @endforeach
-                        @endforeach
-                        @foreach($g->materials as $m)
-                        <td>{{ $m->kode_material }}</td>
-                        <td>{{ $m->nama_material }}</td>
-                        @endforeach                        
-                        <td>{{ $p->tgl_po }}</td>
-                        <td>{{ $p->delivery_date }}</td>
-                        <td>{{ $p->top }}</td>
-                        <td>IDR</td>                        
-                        <td>{{ number_format($d->qty_po) }}</td>
-                        <td>{{ $d->uom }}</td>
-                        <td>Rp {{ number_format($d->harga_po) }}</td>
-                        <td>Rp {{ number_format($d->qty_po*$d->harga_po) }}</td>
-                        <td>{{ number_format($g->qty_gr) }}</td>
-                        <td>{{ $g->uom }}</td>
-                        <td>Rp {{ number_format($g->harga_gr) }}</td>
-                        <td>Rp {{ number_format($g->harga_gr*$g->qty_gr) }}</td>
-                        <td>{{ number_format($d->qty_po - $g->qty_gr) }}</td>
-                        <td>{{ $g->uom }}</td>
-                        <td>Rp {{ number_format($d->harga_po - $g->harga_gr) }}</td>
-                        <td>Rp {{ number_format(($d->qty_po*$d->harga_po) - ($g->harga_gr*$g->qty_gr)) }}</td>
-                        <td>Open</td>
+                        <td>{{ $po->id_po }}</td>
+                        <td>{{ $po->pos->first()->vendors->first()->kode_vendor }}</td>
+                        <td>{{ $po->pos->first()->vendors->first()->nama_vendor }}</td>
+                        <td>{{ $po->materials->first()->part_number }}</td>
+                        <td>{{ $po->materials->first()->part_name }}</td>
+                        <td>{{ $po->pos->first()->tgl_po }}</td>
+                        <td>{{ $po->pos->first()->delivery_date }}</td>
+                        <td>{{ $po->pos->first()->top }}</td>
+                        <td>IDR</td>
+                        <td>{{ number_format($po->qty_po) }}</td>
+                        <td>{{ $po->uom }}</td>
+                        <td>Rp {{ number_format($po->harga_po) }}</td>
+                        <td>Rp {{ number_format($po->qty_po*$po->harga_po) }}</td>                        
+                        <td>{{ number_format($po->qty_gr) }}</td>
+                        <td>{{ $po->uom }}</td>
+                        <td>Rp {{ number_format($po->harga_gr) }}</td>
+                        <td>Rp {{ number_format($po->harga_gr*$po->qty_gr) }}</td>
+                        <td>{{ number_format($po->qty_po - $po->qty_gr) }}</td>
+                        <td>{{ $po->uom }}</td>
+                        <td>Rp {{ number_format($po->harga_po - $po->harga_gr) }}</td>
+                        <td>Rp {{ number_format(($po->qty_po*$po->harga_po) - ($po->harga_gr*$po->qty_gr)) }}</td>
+                        <td>
+                          @if(($po->qty_po - $po->qty_gr)==0)
+                          Closed
+                          @else
+                          Open
+                          @endif
+                        </td>
                         <td><a href="" class="btn btn-xs btn-success">Closed</a><a href="" class="btn btn-xs btn-danger">Cancel</a></td>
                     </tr>
                     @endforeach

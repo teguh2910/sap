@@ -47,20 +47,15 @@
                     <th>harga_gr</th>
                     <th>tgl_gr</th>
                     <th>Uom</th>
-                    <th>gudang</th>
-                    {{-- <th>action</th>                     --}}
+                    <th>gudang</th>                    
                   </tr>
                   </thead>
                   <tbody>
                   @foreach($gr as $g)
                   <tr>
-                  @foreach($g->detail_pos as $p)
-                  <td>{{ $p->id_po }}</td>
-                  @endforeach
-                  @foreach($g->materials as $m)
-                  <td>{{ $m->kode_material }}</td>
-                  <td>{{ $m->nama_material }}</td>
-                  @endforeach                  
+                  <td>{{ $g->detail_pos->first()->id_po }}</td>
+                  <td>{{ $g->materials->first()->part_number }}</td>
+                  <td>{{ $g->materials->first()->part_name }}</td>
                   <td>
                     <a href="#" class="xedit" 
                        data-pk="{{$g->id_gr}}"
@@ -75,11 +70,7 @@
                   </td>
                   <td>{{ $g->tgl_gr }}</td>
                   <td>{{ $g->uom }}</td>
-                  <td>{{ $g->gudang }}</td>
-                  {{-- <td>
-                    <a href="{{ asset('gr/edit/'.$g->id_gr) }}" class="btn btn-sm btn-primary">Edit</a>
-                    <a href="{{ asset('gr/delete/'.$g->id_gr) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-sm btn-danger">Delete</a>
-                  </td> --}}
+                  <td>{{ $g->gudang }}</td>                 
                   </tr>
                   @endforeach
                   </tbody>                  

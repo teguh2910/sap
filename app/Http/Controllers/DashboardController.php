@@ -1,7 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\gudang_satu, App\gudang_dua, App\po_supplier, App\detail_po_supplier, App\gr, App\prod_g2, App\usage_g2, App\sj, App\prod_g1, App\usage_g1, App\sj_g1;
+use App\gudang_satu, 
+    App\gudang_dua, 
+    App\po_supplier, 
+    App\detail_po_supplier, 
+    App\gr, 
+    App\prod_g2, 
+    App\usage_g2, 
+    App\sj, 
+    App\prod_g1, 
+    App\usage_g1, 
+    App\sj_g1;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -21,12 +31,12 @@ class DashboardController extends Controller
         return view('dashboard/stok',compact(['gudang_satu','gudang_dua']));
     }
     public function po() {
-        $grs=gr::all();
-        return view('dashboard/po',compact(['grs']));
+        $pos=detail_po_supplier::all();
+        return view('dashboard/po',compact(['pos']));
     }
     public function po_customer() {
-        $grs=gr::all();
-        return view('dashboard/po_customer',compact(['grs']));
+        $pos=detail_po_supplier::all();
+        return view('dashboard/po_customer',compact(['pos']));
     }
     public function hutang() {
         $pos=detail_po_supplier::all();

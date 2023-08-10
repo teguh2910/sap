@@ -46,7 +46,7 @@
                     <label>Material</label>
                     <select name="id_material" id="" class="form-control select2">
                       @foreach($material as $m)
-                      <option value="{{ $m->id_material }}">{{ $m->nama_material }}</option>
+                      <option value="{{ $m->id_part_supplier }}">{{ $m->part_name }}</option>
                       @endforeach
                     </select>
                   </div>

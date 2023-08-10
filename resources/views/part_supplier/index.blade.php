@@ -14,16 +14,17 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">List Produk</h1>
+            <h1 class="m-0">List part_supplier</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">List Produk</li>
+              <li class="breadcrumb-item active">List part_supplier</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
-        <a href="{{ asset('produk/create') }}" class="btn btn-sm btn-success">Create</a>
+        <a href="{{ asset('part_supplier/create') }}" class="btn btn-sm btn-success">Create</a>
+        <a href="{{ asset('part_supplier/upload') }}" class="btn btn-sm btn-success">Upload</a>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -40,21 +41,19 @@
                 <table id="example1" class="table table-bordered table-striped" style="width: 100%">
                   <thead>
                   <tr>
-                    <th>kode_produk</th>
-                    <th>nama_produk</th>
-                    <th>price</th>
+                    <th>part_number</th>
+                    <th>part_name</th>
                     <th>action</th>                    
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach($produk as $p)
+                  @foreach($part_supplier as $p)
                   <tr>
-                  <td>{{ $p->kode_produk }}</td>
-                  <td>{{ $p->type }}</td>
-                  <td>{{ $p->price }}</td>
+                  <td>{{ $p->part_number }}</td>
+                  <td>{{ $p->part_name }}</td>
                   <td>
-                    <a href="{{ asset('produk/edit/'.$p->id_produk) }}" class="btn btn-sm btn-primary">Edit</a>
-                    <a href="{{ asset('produk/delete/'.$p->id_produk) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-sm btn-danger">Delete</a>
+                    <a href="{{ asset('part_supplier/edit/'.$p->id_part_supplier) }}" class="btn btn-sm btn-primary">Edit</a>
+                    <a href="{{ asset('part_supplier/delete/'.$p->id_part_supplier) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-sm btn-danger">Delete</a>
                   </td>
                   </tr>
                   @endforeach

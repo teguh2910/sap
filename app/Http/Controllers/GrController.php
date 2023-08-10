@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\gr, App\po_supplier, App\material, App\gudang_dua, App\gudang_satu, App\detail_po_supplier;
+use App\gr, App\po_supplier, App\part_supplier, App\gudang_dua, App\gudang_satu, App\detail_po_supplier;
 use Illuminate\Http\Request;
 
 class GrController extends Controller
@@ -30,25 +30,25 @@ class GrController extends Controller
         return redirect('/gr');
     }
     public function index() {
-        $gr = gr::all();
+        $gr = gr::where('qty_gr',null)->get();
         return view('gr/index',compact('gr'));
     }
     function update_gr(Request $request) {
         if($request->ajax()){
         gr::find($request->input('pk'))->update([$request->input('name') => $request->input('value')]);
-        $part_no=gr::find($request->input('pk'))->materials[0]->kode_material;
-        $id_material = gr::find($request->input('pk'))->materials[0]->id_material;
-        $gudang=gr::find($request->input('pk'))->gudang;
-        $total_gr = gr::where('id_material',$id_material)->sum('qty_gr');
-        if($gudang=='gudang_dua'){
-            $gudangdua = gudang_dua::where('part_no',$part_no)->first();
-            $gudangdua->incoming_balance = $total_gr;
-            $gudangdua->save();
-        }else{
-            $gudangsatu = gudang_satu::where('part_no',$part_no)->first();
-            $gudangsatu->incoming_balance = $total_gr;
-            $gudangsatu->save();
-        }
+        // $part_no=gr::find($request->input('pk'))->materials[0]->kode_material;
+        // $id_material = gr::find($request->input('pk'))->materials[0]->id_material;
+        // $gudang=gr::find($request->input('pk'))->gudang;
+        // $total_gr = gr::where('id_material',$id_material)->sum('qty_gr');
+        // if($gudang=='gudang_dua'){
+        //     $gudangdua = gudang_dua::where('part_no',$part_no)->first();
+        //     $gudangdua->incoming_balance = $total_gr;
+        //     $gudangdua->save();
+        // }else{
+        //     $gudangsatu = gudang_satu::where('part_no',$part_no)->first();
+        //     $gudangsatu->incoming_balance = $total_gr;
+        //     $gudangsatu->save();
+        // }
          return response()->json(['success' => true]);
         
      }

@@ -14,12 +14,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">edit Data material</h1>            
+            <h1 class="m-0">edit Data detail Nomor {{ $po->id_po }}</h1>            
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">edit Data material</li>
+              <li class="breadcrumb-item active">edit Data detail PO </li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -35,24 +35,36 @@
           <div class="col-md-12">
           <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Form edit Data material</h3>
+                <h3 class="card-title">Form edit Data detail Nomor {{ $po->id_po }}</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{asset('material/edit/'.$material->id_material)}}" method="POST">
+              <form action="{{asset('detailpo/edit/'.$po->id_po)}}" method="POST">
               {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
-                    <label>kode material</label>
-                    <input type="text" name="kode_material" value="{{ $material->kode_material }}" class="form-control">
+                    <label>Material</label>
+                    <select name="id_material" id="" class="form-control select2">
+                      @foreach($material as $m)
+                      //show edited value based on id_material
+                      <option value="{{ $m->id_part_supplier }}" {{ $po->id_material == $m->id_part_supplier ? 'selected' : '' }}>{{ $m->part_name }}</option>                      
+                      @endforeach
+                    </select>
                   </div>
                   <div class="form-group">
-                    <label>Nama material</label>
-                    <input type="text" name="nama_material" value="{{ $material->nama_material }}" class="form-control">
+                    <label>Qty PO</label>
+                    <input type="number" value="{{ $po->qty_po }}" name="qty_po" class="form-control">
                   </div>
                   <div class="form-group">
-                    <label>Price</label>
-                    <input type="text" name="price_material" value="{{ $material->price_material }}" class="form-control">
+                    <label>Harga</label>
+                    <input type="integer" value="{{ $po->harga_po }}" name="harga_po" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>Uom</label>
+                    <select name="uom" class="form-control">
+                      <option value="kg">Kg</option>
+                      <option value="pcs">Pcs</option>
+                    </select>
                   </div>                  
                 </div>
                 <!-- /.card-body -->

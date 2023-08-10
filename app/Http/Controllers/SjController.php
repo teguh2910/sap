@@ -13,7 +13,7 @@ class SjController extends Controller
     public function create() {
         $stoks=gudang_dua::where('category_part','fg')->get();
         $truks=truk::all();
-        return view('sj/create',compact(['stoks','truks']));
+        return view('sj_g2/create',compact(['stoks','truks']));
     }
     public function store(Request $request) {
         //create new data sj
@@ -23,27 +23,17 @@ class SjController extends Controller
         $sj->tgl_sj = $request->tgl_sj;
         $sj->id_truk = $request->id_truk;
         $sj->save();
-        //update stok
-        $part_no=gudang_dua::find($request->id_gudang_dua)->part_no;
-        $total_sj = sj::where('id_gudang_dua',$request->id_gudang_dua)->sum('qty_sj');
-        $gudangdua = gudang_dua::where('part_no',$part_no)->first();
-        $gudangdua->usage_balance = $total_sj;
-        $gudangdua->save();  
-        //update gudang satu
-        $gudangsatu = gudang_satu::where('part_no',$part_no)->first();
-        $gudangsatu->incoming_balance = $total_sj;
-        $gudangsatu->save();              
         return redirect('sjg2');
     }
     public function index(){
         $data=sj::all();
-        return view('sj/index',compact('data'));
+        return view('sj_g2/index',compact('data'));
     }
     public function edit($id){
         $data=sj::find($id);
         $stoks=gudang_dua::where('category_part','fg')->get();
         $truks=truk::all();
-        return view('sj/edit',compact('data','id','stoks','truks'));
+        return view('sj_g2/edit',compact('data','id','stoks','truks'));
     }
     public function update(Request $request,$id) {
         //create new data sj

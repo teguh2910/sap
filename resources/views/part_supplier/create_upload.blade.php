@@ -14,12 +14,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Create Data Produk</h1>            
+            <h1 class="m-0">Create Data part_supplier</h1>            
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Create Data Produk</li>
+              <li class="breadcrumb-item active">Create Data part_supplier</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -35,25 +35,18 @@
           <div class="col-md-12">
           <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Form Create Data Produk</h3>
+                <h3 class="card-title">Form Create Data part_supplier</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{asset('produk/create')}}" method="POST">
+              <form action="{{asset('part_supplier/upload')}}" enctype="multipart/form-data" method="POST">
               {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
-                    <label>Kode Produk</label>
-                    <input type="text" name="kode_produk" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <label>Nama Produk</label>
-                    <input type="text" name="nama_produk" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <label>Harga Produk</label>
-                    <input type="integer" name="harga_produk" class="form-control">
-                  </div>                  
+                    <label>File Upload</label>
+                    <input type="file" name="data_excel" class="form-control">
+                    <a href="{{ asset('template_upload_part_supplier.csv') }}" class="btn btn-xs btn-success">Template Upload</a>
+                  </div>                                                 
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">

@@ -55,39 +55,41 @@
                           <th>ending_balance</th>
                           <th>STO</th>
                           <th>ending_after_sto</th>
-                          {{-- <th>action</th> --}}
                       </tr>
                   </thead>
                   <tbody>
-                      @foreach($gudang_duas as $g)
-                      <tr>
-                          <td>{{ $g->id_gudang_dua }}</td>
-                          <td>{{ $g->category_part }}</td>
-                          <td>{{ $g->part_no }}</td>
-                          <td>{{ $g->part_name }}</td>
-                          <td>{{ $g->beginning_balance }}</td>
-                          <td>{{ $g->incoming->first()['total_qty_prod_g2'] }}</td>
-                          <td>{{ $g->usage_balance }}</td>
-                          <td>{{ $g->beginning_balance + $g->incoming_balance - $g->usage_balance }}</td>              
-                          <!-- Check if there are associated STOs (stock transfer orders) -->
-                          @if($g->stos->count() > 0)
-                                  @php
-                                    $s = $g->stos->last();
-                                  @endphp                      
-                                  <td>{{ $s->qty_sto }}</td>
-                                  <td>{{ $g->beginning_balance + $g->incoming_balance - $g->usage_balance - $s->qty_sto }}</td>                              
-                          @else
-                              <!-- If there are no STOs, display 0 in the corresponding columns -->
-                              <td>0</td>
-                              <td>{{ $g->beginning_balance + $g->incoming_balance - $g->usage_balance }}</td>
-                          @endif
-              
-                          {{-- <td>
-                              <a href="{{ asset('stok/edit/'.$g->id_stok) }}" class="btn btn-xs btn-primary">Edit</a>
-                              <a href="{{ asset('stok/delete/'.$g->id_stok) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-xs btn-danger">Delete</a>
-                          </td> --}}
-                      </tr>
-                      @endforeach
+                    @foreach($gudang_duas as $g)
+                    @php
+                        $beginningBalance = $g->beginning_balance;
+                        if($g->category_part == 'RM')
+                        {
+                        $totalQtyProd = $g->part_supplier->first()->grs->sum('qty_gr');
+                        $usageBalance = $g->prods->sum('qty_prod_g2');
+                        }
+                        else
+                        {
+                          $totalQtyProd=$g->prods->sum('qty_prod_g2');
+                          $usageBalance = 0;
+                        }
+                        
+                        $stoQty = $g->stos->count() > 0 ? $g->stos->last()->qty_sto : 0;
+                        $endingBalance = $beginningBalance + $totalQtyProd - $usageBalance - $stoQty;
+                    @endphp
+                
+                    <tr>
+                        <td>{{ $g->id_gudang_dua }}</td>
+                        <td>{{ $g->category_part }}</td>
+                        <td>{{ $g->part_no }}</td>
+                        <td>{{ $g->part_name }}</td>
+                        <td>{{ $beginningBalance }}</td>
+                        <td>{{ $totalQtyProd }}</td>
+                        <td>{{ $usageBalance }}</td>
+                        <td>{{ $endingBalance }}</td>
+                        <td>{{ $stoQty }}</td>
+                        <td>{{ $stoQty - $endingBalance }}</td>
+                    </tr>
+                @endforeach
+                
                   </tbody>
               </table>
               

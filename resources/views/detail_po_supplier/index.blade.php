@@ -54,16 +54,16 @@
                   <tr>
                   <td>{{ $d->id_po }}</td>
                   @foreach($d->materials as $m)
-                  <td>{{ $m->kode_material }}</td>
-                  <td>{{ $m->nama_material }}</td>
+                  <td>{{ $m->part_number }}</td>
+                  <td>{{ $m->part_name }}</td>
                   @endforeach                  
                   <td>{{ number_format($d->qty_po) }}</td>                  
                   
                   <td>{{ $d->uom }}</td>
                   <td>Rp {{ number_format($d->harga_po) }}</td>
                   <td>
-                    <a href="{{ asset('detailpo/edit/'.$d->id_detailpo) }}" class="btn btn-sm btn-primary">Edit</a>
-                    <a href="{{ asset('detailpo/delete/'.$d->id_detailpo) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-sm btn-danger">Delete</a>
+                    <a href="{{ asset('detailpo/edit/'.$d->id_detail_po) }}" class="btn btn-sm btn-primary">Edit</a>
+                    <a href="{{ asset('detailpo/delete/'.$d->id_detail_po) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-sm btn-danger">Delete</a>
                   </td>
                   </tr>
                   @endforeach

@@ -14,12 +14,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">edit Data produk</h1>            
+            <h1 class="m-0">Create Data part_customer</h1>            
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">edit Data produk</li>
+              <li class="breadcrumb-item active">Create Data part_customer</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -35,29 +35,22 @@
           <div class="col-md-12">
           <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Form edit Data produk</h3>
+                <h3 class="card-title">Form Create Data part_customer</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{asset('produk/edit/'.$produk->id_produk)}}" method="POST">
+              <form action="{{asset('part_customer/upload')}}" enctype="multipart/form-data" method="POST">
               {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
-                    <label>kode produk</label>
-                    <input type="text" name="kode_produk" value="{{ $produk->kode_produk }}" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <label>Nama Produk</label>
-                    <input type="text" name="nama_produk" value="{{ $produk->type }}" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <label>Price</label>
-                    <input type="text" name="price" value="{{ $produk->price }}" class="form-control">
-                  </div>                  
+                    <label>File Upload</label>
+                    <input type="file" name="data_excel" class="form-control">
+                    <a href="{{ asset('template_upload_part_customer.csv') }}" class="btn btn-xs btn-success">Template Upload</a>
+                  </div>                                                 
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Edit</button>
+                  <button type="submit" class="btn btn-primary">Create</button>
                 </div>
               </form>
             </div>

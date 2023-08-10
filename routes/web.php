@@ -1,6 +1,7 @@
 <?php
 Auth::routes();
 Route::get('/', 'HomeController@index');
+
 //crud bank
 Route::get('/bank', 'bankController@index');
 Route::get('/bank/create', 'bankController@create');
@@ -58,38 +59,6 @@ Route::get('/sjg2/edit/{id}', 'SjController@edit');
 Route::post('/sjg2/edit/{id}', 'SjController@update');
 Route::get('/sjg2/delete/{id}', 'SjController@delete');
 
-//crud produk
-Route::get('/produk', 'ProdukController@index');
-Route::get('/produk/create', 'ProdukController@create');
-Route::post('/produk/create', 'ProdukController@store');
-Route::get('/produk/edit/{id}', 'ProdukController@edit');
-Route::post('/produk/edit/{id}', 'ProdukController@update');
-Route::get('/produk/delete/{id}', 'ProdukController@delete');
-
-//crud material
-Route::get('/material', 'MaterialController@index');
-Route::get('/material/create', 'MaterialController@create');
-Route::post('/material/create', 'MaterialController@store');
-Route::get('/material/edit/{id}', 'MaterialController@edit');
-Route::post('/material/edit/{id}', 'MaterialController@update');
-Route::get('/material/delete/{id}', 'MaterialController@delete');
-
-//crud basemetal
-Route::get('/basemetal', 'BasemetalController@index');
-Route::get('/basemetal/create', 'BasemetalController@create');
-Route::post('/basemetal/create', 'BasemetalController@store');
-Route::get('/basemetal/edit/{id}', 'BasemetalController@edit');
-Route::post('/basemetal/edit/{id}', 'BasemetalController@update');
-Route::get('/basemetal/delete/{id}', 'BasemetalController@delete');
-
-//crud additive
-Route::get('/additive', 'AdditiveController@index');
-Route::get('/additive/create', 'AdditiveController@create');
-Route::post('/additive/create', 'AdditiveController@store');
-Route::get('/additive/edit/{id}', 'AdditiveController@edit');
-Route::post('/additive/edit/{id}', 'AdditiveController@update');
-Route::get('/additive/delete/{id}', 'AdditiveController@delete');
-
 //crud detailPO Supplier
 Route::get('/detailpo/{id}', 'DetailPoSupplierController@index');
 Route::get('/detailpo/create/{id}', 'DetailPoSupplierController@create');
@@ -121,7 +90,6 @@ Route::post('/gudangdua/create', 'GudangDuaController@store');
 Route::get('/gudangdua/edit/{id}', 'GudangDuaController@edit');
 Route::post('/gudangdua/edit/{id}', 'GudangDuaController@update');
 Route::get('/gudangdua/delete/{id}', 'GudangDuaController@delete');
-
 
 //crud gr
 Route::get('/gr', 'GrController@index');
@@ -269,7 +237,6 @@ Route::get('/detailprodg1/edit/{id}', 'DetailProdG1Controller@edit');
 Route::post('/detailprodg1/edit/{id}', 'DetailProdG1Controller@update');
 Route::get('/detailprodg1/delete/{id}', 'DetailProdG1Controller@delete');
 
-
 //crud invoice
 Route::get('/invoice', 'InvoiceController@index');
 Route::get('/invoice/create', 'InvoiceController@create');
@@ -278,3 +245,23 @@ Route::get('/invoice/edit/{id}', 'InvoiceController@edit');
 Route::post('/invoice/edit/{id}', 'InvoiceController@update');
 Route::get('/invoice/delete/{id}', 'InvoiceController@delete');
 Route::get('/invoice/cetak/{id}', 'InvoiceController@cetak');
+
+//crud part Supplier
+Route::get('/part_supplier', 'PartSupplierController@index');
+Route::get('/part_supplier/create', 'PartSupplierController@create');
+Route::post('/part_supplier/create', 'PartSupplierController@store');
+Route::get('/part_supplier/upload', 'PartSupplierController@create_upload');
+Route::post('/part_supplier/upload', 'PartSupplierController@store_upload');
+Route::get('/part_supplier/edit/{id}', 'PartSupplierController@edit');
+Route::post('/part_supplier/edit/{id}', 'PartSupplierController@update');
+Route::get('/part_supplier/delete/{id}', 'PartSupplierController@delete');
+
+//crud part Customer
+Route::get('/part_customer', 'PartCustomerController@index');
+Route::get('/part_customer/create', 'PartCustomerController@create');
+Route::post('/part_customer/create', 'PartCustomerController@store');
+Route::get('/part_customer/upload', 'PartCustomerController@create_upload');
+Route::post('/part_customer/upload', 'PartCustomerController@store_upload');
+Route::get('/part_customer/edit/{id}', 'PartCustomerController@edit');
+Route::post('/part_customer/edit/{id}', 'PartCustomerController@update');
+Route::get('/part_customer/delete/{id}', 'PartCustomerController@delete');
