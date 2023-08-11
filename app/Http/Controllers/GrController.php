@@ -35,20 +35,7 @@ class GrController extends Controller
     }
     function update_gr(Request $request) {
         if($request->ajax()){
-        gr::find($request->input('pk'))->update([$request->input('name') => $request->input('value')]);
-        // $part_no=gr::find($request->input('pk'))->materials[0]->kode_material;
-        // $id_material = gr::find($request->input('pk'))->materials[0]->id_material;
-        // $gudang=gr::find($request->input('pk'))->gudang;
-        // $total_gr = gr::where('id_material',$id_material)->sum('qty_gr');
-        // if($gudang=='gudang_dua'){
-        //     $gudangdua = gudang_dua::where('part_no',$part_no)->first();
-        //     $gudangdua->incoming_balance = $total_gr;
-        //     $gudangdua->save();
-        // }else{
-        //     $gudangsatu = gudang_satu::where('part_no',$part_no)->first();
-        //     $gudangsatu->incoming_balance = $total_gr;
-        //     $gudangsatu->save();
-        // }
+        gr::find($request->input('pk'))->update([$request->input('name') => $request->input('value')]);        
          return response()->json(['success' => true]);
         
      }

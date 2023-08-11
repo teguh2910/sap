@@ -42,53 +42,56 @@
           <div class="card">
               <!-- /.card-header -->
               <div class="card-body">                
-                <table id="example1" class="table table-bordered table-striped" style="width:100%">
+              <table id="example1" class="table table-bordered table-striped" style="width:100%">
                   <thead>
-                  <tr>
-                    <th>id_stok</th>
-                    <th>Category</th>
-                    <th>Part No</th>
-                    <th>Part Name</th>
-                    <th>beginning_balance</th>
-                    <th>incoming_balance</th>
-                    <th>usage_balance</th>
-                    <th>ending_balance</th>
-                    <th>STO</th>
-                    <th>ending_after_sto</th>
-                    {{-- <th>action</th> --}}
-                  </tr>
+                      <tr>
+                          <th>id_stok</th>
+                          <th>Category</th>
+                          <th>Part No</th>
+                          <th>Part Name</th>
+                          <th>beginning_balance</th>
+                          <th>incoming_balance</th>
+                          <th>usage_balance</th>
+                          <th>ending_balance</th>
+                          <th>STO</th>
+                          <th>ending_after_sto</th>
+                      </tr>
                   </thead>
                   <tbody>
-                  @foreach($gudang_satus as $g)
-                  <tr>
-                  <td>{{ $g->id_gudang_satu }}</td>
-                  <td>{{ $g->category_part }}</td>                  
-                  <td>{{ $g->part_no }}</td>
-                  <td>{{ $g->part_name }}</td>
-                  <td>{{ $g->beginning_balance }}</td>
-                  <td>{{ $g->incoming_balance }}</td>
-                  <td>{{ $g->usage_balance }}</td>
-                  <td>{{ $g->beginning_balance+$g->incoming_balance-$g->usage_balance }}</td>
-                  <!-- Check if there are associated STOs (stock transfer orders) -->
-                  @if($g->stos->count() > 0)
-                  @php
-                    $s = $g->stos->last();
-                  @endphp                      
-                  <td>{{ $s->qty_sto }}</td>
-                  <td>{{ $g->beginning_balance + $g->incoming_balance - $g->usage_balance - $s->qty_sto }}</td>                              
-                  @else
-                      <!-- If there are no STOs, display 0 in the corresponding columns -->
-                      <td>0</td>
-                      <td>{{ $g->beginning_balance + $g->incoming_balance - $g->usage_balance }}</td>
-                  @endif
-                  {{-- <td>
-                    <a href="{{ asset('stok/edit/'.$g->id_stok) }}" class="btn btn-xs btn-primary">Edit</a>
-                    <a href="{{ asset('stok/delete/'.$g->id_stok) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-xs btn-danger">Delete</a>
-                  </td> --}}
-                  </tr>
-                  @endforeach
-                  </tbody>                  
-                </table>
+                    @foreach($gudang_satus as $g)
+                    @php
+                        $beginningBalance = $g->beginning_balance;
+                        if($g->category_part == 'RM')
+                        {
+                        $totalQtyProd = $g->part_supplier->first()->grs->sum('qty_gr');
+                        $usageBalance = $g->prods->sum('qty_prod_g1');
+                        }
+                        else
+                        {
+                          $totalQtyProd=$g->prods->sum('qty_prod_g1');
+                          $usageBalance = $g->sjs->sum('qty_sj_g1');
+                        }
+                        
+                        $stoQty = $g->stos->count() > 0 ? $g->stos->last()->qty_sto : 0;
+                        $endingBalance = $beginningBalance + $totalQtyProd - $usageBalance - $stoQty;
+                    @endphp
+                
+                    <tr>
+                        <td>{{ $g->id_gudang_satu }}</td>
+                        <td>{{ $g->category_part }}</td>
+                        <td>{{ $g->part_no }}</td>
+                        <td>{{ $g->part_name }}</td>
+                        <td>{{ $beginningBalance }}</td>
+                        <td>{{ $totalQtyProd }}</td>
+                        <td>{{ $usageBalance }}</td>
+                        <td>{{ $endingBalance }}</td>
+                        <td>{{ $stoQty }}</td>
+                        <td>{{ $stoQty - $endingBalance }}</td>
+                    </tr>
+                @endforeach
+                
+                  </tbody>
+              </table>
               </div>
               <!-- /.card-body -->
             </div>

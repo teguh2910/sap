@@ -69,7 +69,7 @@
                         else
                         {
                           $totalQtyProd=$g->prods->sum('qty_prod_g2');
-                          $usageBalance = 0;
+                          $usageBalance = $g->sjs->sum('qty_sj');
                         }
                         
                         $stoQty = $g->stos->count() > 0 ? $g->stos->last()->qty_sto : 0;
