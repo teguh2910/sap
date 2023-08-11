@@ -11,7 +11,11 @@ class po_customer extends Model
         return $this->hasMany('App\customer','id_customer','id_customer');
     }
     public function produks() {
-        return $this->hasMany('App\produk','id_produk','id_produk');
+        return $this->hasMany('App\part_customer','id_part_customer','id_produk');
+    }
+    
+    public function detail_po_customer() {
+        return $this->hasMany('App\detail_po_customer','id_po_customer','id_po_customer');
     }
     
 }

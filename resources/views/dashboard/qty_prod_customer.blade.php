@@ -47,7 +47,15 @@
                   </tr>
                   </thead>
                   <tbody>
-                  
+                  @foreach($po_c as $p)
+                  <tr>
+                    <td>{{ $p->customers->first()->nama_customer }}</td>
+                    <td>{{ $p->detail_po_customer->first()->id_part_customer }}</td>
+                    <td>{{ $p->detail_po_customer->first()->id_part_customer }}</td>
+                    <td>{{ $p->gudang_dua->first()->prods->first()->qty_prod_g1 }}</td>
+                    <td>{{ $p->detail_po_customer->first()->qty_po_customer }}</td>
+                  </tr>
+                  @endforeach
                   </tbody>                  
                 </table>
               </div>

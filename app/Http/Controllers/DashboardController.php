@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 use App\gudang_satu, 
     App\gudang_dua, 
-    App\po_supplier, 
-    App\detail_po_supplier, 
+    App\po_supplier,
+    App\po_customer, 
+    App\detail_po_supplier,
+    App\detail_po_customer, 
     App\gr, 
     App\prod_g2, 
     App\usage_g2, 
@@ -95,7 +97,8 @@ class DashboardController extends Controller
         return view('dashboard/stock_customer');
     }
     public function qty_prod_customer() {
-        return view('dashboard/qty_prod_customer');
+        $po_c=detail_po_customer::all();
+        return view('dashboard/qty_prod_customer',compact('po_c'));
     }
 
 }

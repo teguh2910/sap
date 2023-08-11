@@ -15,4 +15,7 @@ class detail_po_customer extends Model
     {
         return $this->hasMany('App\part_customer','id_part_customer','id_part_customer');
     }
+    public function gudang_dua() {
+        return $this->hasMany('App\gudang_dua','part_no','part_number');
+    }
 }
