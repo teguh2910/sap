@@ -42,11 +42,22 @@
                     <th>Customer</th>
                     <th>Part Number</th>                    
                     <th>Part Name</th>
-                    <th>Qty Actual</th>                                                            
+                    <th>Qty Order</th>
+                    <th>Qty Actual</th>
+                    <th>Variant</th>                                                            
                   </tr>
                   </thead>
                   <tbody>
-                  
+                  @foreach($po_customer as $po_customer)
+                  <tr>
+                    <td>{{ $po_customer->po_customers->first()->customers->first()->nama_customer }}</td>
+                    <td>{{ $po_customer->part_customers->first()->part_number }}</td>
+                    <td>{{ $po_customer->part_customers->first()->part_name }}</td>
+                    <td>{{ $po_customer->qty_po_customer }}</td>
+                    <td>{{ $po_customer->part_customers->first()->gudang_satu->first()->prods->sum('qty_prod_g1') - $po_customer->part_customers->first()->gudang_satu->first()->sjs->sum('qty_sj_g1') }}</td>
+                    <td>{{ ($po_customer->part_customers->first()->gudang_satu->first()->prods->sum('qty_prod_g1') - $po_customer->part_customers->first()->gudang_satu->first()->sjs->sum('qty_sj_g1')) - $po_customer->qty_po_customer }}</td>
+                  </tr>
+                  @endforeach
                   </tbody>                  
                 </table>
               </div>

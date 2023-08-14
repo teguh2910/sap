@@ -36,66 +36,36 @@
           <div class="card">
               <!-- /.card-header -->
               <div class="card-body">                
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example1" class="table table-bordered table-striped" style="width: 100%">
                   <thead>
                   <tr>
                     <th>PO Number</th>
-                    <th>Supplier Code</th>                    
-                    <th>Supplier Name</th>
+                    <th>Customer Code</th>                    
+                    <th>Customer Name</th>
                     <th>Material</th>
                     <th>Description</th>
                     <th>Issue Date</th>
-                    <th>Delivery Date</th>
-                    <th>Term of Payment</th>
                     <th>Curency</th>
                     <th>Qty Order</th>
                     <th>Uom</th>
                     <th>Price Order</th>
-                    <th>Amount Order</th>
-                    <th>Qty GR</th>
-                    <th>Uom</th>
-                    <th>Price GR</th>
-                    <th>Amount GR</th>
-                    <th>Qty Oustanding</th>
-                    <th>Uom</th>
-                    <th>Price Oustanding</th>
-                    <th>Amount Oustanding</th>  
-                    <th>Status</th>
-                    <th></th>                                      
+                    <th>Amount Order</th>                                                          
                   </tr>
                   </thead>
                   <tbody>
                     @foreach($pos as $po)
                     <tr>
-                        <td>{{ $po->id_po }}</td>
-                        <td>{{ $po->pos->first()->vendors->first()->kode_vendor }}</td>
-                        <td>{{ $po->pos->first()->vendors->first()->nama_vendor }}</td>
-                        <td>{{ $po->materials->first()->part_number }}</td>
-                        <td>{{ $po->materials->first()->part_name }}</td>
-                        <td>{{ $po->pos->first()->tgl_po }}</td>
-                        <td>{{ $po->pos->first()->delivery_date }}</td>
-                        <td>{{ $po->pos->first()->top }}</td>
+                        <td>{{ $po->po_customers->first()->no_po_customer }}</td>
+                        <td>{{ $po->po_customers->first()->customers->first()->kode_customer }}</td>
+                        <td>{{ $po->po_customers->first()->customers->first()->nama_customer }}</td>
+                        <td>{{ $po->part_customers->first()->part_number }}</td>
+                        <td>{{ $po->part_customers->first()->part_name }}</td>
+                        <td>{{ $po->po_customers->first()->tgl_po_customer }}</td>
                         <td>IDR</td>
-                        <td>{{ number_format($po->qty_po) }}</td>
+                        <td>{{ number_format($po->qty_po_customer) }}</td>
                         <td>{{ $po->uom }}</td>
-                        <td>Rp {{ number_format($po->harga_po) }}</td>
-                        <td>Rp {{ number_format($po->qty_po*$po->harga_po) }}</td>                        
-                        <td>{{ number_format($po->qty_gr) }}</td>
-                        <td>{{ $po->uom }}</td>
-                        <td>Rp {{ number_format($po->harga_gr) }}</td>
-                        <td>Rp {{ number_format($po->harga_gr*$po->qty_gr) }}</td>
-                        <td>{{ number_format($po->qty_po - $po->qty_gr) }}</td>
-                        <td>{{ $po->uom }}</td>
-                        <td>Rp {{ number_format($po->harga_po - $po->harga_gr) }}</td>
-                        <td>Rp {{ number_format(($po->qty_po*$po->harga_po) - ($po->harga_gr*$po->qty_gr)) }}</td>
-                        <td>
-                          @if(($po->qty_po - $po->qty_gr)==0)
-                          Closed
-                          @else
-                          Open
-                          @endif
-                        </td>
-                        <td><a href="" class="btn btn-xs btn-success">Closed</a><a href="" class="btn btn-xs btn-danger">Cancel</a></td>
+                        <td>Rp {{ number_format($po->harga_po_customer) }}</td>
+                        <td>Rp {{ number_format($po->qty_po_customer*$po->harga_po_customer) }}</td>                                                  
                     </tr>
                     @endforeach
                   </tbody>                  

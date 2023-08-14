@@ -56,7 +56,7 @@
                   <td>{{ $s->id_sj_g1 }}</td>
                   <td>{{ $s->gudang_satus->first()->category_part }}</td>                  
                   <td>{{ $s->gudang_satus->first()->part_no }}</td>
-                  <td>{{ $s->gudang_satus->first()->part_number }}</td>
+                  <td>{{ $s->gudang_satus->first()->part_name }}</td>
                   <td>{{ $s->qty_sj_g1 }}</td>
                   <td>{{ $s->po_customers->first()->id_po_customer }}</td>
                   <td>{{ $s->truks->first()->plat_no }}</td>

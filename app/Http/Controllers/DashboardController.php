@@ -37,7 +37,7 @@ class DashboardController extends Controller
         return view('dashboard/po',compact(['pos']));
     }
     public function po_customer() {
-        $pos=detail_po_supplier::all();
+        $pos=detail_po_customer::all();
         return view('dashboard/po_customer',compact(['pos']));
     }
     public function hutang() {
@@ -94,11 +94,12 @@ class DashboardController extends Controller
         
     }
     public function stock_customer(){
-        return view('dashboard/stock_customer');
+        $po_customer=detail_po_customer::all();
+        return view('dashboard/stock_customer',compact('po_customer'));
     }
     public function qty_prod_customer() {
-        $po_c=detail_po_customer::all();
-        return view('dashboard/qty_prod_customer',compact('po_c'));
+        $po_customer=detail_po_customer::all();
+        return view('dashboard/qty_prod_customer',compact('po_customer'));
     }
 
 }
