@@ -197,14 +197,14 @@
                   <i class="nav-icon"></i>
                   <p>Master Truk</p>
                 </a>
-              </li>
-              <li class="nav-item">
+              </li>              
+            </ul>
+            <li class="nav-item">
                 <a href="{{asset('/sop')}}" class="nav-link">
-                  <i class="nav-icon"></i>
+                <i class="nav-icon fas fa-th"></i>
                   <p>SOP</p>
                 </a>
               </li>
-            </ul>
           </li>
           <li class="nav-item">
           <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
