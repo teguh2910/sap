@@ -2,20 +2,9 @@
 
 docker network create sap_network
 
-docker run -d --name mariadb \
--e MYSQL_ROOT_PASSWORD=root \
--e MYSQL_DATABASE=sap \
--e MYSQL_USER=admin \
--e MYSQL_PASSWORD=password \
--v $(pwd)/db:/var/lib/mysql \
---network sap_network  \
-mariadb:latest
-
-docker run -d -p 8080:80 --name sap \
---volume $(pwd):/var/www/html \
---network sap_network \
-sap
+docker run -d --name mariadb -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=sap -e MYSQL_USER=admin -e MYSQL_PASSWORD=password -v C:/sap/db:/var/lib/mysql --restart=always --network sap_network mariadb:latest
+docker run -d -p 8080:80 --name sap --volume C:/sap/:/var/www/html --restart=always --network sap_network sap
+docker run --name myadmin --network sap_network -d --link mariadb:db --restart=always -p 8000:80 phpmyadmin
 
 docker exec sap chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/public
 docker exec sap php artisan migrate --seed
-docker run --name myadmin --network sap_network -d --link mariadb:db -p 8000:80 phpmyadmin
