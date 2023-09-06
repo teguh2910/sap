@@ -14,12 +14,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Create Data Qty Production Gudang Dua</h1>            
+            <h1 class="m-0">Create Data Qty Production Gudang CF</h1>            
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Create Data Qty Production Gudanag Dua</li>
+              <li class="breadcrumb-item active">Create Data Qty Production Gudang CF</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -35,7 +35,7 @@
           <div class="col-md-12">
           <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Form Create Data Qty Production Gudanag Dua</h3>
+                <h3 class="card-title">Form Create Data Qty Production Gudang CF</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -52,7 +52,7 @@
                   </div>
                   <div class="form-group">
                     <label>PO Customer</label>
-                    <select name="id_po_customer" class="form-control select2">
+                    <select name="id_po_customer" required class="form-control select2">
                       @foreach($po_customer as $p)
                       <option value="{{ $p->id_po_customer }}">{{ $p->no_po_customer }}</option>
                       @endforeach

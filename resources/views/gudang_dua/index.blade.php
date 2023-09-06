@@ -14,20 +14,20 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">List Stok Gudang Dua</h1>
+            <h1 class="m-0">List Stok Gudang CF</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">List Stok Gudang Dua</li>
+              <li class="breadcrumb-item active">List Stok Gudang CF</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
         <a href="{{ asset('gudangdua/create') }}" class="btn btn-sm btn-success">Upload Beginning Stok</a>
-        <a href="{{ asset('gr/create') }}" class="btn btn-sm btn-warning">Create Qty Good Receipt Gudang Dua</a>
-        {{-- <a href="{{ asset('usageg2/create') }}" class="btn btn-sm btn-primary">input penggunaan RM Gudang Dua</a> --}}
-        <a href="{{ asset('prodg2/') }}" class="btn btn-sm btn-primary">Input hasil Produksi Gudang Dua</a>
-        <a href="{{ asset('sjg2') }}" class="btn btn-sm btn-info">Create Qty Surat Jalan Gudang Dua</a>
+        <a href="{{ asset('gr/create') }}" class="btn btn-sm btn-warning">Create Qty Good Receipt Gudang CF</a>
+        {{-- <a href="{{ asset('usageg2/create') }}" class="btn btn-sm btn-primary">input penggunaan RM Gudang CF</a> --}}
+        <a href="{{ asset('prodg2/') }}" class="btn btn-sm btn-primary">Input hasil Produksi Gudang CF</a>
+        <a href="{{ asset('sjg2') }}" class="btn btn-sm btn-info">Create Qty Surat Jalan Gudang CF</a>
         <a href="{{ asset('stog2/create') }}" class="btn btn-sm btn-danger">Create Qty STO</a>        
       </div><!-- /.container-fluid -->
     </div>

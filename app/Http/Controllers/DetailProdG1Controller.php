@@ -43,9 +43,9 @@ class DetailProdG1Controller extends Controller
        if($request->submit_fg=='submit_fg'){
            return redirect('/prodg1');
        }elseif($request->submit_rm=='submit_rm'){
-           return view('detail_prod_g1/create_non_rm',compact('part_fg','id_prod_g1','non_rm','id_prod_g1'));
+           return view('detail_prod_g1/create_non_rm',compact('part_fg','id_prod_g1','non_rm'));
        }elseif($request->non_rm_submit=='non_rm_submit'){
-       return view('detail_prod_g1/create_fg',compact('part_fg','id_prod_g1','non_rm','id_prod_g1'));
+       return view('detail_prod_g1/create_fg',compact('part_fg','id_prod_g1','non_rm'));
     }
    }
 }

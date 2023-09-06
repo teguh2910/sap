@@ -14,16 +14,16 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">List Produksi Gudang satu</h1>
+            <h1 class="m-0">List Produksi Gudang SAC</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">List Produksi Gudang satu</li>
+              <li class="breadcrumb-item active">List Produksi Gudang SAC</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row --> 
-        <a href="{{asset('prodg1/create')}}" class="btn btn-sm btn-primary">Input hasil Produksi Gudang satu</a>
+        <a href="{{asset('prodg1/create')}}" class="btn btn-sm btn-primary">Input hasil Produksi Gudang SAC</a>
         <a href="{{ asset('prodg1/cetak/'.$id) }}" class="btn btn-sm btn-success">Cetak</a>
       </div><!-- /.container-fluid -->
     </div>

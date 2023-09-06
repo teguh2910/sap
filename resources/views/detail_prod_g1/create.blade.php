@@ -14,12 +14,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Create Data Raw Material Gudang Satu</h1>            
+            <h1 class="m-0">Create Data Raw Material Gudang SAC</h1>            
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Create Data Qty Raw Material Gudang Satu</li>
+              <li class="breadcrumb-item active">Create Data Qty Raw Material Gudang SAC</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -35,7 +35,7 @@
           <div class="col-md-12">
           <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Form Create Data Qty Raw Material Gudang Satu</h3>
+                <h3 class="card-title">Form Create Data Qty Raw Material Gudang SAC</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->

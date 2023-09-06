@@ -181,7 +181,6 @@
             </ul>
           </li>                             
           @endif
-          @if(auth()->user()->position == 'admin' || auth()->user()->position == 'fac' || auth()->user()->position == 'bod')
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -228,7 +227,7 @@
                 </a>
               </li>              
             </ul>
-            @endif
+           
             <li class="nav-item">
                 <a href="{{asset('/sop')}}" class="nav-link">
                 <i class="nav-icon fas fa-th"></i>

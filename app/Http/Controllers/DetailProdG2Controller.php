@@ -40,10 +40,15 @@ class DetailProdG2Controller extends Controller
         }
         
         $part_fg=gudang_dua::where('category_part','=','FG')->get();
+        $non_rm = gudang_dua::where('category_part','=','NON_RM')->get();
+        
         if($request->submit_fg=='submit_fg'){
             return redirect('/prodg2');
-        }
-        return view('detail_prod_g2/create_fg',compact('part_fg','id_prod_g2'));
+        }elseif($request->submit_rm=='submit_rm'){
+            return view('detail_prod_g2/create_non_rm',compact('part_fg','id_prod_g2','non_rm'));
+        }elseif($request->non_rm_submit=='non_rm_submit'){
+        return view('detail_prod_g2/create_fg',compact('part_fg','id_prod_g2','non_rm'));
+         }
     }
     
 }
