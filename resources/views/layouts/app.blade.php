@@ -154,6 +154,14 @@
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
   });
 </script>
+<script>
+  $(function () {
+    $("#data").DataTable({
+      dom: 'Bfrtip',
+      buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],    
+    });
+    });
+</script>
 
 <script>
   $(document).ready(function() {

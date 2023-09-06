@@ -25,7 +25,7 @@ class DetailProdG2Controller extends Controller
                 $index = str_replace('id_gudang_dua_', '', $key);
                 $idGudangdua = $request->input("id_gudang_dua_" . $index);
                 $qtyProgG2 = $request->input("qty_prod_g2_" . $index);
-                $priceG2 = $request->input("price_g2_" . $index);
+                //$priceG2 = $request->input("price_g2_" . $index);
                 $id_prod_g2 = $request->input("id_prod_g2");
                 //dd($index);
                 // Perform any database operations or other actions here
@@ -34,7 +34,7 @@ class DetailProdG2Controller extends Controller
                     'id_prod_g2' => $id_prod_g2,
                     'id_gudang_dua' => $idGudangdua,
                     'qty_prod_g2' => $qtyProgG2,
-                    'price_g2' => $priceG2,
+                    //'price_g2' => $priceG2,
                 ]);
             }
         }

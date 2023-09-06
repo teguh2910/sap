@@ -23,7 +23,7 @@ class OutCashController extends Controller
         $out_cash->amount_out = $request->amount_out;
         $out_cash->tgl_out_cash = $request->tgl_out_cash;
         if($request->category=='lain-lain'){
-            $out_cash->category = $request->category."(".$request->category_lain.")";    
+            $out_cash->category = $request->category."(".$request->other_category.")";    
         }else{
         $out_cash->category = $request->category;
         }

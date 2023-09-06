@@ -47,6 +47,7 @@
                   <select name="po_customer" id="" class="form-control select2">
                     @foreach($po_customer as $po)
                     <option value="{{ $po->id_po_customer }}">{{ $po->no_po_customer }}</option>
+                    <option value="non_po">NON PO</option>
                     @endforeach
                   </select>
                   </div>                  

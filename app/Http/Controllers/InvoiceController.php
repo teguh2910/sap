@@ -74,4 +74,24 @@ class InvoiceController extends Controller
         // After exporting the Excel file, you can optionally delete the temporary QR code image file.
         unlink($qrCodeImagePath);
     }
+    public function edit($id){
+        $invoice=invoice::find($id);
+        $po_customer=po_customer::all();
+        $customer=customer::all();
+        return view('invoice/edit',compact(['invoice','po_customer','customer']));
+    }
+    public function update(Request $request,$id){
+        $invoice=invoice::find($id);
+        $invoice->no_invoice = $request->no_invoice;
+        $invoice->tgl_invoice = $request->tgl_invoice;
+        $invoice->no_fp = $request->no_fp;
+        $invoice->id_po_customer = $request->id_po_customer;
+        $invoice->save();
+        return redirect('invoice');
+    }
+    public function delete($id){
+        $invoice=invoice::find($id);
+        $invoice->delete();
+        return redirect('invoice');
+    }
 }

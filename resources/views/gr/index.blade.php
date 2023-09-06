@@ -44,7 +44,11 @@
                     <th>Kode_barang</th>
                     <th>nama_barang</th>
                     <th>qty_gr</th>
+                    @if(auth()->user()->position == 'admin' || auth()->user()->position == 'bod' || auth()->user()->position == 'fac')
                     <th>harga_gr</th>
+                    @endif
+                    <th>qty_order</th>
+                    <th>qty_outstanding</th>
                     <th>tgl_gr</th>
                     <th>Uom</th>
                     <th>gudang</th>                    
@@ -62,12 +66,16 @@
                        data-name="qty_gr">
                        {{$g->qty_gr}}</a>
                   </td>
+                  @if(auth()->user()->position == 'admin' || auth()->user()->position == 'bod' || auth()->user()->position == 'fac')
                   <td>
                     <a href="#" class="xedit" 
                        data-pk="{{$g->id_gr}}"
-                       data-name="harga_gr">
-                       {{$g->harga_gr}}</a>
+                       data-name="harga_gr">                       
+                       {{$g->harga_gr}}</a>                       
                   </td>
+                  @endif
+                  <td>{{ $g->tgl_gr->detail_pos->first()->qty_po }}</td>
+                  <td>{{ $g->tgl_gr->detail_pos->first()->qty_po - $g->qty_gr }}</td>
                   <td>{{ $g->tgl_gr }}</td>
                   <td>{{ $g->uom }}</td>
                   <td>{{ $g->gudang }}</td>                 

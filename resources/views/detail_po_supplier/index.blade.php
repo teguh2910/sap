@@ -45,7 +45,9 @@
                     <th>nama_barangg</th>
                     <th>Qty_Po</th>
                     <th>Uom</th>
+                    @if(auth()->user()->position == 'admin' || auth()->user()->position == 'bod' || auth()->user()->position == 'fac')
                     <th>Harga_po</th>
+                    @endif
                     <th>action</th>                    
                   </tr>
                   </thead>
@@ -57,10 +59,11 @@
                   <td>{{ $m->part_number }}</td>
                   <td>{{ $m->part_name }}</td>
                   @endforeach                  
-                  <td>{{ number_format($d->qty_po) }}</td>                  
-                  
+                  <td>{{ number_format($d->qty_po) }}</td>                                    
                   <td>{{ $d->uom }}</td>
+                  @if(auth()->user()->position == 'admin' || auth()->user()->position == 'bod' || auth()->user()->position == 'fac')
                   <td>Rp {{ number_format($d->harga_po) }}</td>
+                  @endif
                   <td>
                     <a href="{{ asset('detailpo/edit/'.$d->id_detail_po) }}" class="btn btn-sm btn-primary">Edit</a>
                     <a href="{{ asset('detailpo/delete/'.$d->id_detail_po) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-sm btn-danger">Delete</a>

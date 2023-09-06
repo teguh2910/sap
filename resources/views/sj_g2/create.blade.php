@@ -42,6 +42,10 @@
               <form action="{{asset('sjg2/create')}}" enctype="multipart/form-data" method="POST">
               {{ csrf_field() }}
                 <div class="card-body">
+                <div class="form-group">
+                    <label>NO Surat Jalan</label>
+                    <input type="text" name="no_sj" class="form-control">
+                  </div>
                   <div class="form-group">
                     <label>Part No Finish Goods</label>
                     <select name="id_gudang_dua" class="form-control">

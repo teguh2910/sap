@@ -36,7 +36,7 @@
           <div class="card">
               <!-- /.card-header -->
               <div class="card-body">                
-                <table id="example1" class="table table-bordered table-striped" style="width:100%">
+                <table id="data" class="table table-bordered table-striped" style="width:100%">
                   <thead>
                   <tr>
                     <th>Customer</th>
@@ -54,8 +54,20 @@
                     <td>{{ $po_customer->part_customers->first()->part_number }}</td>
                     <td>{{ $po_customer->part_customers->first()->part_name }}</td>
                     <td>{{ $po_customer->qty_po_customer }}</td>
-                    <td>{{ $po_customer->part_customers->first()->gudang_satu->first()->prods->sum('qty_prod_g1') }}</td>
-                    <td>{{ $po_customer->part_customers->first()->gudang_satu->first()->prods->sum('qty_prod_g1') - $po_customer->qty_po_customer }}</td>
+                    <td>
+                        @if($po_customer->part_customers->first() && $po_customer->part_customers->first()->gudang_satu->first() && $po_customer->part_customers->first()->gudang_satu->first()->prods->isNotEmpty())
+                            {{ $po_customer->part_customers->first()->gudang_satu->first()->prods->sum('qty_prod_g1') }}
+                        @else
+                            0
+                        @endif
+                    </td>
+                    <td>
+                        @if($po_customer->part_customers->first() && $po_customer->part_customers->first()->gudang_satu->first() && $po_customer->part_customers->first()->gudang_satu->first()->prods->isNotEmpty())
+                            {{ $po_customer->part_customers->first()->gudang_satu->first()->prods->sum('qty_prod_g1') - $po_customer->qty_po_customer }}
+                        @else
+                        {{- $po_customer->qty_po_customer}}
+                        @endif
+                    </td>
                   </tr>
                   @endforeach
                   </tbody>                  

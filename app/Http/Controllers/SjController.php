@@ -38,6 +38,7 @@ class SjController extends Controller
     public function update(Request $request,$id) {
         //create new data sj
         $sj = sj::find($id);
+        $sj->no_sj = $request->no_sj;
         $sj->id_gudang_dua = $request->id_gudang_dua;
         $sj->qty_sj = $request->qty_sj;
         $sj->tgl_sj = $request->tgl_sj;

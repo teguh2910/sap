@@ -43,6 +43,10 @@
               {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
+                    <label>NO Sj</label>
+                    <input type="text" name="no_sj_g1" class="form-control">
+                  </div>
+                  <div class="form-group">
                     <label>PO Customer</label>
                     <select name="id_po_customer" class="form-control">
                       <option value="">--Pilih PO--</option>

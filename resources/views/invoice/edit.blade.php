@@ -14,12 +14,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Edit Data Bank</h1>            
+            <h1 class="m-0">edit Data Invoice</h1>            
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Edit Data Bank</li>
+              <li class="breadcrumb-item active">edit Data Invoice</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -35,31 +35,34 @@
           <div class="col-md-12">
           <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Form Edit Data Bank</h3>
+                <h3 class="card-title">Form edit Data Invoice</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{asset('bank/edit/'.$bank->id_bank)}}" method="POST">
+              <form action="{{asset('invoice/edit/'.$invoice->id_invoice)}}" enctype="multipart/form-data" method="POST">
               {{ csrf_field() }}
-                <div class="card-body">
+                <div class="card-body">                    
                   <div class="form-group">
-                    <label>Nama Bank</label>
-                    <input type="text" name="nama_bank" value="{{ $bank->nama_bank }}" class="form-control">
+                    <label>No Invoice</label>
+                    <input type="text" name="no_invoice" value="{{ $invoice->no_invoice }}" class="form-control">
                   </div>
                   <div class="form-group">
-                    <label>Cabang Bank</label>
-                    <input type="text" name="cabang_bank" value="{{ $bank->cabang_bank }}" class="form-control">
+                    <label>Tanggal Invoice</label>
+                    <input type="date" name="tgl_invoice" value="{{ $invoice->tgl_invoice }}" class="form-control">
                   </div>
                   <div class="form-group">
-                    <label>Currency</label>
-                    <select name="currency_bank" class="form-control">
-                        <option value="{{ $bank->currency_bank }}">{{ $bank->currency_bank }}</option>
-                        <option value="IDR">IDR</option>
-                        <option value="USD">USD</option>
-                        <option value="JPY">JPY</option>
-                        <option value="THB">THB</option>
+                    <label>Nomor FP</label>
+                    <input type="text" name="no_fp" value="{{ $invoice->no_fp }}" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>PO Customer</label>
+                    <select name="id_po_customer" id="" class="form-control select2">
+                      @foreach($po_customer as $p)
+                      <option value="{{ $p->id_po_customer }}">{{ $p->no_po_customer }}</option>
+                      @endforeach
                     </select>
-                  </div>                  
+                  </div>
+                                                     
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">

@@ -20,6 +20,7 @@ class SjG1Controller extends Controller
         //create new data sjg1
         $sjg1 = new sj_g1;
         $sjg1->id_gudang_satu = $request->id_gudang_satu;
+        $sjg1->no_sj_g1 = $request->no_sj_g1;
         $sjg1->qty_sj_g1 = $request->qty_sj_g1;
         $sjg1->tgl_sj_g1 = $request->tgl_sj_g1;
         $sjg1->id_truk = $request->id_truk;

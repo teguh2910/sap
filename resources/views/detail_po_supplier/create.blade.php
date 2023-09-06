@@ -56,7 +56,7 @@
                   </div>
                   <div class="form-group">
                     <label>Harga</label>
-                    <input type="integer" name="harga_po" class="form-control">
+                    <input type="integer" value="0" readonly name="harga_po" class="form-control">
                   </div>
                   <div class="form-group">
                     <label>Uom</label>

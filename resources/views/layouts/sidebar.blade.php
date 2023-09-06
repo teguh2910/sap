@@ -10,6 +10,26 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">         
+        @if(auth()->user()->position == 'wh')
+        <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Purchase Order
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{asset('/po')}}" class="nav-link">
+                  <i class="nav-icon"></i>
+                  <p>PO Supplier</p>
+                </a>
+              </li>                                          
+            </ul>
+          </li> 
+          @endif
+        @if(auth()->user()->position == 'admin' || auth()->user()->position == 'fac' || auth()->user()->position == 'bod')
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -45,7 +65,8 @@
               </li>                            
             </ul>
           </li> 
-        
+          @endif
+          @if(auth()->user()->position == 'admin' || auth()->user()->position == 'fac' || auth()->user()->position == 'bod')
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -63,7 +84,8 @@
               </li>                                        
             </ul>
           </li> 
-          
+          @endif
+          @if(auth()->user()->position == 'admin' || auth()->user()->position == 'wh' || auth()->user()->position == 'bod' || auth()->user()->position == 'produksi')
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -91,20 +113,26 @@
                   <p>Qty Produksi VS Order Customer</p>
                 </a>
               </li>
+              @if(auth()->user()->name == 'wh_g1' || auth()->user()->name == 'produksi_g1' || auth()->user()->position == 'bod' || auth()->user()->name == 'admin_sac')
               <li class="nav-item">
                 <a href="{{asset('/gudangsatu')}}" class="nav-link">
                   <i class="nav-icon"></i>
-                  <p>Gudang 1</p>
+                  <p>Gudang SAC</p>
                 </a>
               </li>
+              @endif
+              @if(auth()->user()->name == 'wh_g2' || auth()->user()->name == 'produksi_g2' || auth()->user()->position == 'bod' || auth()->user()->name == 'admin_cf')
               <li class="nav-item">
                 <a href="{{asset('/gudangdua')}}" class="nav-link">
                   <i class="nav-icon"></i>
-                  <p>Gudang 2</p>
+                  <p>Gudang CF</p>
                 </a>
-              </li>              
+              </li>
+              @endif              
             </ul>
           </li>  
+          @endif
+          @if(auth()->user()->position == 'admin' || auth()->user()->position == 'fac' || auth()->user()->position == 'bod')
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -152,7 +180,8 @@
               </li> 
             </ul>
           </li>                             
-          
+          @endif
+          @if(auth()->user()->position == 'admin' || auth()->user()->position == 'fac' || auth()->user()->position == 'bod')
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -199,6 +228,7 @@
                 </a>
               </li>              
             </ul>
+            @endif
             <li class="nav-item">
                 <a href="{{asset('/sop')}}" class="nav-link">
                 <i class="nav-icon fas fa-th"></i>

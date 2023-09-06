@@ -42,7 +42,7 @@
           <div class="card">
               <!-- /.card-header -->
               <div class="card-body">                
-                <table id="example1" class="table table-bordered table-striped" style="width:100%">
+                <table id="data" class="table table-bordered table-striped" style="width:100%">
                   <thead>
                       <tr>
                           <th>id_stok</th>

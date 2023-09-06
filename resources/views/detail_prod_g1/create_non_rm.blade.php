@@ -52,7 +52,7 @@
                           <option value="{{ $g->id_gudang_satu }}">{{ $g->part_name }}</option>
                           @endforeach
                         </select>
-                        <input type="number" required class="form-control col-md-3" name="price_g1_0" placeholder="Harga">
+                        <!-- <input type="number" required class="form-control col-md-3" name="price_g1_0" placeholder="Harga"> -->
                         <input type="number" required class="form-control col-md-3" name="qty_prod_g1_0" placeholder="Qty">                        
                         <input type="text" readonly class="form-control col-md-2" name="satuan_0" value="Kg">
                       </div>
@@ -106,11 +106,11 @@
     qtyInput.placeholder = "Qty";
 
     // Create Harga Input
-    const hargaInput = document.createElement("input");
-    hargaInput.type = "number";
-    hargaInput.className = "form-control col-md-3";
-    hargaInput.name = "price_g1_" + inputCount;
-    hargaInput.placeholder = "Harga";
+    // const hargaInput = document.createElement("input");
+    // hargaInput.type = "number";
+    // hargaInput.className = "form-control col-md-3";
+    // hargaInput.name = "price_g1_" + inputCount;
+    // hargaInput.placeholder = "Harga";
 
     // Create Satuan Input
     const satuanInput = document.createElement("input");
@@ -129,7 +129,7 @@
     };
 
     inputGroup.appendChild(partNoSelect);    
-    inputGroup.appendChild(hargaInput);
+    // inputGroup.appendChild(hargaInput);
     inputGroup.appendChild(qtyInput);
     inputGroup.appendChild(satuanInput);
     inputGroup.appendChild(removeBtn);

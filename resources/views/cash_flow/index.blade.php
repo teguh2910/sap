@@ -39,7 +39,7 @@
           <div class="card">
               <!-- /.card-header -->
               <div class="card-body">                
-                <table id="example1" class="table table-bordered table-striped" style="width: 100%">
+                <table id="data" class="table table-bordered table-striped" style="width: 100%">
                   <thead>
                   <tr>
                     <th>id_cash_flow</th>
@@ -56,10 +56,10 @@
                   <tr>
                   <td>{{ $c->id_cash_flow }}</td>                  
                   <td>{{ $c->bank }}</td>                                   
-                  <td>Rp {{ $c->beginning_balance }}</td>
-                  <td>Rp {{ $c->incoming_balance }}</td>
-                  <td>Rp {{ $c->out_balance }}</td>
-                  <td>Rp {{ $c->beginning_balance+$c->incoming_balance-$c->out_balance }}</td>
+                  <td>Rp {{ number_format($c->beginning_balance) }}</td>
+                  <td>Rp {{ number_format($c->incoming_balance) }}</td>
+                  <td>Rp {{ number_format($c->out_balance) }}</td>
+                  <td>Rp {{ number_format($c->beginning_balance+$c->incoming_balance-$c->out_balance) }}</td>
                   {{-- <td>
                     <a href="{{ asset('stok/edit/'.$c->id_stok) }}" class="btn btn-xs btn-primary">Edit</a>
                     <a href="{{ asset('stok/delete/'.$c->id_stok) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-xs btn-danger">Delete</a>
