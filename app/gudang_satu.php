@@ -11,6 +11,10 @@ class gudang_satu extends Model
     {
         return $this->hasMany('App\stog1', 'part_no', 'part_no');
     }
+    public function detail_prod_g1()
+    {
+        return $this->hasMany('App\detail_prod_g1', 'id_gudang_satu', 'id_gudang_satu');
+    }
     public function prods()
     {
         return $this->hasMany('App\detail_prod_g1', 'id_gudang_satu', 'id_gudang_satu');

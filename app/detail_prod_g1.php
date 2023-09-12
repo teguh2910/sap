@@ -12,6 +12,10 @@ class detail_prod_g1 extends Model
     {
         return $this->hasMany('App\gudang_satu','id_gudang_satu','id_gudang_satu');
     }
+    public function header_prod()
+    {
+        return $this->hasMany('App\prod_g1','id_prod_g1','id_prod_g1');
+    }
     public function incoming()
     {
         return $this->hasMany('App\gudang_satu','id_gudang_satu','id_gudang_satu')

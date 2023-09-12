@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\gudang_satu, Excel;
+use App\gudang_satu,App\stog1, Excel;
 use Illuminate\Http\Request;
 
 class GudangSatuController extends Controller
@@ -10,6 +10,47 @@ class GudangSatuController extends Controller
     {
         $this->middleware('auth');
     }
+    public function filter_stok() {
+        return view('gudang_satu/filter_stok');
+    }
+    public function post_filter_stok(Request $request) {
+        // Get the selected month from the form input
+        $selectedDate = $request->input('bulan'); // Assuming 'bulan' is the name of your input field
+    
+        // Convert the selected date to a DateTime object
+        $selectedDateTime = new \DateTime($selectedDate);
+    
+        // Subtract one month from the selected date
+        $selectedDateTime->modify('-1 month');
+    
+        // Get the month and year after subtracting one month
+        $selectedMonth = $selectedDateTime->format('m');
+        $selectedYear = $selectedDateTime->format('Y');
+        // Filter the data by the month and year
+        $gudang_satus = gudang_satu::all();
+        return view('gudang_satu/index', compact('gudang_satus','selectedMonth','selectedYear'));
+    }
+    public function trial(Request $request) {
+        // Get the selected month from the form input
+        $selectedDate = $request->input('bulan'); // Assuming 'bulan' is the name of your input field
+        
+        // Convert the selected date to a DateTime object
+        $selectedDateTime = new \DateTime($selectedDate);
+        $original_input = new \DateTime($selectedDate);
+        // Subtract one month from the selected date
+        $selectedDateTime->modify('-1 month');
+        
+        // Get the month and year after subtracting one month
+        $selectedMonth = $selectedDateTime->format('m');
+        $selectedYear = $selectedDateTime->format('Y');
+        $originalMonth = $original_input->format('m');
+        $originalYear = $original_input->format('Y');
+        // Filter the data by the month and year
+        $gudang_satus = stog1::all();
+                
+        return view('gudang_satu/index_trial', compact('gudang_satus','selectedMonth','selectedYear','originalYear','originalMonth'));
+    }
+    
     public function index() {
         $gudang_satus = gudang_satu::all();
         return view('gudang_satu/index',compact('gudang_satus'));

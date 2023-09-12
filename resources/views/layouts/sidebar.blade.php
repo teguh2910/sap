@@ -115,7 +115,7 @@
               </li>
               @if(auth()->user()->name == 'wh_g1' || auth()->user()->name == 'produksi_g1' || auth()->user()->position == 'bod' || auth()->user()->name == 'admin_sac')
               <li class="nav-item">
-                <a href="{{asset('/gudangsatu')}}" class="nav-link">
+                <a href="{{asset('/filter_gudang_satu')}}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>Gudang SAC</p>
                 </a>

@@ -23,7 +23,7 @@
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
-        <!-- <a href="{{ asset('gudangsatu/create') }}" class="btn btn-sm btn-success">Upload Beginning Stok</a> -->
+        <a href="{{ asset('gudangsatu/create') }}" class="btn btn-sm btn-success">Upload Beginning Stok</a>
         <a href="{{ asset('gr/create') }}" class="btn btn-sm btn-warning">Create Qty Good Receipt Gudang SAC</a>
         {{-- <a href="{{ asset('usageg1/create') }}" class="btn btn-sm btn-primary">input penggunaan RM Gudang SAC</a> --}}
         <a href="{{ asset('prodg1/') }}" class="btn btn-sm btn-primary">Input hasil Produksi Gudang SAC</a>
@@ -53,40 +53,59 @@
                           <th>incoming_balance</th>
                           <th>usage_balance</th>
                           <th>ending_balance</th>
-                          <th>STO</th>
-                          <th>Variant</th>
+                          
                       </tr>
                   </thead>
                   <tbody>
                     @foreach($gudang_satus as $g)
                     @php
-                        $beginningBalance = $g->beginning_balance;
-                        if($g->category_part == 'RM')
+                        $beginningBalance = $g->qty_sto;
+                        if($g->gudang_g1->first()->category_part == 'RM' || $g->gudang_g1->first()->category_part == 'NON_RM')
                         {
-                        $totalQtyProd = $g->part_supplier->first()->grs->sum('qty_gr');
-                        $usageBalance = $g->prods->sum('qty_prod_g1');
+                        $totalQtyProd = $g->gudang_g1->first()
+                                        ->part_supplier->first()
+                                        ->grs
+                                        ->filter(function ($item) use ($originalMonth, $originalYear) {
+                                          return $item->created_at->month == $originalMonth && $item->created_at->year == $originalYear;
+                                          })
+                                        ->sum('qty_gr');
+                        $usageBalance = $g->gudang_g1->first()
+                                        ->prods
+                                        ->filter(function ($item) use ($originalMonth, $originalYear) {
+                                              return $item->created_at->month == $originalMonth && $item->created_at->year == $originalYear;
+                                          })
+                                        ->sum('qty_prod_g1');
                         }
                         else
                         {
-                          $totalQtyProd=$g->prods->sum('qty_prod_g1');
-                          $usageBalance = $g->sjs->sum('qty_sj_g1');
+                          $totalQtyProd=$g->gudang_g1->first()
+                                        ->prods
+                                        ->filter(function ($item) use ($originalMonth, $originalYear) {
+                                              return $item->created_at->month == $originalMonth && $item->created_at->year == $originalYear;
+                                          })
+                                        ->sum('qty_prod_g1');
+                          $usageBalance = $g->gudang_g1->first()
+                                          ->sjs
+                                          ->filter(function ($item) use ($originalMonth, $originalYear) {
+                                              return $item->created_at->month == $originalMonth && $item->created_at->year == $originalYear;
+                                          })
+                                          ->sum('qty_sj_g1');
                         }
-                        
-                        $stoQty = $g->stos->count() > 0 ? $g->stos->last()->qty_sto : 0;
-                        $endingBalance = $beginningBalance + $totalQtyProd - $usageBalance - $stoQty;
+                                                
+                        $endingBalance = $beginningBalance + $totalQtyProd - $usageBalance;
                     @endphp
                 
                     <tr>
-                        <td>{{ $g->id_gudang_satu }}</td>
-                        <td>{{ $g->category_part }}</td>
-                        <td>{{ $g->part_no }}</td>
-                        <td>{{ $g->part_name }}</td>
+                        <td>{{ $g->gudang_g1->first()->id_gudang_satu }}</td>
+                        <td>{{ $g->gudang_g1->first()->category_part }}</td>
+                        <td>{{ $g->gudang_g1->first()->part_no }}</td>
+                        <td>{{ $g->gudang_g1->first()->part_name }}</td>
                         <td>{{ $beginningBalance }}</td>
                         <td>{{ $totalQtyProd }}</td>
                         <td>{{ $usageBalance }}</td>
                         <td>{{ $endingBalance }}</td>
-                        <td>{{ $stoQty }}</td>
-                        <td>{{ $stoQty - $endingBalance }}</td>
+                        
+                        
                     </tr>
                 @endforeach
                 

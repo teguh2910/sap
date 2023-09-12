@@ -74,8 +74,8 @@
                        {{$g->harga_gr}}</a>                       
                   </td>
                   @endif
-                  <td>{{ $g->tgl_gr->detail_pos->first()->qty_po }}</td>
-                  <td>{{ $g->tgl_gr->detail_pos->first()->qty_po - $g->qty_gr }}</td>
+                  <td>{{ $g->detail_pos->first()->qty_po }}</td>
+                  <td>{{ $g->detail_pos->first()->qty_po - $g->qty_gr }}</td>
                   <td>{{ $g->tgl_gr }}</td>
                   <td>{{ $g->uom }}</td>
                   <td>{{ $g->gudang }}</td>                 

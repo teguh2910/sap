@@ -28,7 +28,7 @@
         {{-- <a href="{{ asset('usageg2/create') }}" class="btn btn-sm btn-primary">input penggunaan RM Gudang CF</a> --}}
         <a href="{{ asset('prodg2/') }}" class="btn btn-sm btn-primary">Input hasil Produksi Gudang CF</a>
         <a href="{{ asset('sjg2') }}" class="btn btn-sm btn-info">Create Qty Surat Jalan Gudang CF</a>
-        <a href="{{ asset('stog2/create') }}" class="btn btn-sm btn-danger">Create Qty STO</a>        
+        <a href="{{ asset('stog2/create') }}" class="btn btn-sm btn-danger">Upload Qty STO</a>        
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -54,7 +54,7 @@
                           <th>usage_balance</th>
                           <th>ending_balance</th>
                           <th>STO</th>
-                          <th>ending_after_sto</th>
+                          <th>Variant</th>
                       </tr>
                   </thead>
                   <tbody>

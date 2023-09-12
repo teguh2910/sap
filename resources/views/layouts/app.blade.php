@@ -158,6 +158,7 @@
   $(function () {
     $("#data").DataTable({
       dom: 'Bfrtip',
+      scrollX: true,
       buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],    
     });
     });

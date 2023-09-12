@@ -42,7 +42,8 @@ class InvoiceController extends Controller
         $qrCodeImagePath = public_path('qrcode.png');
         file_put_contents($qrCodeImagePath, $qrCodeImage);
         $invoice=invoice::find($id);
-        $sj_g1=sj_g1::where('id_po_customer',$invoice->id_po_customer)->get();
+        $sj_g1=sj_g1::where('id_po_customer',$invoice->id_po_customer)->groupBy('id_gudang_satu')->get();
+        dd($sj_g1);
         Excel::load('invoice.xlsx', function ($excel) use ($qrCodeImagePath,$invoice,$sj_g1) {
             $excel->sheet('sheet1', function ($sheet) use ($qrCodeImagePath,$invoice,$sj_g1) {
                 // Sheet manipulation
@@ -59,7 +60,9 @@ class InvoiceController extends Controller
                     $sheet->setCellValue('B'.$i, $s->gudang_satus->first()->part_name);
                     $sheet->setCellValue('F'.$i, $s->qty_sj_g1);
                     $sheet->setCellValue('G'.$i, "Kg");
-                    $sheet->setCellValue('H'.$i, $s->po_customers->first()->harga_po_customer);                    
+                    $sheet->setCellValue('H'.$i, $s->po_customers->first()->harga_po_customer);
+                    $i++;
+                    $no++;                    
                 }
                 $drawing = new \PHPExcel_Worksheet_Drawing();
                 $drawing->setName('QR Code');
@@ -93,5 +96,9 @@ class InvoiceController extends Controller
         $invoice=invoice::find($id);
         $invoice->delete();
         return redirect('invoice');
+    }
+    public function view($id){
+        $sjg1=sj_g1::where('id_po_customer',$id)->get();        
+        return view('invoice/view',compact(['id','sjg1']));
     }
 }

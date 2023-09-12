@@ -22,12 +22,14 @@ class GrController extends Controller
         $gr->tgl_gr = $request->tgl_gr;
         $gr->gudang = $request->gudang;        
         $gr->id_detail_po = $p->id_detail_po;
+        $gr->id_po = $request->id_po;
         $gr->id_material = $p->id_material;
         $gr->uom = $p->uom;
         $gr->harga_gr = $p->harga_po;
         $gr->save();
-        }        
-        return redirect('/gr');
+        }  
+        $gr = gr::where('id_po',$request->id_po)->get();     
+        return view('gr/index',compact('gr'));
     }
     public function index() {
         $gr = gr::where('qty_gr',null)->get();
