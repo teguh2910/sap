@@ -249,6 +249,9 @@ Route::post('/invoice/edit/{id}', 'InvoiceController@update');
 Route::get('/invoice/delete/{id}', 'InvoiceController@delete');
 Route::get('/invoice/cetak/{id}', 'InvoiceController@cetak');
 Route::get('/invoice/view/{id}', 'InvoiceController@view');
+Route::get('invoice/detail/create/{id}', 'InvoiceController@detail_create');
+Route::post('invoice/detail/create/{id}', 'InvoiceController@store_detail_create');
+
 
 //crud part Supplier
 Route::get('/part_supplier', 'PartSupplierController@index');

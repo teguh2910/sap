@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\sj_g1, App\invoice, App\po_customer, App\customer, Excel, QrCode;
+use App\sj_g1, App\invoice, App\po_customer, App\customer,App\detail_invoice,App\part_customer, Excel, QrCode;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Http\Request;
 
@@ -42,10 +42,12 @@ class InvoiceController extends Controller
         $qrCodeImagePath = public_path('qrcode.png');
         file_put_contents($qrCodeImagePath, $qrCodeImage);
         $invoice=invoice::find($id);
-        $sj_g1=sj_g1::where('id_po_customer',$invoice->id_po_customer)->groupBy('id_gudang_satu')->get();
-        dd($sj_g1);
-        Excel::load('invoice.xlsx', function ($excel) use ($qrCodeImagePath,$invoice,$sj_g1) {
-            $excel->sheet('sheet1', function ($sheet) use ($qrCodeImagePath,$invoice,$sj_g1) {
+        //$sj_g1=sj_g1::where('id_po_customer',$invoice->id_po_customer)->groupBy('id_gudang_satu')->get();
+        //$qty_sj_g1=sj_g1::where('id_po_customer',$invoice->id_po_customer)->groupBy('id_gudang_satu')->sum('qty_sj_g1');
+        $d_i=detail_invoice::where('id_invoice',$invoice->id_invoice)->get();
+        //dd($sj_g1);
+        Excel::load('invoice.xlsx', function ($excel) use ($qrCodeImagePath,$invoice,$d_i) {
+            $excel->sheet('sheet1', function ($sheet) use ($qrCodeImagePath,$invoice,$d_i) {
                 // Sheet manipulation
                 $sheet->setCellValue('B7', $invoice->no_invoice);
                 $sheet->setCellValue('B8', $invoice->tgl_invoice);
@@ -55,12 +57,12 @@ class InvoiceController extends Controller
                 $sheet->setCellValue('I9', $invoice->po_customers->first()->tgl_po_customer);
                 $i=13;
                 $no=1;
-                foreach($sj_g1 as $s){
+                foreach($d_i as $s){
                     $sheet->setCellValue('A'.$i, $no);
-                    $sheet->setCellValue('B'.$i, $s->gudang_satus->first()->part_name);
-                    $sheet->setCellValue('F'.$i, $s->qty_sj_g1);
+                    $sheet->setCellValue('B'.$i, $s->parts->first()->part_name);
+                    $sheet->setCellValue('F'.$i, $s->qty);
                     $sheet->setCellValue('G'.$i, "Kg");
-                    $sheet->setCellValue('H'.$i, $s->po_customers->first()->harga_po_customer);
+                    $sheet->setCellValue('H'.$i, $s->invoices->first()->po_customers->first()->detail_po_customer->first()->harga_po_customer);
                     $i++;
                     $no++;                    
                 }
@@ -98,7 +100,20 @@ class InvoiceController extends Controller
         return redirect('invoice');
     }
     public function view($id){
-        $sjg1=sj_g1::where('id_po_customer',$id)->get();        
-        return view('invoice/view',compact(['id','sjg1']));
+        $d_i=detail_invoice::where('id_invoice',$id)->get();        
+        return view('invoice/view',compact(['id','d_i']));
+    }
+    public function detail_create($id){
+        $part=part_customer::all();
+        return view('invoice/create_detail',compact(['id','part']));
+    }
+    public function store_detail_create($id){
+        $detail_invoice = new detail_invoice;
+        $detail_invoice->id_invoice = $id;
+        $detail_invoice->part = request('part');
+        $detail_invoice->qty = request('qty');
+        $detail_invoice->tgl = request('tgl');
+        $detail_invoice->save();
+        return redirect('invoice/view/'.$id);        
     }
 }

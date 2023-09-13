@@ -61,7 +61,7 @@
                           <td>{{ $p->no_po_customer }}</td>
                           <td>{{ $p->tgl_po_customer }}</td>
                           @endforeach
-                          <td><a href="{{ asset('invoice/view/'.$i->id_po_customer) }}" class="btn btn-xs btn-primary">View</a></td>      
+                          <td><a href="{{ asset('invoice/view/'.$i->id_invoice) }}" class="btn btn-xs btn-primary">View</a></td>      
                           <td>
                             <a href="{{ asset('invoice/cetak/'.$i->id_invoice) }}" class="btn btn-xs btn-success">Cetak</a>
                               <a href="{{ asset('invoice/edit/'.$i->id_invoice) }}" class="btn btn-xs btn-primary">Edit</a>
