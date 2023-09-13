@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\sj_g1, App\invoice, App\po_customer, App\customer,App\detail_invoice,App\part_customer, Excel, QrCode;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class InvoiceController extends Controller
 {
@@ -46,15 +47,17 @@ class InvoiceController extends Controller
         //$qty_sj_g1=sj_g1::where('id_po_customer',$invoice->id_po_customer)->groupBy('id_gudang_satu')->sum('qty_sj_g1');
         $d_i=detail_invoice::where('id_invoice',$invoice->id_invoice)->get();
         //dd($sj_g1);
-        Excel::load('invoice.xlsx', function ($excel) use ($qrCodeImagePath,$invoice,$d_i) {
-            $excel->sheet('sheet1', function ($sheet) use ($qrCodeImagePath,$invoice,$d_i) {
+        $date = Carbon::parse($invoice->po_customers->first()->tgl_po_customer);  
+        $date_invoice = Carbon::parse($invoice->tgl_invoice);
+        Excel::load('invoice.xlsx', function ($excel) use ($qrCodeImagePath,$invoice,$d_i,$date,$date_invoice) {
+            $excel->sheet('sheet1', function ($sheet) use ($qrCodeImagePath,$invoice,$d_i,$date,$date_invoice) {
                 // Sheet manipulation
                 $sheet->setCellValue('B7', $invoice->no_invoice);
-                $sheet->setCellValue('B8', $invoice->tgl_invoice);
+                $sheet->setCellValue('B8', $date_invoice->format('F jS, Y'));
                 $sheet->setCellValue('B9', $invoice->no_fp);
-                $sheet->setCellValue('I7', $invoice->po_customers->first()->customers->first()->nama_customer);
-                $sheet->setCellValue('I8', $invoice->po_customers->first()->no_po_customer);
-                $sheet->setCellValue('I9', $invoice->po_customers->first()->tgl_po_customer);
+                $sheet->setCellValue('H7', $invoice->po_customers->first()->customers->first()->nama_customer);
+                $sheet->setCellValue('H8', $invoice->po_customers->first()->no_po_customer);
+                $sheet->setCellValue('H9', $date->format('F jS, Y'));
                 $i=13;
                 $no=1;
                 foreach($d_i as $s){
