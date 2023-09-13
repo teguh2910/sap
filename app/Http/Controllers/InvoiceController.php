@@ -58,6 +58,7 @@ class InvoiceController extends Controller
                 $sheet->setCellValue('H7', $invoice->po_customers->first()->customers->first()->nama_customer);
                 $sheet->setCellValue('H8', $invoice->po_customers->first()->no_po_customer);
                 $sheet->setCellValue('H9', $date->format('F jS, Y'));
+                $sheet->setBorder('J13:J19', 'thin');
                 $i=13;
                 $no=1;
                 foreach($d_i as $s){
@@ -65,7 +66,7 @@ class InvoiceController extends Controller
                     $sheet->setCellValue('B'.$i, $s->parts->first()->part_name);
                     $sheet->setCellValue('F'.$i, $s->qty);
                     $sheet->setCellValue('G'.$i, "Kg");
-                    $sheet->setCellValue('H'.$i, $s->invoices->first()->po_customers->first()->detail_po_customer->first()->harga_po_customer);
+                    $sheet->setCellValue('H'.$i, $s->parts->first()->po_c->first()->harga_po_customer);
                     $i++;
                     $no++;                    
                 }
