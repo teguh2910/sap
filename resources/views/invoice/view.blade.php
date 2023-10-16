@@ -49,13 +49,13 @@
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach($d_i as $d)
+                  @foreach($test as $d)
                   <tr>
                   <td>{{ $d->part }}</td>
-                  <td>{{ $d->parts->first()->part_name }}</td>
+                  <td>{{ $d->part_name }}</td>
                   <td>{{ $d->qty }}</td>
-                  <td>{{ $d->parts->first()->po_c->first()->harga_po_customer }}</td>
-                  <td>{{ $d->invoices->first()->po_customers->first()->no_po_customer }}</td>
+                  <td>{{ $d->harga_po_customer }}</td>
+                  <td>{{ $d->no_po_customer }}</td>
                   <td>{{ $d->tgl }}</td>
                   </tr>
                   @endforeach

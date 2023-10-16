@@ -29,28 +29,70 @@ class InvoiceController extends Controller
     
     public function cetak($id)
     {
-        // Step 1: Choose a cryptographic algorithm
-        $algorithm = 'AES-256-CBC';
+        // $algorithm = 'AES-128-CBC';
+        // $key = "VISION4000007581";
+        // $data= "VISION|NOINVOICE|123|1234|123456|TAX_NUMBER";
+        // $blockSize = 16;
+        // $padding = $blockSize - (strlen($data) % $blockSize);
+        // $data .= str_repeat(chr($padding), $padding);
+        // $qrCodeData = base64_encode(Crypt::encrypt($data, $key,$algorithm));
 
-        // Step 2: Generate a unique key
-        $key = "VISION4000007581"; // 32 bytes (256 bits) key for AES-256
-        $data= "VISION|NOINVOICE|123|1234|123456|TAX_NUMBER";
+        // Step 1: Choose a cryptographic algorithm
+        $algorithm = 'AES-128-CBC';
+
+        // Step 2: Generate a unique key and IV
+        $key = "VISION4000007581"; // Replace with your actual AES key
+        $iv = "VISION4000007581";   // Replace with your actual IV
+        $invoice=invoice::find($id);
+        $po_c=invoice::select('id_po_customer')->where('id_invoice',$id)->first();
+        $invoice_data = \DB::table('detail_invoices')
+                        ->join('invoices', 'invoices.id_invoice', '=', 'detail_invoices.id_invoice')
+                        ->join('po_customers', 'po_customers.id_po_customer', '=', 'invoices.id_po_customer')
+                        ->join('part_customers', 'part_customers.part_number', '=', 'detail_invoices.part')
+                        ->join('detail_po_customers', 'detail_po_customers.id_part_customer', '=', 'part_customers.id_part_customer')
+                        ->select(
+                            'detail_invoices.*',
+                            \DB::raw('detail_invoices.qty * detail_po_customers.harga_po_customer as amount')
+                        )
+                        ->where('detail_invoices.id_invoice', $id)
+                        ->where('detail_po_customers.id_po_customer', $po_c->id_po_customer)
+                        ->get();
+
+        $amountSum = $invoice_data->sum('amount');
+        $ppn=$amountSum*11/100;
+        $total_invoice_amount=$amountSum+$ppn;
+        //dd($amountSum);
+
+        $data = "VISION|".$invoice->no_invoice."|$amountSum|$ppn|$total_invoice_amount|".$invoice->no_fp;
+        //dd($data);
         // Step 3: Encrypt the data
-        $qrCodeData = Crypt::encrypt($data, $key, $algorithm);
-        $test_decrypt = Crypt::decrypt($qrCodeData, $key, $algorithm);
+        $encryptedData = openssl_encrypt($data, $algorithm, $key, OPENSSL_RAW_DATA, $iv);
+
+        // Convert the encrypted binary data to BASE64 format
+        $qrCodeData = base64_encode($encryptedData);        
+        
         // Generate QR code image and save it as a file
         $qrCodeImage = QrCode::format('png')->size(300)->generate($qrCodeData);
         $qrCodeImagePath = public_path('qrcode.png');
         file_put_contents($qrCodeImagePath, $qrCodeImage);
-        $invoice=invoice::find($id);
+        
         //$sj_g1=sj_g1::where('id_po_customer',$invoice->id_po_customer)->groupBy('id_gudang_satu')->get();
         //$qty_sj_g1=sj_g1::where('id_po_customer',$invoice->id_po_customer)->groupBy('id_gudang_satu')->sum('qty_sj_g1');
         $d_i=detail_invoice::where('id_invoice',$invoice->id_invoice)->get();
         //dd($sj_g1);
         $date = Carbon::parse($invoice->po_customers->first()->tgl_po_customer);  
         $date_invoice = Carbon::parse($invoice->tgl_invoice);
-        Excel::load('invoice.xlsx', function ($excel) use ($qrCodeImagePath,$invoice,$d_i,$date,$date_invoice) {
-            $excel->sheet('sheet1', function ($sheet) use ($qrCodeImagePath,$invoice,$d_i,$date,$date_invoice) {
+        
+        $test=\DB::table('detail_invoices')
+        ->join('invoices','invoices.id_invoice','=','detail_invoices.id_invoice')
+        ->join('po_customers','po_customers.id_po_customer','=','invoices.id_po_customer')
+        ->join('part_customers','part_customers.part_number','=','detail_invoices.part')
+        ->join('detail_po_customers','detail_po_customers.id_part_customer','=','part_customers.id_part_customer')
+        ->where('detail_invoices.id_invoice',$id)
+        ->where('detail_po_customers.id_po_customer',$po_c->id_po_customer)       
+        ->get();
+        Excel::load('invoice.xlsx', function ($excel) use ($qrCodeImagePath,$invoice,$d_i,$date,$date_invoice,$test) {
+            $excel->sheet('sheet1', function ($sheet) use ($qrCodeImagePath,$invoice,$d_i,$date,$date_invoice,$test) {
                 // Sheet manipulation
                 $sheet->setCellValue('B7', $invoice->no_invoice);
                 $sheet->setCellValue('B8', $date_invoice->format('F jS, Y'));
@@ -61,12 +103,12 @@ class InvoiceController extends Controller
                 $sheet->setBorder('J13:J19', 'thin');
                 $i=13;
                 $no=1;
-                foreach($d_i as $s){
+                foreach($test as $s){
                     $sheet->setCellValue('A'.$i, $no);
-                    $sheet->setCellValue('B'.$i, $s->parts->first()->part_name);
+                    $sheet->setCellValue('B'.$i, $s->part_name);
                     $sheet->setCellValue('F'.$i, $s->qty);
                     $sheet->setCellValue('G'.$i, "Kg");
-                    $sheet->setCellValue('H'.$i, $s->parts->first()->po_c->first()->harga_po_customer);
+                    $sheet->setCellValue('H'.$i, $s->harga_po_customer);
                     $i++;
                     $no++;                    
                 }
@@ -104,8 +146,18 @@ class InvoiceController extends Controller
         return redirect('invoice');
     }
     public function view($id){
-        $d_i=detail_invoice::where('id_invoice',$id)->get();        
-        return view('invoice/view',compact(['id','d_i']));
+        $d_i=detail_invoice::where('id_invoice',$id)->get();
+        $po_c=invoice::select('id_po_customer')->where('id_invoice',$id)->first();
+        $test=\DB::table('detail_invoices')
+        ->join('invoices','invoices.id_invoice','=','detail_invoices.id_invoice')
+        ->join('po_customers','po_customers.id_po_customer','=','invoices.id_po_customer')
+        ->join('part_customers','part_customers.part_number','=','detail_invoices.part')
+        ->join('detail_po_customers','detail_po_customers.id_part_customer','=','part_customers.id_part_customer')
+        ->where('detail_invoices.id_invoice',$id)
+        ->where('detail_po_customers.id_po_customer',$po_c->id_po_customer)       
+        ->get();
+        //dd($test);
+        return view('invoice/view',compact(['id','d_i','test']));
     }
     public function detail_create($id){
         $part=part_customer::all();
