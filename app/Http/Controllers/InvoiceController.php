@@ -42,7 +42,7 @@ class InvoiceController extends Controller
 
         // Step 2: Generate a unique key and IV
         $key = "VISION4000007581"; // Replace with your actual AES key
-        $iv = "VISION4000007581";   // Replace with your actual IV
+        $iv = str_repeat("\0", 16);   // Replace with your actual IV
         $invoice=invoice::find($id);
         $po_c=invoice::select('id_po_customer')->where('id_invoice',$id)->first();
         $invoice_data = \DB::table('detail_invoices')
