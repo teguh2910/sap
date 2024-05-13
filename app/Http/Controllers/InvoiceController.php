@@ -63,7 +63,7 @@ class InvoiceController extends Controller
         $total_invoice_amount=$amountSum+$ppn;
         //dd($amountSum);
 
-        $data = "VISION|".$invoice->no_invoice."|$amountSum|$ppn|$total_invoice_amount|".$invoice->no_fp;
+        $data = "VISION|".$invoice->no_invoice."|$amountSum|$total_invoice_amount|$ppn|".$invoice->no_fp;
         //dd($data);
         // Step 3: Encrypt the data
         $encryptedData = openssl_encrypt($data, $algorithm, $key, OPENSSL_RAW_DATA, $iv);
