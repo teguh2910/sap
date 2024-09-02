@@ -58,14 +58,14 @@ class InvoiceController extends Controller
                         ->where('detail_po_customers.id_po_customer', $po_c->id_po_customer)
                         ->get();
 
-        $amountSum = $invoice_data->sum('amount');
-        $ppn=$amountSum*11/100;
-        $total_invoice_amount=$amountSum+$ppn;
+        $amountSum = number_format($invoice_data->sum('amount'),2);
+        $ppn=number_format($amountSum*11/100,2);
+        $total_invoice_amount=number_format($amountSum+$ppn,2);
         $no_fp=$invoice->no_fp;
         $clean_no_fp = str_replace(array('.', '-'), '', $no_fp);
         //dd($amountSum);
 
-        $data = "VISION|".$invoice->no_invoice."|number_format($amountSum,2)|number_format($total_invoice_amount,2)|number_format($ppn,2)|$clean_no_fp";
+        $data = "VISION|".$invoice->no_invoice."|$amountSum|$total_invoice_amount|$ppn|$clean_no_fp";
         //dd($data);
         // Step 3: Encrypt the data
         $encryptedData = openssl_encrypt($data, $algorithm, $key, OPENSSL_RAW_DATA, $iv);
