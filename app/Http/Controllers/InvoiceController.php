@@ -65,7 +65,7 @@ class InvoiceController extends Controller
         $clean_no_fp = str_replace(array('.', '-'), '', $no_fp);
         //dd($amountSum);
 
-        $data = "VISION|".$invoice->no_invoice."|$amountSum|$total_invoice_amount|$ppn|$clean_no_fp";
+        $data = "VISION|".$invoice->no_invoice."|number_format($amountSum,2)|number_format($total_invoice_amount,2)|number_format($ppn,2)|$clean_no_fp";
         //dd($data);
         // Step 3: Encrypt the data
         $encryptedData = openssl_encrypt($data, $algorithm, $key, OPENSSL_RAW_DATA, $iv);
