@@ -58,9 +58,12 @@ class InvoiceController extends Controller
                         ->where('detail_po_customers.id_po_customer', $po_c->id_po_customer)
                         ->get();
 
-        $amountSum = number_format($invoice_data->sum('amount'),2);
-        $ppn=number_format($amountSum*11/100,2);
-        $total_invoice_amount=number_format($amountSum+$ppn,2);
+        $amountSum = $invoice_data->sum('amount');
+        $amountSum=number_format($amountSum,2);
+        $ppn=$amountSum*11/100;
+        $ppn=number_format($ppn,2);
+        $total_invoice_amount=$amountSum+$ppn;
+        $total_invoice_amount=number_format($total_invoice_amount,2);
         $no_fp=$invoice->no_fp;
         $clean_no_fp = str_replace(array('.', '-'), '', $no_fp);
         //dd($amountSum);
