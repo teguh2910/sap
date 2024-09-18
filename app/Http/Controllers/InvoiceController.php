@@ -1,3 +1,4 @@
+
 <?php
 
 namespace App\Http\Controllers;
@@ -59,11 +60,11 @@ class InvoiceController extends Controller
                         ->get();
 
         $amountSum = $invoice_data->sum('amount');
-        $amountSum_dec=number_format($amountSum,2);
+        $amountSum_dec=number_format($amountSum,2, '.', '');
         $ppn=$amountSum*11/100;
-        $ppn_dec=number_format($ppn,2);
+        $ppn_dec=number_format($ppn,2, '.', '');
         $total_invoice_amount=$amountSum+$ppn;
-        $total_invoice_amount_dec=number_format($total_invoice_amount,2);
+        $total_invoice_amount_dec=number_format($total_invoice_amount,2, '.', '');
         $no_fp=$invoice->no_fp;
         $clean_no_fp = str_replace(array('.', '-'), '', $no_fp);
         //dd($amountSum);
