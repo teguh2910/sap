@@ -1,6 +1,4 @@
-
 <?php
-
 namespace App\Http\Controllers;
 use App\sj_g1, App\invoice, App\po_customer, App\customer,App\detail_invoice,App\part_customer, Excel, QrCode;
 use Illuminate\Support\Facades\Crypt;
