@@ -59,7 +59,7 @@ class InvoiceController extends Controller
 
         $amountSum = $invoice_data->sum('amount');
         $amountSum_dec=number_format($amountSum,2,'.','');
-        $ppn=((11/100)/(12/100))*$amountSum;
+        $ppn=($amountSum*11/12)*12/100;
         $ppn_dec=number_format($ppn,2, '.', '');
         $total_invoice_amount=$amountSum+$ppn;
         $total_invoice_amount_dec=number_format($total_invoice_amount,2, '.', '');
