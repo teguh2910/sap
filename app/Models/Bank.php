@@ -4,10 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Database\Factories\BankFactory;
 
 class Bank extends Model
 {
     use HasFactory;
+
+    /**
+     * Create a new factory instance for the model.
+     */
+    protected static function newFactory(): BankFactory
+    {
+        return BankFactory::new();
+    }
 
     protected $primaryKey = 'id_bank';
 
