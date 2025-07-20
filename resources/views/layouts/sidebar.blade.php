@@ -21,11 +21,11 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{asset('/po')}}" class="nav-link">
+                <a href="{{ route('po-suppliers.index') }}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>PO Supplier</p>
                 </a>
-              </li>                                          
+              </li>
             </ul>
           </li> 
           @endif
@@ -40,29 +40,29 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{asset('/po_customer')}}" class="nav-link">
+                <a href="{{ route('po-customers.index') }}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>PO Customer</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{asset('/po')}}" class="nav-link">
+                <a href="{{ route('po-suppliers.index') }}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>PO Supplier</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{asset('/po_all')}}" class="nav-link">
+                <a href="{{ route('dashboard.po') }}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>Report PO Supplier</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{asset('/po_customer_all')}}" class="nav-link">
+                <a href="{{ route('dashboard.po-customer') }}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>Report PO Customer</p>
                 </a>
-              </li>                            
+              </li>
             </ul>
           </li> 
           @endif
@@ -77,11 +77,11 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{asset('/invoice')}}" class="nav-link">
+                <a href="{{ route('invoices.index') }}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>List Invoice</p>
                 </a>
-              </li>                                        
+              </li>
             </ul>
           </li> 
           @endif
@@ -96,26 +96,26 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{asset('/filter_stok_all')}}" class="nav-link">
+                <a href="{{ route('dashboard') }}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>Dashboard</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{asset('/stock_customer')}}" class="nav-link">
+                <a href="{{ route('dashboard') }}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>Stock Actual per Customer</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{asset('/qty_prod_customer')}}" class="nav-link">
+                <a href="{{ route('dashboard') }}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>Qty Produksi VS Order Customer</p>
                 </a>
               </li>
               @if(auth()->user()->name == 'wh_g1' || auth()->user()->name == 'produksi_g1' || auth()->user()->position == 'bod' || auth()->user()->name == 'admin_sac')
               <li class="nav-item">
-                <a href="{{asset('/filter_gudang_satu')}}" class="nav-link">
+                <a href="{{ route('warehouses-1.index') }}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>Gudang SAC</p>
                 </a>
@@ -123,7 +123,7 @@
               @endif
               @if(auth()->user()->name == 'wh_g2' || auth()->user()->name == 'produksi_g2' || auth()->user()->position == 'bod' || auth()->user()->name == 'admin_cf')
               <li class="nav-item">
-                <a href="{{asset('/gudangdua')}}" class="nav-link">
+                <a href="{{ route('warehouses-2.index') }}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>Gudang CF</p>
                 </a>
@@ -143,41 +143,41 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{asset('/cashflow')}}" class="nav-link">
+                <a href="{{ route('cashflows.index') }}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>Dashboard</p>
                 </a>
-              </li> 
+              </li>
               <li class="nav-item">
-                <a href="{{asset('/pnl')}}" class="nav-link">
+                <a href="{{ route('dashboard') }}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>PnL</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{asset('/hutang')}}" class="nav-link">
+                <a href="{{ route('dashboard.hutang') }}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>Hutang</p>
                 </a>
-              </li> 
+              </li>
               <li class="nav-item">
-                <a href="{{asset('/piutang')}}" class="nav-link">
+                <a href="{{ route('dashboard') }}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>Piutang</p>
                 </a>
-              </li> 
+              </li>
               <li class="nav-item">
-                <a href="{{asset('/out_cash')}}" class="nav-link">
+                <a href="{{ route('outgoing-cash.index') }}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>Payment</p>
                 </a>
-              </li> 
+              </li>
               <li class="nav-item">
-                <a href="{{asset('/incoming_cash')}}" class="nav-link">
+                <a href="{{ route('incoming-cash.index') }}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>Incoming</p>
                 </a>
-              </li> 
+              </li>
             </ul>
           </li>                             
           @endif
@@ -191,45 +191,45 @@
             </a>
             <ul class="nav nav-treeview">            
               <li class="nav-item">
-                <a href="{{asset('/part_customer')}}" class="nav-link">
+                <a href="{{ route('part-customers.index') }}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>Master Part Customer</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{asset('/part_supplier')}}" class="nav-link">
+                <a href="{{ route('part-suppliers.index') }}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>Master Part Supplier</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{asset('/bank')}}" class="nav-link">
+                <a href="{{ route('banks.index') }}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>Master Bank</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{asset('/customer')}}" class="nav-link">
+                <a href="{{ route('customers.index') }}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>Master Customer</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{asset('/vendor')}}" class="nav-link">
+                <a href="{{ route('vendors.index') }}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>Master Vendor</p>
                 </a>
-              </li>                            
+              </li>
               <li class="nav-item">
-                <a href="{{asset('/truk')}}" class="nav-link">
+                <a href="{{ route('trucks.index') }}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>Master Truk</p>
                 </a>
-              </li>              
+              </li>
             </ul>
            
             <li class="nav-item">
-                <a href="{{asset('/sop')}}" class="nav-link">
+                <a href="{{ route('sops.index') }}" class="nav-link">
                 <i class="nav-icon fas fa-th"></i>
                   <p>SOP</p>
                 </a>
