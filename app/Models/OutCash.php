@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 namespace App\Models;
 
@@ -18,14 +18,13 @@ class OutCash extends Model
     /**
      * The primary key associated with the table.
      */
-    protected $primaryKey = 'id_out_cash';
+    protected $primaryKey = 'id_out_cashes';
 
     /**
      * The attributes that are mass assignable.
      */
     protected $fillable = [
         'id_bank',
-        'id_vendor',
         'id_po',
         'amount_out',
         'category',
@@ -55,18 +54,66 @@ class OutCash extends Model
     }
 
     /**
-     * Get the vendor that owns this outgoing cash.
-     */
-    public function vendor(): BelongsTo
-    {
-        return $this->belongsTo(Vendor::class, 'id_vendor', 'id_vendor');
-    }
-
-    /**
-     * Get the purchase order that owns this outgoing cash.
+     * Get the PO supplier that owns this outgoing cash.
      */
     public function poSupplier(): BelongsTo
     {
-        return $this->belongsTo(PoSupplier::class, 'id_po', 'id_po_supplier');
+        return $this->belongsTo(PoSupplier::class, 'id_po', 'id_po');
+    }
+
+    /**
+     * Boot the model and add event listeners.
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($outCash) {
+            $outCash->updateCashflow();
+        });
+
+        static::updated(function ($outCash) {
+            $outCash->updateCashflow();
+        });
+
+        static::deleted(function ($outCash) {
+            $outCash->updateCashflow();
+        });
+    }
+
+    /**
+     * Update the cashflow when outgoing cash changes.
+     */
+    public function updateCashflow()
+    {
+        $bank = $this->bank;
+        if (!$bank) return;
+
+        // Find or create cashflow record for this bank
+        $cashflow = Cashflow::firstOrCreate(
+            [
+                'bank' => $bank->nama_bank,
+            ],
+            [
+                'beginning_balance' => 0,
+                'incoming_balance' => 0,
+                'out_balance' => 0,
+                'ending_balance' => 0,
+            ]
+        );
+
+        // Recalculate incoming total for this bank
+        $totalIncoming = IncomingCash::where('id_bank', $this->id_bank)
+            ->sum('amount_incoming');
+
+        // Recalculate outgoing total for this bank
+        $totalOutgoing = OutCash::where('id_bank', $this->id_bank)
+            ->sum('amount_out');
+
+        // Update cashflow
+        $cashflow->incoming_balance = $totalIncoming;
+        $cashflow->out_balance = $totalOutgoing;
+        $cashflow->ending_balance = $cashflow->beginning_balance + $totalIncoming - $totalOutgoing;
+        $cashflow->save();
     }
 }

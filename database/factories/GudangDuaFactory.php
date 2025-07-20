@@ -20,10 +20,9 @@ class GudangDuaFactory extends Factory
     public function definition(): array
     {
         return [
-            'part_number' => $this->faker->unique()->regexify('[A-Z]{2}[0-9]{4}'),
+            'part_no' => $this->faker->unique()->regexify('[A-Z]{2}[0-9]{4}'),
             'part_name' => $this->faker->words(3, true),
             'category_part' => $this->faker->randomElement(['FG', 'RM', 'WIP']),
-            'uom' => $this->faker->randomElement(['PCS', 'KG', 'M', 'L']),
             'beginning_balance' => $this->faker->numberBetween(0, 1000),
             'incoming_balance' => $this->faker->numberBetween(0, 500),
             'usage_balance' => $this->faker->numberBetween(0, 300),

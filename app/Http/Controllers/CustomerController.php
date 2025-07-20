@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use App\Http\Requests\StoreCustomerRequest;
+use App\Http\Requests\UpdateCustomerRequest;
 use App\Services\CustomerService;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -27,9 +28,8 @@ class CustomerController extends Controller
         $this->authorize('viewAny', Customer::class);
         
         $customers = $this->customerService->getAllCustomers();
-        $statistics = $this->customerService->getCustomerStatistics();
         
-        return view('customer.index', compact('customers', 'statistics'));
+        return view('customer.index', compact('customers'));
     }
 
     /**
@@ -49,8 +49,8 @@ class CustomerController extends Controller
     {
         $this->authorize('create', Customer::class);
         
-        $customer = $this->customerService->createCustomer($request->validated());
-
+        $this->customerService->createCustomer($request->validated());
+        
         return redirect()->route('customers.index')
             ->with('success', 'Customer created successfully.');
     }
@@ -83,10 +83,9 @@ class CustomerController extends Controller
         $this->authorize('update', $customer);
         
         $validated = $request->validate([
+            'kode_customer' => 'required|string|max:255|unique:customers,kode_customer,' . $customer->id_customer . ',id_customer',
             'nama_customer' => 'required|string|max:255',
-            'alamat_customer' => 'nullable|string|max:500',
-            'no_telp_customer' => 'nullable|string|max:20',
-            'email_customer' => 'nullable|email|max:255',
+            'alamat_customer' => 'required|string|max:500',
         ]);
 
         $this->customerService->updateCustomer($customer, $validated);
@@ -103,7 +102,7 @@ class CustomerController extends Controller
         $this->authorize('delete', $customer);
         
         $this->customerService->deleteCustomer($customer);
-
+        
         return redirect()->route('customers.index')
             ->with('success', 'Customer deleted successfully.');
     }

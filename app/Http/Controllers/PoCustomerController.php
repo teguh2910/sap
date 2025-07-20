@@ -25,9 +25,11 @@ class PoCustomerController extends Controller
         $po_customer = new PoCustomer;
         $po_customer->no_po_customer = $request->no_po_customer;
         $po_customer->id_customer = $request->id_customer;
-        $po_customer->tgl_po_customer = $request->tgl_po_customer;
+        $po_customer->id_produk = $request->id_produk;
+        $po_customer->qty_po_customer = $request->qty_po_customer;
+        $po_customer->harga_po_customer = $request->harga_po_customer;
         $po_customer->save();
-        return redirect('/po_customer');
+        return redirect()->route('po-customers.index');
     }
     public function edit($id_po_customer) {
         $po_customer = PoCustomer::find($id_po_customer);
@@ -39,12 +41,22 @@ class PoCustomerController extends Controller
         $po_customer = PoCustomer::find($id_po_customer);
         $po_customer->no_po_customer = $request->no_po_customer;
         $po_customer->id_customer = $request->id_customer;
+        $po_customer->id_produk = $request->id_produk;
+        $po_customer->qty_po_customer = $request->qty_po_customer;
+        $po_customer->harga_po_customer = $request->harga_po_customer;
         $po_customer->save();
-        return redirect('/po_customer');
+        return redirect()->route('po-customers.index');
     }
+
+    public function destroy($id_po_customer) {
+        $po_customer = PoCustomer::find($id_po_customer);
+        $po_customer->delete();
+        return redirect()->route('po-customers.index');
+    }
+
     public function delete($id_po_customer) {
         $po_customer = PoCustomer::find($id_po_customer);
         $po_customer->delete();
-        return redirect('/po_customer');
+        return redirect()->route('po-customers.index');
     }
 }

@@ -22,6 +22,70 @@ class DashboardController extends Controller
     {
         $this->middleware('auth');
     }
+
+    /**
+     * Display the dashboard index.
+     */
+    public function index(Request $request)
+    {
+        // Basic dashboard data
+        $data = [
+            'gudang_satu_count' => GudangSatu::count(),
+            'gudang_dua_count' => GudangDua::count(),
+            'po_customer_count' => PoCustomer::count(),
+        ];
+
+        return view('dashboard', $data);
+    }
+
+    /**
+     * Handle dashboard filter requests.
+     */
+    public function filter(Request $request)
+    {
+        // Handle filter parameters
+        $bulan = $request->input('bulan');
+        $tahun = $request->input('tahun');
+
+        // Basic dashboard data (same as index for now)
+        $data = [
+            'gudang_satu_count' => GudangSatu::count(),
+            'gudang_dua_count' => GudangDua::count(),
+            'po_customer_count' => PoCustomer::count(),
+            'bulan' => $bulan,
+            'tahun' => $tahun,
+        ];
+
+        return view('dashboard', $data);
+    }
+
+    /**
+     * Display PO Customer dashboard.
+     */
+    public function poCustomer()
+    {
+        $pos = PoCustomer::with('customer')->latest()->take(10)->get();
+        return view('dashboard.po_customer', compact('pos'));
+    }
+
+    /**
+     * Display stock customer dashboard.
+     */
+    public function stockCustomer()
+    {
+        $po_customer = GudangSatu::latest()->take(10)->get();
+        return view('dashboard.stock_customer', compact('po_customer'));
+    }
+
+    /**
+     * Display qty prod customer dashboard.
+     */
+    public function qtyProdCustomer()
+    {
+        $po_customer = ProdG1::latest()->take(10)->get();
+        return view('dashboard.qty_prod_customer', compact('po_customer'));
+    }
+
     public function stok(Request $request) {
         $gudang_satu = GudangSatu::select('category_part', \DB::raw('sum(beginning_balance) as total_beginning_balance,sum(usage_balance) as total_usage_balance,sum(incoming_balance) as total_incoming_balance'))
 

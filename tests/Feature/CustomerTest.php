@@ -78,7 +78,14 @@ class CustomerTest extends TestCase
             ->put(route('customers.update', $customer), $updateData);
 
         $response->assertRedirect(route('customers.index'));
-        $this->assertDatabaseHas('customers', $updateData);
+
+        // Check that the fields that can be updated were updated
+        $this->assertDatabaseHas('customers', [
+            'id_customer' => $customer->id_customer,
+            'kode_customer' => 'UPDATED001',
+            'nama_customer' => 'Updated Customer',
+            'alamat_customer' => 'Updated Address',
+        ]);
     }
 
     public function test_can_delete_customer(): void
@@ -97,7 +104,7 @@ class CustomerTest extends TestCase
         $response = $this->actingAs($this->user)
             ->post(route('customers.store'), []);
 
-        $response->assertSessionHasErrors(['kode_customer', 'nama_customer']);
+        $response->assertSessionHasErrors(['kode_customer', 'nama_customer', 'alamat_customer']);
     }
 
     public function test_customer_unique_validation(): void

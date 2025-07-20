@@ -58,9 +58,7 @@
                   <tr>
                   <td>{{ $po->id_po }}</td>
                   <td><a href="{{ asset('/detailpo/'.$po->id_po) }}" class="btn btn-xs btn-primary">view</a></td>
-                  @foreach($po->vendors as $v)
-                  <td>{{ $v->nama_vendor }}</td>
-                  @endforeach
+                  <td>{{ $po->vendor ? $po->vendor->nama_vendor : 'N/A' }}</td>
                   <td>{{ $po->tgl_po }}</td>
                   <td>{{ $po->top }}</td>
                   <td>{{ $po->delivery_by }}</td>

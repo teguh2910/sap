@@ -23,9 +23,6 @@ class VendorFactory extends Factory
             'kode_vendor' => $this->faker->unique()->regexify('[A-Z]{3}[0-9]{3}'),
             'nama_vendor' => $this->faker->company,
             'alamat_vendor' => $this->faker->address,
-            'telp_vendor' => $this->faker->phoneNumber,
-            'email_vendor' => $this->faker->unique()->safeEmail,
-            'pic_vendor' => $this->faker->name,
         ];
     }
 }

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 namespace App\Models;
 
@@ -10,15 +10,20 @@ class Sop extends Model
     use HasFactory;
 
     /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
+     * The table associated with the model.
      */
-    protected function casts(): array
-    {
-        return [
-            'created_at' => 'datetime',
-            'updated_at' => 'datetime',
-        ];
-    }
+    protected $table = 'sops';
+
+    /**
+     * The primary key associated with the table.
+     */
+    protected $primaryKey = 'id_sop';
+
+    /**
+     * The attributes that are mass assignable.
+     */
+    protected $fillable = [
+        'nama_sop',
+        'file_sop',
+    ];
 }

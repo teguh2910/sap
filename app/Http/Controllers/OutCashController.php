@@ -15,9 +15,9 @@ class OutCashController extends Controller
         $this->middleware('auth');
     }
     function create() {
-        $banks = bank::all();
-        $vendors = vendor::all();
-        $pos= po_supplier::all();
+        $banks = Bank::all();
+        $vendors = Vendor::all();
+        $pos= PoSupplier::all();
         return view('out_cash/create',compact('banks','vendors','pos'));
     }
     function store(Request $request) {
@@ -33,9 +33,9 @@ class OutCashController extends Controller
         }
         $out_cash->save();
         //update cash flow
-        $bank = bank::where('id_bank',$request->id_bank)->first();
-        $total_out = out_cash::where('id_bank',$request->id_bank)->sum('amount_out');
-        $out_cash= cashflow::where('bank',$bank->nama_bank)->first();
+        $bank = Bank::where('id_bank',$request->id_bank)->first();
+        $total_out = OutCash::where('id_bank',$request->id_bank)->sum('amount_out');
+        $out_cash= Cashflow::where('bank',$bank->nama_bank)->first();
         $out_cash->out_balance = $total_out;
         $out_cash->save();
         return redirect('cashflow');

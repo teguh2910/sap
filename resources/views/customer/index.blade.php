@@ -47,7 +47,7 @@
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach($customer as $c)
+                  @foreach($customers as $c)
                   <tr>
                   <td>{{ $c->kode_customer }}</td>
                   <td>{{ $c->nama_customer }}</td>

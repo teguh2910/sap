@@ -7,9 +7,14 @@ use Illuminate\Http\Request;
 
 class PartSupplierController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        $part_supplier = part_supplier::all();
+        $part_supplier = PartSupplier::all();
         return view('part_supplier.index', compact('part_supplier'));
     }
     public function create()
@@ -25,19 +30,19 @@ class PartSupplierController extends Controller
     }
     public function edit($id)
     {
-        $part_supplier = part_supplier::find($id);
+        $part_supplier = PartSupplier::find($id);
         return view('part_supplier.edit', compact('part_supplier'));
     }
     public function update(Request $request, $id)
     {
-        $part_supplier = part_supplier::find($id);
+        $part_supplier = PartSupplier::find($id);
         $part_supplier->part_number = $request->part_number;
         $part_supplier->part_name = $request->part_name;
         $part_supplier->save();
         return redirect('/part_supplier');
     }
-    public function delete($id){
-        $part_supplier = part_supplier::find($id);
+    public function destroy($id){
+        $part_supplier = PartSupplier::find($id);
         $part_supplier->delete();
         return redirect('/part_supplier');
     }

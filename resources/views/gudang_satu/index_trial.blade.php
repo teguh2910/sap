@@ -60,21 +60,20 @@
                     @foreach($gudang_satus as $g)
                     @php
                         $beginningBalance = $g->qty_sto;
-                        if($g->gudang_g1->first()->category_part == 'RM' || $g->gudang_g1->first()->category_part == 'NON_RM')
+                        $gudangG1 = $g->gudang_g1->first();
+                        if($gudangG1 && ($gudangG1->category_part == 'RM' || $gudangG1->category_part == 'NON_RM'))
                         {
-                        $totalQtyProd = $g->gudang_g1->first()
-                                        ->part_supplier->first()
-                                        ->grs
+                        $partSupplier = $gudangG1->part_supplier->first();
+                        $totalQtyProd = $partSupplier && $partSupplier->grs ? $partSupplier->grs
                                         ->filter(function ($item) use ($originalMonth, $originalYear) {
                                           return $item->created_at->month == $originalMonth && $item->created_at->year == $originalYear;
                                           })
-                                        ->sum('qty_gr');
-                        $usageBalance = $g->gudang_g1->first()
-                                        ->prods
+                                        ->sum('qty_gr') : 0;
+                        $usageBalance = $gudangG1 && $gudangG1->prods ? $gudangG1->prods
                                         ->filter(function ($item) use ($originalMonth, $originalYear) {
                                               return $item->created_at->month == $originalMonth && $item->created_at->year == $originalYear;
                                           })
-                                        ->sum('qty_prod_g1');
+                                        ->sum('qty_prod_g1') : 0;
                         }
                         else
                         {

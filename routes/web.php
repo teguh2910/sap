@@ -43,6 +43,11 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('part-suppliers', App\Http\Controllers\PartSupplierController::class);
     Route::resource('part-customers', App\Http\Controllers\PartCustomerController::class);
     Route::resource('po-customers', App\Http\Controllers\PoCustomerController::class);
+
+    // GudangSatu specific routes (must come before resource route)
+    Route::get('/warehouses-1/filter', [App\Http\Controllers\GudangSatuController::class, 'filter'])->name('warehouses-1.filter');
+    Route::get('/warehouses-1/trial', [App\Http\Controllers\GudangSatuController::class, 'trial'])->name('warehouses-1.trial');
+
     Route::resource('warehouses-1', App\Http\Controllers\GudangSatuController::class);
     Route::resource('warehouses-2', App\Http\Controllers\GudangDuaController::class);
     Route::resource('goods-receipts', App\Http\Controllers\GrController::class);
@@ -60,9 +65,12 @@ Route::middleware(['auth'])->group(function () {
 
     // Dashboard routes
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::post('/dashboard', [DashboardController::class, 'filter'])->name('dashboard.filter');
     Route::get('/dashboard/po', [DashboardController::class, 'po'])->name('dashboard.po');
     Route::get('/dashboard/po-customer', [DashboardController::class, 'poCustomer'])->name('dashboard.po-customer');
     Route::get('/dashboard/hutang', [DashboardController::class, 'hutang'])->name('dashboard.hutang');
+    Route::get('/dashboard/stock-customer', [DashboardController::class, 'stockCustomer'])->name('dashboard.stock-customer');
+    Route::get('/dashboard/qty-prod-customer', [DashboardController::class, 'qtyProdCustomer'])->name('dashboard.qty-prod-customer');
 
     // Legacy route compatibility (temporary - remove after frontend update)
     Route::get('/bank', [BankController::class, 'index']);
@@ -79,5 +87,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/sjg2', [App\Http\Controllers\SjController::class, 'index']);
     Route::get('/detailpo/{id}', [App\Http\Controllers\DetailPoSupplierController::class, 'index']);
     Route::get('/detailpocustomer/{id}', [App\Http\Controllers\DetailPoCustomerController::class, 'index']);
+
+    // Additional POST routes for GudangSatu
+    Route::post('/gudangsatu/post_filter_stok', [App\Http\Controllers\GudangSatuController::class, 'post_filter_stok']);
+    Route::post('/gudangsatu/trial', [App\Http\Controllers\GudangSatuController::class, 'trial']);
 
 });

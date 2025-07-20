@@ -44,9 +44,6 @@ class VendorTest extends TestCase
             'kode_vendor' => 'VEND001',
             'nama_vendor' => 'Test Vendor',
             'alamat_vendor' => 'Test Address',
-            'telp_vendor' => '081234567890',
-            'email_vendor' => 'test@vendor.com',
-            'pic_vendor' => 'John Doe',
         ];
 
         $response = $this->actingAs($this->user)
@@ -64,9 +61,6 @@ class VendorTest extends TestCase
             'kode_vendor' => 'UPDATED001',
             'nama_vendor' => 'Updated Vendor',
             'alamat_vendor' => 'Updated Address',
-            'telp_vendor' => '089876543210',
-            'email_vendor' => 'updated@vendor.com',
-            'pic_vendor' => 'Jane Doe',
         ];
 
         $response = $this->actingAs($this->user)

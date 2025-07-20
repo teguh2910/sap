@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCustomerRequest extends FormRequest
+class UpdateCustomerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,8 +21,10 @@ class StoreCustomerRequest extends FormRequest
      */
     public function rules(): array
     {
+        $customerId = $this->route('customer')->id_customer;
+        
         return [
-            'kode_customer' => 'required|string|max:255|unique:customers,kode_customer',
+            'kode_customer' => 'required|string|max:255|unique:customers,kode_customer,' . $customerId . ',id_customer',
             'nama_customer' => 'required|string|max:255',
             'alamat_customer' => 'required|string|max:500',
         ];

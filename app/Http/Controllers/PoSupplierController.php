@@ -15,11 +15,11 @@ class PoSupplierController extends Controller
         $this->middleware('auth');
     }
     public function index() {
-        $pos=po_supplier::with(['vendors'])->get();
+        $pos=PoSupplier::with(['vendor'])->get();
         return view('po_supplier/index', compact('pos'));
     }
     public function create() {
-        $vendor=vendor::all();
+        $vendor=Vendor::all();
         return view('po_supplier/create',compact('vendor'));
     }
     public function store(Request $request) {
@@ -27,6 +27,7 @@ class PoSupplierController extends Controller
         $po->id_vendor = $request->id_vendor;
         $po->tgl_po = $request->tgl_po;
         $po->top = $request->top;
+        $po->qty_po = $request->qty_po;
         $po->delivery_by = $request->delivery_by;
         $po->delivery_date = $request->delivery_date;
         $po->quot_no = $request->quot_no;
@@ -37,15 +38,16 @@ class PoSupplierController extends Controller
         return redirect('/po');
     }    
     public function edit($id) {
-        $po = po_supplier::with('vendors')->find($id);
-        $vendors=vendor::all();
+        $po = PoSupplier::with('vendor')->find($id);
+        $vendors=Vendor::all();
         return view('po_supplier/edit', compact(['po','vendors']));
     }
     public function update(Request $request, $id) {
-        $po = po_supplier::find($id);
+        $po = PoSupplier::find($id);
         $po->id_vendor = $request->id_vendor;
         $po->tgl_po = $request->tgl_po;
         $po->top = $request->top;
+        $po->qty_po = $request->qty_po;
         $po->delivery_by = $request->delivery_by;
         $po->delivery_date = $request->delivery_date;
         $po->quot_no = $request->quot_no;
@@ -56,7 +58,13 @@ class PoSupplierController extends Controller
         return redirect('/po');
     }
     public function delete($id) {
-        $po = po_supplier::find($id);
+        $po = PoSupplier::find($id);
+        $po->delete();
+        return redirect('/po');
+    }
+
+    public function destroy($id) {
+        $po = PoSupplier::find($id);
         $po->delete();
         return redirect('/po');
     }

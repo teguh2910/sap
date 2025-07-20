@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 namespace App\Models;
 
@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class ProdG1 extends Model
 {
     use HasFactory;
+
+    /**
+     * The table associated with the model.
+     */
+    protected $table = 'prod_g1s';
 
     /**
      * Get the attributes that should be cast.

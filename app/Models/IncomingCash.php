@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 namespace App\Models;
 
@@ -18,7 +18,7 @@ class IncomingCash extends Model
     /**
      * The primary key associated with the table.
      */
-    protected $primaryKey = 'id_incoming_cash';
+    protected $primaryKey = 'id_incoming_cashes';
 
     /**
      * The attributes that are mass assignable.
@@ -60,5 +60,61 @@ class IncomingCash extends Model
     public function customer(): BelongsTo
     {
         return $this->belongsTo(Customer::class, 'id_customer', 'id_customer');
+    }
+
+    /**
+     * Boot the model and add event listeners.
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($incomingCash) {
+            $incomingCash->updateCashflow();
+        });
+
+        static::updated(function ($incomingCash) {
+            $incomingCash->updateCashflow();
+        });
+
+        static::deleted(function ($incomingCash) {
+            $incomingCash->updateCashflow();
+        });
+    }
+
+    /**
+     * Update the cashflow when incoming cash changes.
+     */
+    public function updateCashflow()
+    {
+        $bank = $this->bank;
+        if (!$bank) return;
+
+        // Find or create cashflow record for this bank
+        $cashflow = Cashflow::firstOrCreate(
+            [
+                'bank' => $bank->nama_bank,
+            ],
+            [
+                'beginning_balance' => 0,
+                'incoming_balance' => 0,
+                'out_balance' => 0,
+                'ending_balance' => 0,
+            ]
+        );
+
+        // Recalculate incoming total for this bank
+        $totalIncoming = IncomingCash::where('id_bank', $this->id_bank)
+            ->sum('amount_incoming');
+
+        // Recalculate outgoing total for this bank
+        $totalOutgoing = OutCash::where('id_bank', $this->id_bank)
+            ->sum('amount_out');
+
+        // Update cashflow
+        $cashflow->incoming_balance = $totalIncoming;
+        $cashflow->out_balance = $totalOutgoing;
+        $cashflow->ending_balance = $cashflow->beginning_balance + $totalIncoming - $totalOutgoing;
+        $cashflow->save();
     }
 }

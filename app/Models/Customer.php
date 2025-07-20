@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Customer extends Model
 {
@@ -33,5 +34,13 @@ class Customer extends Model
             'created_at' => 'datetime',
             'updated_at' => 'datetime',
         ];
+    }
+
+    /**
+     * Get the purchase orders for this customer.
+     */
+    public function poCustomers(): HasMany
+    {
+        return $this->hasMany(PoCustomer::class, 'id_customer', 'id_customer');
     }
 }

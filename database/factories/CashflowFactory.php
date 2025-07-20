@@ -22,10 +22,9 @@ class CashflowFactory extends Factory
         return [
             'bank' => $this->faker->company . ' Bank',
             'beginning_balance' => $this->faker->numberBetween(1000000, 10000000),
-            'incoming' => $this->faker->numberBetween(0, 5000000),
-            'outgoing' => $this->faker->numberBetween(0, 3000000),
+            'incoming_balance' => $this->faker->numberBetween(0, 5000000),
+            'out_balance' => $this->faker->numberBetween(0, 3000000),
             'ending_balance' => $this->faker->numberBetween(1000000, 12000000),
-            'tgl_cashflow' => $this->faker->date(),
         ];
     }
 }

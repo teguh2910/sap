@@ -20,9 +20,10 @@ class PoCustomer extends Model
      */
     protected $fillable = [
         'no_po_customer',
-        'tgl_po_customer',
         'id_customer',
-        'status',
+        'id_produk',
+        'qty_po_customer',
+        'harga_po_customer'
     ];
 
     /**
@@ -33,7 +34,6 @@ class PoCustomer extends Model
     protected function casts(): array
     {
         return [
-            'tgl_po_customer' => 'date',
             'created_at' => 'datetime',
             'updated_at' => 'datetime',
         ];

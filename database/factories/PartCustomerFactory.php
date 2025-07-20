@@ -22,9 +22,6 @@ class PartCustomerFactory extends Factory
         return [
             'part_number' => $this->faker->unique()->regexify('[A-Z]{2}[0-9]{4}'),
             'part_name' => $this->faker->words(3, true),
-            'category_part' => $this->faker->randomElement(['FG', 'RM', 'WIP']),
-            'uom' => $this->faker->randomElement(['PCS', 'KG', 'M', 'L']),
-            'harga_part_customer' => $this->faker->numberBetween(1000, 100000),
         ];
     }
 }

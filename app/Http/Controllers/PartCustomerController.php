@@ -7,9 +7,14 @@ use Illuminate\Http\Request;
 
 class PartCustomerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        $part_customer = part_customer::all();
+        $part_customer = PartCustomer::all();
         return view('part_customer.index', compact('part_customer'));
     }
     public function create()
@@ -25,19 +30,19 @@ class PartCustomerController extends Controller
     }
     public function edit($id)
     {
-        $part_customer = part_customer::find($id);
+        $part_customer = PartCustomer::find($id);
         return view('part_customer.edit', compact('part_customer'));
     }
     public function update(Request $request, $id)
     {
-        $part_customer = part_customer::find($id);
+        $part_customer = PartCustomer::find($id);
         $part_customer->part_number = $request->part_number;
         $part_customer->part_name = $request->part_name;
         $part_customer->save();
         return redirect('/part_customer');
     }
-    public function delete($id){
-        $part_customer = part_customer::find($id);
+    public function destroy($id){
+        $part_customer = PartCustomer::find($id);
         $part_customer->delete();
         return redirect('/part_customer');
     }

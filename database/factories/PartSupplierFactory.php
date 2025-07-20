@@ -22,9 +22,6 @@ class PartSupplierFactory extends Factory
         return [
             'part_number' => $this->faker->unique()->regexify('[A-Z]{2}[0-9]{4}'),
             'part_name' => $this->faker->words(3, true),
-            'category_part' => $this->faker->randomElement(['RM', 'CONSUMABLE', 'SPARE_PART']),
-            'uom' => $this->faker->randomElement(['PCS', 'KG', 'M', 'L']),
-            'harga_part_supplier' => $this->faker->numberBetween(500, 50000),
         ];
     }
 }

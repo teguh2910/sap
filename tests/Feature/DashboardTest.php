@@ -27,7 +27,7 @@ class DashboardTest extends TestCase
             ->get(route('dashboard'));
 
         $response->assertStatus(200);
-        $response->assertViewIs('dashboard.index');
+        $response->assertViewIs('dashboard');
     }
 
     public function test_dashboard_filter_stok_all(): void
@@ -39,7 +39,7 @@ class DashboardTest extends TestCase
             ]);
 
         $response->assertStatus(200);
-        $response->assertViewIs('dashboard.index');
+        $response->assertViewIs('dashboard');
     }
 
     public function test_can_view_po_dashboard(): void
@@ -97,7 +97,7 @@ class DashboardTest extends TestCase
             ->get(route('dashboard'));
 
         $response->assertStatus(200);
-        $response->assertViewHas(['gudang_satu', 'gudang_dua']);
+        $response->assertViewHas(['gudang_satu_count', 'gudang_dua_count', 'po_customer_count']);
     }
 
     public function test_guest_cannot_access_dashboard(): void
@@ -114,7 +114,7 @@ class DashboardTest extends TestCase
             ->get(route('dashboard'));
 
         $response->assertStatus(200);
-        $response->assertViewIs('dashboard.index');
+        $response->assertViewIs('dashboard');
     }
 
     public function test_dashboard_filter_with_invalid_date(): void
@@ -126,6 +126,6 @@ class DashboardTest extends TestCase
             ]);
 
         $response->assertStatus(200);
-        $response->assertViewIs('dashboard.index');
+        $response->assertViewIs('dashboard');
     }
 }

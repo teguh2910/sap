@@ -40,7 +40,7 @@ class PartSupplier extends Model
      */
     public function grs(): HasMany
     {
-        return $this->hasMany(Gr::class, 'id_material', 'id_part_supplier');
+        return $this->hasMany(\App\Models\Gr::class, 'id_material', 'id_part_supplier');
     }
 
     /**
