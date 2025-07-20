@@ -1,0 +1,95 @@
+# Production configuration for docker-compose
+version: "3.8"
+
+services:
+  app:
+    build:
+      target: production
+      args:
+        - APP_ENV=production
+    environment:
+      - APP_ENV=production
+      - APP_DEBUG=false
+      - LOG_LEVEL=error
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/up"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  db:
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 2G
+        reservations:
+          cpus: '0.5'
+          memory: 1G
+    environment:
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
+      MYSQL_PASSWORD_FILE: /run/secrets/db_password
+    secrets:
+      - db_root_password
+      - db_password
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf:ro
+
+  redis:
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+    command: redis-server /usr/local/etc/redis/redis.conf --requirepass ${REDIS_PASSWORD}
+
+  # Nginx Load Balancer (if needed)
+  nginx-lb:
+    image: nginx:alpine
+    container_name: sap-nginx-lb
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./docker/nginx/nginx-lb.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - app
+    networks:
+      - sap-network
+
+secrets:
+  db_root_password:
+    external: true
+  db_password:
+    external: true
+
+volumes:
+  db_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  sap-network:
+    driver: overlay
+    attachable: true

@@ -1,38 +1,128 @@
-# Use an official PHP 7.3 image with Alpine Linux
-FROM php:7.3-fpm-alpine
+# Multi-stage build for Laravel 12 application
+# Stage 1: Build stage
+FROM php:8.3-fpm-alpine AS builder
 
-# Set the working directory inside the container
+# Set build arguments
+ARG APP_ENV=production
+ARG NODE_VERSION=20
+
+# Install system dependencies and PHP extensions
+RUN apk add --no-cache \
+    git \
+    curl \
+    libpng-dev \
+    libjpeg-turbo-dev \
+    freetype-dev \
+    libzip-dev \
+    icu-dev \
+    oniguruma-dev \
+    postgresql-dev \
+    nodejs \
+    npm \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) \
+        gd \
+        pdo \
+        pdo_mysql \
+        pdo_pgsql \
+        zip \
+        intl \
+        mbstring \
+        opcache \
+        bcmath \
+    && rm -rf /var/cache/apk/*
+
+# Install Composer
+COPY --from=composer:2.7 /usr/bin/composer /usr/bin/composer
+
+# Set working directory
 WORKDIR /var/www/html
 
-# Install system dependencies
-ADD https://raw.githubusercontent.com/mlocati/docker-php-extension-installer/master/install-php-extensions /usr/local/bin/
-RUN apk add --update --no-cache libpng-dev libjpeg-turbo-dev freetype-dev zip unzip nginx
+# Copy composer files first for better caching
+COPY composer.json composer.lock ./
 
-# Install PHP extensions
-RUN docker-php-ext-install -j$(nproc) gd
-RUN docker-php-ext-install pdo pdo_mysql
-RUN chmod uga+x /usr/local/bin/install-php-extensions && sync
-RUN install-php-extensions imagick
-RUN install-php-extensions zip
+# Install PHP dependencies
+RUN composer install --no-dev --optimize-autoloader --no-scripts --no-interaction
 
-# Copy application code into the container
+# Copy package.json and install Node dependencies
+COPY package*.json ./
+RUN npm ci --only=production
+
+# Copy application code
 COPY . .
 
-# Copy Nginx configuration
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY php.ini /usr/local/etc/php/php.ini
+# Build frontend assets
+RUN npm run build
 
-RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-RUN php -r "if (hash_file('sha384', 'composer-setup.php') === 'e21205b207c3ff031906575712edab6f13eb0b361f2085f1f1237b7126d785e826a450292b6cfd1d64d92e6563bbde02') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-RUN php composer-setup.php
-RUN php -r "unlink('composer-setup.php');"
-RUN mv composer.phar /usr/local/bin/composer
-# Set permissions for Laravel files and directories
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
-RUN composer install
+# Generate optimized autoloader and cache
+RUN composer dump-autoload --optimize \
+    && php artisan config:cache \
+    && php artisan route:cache \
+    && php artisan view:cache
 
-# Expose port 80 for Nginx
+# Stage 2: Production stage
+FROM php:8.3-fpm-alpine AS production
+
+# Install runtime dependencies only
+RUN apk add --no-cache \
+    libpng \
+    libjpeg-turbo \
+    freetype \
+    libzip \
+    icu \
+    postgresql-libs \
+    nginx \
+    supervisor \
+    && rm -rf /var/cache/apk/*
+
+# Install PHP extensions (runtime only)
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) \
+        gd \
+        pdo \
+        pdo_mysql \
+        pdo_pgsql \
+        zip \
+        intl \
+        mbstring \
+        opcache \
+        bcmath
+
+# Create application user
+RUN addgroup -g 1000 -S www && \
+    adduser -u 1000 -S www -G www
+
+# Set working directory
+WORKDIR /var/www/html
+
+# Copy application from builder stage
+COPY --from=builder --chown=www:www /var/www/html .
+
+# Copy configuration files
+COPY docker/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY docker/php/php.ini /usr/local/etc/php/php.ini
+COPY docker/php/php-fpm.conf /usr/local/etc/php-fpm.d/www.conf
+COPY docker/supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# Set proper permissions
+RUN chown -R www:www /var/www/html \
+    && chmod -R 755 /var/www/html/storage \
+    && chmod -R 755 /var/www/html/bootstrap/cache
+
+# Create required directories
+RUN mkdir -p /var/log/nginx /var/log/supervisor \
+    && chown -R www:www /var/log/nginx
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost/up || exit 1
+
+# Expose port
 EXPOSE 80
 
-# Start Nginx and PHP-FPM
-CMD ["sh", "-c", "nginx && php-fpm"]
+# Switch to non-root user
+USER www
+
+# Start supervisor
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
