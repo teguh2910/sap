@@ -55,10 +55,8 @@
                   @foreach($detailpos as $d)
                   <tr>
                   <td>{{ $d->id_po }}</td>
-                  @foreach($d->materials as $m)
-                  <td>{{ $m->part_number }}</td>
-                  <td>{{ $m->part_name }}</td>
-                  @endforeach                  
+                  <td>{{ $d->material->part_number ?? '' }}</td>
+                  <td>{{ $d->material->part_name ?? '' }}</td>
                   <td>{{ number_format($d->qty_po) }}</td>                                    
                   <td>{{ $d->uom }}</td>
                   @if(auth()->user()->position == 'admin' || auth()->user()->position == 'bod' || auth()->user()->position == 'fac')

@@ -37,17 +37,14 @@ class PoCustomerController extends Controller
         $customers = Customer::all();
         return view('po_customer/edit',compact('po_customer','produks','customers'));
     }
-    public function update($id_po_customer, Request $request) {
+    public function update(Request $request, $id_po_customer) {
         $po_customer = PoCustomer::find($id_po_customer);
         $po_customer->no_po_customer = $request->no_po_customer;
         $po_customer->id_customer = $request->id_customer;
-        $po_customer->id_produk = $request->id_produk;
-        $po_customer->qty_po_customer = $request->qty_po_customer;
-        $po_customer->harga_po_customer = $request->harga_po_customer;
         $po_customer->save();
         return redirect()->route('po-customers.index');
     }
-
+    
     public function destroy($id_po_customer) {
         $po_customer = PoCustomer::find($id_po_customer);
         $po_customer->delete();

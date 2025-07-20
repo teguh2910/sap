@@ -39,8 +39,9 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{asset('po/edit/'.$po->id_po)}}" method="POST">
-              {{ csrf_field() }}
+              <form action="{{asset('po-suppliers/'.$po->id_po)}}" method="POST">                  
+              @csrf
+              @method('PUT')                  
                 <div class="card-body">
                   <div class="form-group">
                     <label>Vendor</label>
@@ -54,7 +55,7 @@
                   </div>
                   <div class="form-group">
                     <label>Tanggal PO</label>
-                    <input type="date" name="tgl_po" value="{{ $po->tgl_po }}" class="form-control">
+                    <input type="date" name="tgl_po" value="{{ $po->tgl_po->format('Y-m-d') }}" class="form-control">
                   </div>
                   <div class="form-group">
                     <label>TOP</label>

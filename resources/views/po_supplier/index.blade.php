@@ -23,7 +23,7 @@
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
-        <a href="{{ asset('po/create')}}" class="btn btn-sm btn-success">Create</a>
+        <a href="{{ asset('po-suppliers/create')}}" class="btn btn-sm btn-success">Create</a>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -67,9 +67,13 @@
                   <td>{{ $po->pr_no }}</td>
                   <td>{{ $po->vat }}</td>
                   <td>
-                    <a href="{{ asset('po/cetak/'.$po->id_po) }}" class="btn btn-xs btn-success">Cetak</a>
-                    <a href="{{ asset('po/edit/'.$po->id_po) }}" class="btn btn-xs btn-primary">Edit</a>
-                    <a href="{{ asset('po/delete/'.$po->id_po) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-xs btn-danger">Delete</a>
+                    <a href="{{ asset('po-suppliers/'.$po->id_po.'/print') }}" class="btn btn-xs btn-success">Cetak</a>
+                    <a href="{{ asset('po-suppliers/'.$po->id_po.'/edit') }}" class="btn btn-xs btn-primary">Edit</a>
+                    <form action="{{ route('po-suppliers.destroy', $po->id_po) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-xs btn-danger" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
+                    </form>
                   </td>
                   </tr>
                   @endforeach

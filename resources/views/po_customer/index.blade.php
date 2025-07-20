@@ -55,8 +55,12 @@
                   <td><a href="{{ asset('detailpocustomer/'.$po->id_po_customer) }}" class="btn btn-xs btn-primary">View</a></td>
                   <td>{{ $po->tgl_po_customer }}</td>
                   <td>
-                    <a href="{{ asset('po_customer/edit/'.$po->id_po_customer) }}" class="btn btn-xs btn-primary">Edit</a>
-                    <a href="{{ asset('po_customer/delete/'.$po->id_po_customer) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-xs btn-danger">Delete</a>
+                    <a href="{{ asset('po-customers/'.$po->id_po_customer.'/edit') }}" class="btn btn-xs btn-primary">Edit</a>
+                    <form action="{{ route('po-customers.destroy', $po->id_po_customer) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-xs btn-danger" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
+                    </form>
                   </td>
                   </tr>
                   @endforeach

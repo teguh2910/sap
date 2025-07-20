@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 namespace App\Models;
 
@@ -18,7 +18,7 @@ class DetailPoCustomer extends Model
     /**
      * The primary key associated with the table.
      */
-    protected $primaryKey = 'id_detail_po_customer';
+    protected $primaryKey = 'id_detail_po_customers';
 
     /**
      * The attributes that are mass assignable.

@@ -14,7 +14,7 @@ class DetailPoSupplierController extends Controller
         $this->middleware('auth');
     }
     public function index($id) {
-        $detailpos=detail_po_supplier::where('id_po',$id)->get();        
+        $detailpos=DetailPoSupplier::with('material')->where('id_po',$id)->get();
         return view('detail_po_supplier/index',compact(['detailpos','id']));
     }
     public function create($id) {
@@ -33,12 +33,12 @@ class DetailPoSupplierController extends Controller
         return redirect('/detailpo/'.$id);
     }
     public function edit($id) {
-        $po=detail_po_supplier::find($id);
-        $material = part_supplier::all();
+        $po=DetailPoSupplier::find($id);
+        $material = PartSupplier::all();
         return view('detail_po_supplier/edit',compact(['material','po']));
     }
     public function update(Request $request,$id){
-        $detailpo=detail_po_supplier::find($id);
+        $detailpo=DetailPoSupplier::find($id);
         $detailpo->id_material=$request->id_material;
         $detailpo->qty_po=$request->qty_po;
         $detailpo->harga_po=$request->harga_po;
@@ -47,7 +47,7 @@ class DetailPoSupplierController extends Controller
         return redirect('/detailpo/'.$detailpo->id_po);
     }
     public function delete($id){
-        $detailpo=detail_po_supplier::find($id);
+        $detailpo=DetailPoSupplier::find($id);
         $detailpo->delete();
         return redirect('/detailpo/'.$detailpo->id_po);
     }

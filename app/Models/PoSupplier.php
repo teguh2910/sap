@@ -11,7 +11,7 @@ class PoSupplier extends Model
 {
     use HasFactory;
 
-    protected $table = 'pos';
+    protected $table = 'po_suppliers';
     protected $primaryKey = 'id_po';
 
     /**

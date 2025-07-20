@@ -85,8 +85,20 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/gudangdua', [App\Http\Controllers\GudangDuaController::class, 'index']);
     Route::get('/gr', [App\Http\Controllers\GrController::class, 'index']);
     Route::get('/sjg2', [App\Http\Controllers\SjController::class, 'index']);
+    //detail po supplier
     Route::get('/detailpo/{id}', [App\Http\Controllers\DetailPoSupplierController::class, 'index']);
+    Route::get('/detailpo/delete/{id}', [App\Http\Controllers\DetailPoSupplierController::class, 'delete']);
+    Route::get('/detailpo/edit/{id}', [App\Http\Controllers\DetailPoSupplierController::class, 'edit']);
+    Route::put('/detailpo/edit/{id}', [App\Http\Controllers\DetailPoSupplierController::class, 'update']);
+    Route::get('/detailpo/create/{id}', [App\Http\Controllers\DetailPoSupplierController::class, 'create']);
+    Route::post('/detailpo/create/{id}', [App\Http\Controllers\DetailPoSupplierController::class, 'store']);
+    //detail po customer
     Route::get('/detailpocustomer/{id}', [App\Http\Controllers\DetailPoCustomerController::class, 'index']);
+    Route::get('/detailpocustomer/delete/{id}', [App\Http\Controllers\DetailPoCustomerController::class, 'delete']);
+    Route::get('/detailpocustomer/edit/{id}', [App\Http\Controllers\DetailPoCustomerController::class, 'edit']);
+    Route::put('/detailpocustomer/edit/{id}', [App\Http\Controllers\DetailPoCustomerController::class, 'update']);
+    Route::get('/detailpocustomer/create/{id}', [App\Http\Controllers\DetailPoCustomerController::class, 'create']);
+    Route::post('/detailpocustomer/create/{id}', [App\Http\Controllers\DetailPoCustomerController::class, 'store']);
 
     // Additional POST routes for GudangSatu
     Route::post('/gudangsatu/post_filter_stok', [App\Http\Controllers\GudangSatuController::class, 'post_filter_stok']);

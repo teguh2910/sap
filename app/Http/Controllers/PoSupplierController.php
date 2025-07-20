@@ -7,6 +7,7 @@ use App\Models\Bank;
 use App\Models\DetailPoSupplier;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
+use App\Exports\PoSupplierExport;
 
 class PoSupplierController extends Controller
 {
@@ -15,7 +16,7 @@ class PoSupplierController extends Controller
         $this->middleware('auth');
     }
     public function index() {
-        $pos=PoSupplier::with(['vendor'])->get();
+$pos=PoSupplier::with(['vendor'])->get();
         return view('po_supplier/index', compact('pos'));
     }
     public function create() {
@@ -27,7 +28,6 @@ class PoSupplierController extends Controller
         $po->id_vendor = $request->id_vendor;
         $po->tgl_po = $request->tgl_po;
         $po->top = $request->top;
-        $po->qty_po = $request->qty_po;
         $po->delivery_by = $request->delivery_by;
         $po->delivery_date = $request->delivery_date;
         $po->quot_no = $request->quot_no;
@@ -40,6 +40,7 @@ class PoSupplierController extends Controller
     public function edit($id) {
         $po = PoSupplier::with('vendor')->find($id);
         $vendors=Vendor::all();
+        //dd($po->tgl_po);
         return view('po_supplier/edit', compact(['po','vendors']));
     }
     public function update(Request $request, $id) {
@@ -47,7 +48,6 @@ class PoSupplierController extends Controller
         $po->id_vendor = $request->id_vendor;
         $po->tgl_po = $request->tgl_po;
         $po->top = $request->top;
-        $po->qty_po = $request->qty_po;
         $po->delivery_by = $request->delivery_by;
         $po->delivery_date = $request->delivery_date;
         $po->quot_no = $request->quot_no;
@@ -57,44 +57,12 @@ class PoSupplierController extends Controller
         $po->save();
         return redirect('/po');
     }
-    public function delete($id) {
-        $po = PoSupplier::find($id);
-        $po->delete();
-        return redirect('/po');
-    }
-
     public function destroy($id) {
         $po = PoSupplier::find($id);
         $po->delete();
         return redirect('/po');
     }
-    public function cetak($id) {        
-        $po=po_supplier::with('vendors')->find($id);
-        $detail_pos=detail_po_supplier::where('id_po',$id)->get();
-        Excel::load('template_po.xlsx', function($excel) use ($po,$detail_pos) {            
-            $excel->sheet('DRAFT', function($sheet) use ($po,$detail_pos) {                
-                // Sheet manipulation
-                $sheet->setCellValue('B8', $po->vendors->first()->nama_vendor);
-                $sheet->setCellValue('E7', $po->tgl_po);
-                $sheet->setCellValue('E8', $po->id_po);
-                $sheet->setCellValue('B11', $po->top);
-                $sheet->setCellValue('I11', $po->delivery_by);
-                $sheet->setCellValue('B16', $po->delivery_date);
-                $sheet->setCellValue('E16', $po->quot_no);
-                $sheet->setCellValue('I16', $po->pr_no);
-                $sheet->setCellValue('B46', $po->note_po);
-                $i=18;
-                foreach($detail_pos as $d){                    
-                    $sheet->setCellValue('B'.$i, $d->id_detail_po);
-                    $sheet->setCellValue('C'.$i, $d->uom);
-                    $sheet->setCellValue('D'.$i, $d->qty_po);
-                    foreach($d->materials as $m){
-                    $sheet->setCellValue('E'.$i, $m->nama_material);
-                    }
-                    $sheet->setCellValue('I'.$i, $d->harga_po);
-                    $i++;
-                }
-            });
-        })->export('xlsx');
+    public function print($id) {
+        return (new PoSupplierExport($id))->export();
     }
 }

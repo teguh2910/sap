@@ -39,7 +39,8 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{asset('po_customer/edit/'.$po_customer->id_po_customer)}}" method="POST">
+              <form action="{{asset('po-customers/'.$po_customer->id_po_customer)}}" method="POST">
+              @method('PUT')
               {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">

@@ -39,7 +39,14 @@ class GudangSatuController extends Controller
         if ($request->isMethod('get')) {
             $gudang_satus = Stog1::all();
             $bank = \App\Models\Bank::all();
-            return view('gudang_satu.index_trial', compact('gudang_satus', 'bank'));
+
+            // Provide default values for month/year variables
+            $originalMonth = date('m');
+            $originalYear = date('Y');
+            $selectedMonth = date('m', strtotime('-1 month'));
+            $selectedYear = date('Y', strtotime('-1 month'));
+
+            return view('gudang_satu.index_trial', compact('gudang_satus', 'bank', 'originalMonth', 'originalYear', 'selectedMonth', 'selectedYear'));
         }
 
         // Handle POST request (process form data)
