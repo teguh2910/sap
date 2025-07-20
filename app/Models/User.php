@@ -43,4 +43,21 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Check if user has a specific role.
+     */
+    public function hasRole(string $role): bool
+    {
+        // Simple role check - in production, you might use a package like Spatie Permission
+        return $this->role === $role || $this->role === 'admin';
+    }
+
+    /**
+     * Check if user has any of the given roles.
+     */
+    public function hasAnyRole(array $roles): bool
+    {
+        return in_array($this->role, $roles) || $this->role === 'admin';
+    }
 }
