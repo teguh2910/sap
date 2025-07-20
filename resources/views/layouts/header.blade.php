@@ -19,9 +19,9 @@
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
         <marquee class="warna">
-        Welcome <b>  {{auth::user()->name}} // 
-        </b> Email <b>  {{auth::user()->email}} </b> //
-        Position <b> {{auth::user()->position}} </b>
+        Welcome <b>  {{ auth()->user()->name }} //
+        </b> Email <b>  {{ auth()->user()->email }} </b> //
+        Position <b> {{ auth()->user()->position ?? 'User' }} </b>
       </marquee>
       </li>      
     </ul>
