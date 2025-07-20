@@ -1,7 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\po_supplier, App\vendor, App\bank, Excel, App\detail_po_supplier;
+use App\Models\PoSupplier;
+use App\Models\Vendor;
+use App\Models\Bank;
+use App\Models\DetailPoSupplier;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
 class PoSupplierController extends Controller

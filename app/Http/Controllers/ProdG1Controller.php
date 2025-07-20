@@ -1,7 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\prod_g1, App\produk, App\gudang_satu, Excel, App\detail_prod_g1, App\po_customer, App\part_customer, App\detail_prod_g2;
+use App\Models\ProdG1;
+use App\Models\GudangSatu;
+use App\Models\DetailProdG1;
+use App\Models\PoCustomer;
+use App\Models\PartCustomer;
+use App\Models\DetailProdG2;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
 class ProdG1Controller extends Controller

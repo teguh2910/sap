@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\detail_prod_g2, App\gudang_dua;
+use App\Models\DetailProdG2;
+use App\Models\GudangDua;
 use Illuminate\Http\Request;
 
 class DetailProdG2Controller extends Controller

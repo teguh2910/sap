@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\usage_g1, App\gudang_satu, App\basemetal;
+use App\Models\UsageG1;
+use App\Models\GudangSatu;
 use Illuminate\Http\Request;
 
 class UsageG1Controller extends Controller

@@ -1,7 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\gr, App\po_supplier, App\part_supplier, App\gudang_dua, App\gudang_satu, App\detail_po_supplier;
+use App\Models\Gr;
+use App\Models\PoSupplier;
+use App\Models\PartSupplier;
+use App\Models\GudangDua;
+use App\Models\GudangSatu;
+use App\Models\DetailPoSupplier;
 use Illuminate\Http\Request;
 
 class GrController extends Controller

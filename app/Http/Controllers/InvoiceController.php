@@ -1,6 +1,13 @@
 <?php
 namespace App\Http\Controllers;
-use App\sj_g1, App\invoice, App\po_customer, App\customer,App\detail_invoice,App\part_customer, Excel, QrCode;
+use App\Models\SjG1;
+use App\Models\Invoice;
+use App\Models\PoCustomer;
+use App\Models\Customer;
+use App\Models\DetailInvoice;
+use App\Models\PartCustomer;
+use Maatwebsite\Excel\Facades\Excel;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Http\Request;
 use Carbon\Carbon;

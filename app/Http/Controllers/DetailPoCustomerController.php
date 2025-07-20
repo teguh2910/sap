@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\detail_po_customer, App\po_customer, App\part_customer;
+use App\Models\DetailPoCustomer;
+use App\Models\PoCustomer;
+use App\Models\PartCustomer;
 use Illuminate\Http\Request;
 
 class DetailPoCustomerController extends Controller

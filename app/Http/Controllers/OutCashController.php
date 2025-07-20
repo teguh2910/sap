@@ -1,7 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\out_cash, App\bank, App\vendor, App\cashflow, App\po_supplier;
+use App\Models\OutCash;
+use App\Models\Bank;
+use App\Models\Vendor;
+use App\Models\Cashflow;
+use App\Models\PoSupplier;
 use Illuminate\Http\Request;
 
 class OutCashController extends Controller

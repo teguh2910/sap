@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\sop;
+use App\Models\Sop;
 use Illuminate\Http\Request;
 
 class SopController extends Controller

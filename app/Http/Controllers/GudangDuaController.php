@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\gudang_dua, Excel, App\detail_prod_g2;
+use App\Models\GudangDua;
+use App\Models\DetailProdG2;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
 class GudangDuaController extends Controller

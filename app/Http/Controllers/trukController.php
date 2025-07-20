@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\truk;
+use App\Models\Truk;
 use Illuminate\Http\Request;
 
 class trukController extends Controller

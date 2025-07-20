@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\sto, Excel;
+use App\Models\Sto;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
 class StoController extends Controller

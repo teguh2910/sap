@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\gudang_satu,App\stog1, Excel;
+use App\Models\GudangSatu;
+use App\Models\Stog1;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
 class GudangSatuController extends Controller

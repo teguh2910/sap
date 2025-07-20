@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\cashflow, Excel;
+use App\Models\Cashflow;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
 class CashflowController extends Controller

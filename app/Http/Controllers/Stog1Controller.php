@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\stog1, Excel;
+use App\Models\Stog1;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
 class Stog1Controller extends Controller

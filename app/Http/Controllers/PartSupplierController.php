@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\part_supplier, Excel;
+use App\Models\PartSupplier;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
 class PartSupplierController extends Controller

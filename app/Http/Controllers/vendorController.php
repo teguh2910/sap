@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\vendor;
+use App\Models\Vendor;
 use Illuminate\Http\Request;
 
 class vendorController extends Controller

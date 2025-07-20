@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\detail_po_supplier, App\stok, App\po_supplier, App\part_supplier;
+use App\Models\DetailPoSupplier;
+use App\Models\Stok;
+use App\Models\PoSupplier;
+use App\Models\PartSupplier;
 use Illuminate\Http\Request;
 
 class DetailPoSupplierController extends Controller

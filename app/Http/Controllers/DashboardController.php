@@ -1,19 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\gudang_satu, 
-    App\gudang_dua, 
-    App\po_supplier,
-    App\po_customer, 
-    App\detail_po_supplier,
-    App\detail_po_customer, 
-    App\gr, 
-    App\prod_g2, 
-    App\usage_g2, 
-    App\sj, 
-    App\prod_g1, 
-    App\usage_g1, 
-    App\sj_g1;
+use App\Models\GudangSatu;
+use App\Models\GudangDua;
+use App\Models\PoSupplier;
+use App\Models\PoCustomer;
+use App\Models\DetailPoSupplier;
+use App\Models\DetailPoCustomer;
+use App\Models\Gr;
+use App\Models\ProdG2;
+use App\Models\UsageG2;
+use App\Models\Sj;
+use App\Models\ProdG1;
+use App\Models\UsageG1;
+use App\Models\SjG1;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller

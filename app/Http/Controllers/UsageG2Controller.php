@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\usage_g2, App\gudang_dua, App\material;
+use App\Models\UsageG2;
+use App\Models\GudangDua;
 use Illuminate\Http\Request;
 
 class UsageG2Controller extends Controller

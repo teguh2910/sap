@@ -1,7 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\stok, App\sj, App\truk, App\gudang_dua,App\gudang_satu;
+use App\Models\Stok;
+use App\Models\Sj;
+use App\Models\Truk;
+use App\Models\GudangDua;
+use App\Models\GudangSatu;
 use Illuminate\Http\Request;
 
 class SjController extends Controller
