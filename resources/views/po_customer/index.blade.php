@@ -51,9 +51,7 @@
                   @foreach($po_customer as $po)
                   <tr>
                   <td>{{ $po->no_po_customer }}</td>
-                  @foreach($po->customers as $c)
-                  <td>{{ $c->nama_customer }}</td>
-                  @endforeach
+                  <td>{{ $po->customer ? $po->customer->nama_customer : 'No Customer' }}</td>
                   <td><a href="{{ asset('detailpocustomer/'.$po->id_po_customer) }}" class="btn btn-xs btn-primary">View</a></td>
                   <td>{{ $po->tgl_po_customer }}</td>
                   <td>

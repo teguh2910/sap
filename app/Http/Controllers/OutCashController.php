@@ -41,7 +41,7 @@ class OutCashController extends Controller
         return redirect('cashflow');
     }
     function index() {
-        return view('out_cash/index', ['out_cash' => out_cash::with(['banks','pos'])->get()]);
+        return view('out_cash/index', ['out_cash' => OutCash::with(['bank'])->get()]);
     }
     public function report() {
         return view('out_cash/report');
@@ -49,7 +49,7 @@ class OutCashController extends Controller
     public function report_show(Request $request) {
         $start_date=$request->start_date;
         $end_date=$request->end_date;
-        $out_cash = out_cash::whereBetween('tgl_out_cash', [$start_date, $end_date])->get();
+        $out_cash = OutCash::whereBetween('tgl_out_cash', [$start_date, $end_date])->get();
         return view('out_cash/report_show',compact('out_cash','start_date','end_date'));
     }
 }

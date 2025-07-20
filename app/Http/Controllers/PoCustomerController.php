@@ -13,7 +13,7 @@ class PoCustomerController extends Controller
         $this->middleware('auth');
     }
     public function index() {
-        $po_customer = PoCustomer::all();
+        $po_customer = PoCustomer::with('customer')->get();
         return view('po_customer/index',compact('po_customer'));
     }
     public function create() {

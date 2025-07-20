@@ -56,9 +56,7 @@
                   <td>{{ $o->category }}</td>
                   <td>Rp {{ number_format($o->amount_out) }}</td>
                   <td>{{ $o->tgl_out_cash }}</td>
-                  @foreach($o->banks as $b)
-                  <td>{{ $b->nama_bank }}</td>
-                  @endforeach
+                  <td>{{ $o->bank ? $o->bank->nama_bank : 'No Bank' }}</td>
                   <td>
                     <a href="{{ asset('out_cash/edit/'.$o->id_out_cash) }}" class="btn btn-sm btn-primary">Edit</a>
                     <a href="{{ asset('out_cash/delete/'.$o->id_out_cash) }}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-sm btn-danger">Delete</a>

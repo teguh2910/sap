@@ -13,7 +13,7 @@ class DetailPoCustomerController extends Controller
         $this->middleware('auth');
     }
     public function index($id) {
-        $detailpos = DetailPoCustomer::where('id_po_customer',$id)->get();
+        $detailpos = DetailPoCustomer::where('id_po_customer',$id)->with(['poCustomer', 'partCustomer'])->get();
         return view('detail_po_customer/index',compact('id','detailpos'));
     }
     public function create($id) {

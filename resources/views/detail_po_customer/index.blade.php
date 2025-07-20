@@ -52,13 +52,9 @@
                   <tbody>
                   @foreach($detailpos as $d)
                   <tr>
-                    @foreach($d->po_customers as $p)
-                  <td>{{ $p->no_po_customer }}</td>
-                    @endforeach
-                    @foreach($d->part_customers as $p)
-                  <td>{{ $p->part_number }}</td>
-                  <td>{{ $p->part_name }}</td>
-                    @endforeach
+                  <td>{{ $d->poCustomer ? $d->poCustomer->no_po_customer : 'No PO' }}</td>
+                  <td>{{ $d->partCustomer ? $d->partCustomer->part_number : 'No Part' }}</td>
+                  <td>{{ $d->partCustomer ? $d->partCustomer->part_name : 'No Part Name' }}</td>
                   <td>{{ number_format($d->qty_po_customer) }}</td>                                    
                   <td>{{ $d->uom }}</td>
                   <td>Rp {{ number_format($d->harga_po_customer) }}</td>

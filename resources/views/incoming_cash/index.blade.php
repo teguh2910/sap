@@ -54,13 +54,9 @@
                   @foreach($incoming_cash as $i)
                   <tr>
                   <td>{{ $i->po_customer }}</td>
-                  @foreach($i->customers as $c)
-                  <td>{{ $c->nama_customer }}</td>
-                  @endforeach
+                  <td>{{ $i->customer ? $i->customer->nama_customer : 'No Customer' }}</td>
                   <td>Rp {{ number_format($i->amount_incoming) }}</td>
-                  @foreach($i->banks as $b)
-                  <td>{{ $b->nama_bank }}</td>
-                  @endforeach
+                  <td>{{ $i->bank ? $i->bank->nama_bank : 'No Bank' }}</td>
                   <td>{{ $i->tgl_incoming_cash }}</td>
                   <td>{{ $i->top }}</td>
                   <td>
