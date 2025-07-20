@@ -16,7 +16,7 @@ class UsageG1Controller extends Controller
         return view('usage_g1/create',compact('base_metal'));
     }
     function store(Request $request) {
-        $usage_g1 = new usage_g1;
+        $usage_g1 = new UsageG1;
         $usage_g1->id_base_metal = $request->id_base_metal;
         $usage_g1->qty_usage_g1 = $request->qty_usage_g1;
         $usage_g1->tgl_usage_g1 = $request->tgl_usage_g1;

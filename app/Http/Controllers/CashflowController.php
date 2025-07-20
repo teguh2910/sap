@@ -12,7 +12,7 @@ class CashflowController extends Controller
         $this->middleware('auth');
     }
     function index() {
-        $cash = cashflow::all();
+        $cash = Cashflow::all();
         return view('cash_flow/index', compact('cash'));
     }
     function create() {
@@ -33,7 +33,7 @@ class CashflowController extends Controller
                 if($result->bank == null){
                     break;
                 }
-                $cashflow = new cashflow;
+                $cashflow = new Cashflow;
                 $cashflow->bank = $result->bank;
                 $cashflow->beginning_balance = $result->beginning_balance;
                 $cashflow->save();

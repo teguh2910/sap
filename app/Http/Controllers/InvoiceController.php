@@ -19,12 +19,12 @@ class InvoiceController extends Controller
         return view('invoice/index',compact(['invoice']));
     }
     public function create(){
-        $po_customer=po_customer::all();
-        $customer=customer::all();
+        $po_customer = PoCustomer::all();
+        $customer = Customer::all();
         return view('invoice/create',compact(['po_customer','customer']));
     }
     public function store(Request $request){
-        $invoice = new invoice;
+        $invoice = new Invoice;
         $invoice->no_invoice = $request->no_invoice;
         $invoice->tgl_invoice = $request->tgl_invoice;
         $invoice->no_fp = $request->no_fp;
@@ -175,7 +175,7 @@ class InvoiceController extends Controller
         return view('invoice/create_detail',compact(['id','part']));
     }
     public function store_detail_create($id){
-        $detail_invoice = new detail_invoice;
+        $detail_invoice = new DetailInvoice;
         $detail_invoice->id_invoice = $id;
         $detail_invoice->part = request('part');
         $detail_invoice->qty = request('qty');

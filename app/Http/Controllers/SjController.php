@@ -21,7 +21,7 @@ class SjController extends Controller
     }
     public function store(Request $request) {
         //create new data sj
-        $sj = new sj;
+        $sj = new Sj;
         $sj->id_gudang_dua = $request->id_gudang_dua;
         $sj->qty_sj = $request->qty_sj;
         $sj->tgl_sj = $request->tgl_sj;

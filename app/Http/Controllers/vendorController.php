@@ -18,7 +18,7 @@ class vendorController extends Controller
         return view ('vendor/create');
     }
     public function store(Request $request) {
-        $vendor = new vendor;
+        $vendor = new Vendor;
         $vendor->kode_vendor = $request->kode_vendor;
         $vendor->nama_vendor = $request->nama_vendor;
         $vendor->alamat_vendor = $request->alamat_vendor;

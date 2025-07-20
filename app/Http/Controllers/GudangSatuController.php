@@ -75,7 +75,7 @@ class GudangSatuController extends Controller
                 if($result->part_no == null){
                     break;
                 }
-                $gudang_satu = new gudang_satu;
+                $gudang_satu = new GudangSatu;
                 $gudang_satu->part_no = $result->part_no;
                 $gudang_satu->part_name = $result->part_name;
                 $gudang_satu->category_part = $result->category_part;

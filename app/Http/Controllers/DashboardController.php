@@ -23,25 +23,25 @@ class DashboardController extends Controller
         $this->middleware('auth');
     }
     public function stok(Request $request) {
-        $gudang_satu = gudang_satu::select('category_part', \DB::raw('sum(beginning_balance) as total_beginning_balance,sum(usage_balance) as total_usage_balance,sum(incoming_balance) as total_incoming_balance'))
-                            
+        $gudang_satu = GudangSatu::select('category_part', \DB::raw('sum(beginning_balance) as total_beginning_balance,sum(usage_balance) as total_usage_balance,sum(incoming_balance) as total_incoming_balance'))
+
                             ->groupBy('category_part')
                             ->get();
-        $gudang_dua = gudang_dua::select('category_part', \DB::raw('sum(beginning_balance) as total_beginning_balance,sum(usage_balance) as total_usage_balance,sum(incoming_balance) as total_incoming_balance'))
+        $gudang_dua = GudangDua::select('category_part', \DB::raw('sum(beginning_balance) as total_beginning_balance,sum(usage_balance) as total_usage_balance,sum(incoming_balance) as total_incoming_balance'))
                           ->groupBy('category_part')
                           ->get();
         return view('dashboard/stok',compact(['gudang_satu','gudang_dua']));
     }
     public function po() {
-        $pos=detail_po_supplier::all();
+        $pos = DetailPoSupplier::all();
         return view('dashboard/po',compact(['pos']));
     }
     public function po_customer() {
-        $pos=detail_po_customer::all();
+        $pos = DetailPoCustomer::all();
         return view('dashboard/po_customer',compact(['pos']));
     }
     public function hutang() {
-        $pos=detail_po_supplier::all();
+        $pos = DetailPoSupplier::all();
         // Group the purchase orders by 'id_po' and calculate the sum of the amount (qty_po * harga_po) for each group
         $po_by_id = $pos->groupBy('id_po')->map(function ($group) {
             return $group->sum(function ($item) {
@@ -64,41 +64,41 @@ class DashboardController extends Controller
     }
     public function show_filter_stok(Request $request) {
         //gudang2
-        $fg_g2=gudang_dua::where('category_part','FG')->sum('beginning_balance');
-        $rm_g2=gudang_dua::where('category_part','RM')->sum('beginning_balance');
-        $gr_g2=gr::whereMonth('tgl_gr',$request->bulan)->whereYear('tgl_gr',$request->tahun)->where('gudang','gudang_dua')->sum('qty_gr');
-        $prod_g2=prod_g2::whereMonth('tgl_prod_g2',$request->bulan)
-                ->whereYear('tgl_prod_g2',$request->tahun)                
+        $fg_g2=GudangDua::where('category_part','FG')->sum('beginning_balance');
+        $rm_g2=GudangDua::where('category_part','RM')->sum('beginning_balance');
+        $gr_g2=Gr::whereMonth('tgl_gr',$request->bulan)->whereYear('tgl_gr',$request->tahun)->where('gudang','gudang_dua')->sum('qty_gr');
+        $prod_g2=ProdG2::whereMonth('tgl_prod_g2',$request->bulan)
+                ->whereYear('tgl_prod_g2',$request->tahun)
                 ->with('detail_prod_g2')
                 ->get()
                 ->pluck('detail_prod_g2')
                 ->flatten()
                 ->sum('qty_prod_g2');
-                        
-        $usage_g2=usage_g2::whereMonth('tgl_usage_g2',$request->bulan)->whereYear('tgl_usage_g2',$request->tahun)->sum('qty_usage_g2');
-        $sj_g2=sj::whereMonth('tgl_sj',$request->bulan)->whereYear('tgl_sj',$request->tahun)->sum('qty_sj');
+
+        $usage_g2=UsageG2::whereMonth('tgl_usage_g2',$request->bulan)->whereYear('tgl_usage_g2',$request->tahun)->sum('qty_usage_g2');
+        $sj_g2=Sj::whereMonth('tgl_sj',$request->bulan)->whereYear('tgl_sj',$request->tahun)->sum('qty_sj');
         //gudang1
-        $fg_g1=gudang_satu::where('category_part','FG')->sum('beginning_balance');
-        $rm_g1=gudang_satu::where('category_part','RM')->sum('beginning_balance');
-        $gr_g1=gr::whereMonth('tgl_gr',$request->bulan)->whereYear('tgl_gr',$request->tahun)->where('gudang','gudang_satu')->sum('qty_gr');
-        $prod_g1=prod_g1::whereMonth('tgl_prod_g1',$request->bulan)
+        $fg_g1=GudangSatu::where('category_part','FG')->sum('beginning_balance');
+        $rm_g1=GudangSatu::where('category_part','RM')->sum('beginning_balance');
+        $gr_g1=Gr::whereMonth('tgl_gr',$request->bulan)->whereYear('tgl_gr',$request->tahun)->where('gudang','gudang_satu')->sum('qty_gr');
+        $prod_g1=ProdG1::whereMonth('tgl_prod_g1',$request->bulan)
                 ->whereYear('tgl_prod_g1',$request->tahun)
                 ->with('detail_prod_g1')
                 ->get()
                 ->pluck('detail_prod_g1')
                 ->flatten()
                 ->sum('qty_prod_g1');
-        $usage_g1=usage_g1::whereMonth('tgl_usage_g1',$request->bulan)->whereYear('tgl_usage_g1',$request->tahun)->sum('qty_usage_g1');
-        $sj_g1=sj_g1::whereMonth('tgl_sj_g1',$request->bulan)->whereYear('tgl_sj_g1',$request->tahun)->sum('qty_sj_g1');        
+        $usage_g1=UsageG1::whereMonth('tgl_usage_g1',$request->bulan)->whereYear('tgl_usage_g1',$request->tahun)->sum('qty_usage_g1');
+        $sj_g1=SjG1::whereMonth('tgl_sj_g1',$request->bulan)->whereYear('tgl_sj_g1',$request->tahun)->sum('qty_sj_g1');
         return view('dashboard/show_filter_stok',compact(['gr_g2','prod_g2','usage_g2','sj_g2','fg_g2','rm_g2','gr_g1','prod_g1','usage_g1','sj_g1','fg_g1','rm_g1']));
         
     }
     public function stock_customer(){
-        $po_customer=detail_po_customer::all();
+        $po_customer = DetailPoCustomer::all();
         return view('dashboard/stock_customer',compact('po_customer'));
     }
     public function qty_prod_customer() {
-        $po_customer=detail_po_customer::all();
+        $po_customer = DetailPoCustomer::all();
         return view('dashboard/qty_prod_customer',compact('po_customer'));
     }
 

@@ -29,7 +29,7 @@ class StoController extends Controller
                 if($result->part_no == null){
                     break;
                 }
-                $sto = new sto;
+                $sto = new Sto;
                 $sto->part_no = $result->part_no;
                 $sto->qty_sto = $result->qty_sto;
                 $sto->tgl_sto = $request->tgl_sto;

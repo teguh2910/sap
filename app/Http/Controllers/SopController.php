@@ -25,7 +25,7 @@ class SopController extends Controller
             $extension = $file->getClientOriginalExtension();
             $filenameWithExtension = $nama_sop . '.' . $extension;
             $path = $file->storeAs('public', $filenameWithExtension); // This will store the file in the "storage/app/public" directory.
-            $sop = new sop();
+            $sop = new Sop();
             $sop->nama_sop = $request->nama_sop;
             $sop->file_sop = $filenameWithExtension;
             $sop->save();            

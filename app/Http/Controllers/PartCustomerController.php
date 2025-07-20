@@ -17,7 +17,7 @@ class PartCustomerController extends Controller
         return view('part_customer.create');
     }
     public function store(Request $request){
-        $part_customer = new part_customer;
+        $part_customer = new PartCustomer;
         $part_customer->part_number = $request->part_number;
         $part_customer->part_name = $request->part_name;
         $part_customer->save();
@@ -56,7 +56,7 @@ class PartCustomerController extends Controller
                 // Getting all results
                 $results = $reader->get();
                 foreach($results as $result){                    
-                    $part_customer = new part_customer;
+                    $part_customer = new PartCustomer;
                     $part_customer->part_number = $result->part_number;
                     $part_customer->part_name = $result->part_name;
                     $part_customer->save();

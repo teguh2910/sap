@@ -18,12 +18,12 @@ class DetailPoSupplierController extends Controller
         return view('detail_po_supplier/index',compact(['detailpos','id']));
     }
     public function create($id) {
-        $po=po_supplier::find($id);
-        $material = part_supplier::all();
+        $po = PoSupplier::find($id);
+        $material = PartSupplier::all();
         return view('detail_po_supplier/create',compact(['material','po']));
     }
     public function store(Request $request,$id) {
-        $detailpo=new detail_po_supplier;
+        $detailpo = new DetailPoSupplier;
         $detailpo->id_po=$id;
         $detailpo->id_material=$request->id_material;
         $detailpo->qty_po=$request->qty_po;

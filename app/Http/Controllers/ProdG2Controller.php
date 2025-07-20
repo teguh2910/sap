@@ -16,12 +16,12 @@ class ProdG2Controller extends Controller
         $this->middleware('auth');
     }
     public function create() {
-        $po_customer = po_customer::all();
+        $po_customer = PoCustomer::all();
         $part_customer = part_customer::all();
         return view('prod_g2/create',compact(['po_customer','part_customer']));
     }
     public function store(Request $request) {
-        $prod_g2 = new prod_g2;
+        $prod_g2 = new ProdG2;
         $prod_g2->lot_prod_g2 = $request->lot_prod_g2;
         $prod_g2->tgl_prod_g2 = $request->tgl_prod_g2;
         $prod_g2->id_po_customer = $request->id_po_customer;

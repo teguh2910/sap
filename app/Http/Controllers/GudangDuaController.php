@@ -31,7 +31,7 @@ class GudangDuaController extends Controller
             $results = $reader->get();
         
             foreach($results as $result){
-                $gudang_dua = new gudang_dua;
+                $gudang_dua = new GudangDua;
                 $gudang_dua->part_no = $result->part_no;
                 $gudang_dua->part_name = $result->part_name;
                 $gudang_dua->category_part = $result->category_part;

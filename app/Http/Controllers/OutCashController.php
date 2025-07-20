@@ -21,7 +21,7 @@ class OutCashController extends Controller
         return view('out_cash/create',compact('banks','vendors','pos'));
     }
     function store(Request $request) {
-        $out_cash = new out_cash;
+        $out_cash = new OutCash;
         $out_cash->id_bank = $request->id_bank;
         $out_cash->id_po = $request->id_po;
         $out_cash->amount_out = $request->amount_out;

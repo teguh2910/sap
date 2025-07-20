@@ -23,7 +23,7 @@ class GrController extends Controller
     public function store(Request $request) {
         $po=detail_po_supplier::where('id_po',$request->id_po)->get();
         foreach($po as $p){
-        $gr = new gr;
+        $gr = new Gr;
         $gr->tgl_gr = $request->tgl_gr;
         $gr->gudang = $request->gudang;        
         $gr->id_detail_po = $p->id_detail_po;

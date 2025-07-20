@@ -17,12 +17,12 @@ class SjG1Controller extends Controller
     public function create() {
         $stoks=gudang_satu::where('category_part','fg')->get();
         $truks=truk::all();
-        $po_customer=po_customer::all();
+        $po_customer = PoCustomer::all();
         return view('sj_g1/create',compact(['stoks','truks','po_customer']));
     }
     public function store(Request $request) {
         //create new data sjg1
-        $sjg1 = new sj_g1;
+        $sjg1 = new SjG1;
         $sjg1->id_gudang_satu = $request->id_gudang_satu;
         $sjg1->no_sj_g1 = $request->no_sj_g1;
         $sjg1->qty_sj_g1 = $request->qty_sj_g1;

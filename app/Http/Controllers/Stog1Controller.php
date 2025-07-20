@@ -29,7 +29,7 @@ class Stog1Controller extends Controller
                 if($result->part_no == null){
                     break;
                 }
-                $sto = new stog1;
+                $sto = new Stog1;
                 $sto->part_no = $result->part_no;
                 $sto->qty_sto = $result->qty_sto;
                 $sto->tgl_sto = $request->tgl_sto;

@@ -21,7 +21,7 @@ class trukController extends Controller
     }
     public function store(Request $request)
     {
-        $truk = new truk;
+        $truk = new Truk;
         $truk->kode_truk = $request->kode_truk;
         $truk->plat_no = $request->plat_no;
         $truk->driver = $request->driver;

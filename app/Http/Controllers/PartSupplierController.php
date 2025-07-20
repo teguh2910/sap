@@ -17,7 +17,7 @@ class PartSupplierController extends Controller
         return view('part_supplier.create');
     }
     public function store(Request $request){
-        $part_supplier = new part_supplier;
+        $part_supplier = new PartSupplier;
         $part_supplier->part_number = $request->part_number;
         $part_supplier->part_name = $request->part_name;
         $part_supplier->save();
@@ -56,7 +56,7 @@ class PartSupplierController extends Controller
                 // Getting all results
                 $results = $reader->get();
                 foreach($results as $result){                    
-                    $part_supplier = new part_supplier;
+                    $part_supplier = new PartSupplier;
                     $part_supplier->part_number = $result->part_number;
                     $part_supplier->part_name = $result->part_name;
                     $part_supplier->save();

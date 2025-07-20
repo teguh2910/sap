@@ -15,13 +15,13 @@ class IncomingCashController extends Controller
         $this->middleware('auth');
     }
     function create() {
-        $banks = bank::all();
-        $customers = customer::all();
-        $po_customer = po_customer::all();
+        $banks = Bank::all();
+        $customers = Customer::all();
+        $po_customer = PoCustomer::all();
         return view('incoming_cash/create',compact('banks','customers','po_customer'));
     }
     function store(Request $request) {
-        $incoming_cash = new incoming_cash;
+        $incoming_cash = new IncomingCash;
         $incoming_cash->id_bank = $request->id_bank;
         $incoming_cash->id_customer = $request->id_customer;
         $incoming_cash->amount_incoming = $request->amount_incoming;
