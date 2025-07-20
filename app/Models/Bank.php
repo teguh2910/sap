@@ -28,7 +28,6 @@ class Bank extends Model
     protected $fillable = [
         'kode_bank',
         'nama_bank',
-        'alamat_bank',
         'no_rek_bank',
         'currency_bank',
     ];

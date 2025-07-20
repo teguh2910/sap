@@ -25,7 +25,6 @@ class BankTest extends TestCase
         $bankData = [
             'kode_bank' => 'BCA001',
             'nama_bank' => 'Bank Central Asia',
-            'alamat_bank' => 'Jakarta',
             'no_rek_bank' => '1234567890',
             'currency_bank' => 'IDR',
         ];
@@ -55,7 +54,6 @@ class BankTest extends TestCase
         $updateData = [
             'kode_bank' => 'UPDATED001',
             'nama_bank' => 'Updated Bank Name',
-            'alamat_bank' => 'Updated Address',
             'no_rek_bank' => '9876543210',
             'currency_bank' => 'USD',
         ];

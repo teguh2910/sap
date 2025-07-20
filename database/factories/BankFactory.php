@@ -22,7 +22,6 @@ class BankFactory extends Factory
         return [
             'kode_bank' => $this->faker->unique()->regexify('[A-Z]{3}[0-9]{3}'),
             'nama_bank' => $this->faker->company . ' Bank',
-            'alamat_bank' => $this->faker->address,
             'no_rek_bank' => $this->faker->bankAccountNumber,
             'currency_bank' => $this->faker->randomElement(['IDR', 'USD', 'EUR', 'SGD']),
         ];

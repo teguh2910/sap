@@ -48,7 +48,7 @@
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach($bank as $b)
+                  @foreach($banks as $b)
                   <tr>
                   <td>{{ $b->kode_bank }}</td>
                   <td>{{ $b->nama_bank }}</td>

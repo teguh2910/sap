@@ -51,7 +51,7 @@ class User extends Authenticatable
     public function hasRole(string $role): bool
     {
         // Simple role check - in production, you might use a package like Spatie Permission
-        return $this->role === $role || $this->role === 'admin';
+        return $this->position === $role || $this->position === 'admin';
     }
 
     /**
@@ -59,6 +59,6 @@ class User extends Authenticatable
      */
     public function hasAnyRole(array $roles): bool
     {
-        return in_array($this->role, $roles) || $this->role === 'admin';
+        return in_array($this->position, $roles) || $this->position === 'admin';
     }
 }
