@@ -27,7 +27,7 @@ class DetailProdG2ControllerTest extends TestCase
         ]);
 
         $this->visit('/detailprodg2/' . $prod->id_prod_g2)
-             ->see('Detail');
+             ->see('List Produksi Gudang Dua');
     }
 
     public function testStoreCreatesDetailProdG2()

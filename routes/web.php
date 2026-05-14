@@ -1,6 +1,12 @@
 <?php
 Auth::routes();
-Route::get('/', 'HomeController@index');
+Route::get('/', function () {
+    if (auth()->check()) {
+        return redirect('/dashboard');
+    }
+    return view('landing');
+});
+Route::get('/dashboard', 'HomeController@index');
 
 //crud bank
 Route::get('/bank', 'bankController@index');
