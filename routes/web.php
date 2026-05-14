@@ -51,6 +51,12 @@ Route::get('/user/edit/{id}', 'userController@edit');
 Route::post('/user/edit/{id}', 'userController@update');
 Route::get('/user/delete/{id}', 'userController@delete');
 
+//user profile
+Route::get('/profile', 'ProfileController@index');
+Route::post('/profile', 'ProfileController@update');
+Route::get('/profile/change-password', 'ProfileController@changePassword');
+Route::post('/profile/change-password', 'ProfileController@updatePassword');
+
 //crud sj gudang dua
 Route::get('/sjg2', 'SjController@index');
 Route::get('/sjg2/create', 'SjController@create');

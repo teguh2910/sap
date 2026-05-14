@@ -189,7 +189,7 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">            
+            <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{asset('/part_customer')}}" class="nav-link">
                   <i class="nav-icon"></i>
@@ -219,21 +219,52 @@
                   <i class="nav-icon"></i>
                   <p>Master Vendor</p>
                 </a>
-              </li>                            
+              </li>
               <li class="nav-item">
                 <a href="{{asset('/truk')}}" class="nav-link">
                   <i class="nav-icon"></i>
                   <p>Master Truk</p>
                 </a>
-              </li>              
+              </li>
             </ul>
-           
+
             <li class="nav-item">
                 <a href="{{asset('/sop')}}" class="nav-link">
                 <i class="nav-icon fas fa-th"></i>
                   <p>SOP</p>
                 </a>
               </li>
+          </li>
+          @if(auth()->user()->position == 'admin')
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                User Management
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{asset('/user')}}" class="nav-link">
+                  <i class="nav-icon"></i>
+                  <p>List User</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{asset('/user/create')}}" class="nav-link">
+                  <i class="nav-icon"></i>
+                  <p>Create User</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          @endif
+          <li class="nav-item">
+            <a href="{{asset('/profile')}}" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>My Profile</p>
+            </a>
           </li>
           <li class="nav-item">
           <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">

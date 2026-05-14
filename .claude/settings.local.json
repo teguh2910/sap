@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(php -v)",
+      "Bash(where composer:*)",
+      "Bash(cmd //c \"where composer\")",
+      "Bash(cmd //c \"docker --version\")",
+      "Bash(cmd //c \"where docker\")",
+      "Bash(docker --version)",
+      "Bash(cmd //c \"docker compose version\")",
+      "Bash(cmd //c \"docker compose up -d --build\")",
+      "Bash(cmd //c \"docker ps\")",
+      "Bash(cmd //c \"docker exec sap-app php artisan key:generate\")",
+      "Bash(cmd //c \"docker exec sap-app composer install\")",
+      "Bash(cmd //c \"docker exec sap-app chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache\")",
+      "Bash(cmd //c \"docker exec sap-db mysql -uroot -proot -e \\\\\"CREATE DATABASE IF NOT EXISTS sap; GRANT ALL PRIVILEGES ON sap.* TO 'admin'@'%'; FLUSH PRIVILEGES;\\\\\"\")",
+      "Bash(cmd //c \"docker exec sap-db mariadb -uroot -proot -e \\\\\"CREATE DATABASE IF NOT EXISTS sap; GRANT ALL PRIVILEGES ON sap.* TO 'admin'@'%'; FLUSH PRIVILEGES;\\\\\"\")",
+      "Bash(cmd //c \"docker exec -i sap-db mariadb -uroot -proot < /c/Users/teguh/sap/init.sql\")",
+      "Bash(cmd //c \"docker cp c:\\\\Users\\\\teguh\\\\sap\\\\init.sql sap-db:/tmp/init.sql && docker exec sap-db mariadb -uroot -proot -e \"source /tmp/init.sql\"\")",
+      "Bash(docker cp:*)",
+      "Bash(docker exec:*)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8000)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8000/user)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8000/profile)",
+      "Bash(ls app/Http/Controllers/*.php)",
+      "Bash(ls app/*.php)"
+    ]
+  }
+}

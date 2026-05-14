@@ -5,21 +5,16 @@
 
     <!-- Content Header (Page header) -->
     <div class="content-header">
-      @if ($message = Session::get('success'))
-        <div class="alert alert-success alert-block">
-          <button type="button" class="close" data-dismiss="alert">×</button>	
-            <strong>{{ $message }}</strong>
-        </div>
-      @endif
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Create Data Bank</h1>            
+            <h1 class="m-0">Create User</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Create Data Bank</li>
+              <li class="breadcrumb-item"><a href="{{ asset('user') }}">User Management</a></li>
+              <li class="breadcrumb-item active">Create</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -30,39 +25,56 @@
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
-        <div class="row">          
-          <!-- /.col-md-12 -->
+        <div class="row">
           <div class="col-md-12">
+            @if ($errors->any())
+              <div class="alert alert-danger alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <ul class="mb-0">
+                  @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                  @endforeach
+                </ul>
+              </div>
+            @endif
           <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Form Create Data Bank</h3>
+                <h3 class="card-title">Form Create User</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{asset('bank/create')}}" method="POST">
+              <form action="{{asset('user/create')}}" method="POST">
               {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
-                    <label>Nama Bank</label>
-                    <input type="text" name="nama_bank" class="form-control">
+                    <label>Name <span class="text-danger">*</span></label>
+                    <input type="text" name="name" value="{{ old('name') }}" class="form-control" required>
                   </div>
                   <div class="form-group">
-                    <label>Cabang Bank</label>
-                    <input type="text" name="cabang_bank" class="form-control">
+                    <label>Email <span class="text-danger">*</span></label>
+                    <input type="email" name="email" value="{{ old('email') }}" class="form-control" required>
                   </div>
                   <div class="form-group">
-                    <label>Currency</label>
-                    <select name="currency_bank" class="form-control">
-                        <option value="IDR">IDR</option>
-                        <option value="USD">USD</option>
-                        <option value="JPY">JPY</option>
-                        <option value="THB">THB</option>
+                    <label>Password <span class="text-danger">*</span></label>
+                    <input type="password" name="password" class="form-control" required minlength="6">
+                    <small class="text-muted">Minimal 6 karakter</small>
+                  </div>
+                  <div class="form-group">
+                    <label>Position <span class="text-danger">*</span></label>
+                    <select name="position" class="form-control" required>
+                        <option value="">-- Pilih Position --</option>
+                        <option value="admin" {{ old('position') == 'admin' ? 'selected' : '' }}>Admin</option>
+                        <option value="bod" {{ old('position') == 'bod' ? 'selected' : '' }}>BOD</option>
+                        <option value="fac" {{ old('position') == 'fac' ? 'selected' : '' }}>FAC</option>
+                        <option value="wh" {{ old('position') == 'wh' ? 'selected' : '' }}>Warehouse</option>
+                        <option value="produksi" {{ old('position') == 'produksi' ? 'selected' : '' }}>Produksi</option>
                     </select>
-                  </div>                  
+                  </div>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Create</button>
+                  <a href="{{ asset('user') }}" class="btn btn-secondary">Cancel</a>
                 </div>
               </form>
             </div>
@@ -73,5 +85,5 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
-  
+
 @endsection
