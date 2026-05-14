@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>SAP</title>
 
   <!-- Google Font: Source Sans Pro -->
@@ -76,110 +77,8 @@
 <script src="{{asset('dist/js/adminlte.min.js')}}"></script>
 
 
-<!-- Page specific script -->
-<script>
-  $(document).ready(function () {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': '{{csrf_token()}}'
-                }
-            });
-            $.fn.editable.defaults.mode = 'popup';
-            $('.xedit').editable({
-                url: '{{url("detail_po_gr/update")}}',
-                title: 'Update',
-                success: function (response, newValue) {
-                    console.log('Updated', response)
-                }
-            });
-            $('.detail_prod_g2').editable({
-                url: '{{url("detailprodg2/update")}}',
-                title: 'Update',
-                success: function (response, newValue) {
-                    console.log('Updated', response)
-                }
-            });
-            $('.detail_prod_g1').editable({
-                url: '{{url("detailprodg1/update")}}',
-                title: 'Update',
-                success: function (response, newValue) {
-                    console.log('Updated', response)
-                }
-            });
-
-    })
-</script>
-<script>
-  $(function () {
-    $("#example1").DataTable({
-      scrollX: true,
-      fixedHeader: true,
-      buttons: [
-        "copy",
-        "csv",
-        {
-          extend: "excelHtml5",
-          exportOptions: {
-                    columns: [ 0, 1, 3, 4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21 ]
-                },
-          title: "Report PO Supplier", // Add your desired title here
-        },
-        {
-          extend: "pdfHtml5",
-          exportOptions: {
-                    columns: [ 0, 1, 3, 4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21 ]
-                },
-          orientation: "landscape",
-          pageSize: "A3",
-          title: "Report PO Supplier"
-        },
-        {
-          extend: "print",
-          autoPrint: true,
-          title: "Print PO Supplier",
-          customize: function(win) {
-            // Set a specific page size for the print preview
-            $(win.document.body).css({
-              'width': '297mm', // A4 paper width
-              'height': '210mm' // A4 paper height
-            });
-            $(win.document.body).find('table').css({
-              'width': '100%',
-              'max-width': '100%',
-              'font-size': '10pt' // Adjust font size if needed
-            });
-          }
-        }
-      ]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-  });
-</script>
-<script>
-  $(function () {
-    $("#data").DataTable({
-      dom: 'Bfrtip',
-      scrollX: true,
-      buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],    
-    });
-    });
-</script>
-
-<script>
-  $(document).ready(function() {
-    $('#select2').select2({
-      width: 'resolve',
-      theme: 'bootstrap4'
-    });
-    $('#select3').select2({
-      width: 'resolve',
-      theme: 'bootstrap4'
-    });
-    $('.select2').select2({
-      width: 'resolve',
-      theme: 'bootstrap4'
-    });
-  });
-</script>
+<!-- Application initialization script -->
+<script src="{{ asset('js/app-init.js') }}"></script>
 
 
 @section('js')
