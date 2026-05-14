@@ -16,6 +16,12 @@
               <p>Dashboard</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ url('/ai') }}" class="nav-link">
+              <i class="nav-icon fas fa-robot"></i>
+              <p>AI Assistant</p>
+            </a>
+          </li>
         @if(auth()->user()->position == 'wh')
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">

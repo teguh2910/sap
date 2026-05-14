@@ -284,3 +284,9 @@ Route::post('/part_customer/upload', 'PartCustomerController@store_upload');
 Route::get('/part_customer/edit/{id}', 'PartCustomerController@edit');
 Route::post('/part_customer/edit/{id}', 'PartCustomerController@update');
 Route::get('/part_customer/delete/{id}', 'PartCustomerController@delete');
+
+// AI Assistant
+Route::get('/ai', 'AIAssistantController@index');
+Route::post('/ai/send', 'AIAssistantController@send');
+Route::post('/ai/clear', 'AIAssistantController@clear');
+Route::get('/ai/suggestions', 'AIAssistantController@suggestions');
